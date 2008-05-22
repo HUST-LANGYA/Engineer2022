@@ -7,7 +7,7 @@
 #include "tim2.h"
 
 //单位：us，变化范围：500--2500(0.5ms-2.5ms)，高电平时间，控制PWM占空比，周期是20ms
-unsigned short camera_pitch = 530;	
+unsigned short camera_pitch = 1450;	
 unsigned short camera_yaw 	= 1250;
 
 

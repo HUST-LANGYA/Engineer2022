@@ -25,8 +25,8 @@ void Pid_Motor_Init(void)
 
 //		ForwardPositionInit[0] = Pos_Forward_Motor[0];
 //		ForwardPositionInit[1] = Pos_Forward_Motor[1];
-		LiftJourney_2 = 60000;
-		LiftJourney_1 = 40000;
+		LiftJourney_2 = -60000;
+		LiftJourney_1 = -40000;
 		RotateJourney = 0;
 	
 	

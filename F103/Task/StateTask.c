@@ -204,15 +204,15 @@ void flagModeSwitch(void)
 			
 			if(g_Flag.control_target == SENIOR_AUTO_MODE)
 			{
-//				g_Flag.auto_mode = MINE_MIDAIR;
+				g_Flag.auto_mode = LARGE_ISLAND_MINE;
 			}else
 				g_Flag.auto_mode = 0;
 			
 			
 			
 			
-//			if(g_Flag.control_target == SENIOR_UP_MODE || g_Flag.control_target == SENIOR_MODE2)
-//			{
+			if(g_Flag.control_target == SENIOR_UP_MODE || g_Flag.control_target == SENIOR_MODE2)
+			{
 				
 ////					
 ////																													if(g_Flag.photogate_flag)									//调试！！！！！！！！！！！！！！！！！
@@ -227,7 +227,7 @@ void flagModeSwitch(void)
 				g_Flag.midair_solenoid_flag = FlagOfMaster.flag.midair_solenoid_flag;
 				
 				
-//			}
+			}
 				
 //					switch(data_receive[3])			//上层二级抬升
 //					{
