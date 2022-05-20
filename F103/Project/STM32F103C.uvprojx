@@ -558,6 +558,11 @@
               <FileType>1</FileType>
               <FilePath>..\MyLib\iwdg.c</FilePath>
             </File>
+            <File>
+              <FileName>tim2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MyLib\tim2.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

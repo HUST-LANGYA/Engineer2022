@@ -30,6 +30,7 @@
 .\objects\pid.o: ..\MyLib\Usart3.h
 .\objects\pid.o: ..\MyLib\iwdg.h
 .\objects\pid.o: ..\Libraries\stm32f10x_iwdg.h
+.\objects\pid.o: ..\MyLib\tim2.h
 .\objects\pid.o: ..\Algorithm\pid.h
 .\objects\pid.o: ..\Algorithm\ModbusCRC16.h
 .\objects\pid.o: ..\Task\StartTask.h

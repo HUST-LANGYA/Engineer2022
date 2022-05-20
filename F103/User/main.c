@@ -12,6 +12,7 @@ void BSP_init(void);
 void gpioConfig(void);
 void flagInit(void);
 
+
 /**
   	*@brief 		主函数
   	*@param			void
@@ -43,7 +44,8 @@ void BSP_init(void)
 	NVIC_PriorityGroupConfig( NVIC_PriorityGroup_4 );
 	
 	USART3_Configuration();
-	TIM2_Init();
+//	TIM7_Init();
+	TIM2_PWM_Init();
 	TIM3_Init();
 	TIM4_Init();
 	CAN1_Config();
@@ -134,6 +136,22 @@ void flagInit(void)
 	g_Flag.midair_solenoid_flag = 0;		//空接电磁阀关闭
 	g_Flag.exchange_solenoid_flag = 0;	//兑换电磁阀关闭
 	
-	
+	g_Flag.camera_pitch = CAMERA_DEFAULT;
+	g_Flag.camera_yaw = CAMERA_DEFAULT;
 }
 
+///**********************************************************************************************************
+//*函 数 名: delay_ms
+//*功能说明: ms延时
+//*形    参: 无
+//*返 回 值: 无
+//************************** ++********************************************************************************/
+//void delay_ms(unsigned long t)
+//{
+//	int i;
+//	for( i=0;i<t;i++)
+//	{
+//		int a=12000;
+// 		while(a--);
+//	}
+//}

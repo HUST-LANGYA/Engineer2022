@@ -30,6 +30,7 @@
 .\objects\iwdg.o: ..\MyLib\ZeroCheck.h
 .\objects\iwdg.o: ..\MyLib\Usart3.h
 .\objects\iwdg.o: ..\MyLib\iwdg.h
+.\objects\iwdg.o: ..\MyLib\tim2.h
 .\objects\iwdg.o: ..\Algorithm\pid.h
 .\objects\iwdg.o: ..\Algorithm\ModbusCRC16.h
 .\objects\iwdg.o: ..\Task\StartTask.h

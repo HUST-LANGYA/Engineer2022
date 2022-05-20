@@ -30,6 +30,7 @@
 .\objects\can.o: ..\MyLib\Usart3.h
 .\objects\can.o: ..\MyLib\iwdg.h
 .\objects\can.o: ..\Libraries\stm32f10x_iwdg.h
+.\objects\can.o: ..\MyLib\tim2.h
 .\objects\can.o: ..\Algorithm\pid.h
 .\objects\can.o: ..\Algorithm\ModbusCRC16.h
 .\objects\can.o: ..\Task\StartTask.h

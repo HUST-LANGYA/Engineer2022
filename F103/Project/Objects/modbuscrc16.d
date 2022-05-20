@@ -31,6 +31,7 @@
 .\objects\modbuscrc16.o: ..\MyLib\Usart3.h
 .\objects\modbuscrc16.o: ..\MyLib\iwdg.h
 .\objects\modbuscrc16.o: ..\Libraries\stm32f10x_iwdg.h
+.\objects\modbuscrc16.o: ..\MyLib\tim2.h
 .\objects\modbuscrc16.o: ..\Algorithm\pid.h
 .\objects\modbuscrc16.o: ..\Algorithm\ModbusCRC16.h
 .\objects\modbuscrc16.o: ..\Task\StartTask.h

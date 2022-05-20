@@ -30,6 +30,7 @@
 .\objects\nvic.o: ..\MyLib\Usart3.h
 .\objects\nvic.o: ..\MyLib\iwdg.h
 .\objects\nvic.o: ..\Libraries\stm32f10x_iwdg.h
+.\objects\nvic.o: ..\MyLib\tim2.h
 .\objects\nvic.o: ..\Algorithm\pid.h
 .\objects\nvic.o: ..\Algorithm\ModbusCRC16.h
 .\objects\nvic.o: ..\Task\StartTask.h

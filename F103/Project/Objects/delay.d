@@ -31,6 +31,7 @@
 .\objects\delay.o: ..\MyLib\Usart3.h
 .\objects\delay.o: ..\MyLib\iwdg.h
 .\objects\delay.o: ..\Libraries\stm32f10x_iwdg.h
+.\objects\delay.o: ..\MyLib\tim2.h
 .\objects\delay.o: ..\Algorithm\pid.h
 .\objects\delay.o: ..\Algorithm\ModbusCRC16.h
 .\objects\delay.o: ..\Task\StartTask.h

@@ -31,6 +31,7 @@
 .\objects\autoexectask.o: ..\MyLib\Usart3.h
 .\objects\autoexectask.o: ..\MyLib\iwdg.h
 .\objects\autoexectask.o: ..\Libraries\stm32f10x_iwdg.h
+.\objects\autoexectask.o: ..\MyLib\tim2.h
 .\objects\autoexectask.o: ..\Algorithm\pid.h
 .\objects\autoexectask.o: ..\Algorithm\ModbusCRC16.h
 .\objects\autoexectask.o: ..\Task\StartTask.h

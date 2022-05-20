@@ -16,6 +16,7 @@
 #include "ZeroCheck.h"
 #include "Usart3.h"
 #include "iwdg.h"
+#include "tim2.h"
 
 /*Algorithm*/
 #include "pid.h"
@@ -169,6 +170,19 @@ typedef union {
 	}flag;				
 }FlagWithMaster_t;													//和B板之间的标志位通讯
 
+typedef enum{
+	//默认位置
+	CAMERA_DEFAULT 			= 0,
+	
+	//pitch轴
+	CAMERA_PITCH_UP 		= 1,
+	CAMERA_PITCH_DOWN		= 2,
+	
+	//yaw轴
+	CAMERA_YAW_REAR		= 3
+	
+}FlagOfCameraSteering;
+
 typedef struct
 {
 	u8 control_mode;										//控制模式，1为遥控器，0为键鼠
@@ -190,7 +204,8 @@ typedef struct
 	
 	u8 photogate_flag;									//光电门标志
 	
-	
+	FlagOfCameraSteering camera_pitch;	//图传pitch轴
+	FlagOfCameraSteering camera_yaw;		//图传yaw轴
 //	u8 can_connect;
 //	u32 can_cnt;
 //	

@@ -31,6 +31,7 @@
 .\objects\motortask.o: ..\MyLib\Usart3.h
 .\objects\motortask.o: ..\MyLib\iwdg.h
 .\objects\motortask.o: ..\Libraries\stm32f10x_iwdg.h
+.\objects\motortask.o: ..\MyLib\tim2.h
 .\objects\motortask.o: ..\Algorithm\pid.h
 .\objects\motortask.o: ..\Algorithm\ModbusCRC16.h
 .\objects\motortask.o: ..\Task\StartTask.h

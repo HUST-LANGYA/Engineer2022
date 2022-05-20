@@ -31,6 +31,7 @@
 .\objects\zerocheck.o: ..\MyLib\Usart3.h
 .\objects\zerocheck.o: ..\MyLib\iwdg.h
 .\objects\zerocheck.o: ..\Libraries\stm32f10x_iwdg.h
+.\objects\zerocheck.o: ..\MyLib\tim2.h
 .\objects\zerocheck.o: ..\Algorithm\pid.h
 .\objects\zerocheck.o: ..\Algorithm\ModbusCRC16.h
 .\objects\zerocheck.o: ..\Task\StartTask.h

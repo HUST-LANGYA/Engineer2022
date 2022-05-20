@@ -39,7 +39,6 @@ void modeSwitchTask(void *pvParameters)
 		
 //		clampAngleSend();
 		modeSwitch();
-		Slave2Master();
 //		IWDG_Feed();
 		vTaskDelayUntil(&xLastWakeTime,xFrequency);
 		
@@ -85,8 +84,10 @@ void modeSwitch(void)
 	
 	if(g_Flag.control_target == SENIOR_AUTO_MODE)		//自动模式检测
 			autoModeSwitch();
-	
-	
+	 
+	Slave2Master();								//发送数据给B板
+	CameraSteeringEngine_Set();   //控制图传舵机
+
 	
 	switch(g_Flag.forward_solenoid_flag)
 	{

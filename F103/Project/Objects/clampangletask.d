@@ -31,6 +31,7 @@
 .\objects\clampangletask.o: ..\MyLib\Usart3.h
 .\objects\clampangletask.o: ..\MyLib\iwdg.h
 .\objects\clampangletask.o: ..\Libraries\stm32f10x_iwdg.h
+.\objects\clampangletask.o: ..\MyLib\tim2.h
 .\objects\clampangletask.o: ..\Algorithm\pid.h
 .\objects\clampangletask.o: ..\Algorithm\ModbusCRC16.h
 .\objects\clampangletask.o: ..\Task\StartTask.h

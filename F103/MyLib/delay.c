@@ -54,46 +54,63 @@ void delay_us(int tim)
     TIM_Cmd(TIM3, DISABLE);
 }
 
-
-void TIM2_Init(void)
-{
-   TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
-    NVIC_InitTypeDef NVIC_InitStructure;
-
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE); 
-
-    TIM_TimeBaseInitStructure.TIM_Period = 9; 	
-    TIM_TimeBaseInitStructure.TIM_Prescaler = 7199;  
-    TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
-    TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1; 
-
-    TIM_TimeBaseInit(TIM2, &TIM_TimeBaseInitStructure);
-
-    TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE); 
-    TIM_Cmd(TIM2, DISABLE); 
-
-    NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; 
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1; 
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; 
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-    NVIC_Init(&NVIC_InitStructure);
-}
-	 
-void TIM2_IRQHandler(void)
-{
-    if(TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
-    {
-        delayms--;
-        TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-    }
-}
-
 void delay_ms(int tim)			
 {
-	  delayms = tim;
-    TIM_Cmd(TIM2, ENABLE);
-    while(delayms != 0);
-    TIM_Cmd(TIM2, DISABLE);
+	while(tim--)
+		delay_us(500);
+	
+//	  delayms = tim;
+//    TIM_Cmd(TIM2, ENABLE);
+//    while(delayms != 0);
+//    TIM_Cmd(TIM2, DISABLE);
 }
+
+
+
+
+
+
+
+
+//void TIM7_Init(void)
+//{
+//   TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
+//    NVIC_InitTypeDef NVIC_InitStructure;
+
+//    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM7, ENABLE); 
+
+//    TIM_TimeBaseInitStructure.TIM_Period = 9; 	
+//    TIM_TimeBaseInitStructure.TIM_Prescaler = 7199;  
+//    TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
+//    TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1; 
+
+//    TIM_TimeBaseInit(TIM7, &TIM_TimeBaseInitStructure);
+
+//    TIM_ITConfig(TIM7, TIM_IT_Update, ENABLE); 
+//    TIM_Cmd(TIM7, DISABLE); 
+
+//    NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; 
+//    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1; 
+//    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1; 
+//    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+//    NVIC_Init(&NVIC_InitStructure);
+//}
+//	 
+//void TIM2_IRQHandler(void)
+//{
+//    if(TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
+//    {
+//        delayms--;
+//        TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+//    }
+//}
+
+//void delay_ms(int tim)			
+//{
+//	  delayms = tim;
+//    TIM_Cmd(TIM2, ENABLE);
+//    while(delayms != 0);
+//    TIM_Cmd(TIM2, DISABLE);
+//}
 
 

@@ -31,6 +31,7 @@
 .\objects\rotatetask.o: ..\MyLib\Usart3.h
 .\objects\rotatetask.o: ..\MyLib\iwdg.h
 .\objects\rotatetask.o: ..\Libraries\stm32f10x_iwdg.h
+.\objects\rotatetask.o: ..\MyLib\tim2.h
 .\objects\rotatetask.o: ..\Algorithm\pid.h
 .\objects\rotatetask.o: ..\Algorithm\ModbusCRC16.h
 .\objects\rotatetask.o: ..\Task\StartTask.h

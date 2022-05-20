@@ -24,6 +24,7 @@
 ".\objects\zerocheck.o"
 ".\objects\usart3.o"
 ".\objects\iwdg.o"
+".\objects\tim2.o"
 ".\objects\starttask.o"
 ".\objects\statetask.o"
 ".\objects\autoexectask.o"

@@ -31,6 +31,7 @@
 .\objects\forwardtask.o: ..\MyLib\Usart3.h
 .\objects\forwardtask.o: ..\MyLib\iwdg.h
 .\objects\forwardtask.o: ..\Libraries\stm32f10x_iwdg.h
+.\objects\forwardtask.o: ..\MyLib\tim2.h
 .\objects\forwardtask.o: ..\Algorithm\pid.h
 .\objects\forwardtask.o: ..\Algorithm\ModbusCRC16.h
 .\objects\forwardtask.o: ..\Task\StartTask.h

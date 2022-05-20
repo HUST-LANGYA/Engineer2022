@@ -13,7 +13,7 @@ tGameInfo JudgeReceive;
  * @param  None
  * @retval None
  */
-void USART1_Configuration(void)
+void uasrt1Config(void)
 {
 	//RX PA10		TX PA9
 	USART_InitTypeDef usart;

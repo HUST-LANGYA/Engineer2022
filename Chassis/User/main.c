@@ -47,6 +47,7 @@ void BSP_init(void)
 /*-----------------------------------------功能初始化-------------------------------------------------------------*/
 	LED_Config();
 	gpioConfig();
+	uasrt1Config();
 	uasrt2Config();
 	usart3Config();
 //	UART4_Configuration();
