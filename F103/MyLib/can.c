@@ -109,14 +109,14 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 		switch(rx_message.StdId)
 		{
 			//右抬升电机
-			case 0x201:
+			case 0x202:
 				Track_Motor[0].angle = (rx_message.Data[0] << 8) | rx_message.Data[1];
 				Track_Motor[0].speed = (rx_message.Data[2] << 8) | rx_message.Data[3];
 				Track_Motor[0].flow = (rx_message.Data[4] << 8) | rx_message.Data[5];
 
 				break;
 			//左抬升电机
-			case 0x202:
+			case 0x203:
 				Track_Motor[1].angle = (rx_message.Data[0] << 8) | rx_message.Data[1];
 				Track_Motor[1].speed = (rx_message.Data[2] << 8) | rx_message.Data[3];
 				Track_Motor[1].flow = (rx_message.Data[4] << 8) | rx_message.Data[5];
@@ -124,7 +124,7 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 				break;
 			
 			//爪子旋转电机数据
-			case 0x203:
+			case 0x204:
 				Rotate_Motor.angle = (rx_message.Data[0] << 8) | rx_message.Data[1];
 				Rotate_Motor.speed = (rx_message.Data[2] << 8) | rx_message.Data[3];
 				break;
@@ -204,29 +204,30 @@ void USB_HP_CAN1_TX_IRQHandler(void)
             d：0x204电流给定
   * @retval None
   */
+CanTxMsg tx_message_t;
 void motorCurrentSend(int a, int b, int c, int d)
 {
-    CanTxMsg tx_message;
-    tx_message.IDE = CAN_ID_STD;    
-    tx_message.RTR = CAN_RTR_DATA; 
-    tx_message.DLC = 0x08;    
-    tx_message.StdId = 0x200;
+    
+    tx_message_t.IDE = CAN_ID_STD;    
+    tx_message_t.RTR = CAN_RTR_DATA; 
+    tx_message_t.DLC = 0x08;    
+    tx_message_t.StdId = 0x200;
 	
     a = LIMIT_MAX_MIN(a, 15000, -15000);
     b = LIMIT_MAX_MIN(b, 15000, -15000);
     c = LIMIT_MAX_MIN(c, 15000, -15000);
     d = LIMIT_MAX_MIN(d, 15000, -15000);
 	
-    tx_message.Data[0] = (unsigned char)((a >> 8) & 0xff);
-    tx_message.Data[1] = (unsigned char)(a & 0xff);  
-    tx_message.Data[2] = (unsigned char)((b >> 8) & 0xff);
-    tx_message.Data[3] = (unsigned char)(b & 0xff);
-    tx_message.Data[4] = (unsigned char)((c >> 8) & 0xff);
-    tx_message.Data[5] = (unsigned char)(c & 0xff);
-    tx_message.Data[6] = (unsigned char)((d >> 8) & 0xff); 
-    tx_message.Data[7] = (unsigned char)(d & 0xff);
+    tx_message_t.Data[0] = (unsigned char)((a >> 8) & 0xff);
+    tx_message_t.Data[1] = (unsigned char)(a & 0xff);  
+    tx_message_t.Data[2] = (unsigned char)((b >> 8) & 0xff);
+    tx_message_t.Data[3] = (unsigned char)(b & 0xff);
+    tx_message_t.Data[4] = (unsigned char)((c >> 8) & 0xff);
+    tx_message_t.Data[5] = (unsigned char)(c & 0xff);
+    tx_message_t.Data[6] = (unsigned char)((d >> 8) & 0xff); 
+    tx_message_t.Data[7] = (unsigned char)(d & 0xff);
 
-    CAN_Transmit(CAN1, &tx_message);
+    CAN_Transmit(CAN1, &tx_message_t);
 }
 
 

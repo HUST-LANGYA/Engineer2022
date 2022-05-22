@@ -200,7 +200,7 @@ void switchMode(void)
 						RESCUE_SOLENOID_ON;
 	else			RESCUE_SOLENOID_OFF;
 	
-		if(g_Flag.resurge_solenoid_flag == 1) 			//是否开启复活模块
+	if(g_Flag.resurge_solenoid_flag == 1) 			//是否开启复活模块
 						RESURGE_SOLENOID_ON;
 	else			RESURGE_SOLENOID_OFF;
 	

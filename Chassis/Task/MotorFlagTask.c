@@ -34,16 +34,12 @@ void motorFlag(void)
 {
 	if(g_Flag.lift_down_twice_flag == 0)
 	{ 
-//		Pid_LiftTrack_Positioin[0].SetPoint = LiftPositionInit[0];
-//		Pid_LiftTrack_Positioin[1].SetPoint = LiftPositionInit[1];
 		Pid_LiftTrack_Positioin[0].SetPoint = LiftPositionInit[0] - lift_offset;
 		Pid_LiftTrack_Positioin[1].SetPoint = LiftPositionInit[1] + lift_offset;
 	}else if (g_Flag.lift_down_twice_flag == 1)
 	{
 		Pid_LiftTrack_Positioin[0].SetPoint = LiftPositionInit[0] - lift_offset - LiftJourney_1;
 		Pid_LiftTrack_Positioin[1].SetPoint = LiftPositionInit[1] + lift_offset + LiftJourney_1;
-//		Pid_LiftTrack_Positioin[0].SetPoint = LiftPositionInit[0] + LiftJourney_1;
-//		Pid_LiftTrack_Positioin[1].SetPoint = LiftPositionInit[1] - LiftJourney_1;
 	}else if (g_Flag.lift_down_twice_flag == 2)
 	{
 		Pid_LiftTrack_Positioin[0].SetPoint = LiftPositionInit[0] - lift_offset - LiftJourney_2;

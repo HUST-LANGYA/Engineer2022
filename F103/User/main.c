@@ -3,7 +3,7 @@
 	*@author		祝科伟
 	*@date			2021-12-09
 */
-#include "main.h" 
+#include "main.h"
 
 Flag_t g_Flag;
 //ExecFlag_t g_ExecFlag;
@@ -90,8 +90,8 @@ void gpioConfig(void)
 	gpio.GPIO_Mode = GPIO_Mode_Out_PP;
 	gpio.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(EXCHANGE_SOLENOID_GPIO_PORT,&gpio);
-	
-		
+
+
 	//光电门(接口见宏定义)
 	RCC_APB2PeriphClockCmd(PHOTOGATE_GPIO_CLK, ENABLE);
 	gpio.GPIO_Pin = PHOTOGATE_GPIO_PIN;

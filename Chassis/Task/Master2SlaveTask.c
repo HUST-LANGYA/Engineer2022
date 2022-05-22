@@ -53,6 +53,9 @@ void master2Slave(void)
 			Data2C_tx[1] = 0X02;
 		break;
 		
+		default:
+			Data2C_tx[1] = 0X02;
+		break;
 //		case POWER_OFF_MODE:
 //			Data2C_tx[1] = 0X03;
 //		break;
@@ -88,90 +91,12 @@ void master2Slave(void)
 		case SENIOR_AUTO_MODE:
 			Data2C_tx[2] = 0X04;
 		break;
+		
+		default:
+			Data2C_tx[2] = 0x01;
+		break;
 	}
 	
-
-//	//上层一级抬升标志位
-//	switch(g_Flag.lift_once_flag)
-//	{
-//		case 0:
-//			Data2C_tx[3] = 0;
-//		break;
-//		
-//		case 1:
-////			Data2C_tx[3] = Data2C_tx[3] & ((g_Flag.lift_once_flag & 0x01) << 0);
-//			Data2C_tx[3] = 1;
-//		break;
-//		
-//		default:
-//			Data2C_tx[3] = 0;
-//			break;
-
-//	}
-//	
-//	//前移控制标志位
-//	switch(g_Flag.forward_flag)
-//	{
-//		case 0:
-//			Data2C_tx[4] = 0;
-//		break;
-//		
-//		case 1:
-//			Data2C_tx[4] = 1;
-//		break;
-//		
-//		default:
-//			Data2C_tx[4] = 0;
-//			break;
-//	}
-//	
-//	//夹取控制标志位
-//	switch(g_Flag.clamp_flag)
-//	{
-//		case 0:
-//			Data2C_tx[5] = 0;
-//		break;
-//		
-//		case 1:
-//			Data2C_tx[5] = 1;
-//		break;
-//		
-//		default:
-//			Data2C_tx[5] = 0;
-//			break;
-//	}
-//	
-//	//空接控制标志位
-//	switch(g_Flag.midair_solenoid_flag)
-//	{
-//		case 0:
-//			Data2C_tx[6] = 0;
-//		break;
-//		
-//		case 1:
-//			Data2C_tx[6] = 1;
-//		break;
-//		
-//		default:
-//			Data2C_tx[6] = 0;
-//			break;
-//	}
-//	
-//	//兑换控制标志位
-//	switch(g_Flag.exchange_solenoid_flag)
-//	{
-//		case 0:
-//			Data2C_tx[7] = 0;
-//		break;
-//		
-//		case 1:
-//			Data2C_tx[7] = 1;
-//		break;
-//		
-//		default:
-//			Data2C_tx[7] = 0;
-//			break;
-//	}
 	
 	can2Master2Slave();
 }

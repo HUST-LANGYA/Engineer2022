@@ -141,11 +141,11 @@ void motor_cal_task(void)
 	
 	/*抬升的两个电机控制*/
 	//位置环（左抬升）
-//	Pid_LiftTrack_Speed[0].SetPoint = PID_Calc(&Pid_LiftTrack_Positioin[0],Pos_LiftTrack[0]);
 	Pid_LiftTrack_Speed[0].SetPoint = LIMIT_MAX_MIN(PID_Calc(&Pid_LiftTrack_Positioin[0],Pos_LiftTrack[0]), 5000, -5000);
+//	Pid_LiftTrack_Speed[0].SetPoint = 0;
 	//位置环（右抬升）
-//	Pid_LiftTrack_Speed[1].SetPoint = PID_Calc(&Pid_LiftTrack_Positioin[1],Pos_LiftTrack[1]);
 	Pid_LiftTrack_Speed[1].SetPoint = LIMIT_MAX_MIN(PID_Calc(&Pid_LiftTrack_Positioin[1],Pos_LiftTrack[1]), 5000, -5000);
+//	Pid_LiftTrack_Speed[1].SetPoint = 0;
 	//速度环（左抬升）
 	LiftTrack_Current[0] = LIMIT_MAX_MIN(PID_Calc(&Pid_LiftTrack_Speed[0],(float)Track_Motor[0].speed),13000,-13000);
 	//速度环（右抬升）
@@ -168,7 +168,10 @@ void motor_cal_task(void)
 //	}else{
 //		motorCurrentSend(0,0,0,0);
 //	}
-	motorCurrentSend(LiftTrack_Current[0],-LiftTrack_Current[0],Rotate_Motor_Current,0);
+	if(g_Flag.control_target == POWER_OFF_MODE)
+		motorCurrentSend(0,0,0,0);
+	else
+		motorCurrentSend(0,LiftTrack_Current[0],-LiftTrack_Current[0],Rotate_Motor_Current);
 
 }
 

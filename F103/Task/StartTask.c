@@ -33,7 +33,7 @@ static TaskHandle_t autoexecTask_Handler; //任务句柄
 #define CLAMP_ANGLE_STK_SIZE 512 //任务堆栈
 static TaskHandle_t ClampAngleTask_Handler; //任务句柄
 
-#define MOTOR_TASK_PRIO 17  //任务优先级
+#define MOTOR_TASK_PRIO 10  //任务优先级
 #define MOTOR_STK_SIZE 512 //任务堆栈
 static TaskHandle_t MOTOR_TASK_Handler; //任务句柄
 

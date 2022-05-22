@@ -23,9 +23,6 @@ void motorPidInit(void)
 		LiftJourney_2	= 160000;
 	
 		lift_offset = 30000;
-//		ForwardJourney = 5000;		//前移距离待定
-//		ForwardJourney = 0;
-//		lift_once_flag = 0;			//一级抬升标志位置零
 		warehouse_journey = 85000;
 	
 		//左侧电机参数(抬)
@@ -64,31 +61,6 @@ void motorPidInit(void)
 		pid_warehouse_speed.D = 0.0f;
 		pid_warehouse_speed.IMax = 500.0f;
 		pid_warehouse_speed.SetPoint = 0.0f;
-//		//右侧电机参数（抬）
-//		Pid_Forward_Motor_speed[1].P = 20.0f;
-//		Pid_Forward_Motor_speed[1].I = 0.0f;
-//		Pid_Forward_Motor_speed[1].D = 0.0f;
-//		Pid_Forward_Motor_speed[1].IMax = 500.0f;
-//		Pid_Forward_Motor_speed[1].SetPoint = 0.0f;
-//		Pid_Forward_Motor_Position[1].P = 0.8f;
-//		Pid_Forward_Motor_Position[1].I = 0.05f;
-//		Pid_Forward_Motor_Position[1].D = 0.01f;
-//		Pid_Forward_Motor_Position[1].IMax = 500.0f;
-
-	
-	
-	
-////		Pid_Forward_Motor_speed.P = 20.0f;  //目前没给p的值
-//		Pid_Forward_Motor_speed.P = 6.5f;  //目前没给p的值
-//		Pid_Forward_Motor_speed.I = 0.0f;
-//		Pid_Forward_Motor_speed.D = 0.0f;
-//		Pid_Forward_Motor_speed.IMax = 500.0f;
-//		Pid_Forward_Motor_speed.SetPoint = 0.0f;
-////		Pid_Forward_Motor_Position.P = 6.5f;
-//		Pid_Forward_Motor_Position.P = 0.0f;
-//		Pid_Forward_Motor_Position.I = 0.0f;
-//		Pid_Forward_Motor_Position.D = 0.0f;
-//		Pid_Forward_Motor_Position.IMax = 500.0f;
 		
 		
 
@@ -97,8 +69,6 @@ void motorPidInit(void)
 	Pid_LiftTrack_Positioin[1].SetPoint = LiftPositionInit[1];
 	
 	pid_warehouse_position.SetPoint = warehouse_position_init;
-//	Pid_Forward_Motor_Position[0].SetPoint = ForwardPositionInit[0];
-//	Pid_Forward_Motor_Position[1].SetPoint = ForwardPositionInit[1];
 
 }
 

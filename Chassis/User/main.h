@@ -65,7 +65,7 @@
 //上层模式
 #define SENIOR_UP_MODE				0X07		//上层上升模式
 #define SENIOR_MODE2					0X08		//上层模式2
-#define SENIOR_AUTO_MODE					0X09		//上层模式3
+#define SENIOR_AUTO_MODE			0X09		//上层模式3
 
 //拨杆位置
 #define UP 		 	1

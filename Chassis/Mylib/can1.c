@@ -236,10 +236,10 @@ void chassisCurrentSend(int a, int b, int c, int d)
     tx_message.DLC = 0x08;
     tx_message.StdId = 0x200;
 	
-    a = LIMIT_MAX_MIN(a, 8000, -8000);
-    b = LIMIT_MAX_MIN(b, 8000, -8000);
-    c = LIMIT_MAX_MIN(c, 8000, -8000);
-    d = LIMIT_MAX_MIN(d, 8000, -8000);
+    a = LIMIT_MAX_MIN(a, 10000, -10000);
+    b = LIMIT_MAX_MIN(b, 10000, -10000);
+    c = LIMIT_MAX_MIN(c, 10000, -10000);
+    d = LIMIT_MAX_MIN(d, 10000, -10000);
 	
     tx_message.Data[0] = (unsigned char)((a >> 8) & 0xff);
     tx_message.Data[1] = (unsigned char)(a & 0xff);
@@ -256,10 +256,10 @@ void chassisCurrentSend(int a, int b, int c, int d)
 
 /**
   * @brief  CAN1发送数据2,内带电流限幅 -16384 ~ 0 ~ 16384
-  * @param  a：0x201电流给定
-            b：0x202电流给定
-            c：0x203电流给定
-            d：0x204电流给定
+  * @param  a：0x205电流给定
+            b：0x206电流给定
+            c：0x207电流给定
+            d：0x208电流给定
   * @retval None
   */
 void motorCurrentSend(int a, int b, int c, int d)
@@ -270,10 +270,10 @@ void motorCurrentSend(int a, int b, int c, int d)
     tx_message.DLC = 0x08;    
     tx_message.StdId = 0x1FF;
 	
-    a = LIMIT_MAX_MIN(a, 15000, -15000);
-    b = LIMIT_MAX_MIN(b, 15000, -15000);
-    c = LIMIT_MAX_MIN(c, 15000, -15000);
-    d = LIMIT_MAX_MIN(d, 15000, -15000);
+    a = LIMIT_MAX_MIN(a, 10000, -10000);
+    b = LIMIT_MAX_MIN(b, 10000, -10000);
+    c = LIMIT_MAX_MIN(c, 10000, -10000);
+    d = LIMIT_MAX_MIN(d, 10000, -10000);
 	
     tx_message.Data[0] = (unsigned char)((a >> 8) & 0xff);
     tx_message.Data[1] = (unsigned char)(a & 0xff);  
@@ -286,40 +286,6 @@ void motorCurrentSend(int a, int b, int c, int d)
 
     CAN_Transmit(CAN1, &tx_message);
 }
-
-
-
-
-
-
-/**
-  * @brief  CAN2发送数据,内带电流限幅 -16384 ~ 0 ~ 16384
-  * @param  left：0x205电流给定
-			right：0x206电流给定
-  * @retval None
-  */
-//void track_current_send(int left, int right)
-//{
-//	CanTxMsg tx_message;
-//	int i;
-//    tx_message.IDE = CAN_ID_STD;    
-//    tx_message.RTR = CAN_RTR_DATA; 
-//    tx_message.DLC = 0x08;    
-//    tx_message.StdId = 0x1FF;
-//	
-//    left = LIMIT_MAX_MIN(left, 15000, -15000);
-//    right = LIMIT_MAX_MIN(right, 15000, -15000);
-//	  
-//    tx_message.Data[0] = (unsigned char)((left >> 8) & 0xff);
-//    tx_message.Data[1] = (unsigned char)(left & 0xff);  
-//    tx_message.Data[2] = (unsigned char)((right >> 8) & 0xff);
-//    tx_message.Data[3] = (unsigned char)(right & 0xff);
-//	for(i=0;i<4;i++)
-//		tx_message.Data[4+i] = 0;
-//		
-//    CAN_Transmit(CAN2, &tx_message);
-//}
-
 
 
 

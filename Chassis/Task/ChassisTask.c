@@ -96,7 +96,8 @@ void chassisExec(void)
 				chassisRcModeCal();
 			}
 			//¼üÊó¿ØÖÆ
-			else if(g_Flag.control_mode == KEY_MODE)
+//			else if(g_Flag.control_mode == KEY_MODE)
+			else
 			{
 				chassisKeyModeCal();
 			}
@@ -120,7 +121,7 @@ void chassisExec(void)
 			chassisModeNormal();
 		}
 		
-		chassisCal(vx_set, vy_set, vw_set);	
+		chassisCal(vx_set, vy_set, vw_set);
 	}
 }
 

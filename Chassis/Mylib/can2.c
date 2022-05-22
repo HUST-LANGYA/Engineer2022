@@ -271,38 +271,7 @@ void Data_Send_to_Slave_Init(void)
 	Data2C_tx[5] = 0;//
 	Data2C_tx[6] = 0;
 	Data2C_tx[7] = 0;
-	
-
 }
-
-
-///**
-//  * @brief  CAN2发送数据,内带电流限幅 -16384 ~ 0 ~ 16384
-//  * @param  left：0x205电流给定
-//			right：0x206电流给定
-//  * @retval None
-//  */
-//void ForkLift_current_send(int left, int right)
-//{
-//	CanTxMsg tx_message;
-//	int i;
-//    tx_message.IDE = CAN_ID_STD;    
-//    tx_message.RTR = CAN_RTR_DATA; 
-//    tx_message.DLC = 0x08;    
-//    tx_message.StdId = 0x1FF;
-//	
-//    left = LIMIT_MAX_MIN(left, 15000, -15000);
-//    right = LIMIT_MAX_MIN(right, 15000, -15000);
-//	  
-//    tx_message.Data[0] = (unsigned char)((left >> 8) & 0xff);
-//    tx_message.Data[1] = (unsigned char)(left & 0xff);  
-//    tx_message.Data[2] = (unsigned char)((right >> 8) & 0xff);
-//    tx_message.Data[3] = (unsigned char)(right & 0xff);
-//	for(i=0;i<4;i++)
-//		tx_message.Data[4+i] = 0;
-//		
-//    CAN_Transmit(CAN1, &tx_message);
-//}
 
 
 
