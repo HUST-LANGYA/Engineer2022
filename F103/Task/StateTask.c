@@ -204,7 +204,7 @@ void flagModeSwitch(void)
 			
 			if(g_Flag.control_target == SENIOR_AUTO_MODE)
 			{
-				g_Flag.auto_mode = LARGE_ISLAND_MINE;
+				g_Flag.auto_mode = SMALL_ISLAND_MINE;
 			}else
 				g_Flag.auto_mode = 0;
 			

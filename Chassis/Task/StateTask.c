@@ -216,6 +216,7 @@ void switchMode(void)
 */
 void controlStateGet(void)															//获取控制模式
 {
+	
 	if (rc_ctrl.rc.s2 == DOWN)															//获取控制模式
 	{
 		switch(rc_ctrl.rc.s1)
@@ -233,6 +234,23 @@ void controlStateGet(void)															//获取控制模式
 				break;
 		}
 	}
+//	if (rc_ctrl.rc.s2 == DOWN)															//获取控制模式
+//	{
+//		switch(rc_ctrl.rc.s1)
+//		{
+//			case UP:
+//				g_Flag.control_mode = RC_MODE;				//遥控模式
+//				break;
+//			case MIDDLE:
+//				g_Flag.control_mode = KEY_MODE;				//键鼠模式
+//				break;
+//			case DOWN:
+//				g_Flag.control_target = POWER_OFF_MODE;	//掉电模式
+//				break;
+//			default:
+//				break;
+//		}
+//	}
 }
 
 
@@ -263,27 +281,22 @@ void motionTargetGet(void)															//获取运动模式
 					break;
 			}			
 		}
-										/********************************多出来的部分是测试电磁阀的时候使用的，记得删掉!!!!!!!!!!!!!!!!!!!!!***************************************/
 		else if (rc_ctrl.rc.s2 == UP)			//上层模式
 		{
 			switch(rc_ctrl.rc.s1)
 			{
 				case UP:						//上层抬升模式
 					g_Flag.control_target = SENIOR_UP_MODE;
-//																												test_solenoid = 1;//测试
 					break;
 				case MIDDLE:				//上层模式2
 					g_Flag.control_target = SENIOR_MODE2;
-//																												test_solenoid = 2;//测试
 					break;
 				case DOWN:					//上层模式3
 					g_Flag.control_target = SENIOR_AUTO_MODE;
-//																												test_solenoid = 3;//测试
 					break;
 				default:
-//																												test_solenoid = 0;//测试
 					break;
-			}						
+			}
 		}
 	}else if (g_Flag.control_mode == KEY_MODE)	//键鼠模式
 	{
@@ -323,34 +336,6 @@ void motionTargetGet(void)															//获取运动模式
 		
 	}
 	
-
-//	/*******************************************测试！！！！！！！！！！！！！！！！！！！！！************************************************/
-//																																	if(test_solenoid_old != test_solenoid)
-//																																	{
-//																																		switch(test_solenoid)
-//																																		{
-//																																			case 1:
-//																																				RESURGE_SOLENOID_OFF;//测试
-//																																				RESCUE_SOLENOID_OFF;//测试
-//																																				break;
-//																																			case 2:
-//																																				RESURGE_SOLENOID_ON;//测试
-//																																				RESCUE_SOLENOID_OFF;//测试
-//																																				break;
-//																																			case 3:
-//																																				RESURGE_SOLENOID_OFF;//测试
-//																																				RESCUE_SOLENOID_ON;//测试
-//																																				break;
-//																																			case 0:
-//																																				RESURGE_SOLENOID_OFF;//测试
-//																																				RESCUE_SOLENOID_OFF;//测试
-//																																				break;
-//																																			default:
-//																																				break;
-//																																		}
-//																																		test_solenoid_old = test_solenoid;
-//																																	}
-//	/*******************************************测试！！！！！！！！！！！！！！！！！！！！！************************************************/
 
 }
 

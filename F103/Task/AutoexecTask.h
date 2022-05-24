@@ -26,19 +26,19 @@ typedef enum{
 /***************************准备空接矿石用到的状态**************************/
 	//'SM'，'state midair'缩写
 		//空接姿态自动调整
-	SM_CLAMP_PRE  = 51,					//夹取电磁阀打开
-	SM_LIFT_TWICE	= 52,					//二级抬升
-	SM_LIFT_ONCE 	= 53,					//一级抬升
-	SM_FORWARD 		= 54,					//前移状态
-	SM_MID_ON			= 55,					//空接气缸打开
+	SM_CLAMP_PRE  = 61,					//夹取电磁阀打开
+	SM_LIFT_TWICE	= 62,					//二级抬升
+	SM_LIFT_ONCE 	= 63,					//一级抬升
+	SM_FORWARD 		= 64,					//前移状态
+	SM_MID_ON			= 65,					//空接气缸打开
 		//空接接取矿石
-	SM_MID_WAIT		= 56,					//等待矿石落下
-	SM_CLAMP   		= 57,					//夹取矿石
-	SM_BACK				= 58,					//缩回状态
-	SM_LAND_ONCE	= 59,					//四连杆降落
-	SM_MID_OFF		= 60,					//空接气缸关闭
-	SM_LAND_TWICE	= 61,					//二级抬升降落
-	SM_LOOSE			= 62,					//释放矿石
+	SM_MID_WAIT		= 66,					//等待矿石落下
+	SM_CLAMP   		= 67,					//夹取矿石
+	SM_BACK				= 68,					//缩回状态
+	SM_LAND_ONCE	= 69,					//四连杆降落
+	SM_MID_OFF		= 70,					//空接气缸关闭
+	SM_LAND_TWICE	= 71,					//二级抬升降落
+	SM_LOOSE			= 72,					//释放矿石
 	
 	
 /***************************取小资源岛矿石用到的状态**************************/

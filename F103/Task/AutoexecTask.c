@@ -285,7 +285,7 @@ void autoSmallIslandMine(void)
 			break;
 		
 		case SS_CLAMP_PRE:
-			auto_large_enum_next = SS_LIFT_TWICE;
+			auto_small_enum_next = SS_LIFT_TWICE;
 			g_Flag.clamp_solenoid_flag = 0;
 			autoModeDelay_ms(300);
 			break;
