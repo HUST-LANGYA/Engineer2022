@@ -74,6 +74,13 @@ void BSP_init(void)
 void gpioConfig(void)
 {
 	GPIO_InitTypeDef gpio;
+	
+	//叉车模块电磁阀(接口见宏定义)
+	RCC_APB2PeriphClockCmd(FORK_SOLENOID_GPIO_CLK, ENABLE);
+	gpio.GPIO_Pin = FORK_SOLENOID_GPIO_PIN;
+	gpio.GPIO_Mode = GPIO_Mode_Out_PP;
+	gpio.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(FORK_SOLENOID_GPIO_PORT,&gpio);
 
 	//救援模块电磁阀(接口见宏定义)
 	RCC_APB2PeriphClockCmd(RESCUE_SOLENOID_GPIO_CLK, ENABLE);
@@ -88,6 +95,8 @@ void gpioConfig(void)
 	gpio.GPIO_Mode = GPIO_Mode_Out_PP;
 	gpio.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(RESURGE_SOLENOID_GPIO_PORT,&gpio);
+	
+	
 }
 
 
@@ -100,8 +109,9 @@ void gflagInit(void)
 {
 	g_Flag.soft_reset_flag = 0;		//默认不复位
 	
-	g_Flag.control_mode		= RC_MODE;									//默认键鼠控制
-	g_Flag.control_target	= POWER_OFF_MODE;						//默认掉电模式	
+	g_Flag.control_mode		= KEY_MODE;									//默认键鼠控制
+	g_Flag.control_target	= POWER_OFF_MODE;						//默认掉电模式
+	g_Flag.auto_mode			= AUTO_MODE_OFF;						//默认关闭自动模式
 	
 	g_Flag.lift_down_twice_flag 		= 0;							//默认二级抬升的初始状态为下降
 	g_Flag.lift_once_flag						= 0;							//默认一级抬升处于下降状态
@@ -116,5 +126,6 @@ void gflagInit(void)
 	
 	g_Flag.rescue_solenoid_flag = 0;									//初始时关闭救援模块
 	g_Flag.resurge_solenoid_flag = 0;									//初始时关闭复活模块
+	
 }
 

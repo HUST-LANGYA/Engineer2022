@@ -45,18 +45,23 @@
 //控制模式
 #define RC_MODE     					0X01		//遥控模式
 #define KEY_MODE    					0X02		//键鼠模式
+//键鼠操作下的两个模式
 #define POWER_OFF_MODE 				0X03		//掉电模式
+#define NORMAL_MODE     			0X04		//正常模式
+
+#define AUTO_MODE    					0X05		//自动模式（不用）
 //底盘模式
-#define CHASSIS_MODE					0X04		//底盘运动模式
-#define CHASSIS_MODE_STATIC		0X05		//底盘静步模式
-#define CHASSIS_MODE3					0X06		//底盘模式3
+#define CHASSIS_MODE					0X06		//底盘运动模式
+#define CHASSIS_MODE_STATIC		0X07		//底盘静步模式
+#define CHASSIS_MODE3					0X08		//底盘模式3
 //上层模式
-#define SENIOR_UP_MODE						0X07		//上层上升模式
-#define SENIOR_MODE2							0X08		//上层模式2
-#define SENIOR_AUTO_MODE					0X09		//上层自动控制模式
+#define SENIOR_UP_MODE				0X09		//上层上升模式
+#define SENIOR_MODE2					0X0A		//上层模式2
+#define SENIOR_AUTO_MODE			0X0B		//上层模式3
 
 
 //自动执行模式auto_mode
+#define AUTO_MODE_OFF			0X00		//关闭自动模式
 #define LARGE_ISLAND_MINE	0X01		//大资源岛取矿
 #define MINE_MIDAIR				0X02		//空接矿石
 #define GET_MINE_MIDAIR		0X03		//空接接取矿石

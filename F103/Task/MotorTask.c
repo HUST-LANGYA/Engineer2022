@@ -171,7 +171,8 @@ void motor_cal_task(void)
 	if(g_Flag.control_target == POWER_OFF_MODE)
 		motorCurrentSend(0,0,0,0);
 	else
-		motorCurrentSend(0,LiftTrack_Current[0],-LiftTrack_Current[0],Rotate_Motor_Current);
+//		motorCurrentSend(0,LiftTrack_Current[0],-LiftTrack_Current[0],Rotate_Motor_Current);
+		motorCurrentSend(0,LiftTrack_Current[0],-LiftTrack_Current[0],0);
 
 }
 

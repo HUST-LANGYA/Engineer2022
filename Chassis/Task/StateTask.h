@@ -2,7 +2,6 @@
 #define _STATE_H_
 
 #include "main.h"
-extern int test11;
 
 //typedef struct 
 //{
@@ -26,6 +25,8 @@ void modeSwitchTask(void *pvParameters);
 void switchMode(void);
 void controlStateGet(void);
 void motionTargetGet(void);
+void keyModeFlagChange(void);
+void rcModeFlagChange(void);
 
 
 void  key_control_Init(void);

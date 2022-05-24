@@ -65,8 +65,8 @@ void modeSwitchTask(void *pvParameters)
 */
 void modeInit(void)
 {
-	g_Flag.auto_mode = 0;
-	g_Flag.auto_mode_pre = 0;
+	g_Flag.auto_mode = AUTO_MODE_OFF;
+	g_Flag.auto_mode_pre = AUTO_MODE_OFF;
 
 	
 }
@@ -160,148 +160,90 @@ void flagModeSwitch(void)
 //	}
 	if(data_receive[0] == '!')				//确保数据正确
 	{
-			switch(data_receive[1])			//确认控制模式
-			{
-					case 1:
-						g_Flag.control_mode = RC_MODE;
-						break;
-					
-					case 2:
-						g_Flag.control_mode = KEY_MODE;
-						break;
-					
-					default:
-						g_Flag.control_mode = RC_MODE;
-						break;
-			}
-			
-			switch(data_receive[2])			//确认控制模式
-			{
-					case 0:
-						g_Flag.control_target = POWER_OFF_MODE;
-						break;
-					
-					case 1:
-						g_Flag.control_target = CHASSIS_MODE;
-						break;
-					
-					case 2:
-						g_Flag.control_target = SENIOR_UP_MODE;
-						break;
-					
-					case 3:
-						g_Flag.control_target = SENIOR_MODE2;
-						break;
-					
-					case 4:
-						g_Flag.control_target = SENIOR_AUTO_MODE;
-						break;
-					
-					default:
-						g_Flag.control_target = POWER_OFF_MODE;
-						break;
-			}
-			
-			if(g_Flag.control_target == SENIOR_AUTO_MODE)
-			{
-				g_Flag.auto_mode = SMALL_ISLAND_MINE;
-			}else
-				g_Flag.auto_mode = 0;
-			
-			
-			
-			
-			if(g_Flag.control_target == SENIOR_UP_MODE || g_Flag.control_target == SENIOR_MODE2)
-			{
-				
-////					
-////																													if(g_Flag.photogate_flag)									//调试！！！！！！！！！！！！！！！！！
-////																													{
-////																														g_Flag.clamp_solenoid_flag = 1;
-////																													}
-				g_Flag.clamp_solenoid_flag = FlagOfMaster.flag.clamp_flag;
-				g_Flag.exchange_solenoid_flag = FlagOfMaster.flag.exchange_solenoid_flag;
-				g_Flag.forward_solenoid_flag = FlagOfMaster.flag.forward_flag;
-				g_Flag.lift_twice_flag = FlagOfMaster.flag.lift_down_twice_flag;
-				g_Flag.lift_once_flag = FlagOfMaster.flag.lift_once_flag;
-				g_Flag.midair_solenoid_flag = FlagOfMaster.flag.midair_solenoid_flag;
+		g_Flag.control_mode = data_receive[1];
+		g_Flag.control_target = data_receive[2];
+		
+		
+		if(g_Flag.control_mode == KEY_MODE)
+		{
+				g_Flag.auto_mode = data_receive[4];
+				if(g_Flag.auto_mode == AUTO_MODE_OFF)
+				{
+					g_Flag.clamp_solenoid_flag = FlagOfMaster.flag.clamp_flag;
+					g_Flag.exchange_solenoid_flag = FlagOfMaster.flag.exchange_solenoid_flag;
+					g_Flag.forward_solenoid_flag = FlagOfMaster.flag.forward_flag;
+					g_Flag.lift_twice_flag = FlagOfMaster.flag.lift_down_twice_flag;
+					g_Flag.lift_once_flag = FlagOfMaster.flag.lift_once_flag;
+					g_Flag.midair_solenoid_flag = FlagOfMaster.flag.midair_solenoid_flag;
+				}
+		}
+		
+		else if(g_Flag.control_mode == RC_MODE)
+		{
+				if(g_Flag.control_target == SENIOR_AUTO_MODE)
+				{
+					g_Flag.auto_mode = SMALL_ISLAND_MINE;
+				}else
+					g_Flag.auto_mode = AUTO_MODE_OFF;
 				
 				
-			}
-				
-//					switch(data_receive[3])			//上层二级抬升
-//					{
-//							case 0:
-//								g_Flag.lift_once_flag = 0;
-//								break;
-//							
-//							case 1:
-//								g_Flag.lift_once_flag = 1;
-//								break;
-//							
-//							default:
-//								g_Flag.lift_once_flag = 0;
-//								break;
-//					}
+				if(g_Flag.control_target == SENIOR_UP_MODE || g_Flag.control_target == SENIOR_MODE2)
+				{
+					g_Flag.clamp_solenoid_flag = FlagOfMaster.flag.clamp_flag;
+					g_Flag.exchange_solenoid_flag = FlagOfMaster.flag.exchange_solenoid_flag;
+					g_Flag.forward_solenoid_flag = FlagOfMaster.flag.forward_flag;
+					g_Flag.lift_twice_flag = FlagOfMaster.flag.lift_down_twice_flag;
+					g_Flag.lift_once_flag = FlagOfMaster.flag.lift_once_flag;
+					g_Flag.midair_solenoid_flag = FlagOfMaster.flag.midair_solenoid_flag;
+				}
+		}
+		
+		
+		
+		
+//			switch(data_receive[1])			//确认控制模式
+//			{
+//					case 1:
+//						g_Flag.control_mode = RC_MODE;
+//						break;
 //					
-//					switch(data_receive[4])			//前移控制标志位
-//					{
-//							case 0:
-//								g_Flag.forward_solenoid_flag = 0;
-//								break;
-//							
-//							case 1:
-//								g_Flag.forward_solenoid_flag = 1;
-//								break;
-//							
-//							default:
-//								g_Flag.forward_solenoid_flag = 0;
-//								break;
-//					}
-//					switch(data_receive[5])			//夹取控制标志位
-//					{
-//							case 0:
-//								g_Flag.clamp_solenoid_flag = 0;
-//								break;
-//							
-//							case 1:
-//								g_Flag.clamp_solenoid_flag = 1;
-//								break;
-//							
-//							default:
-//								g_Flag.clamp_solenoid_flag = 0;
-//								break;
-//					}
+//					case 2:
+//						g_Flag.control_mode = KEY_MODE;
+//						break;
 //					
-//					switch(data_receive[6])			//空接控制标志位
-//					{
-//							case 0:
-//								g_Flag.midair_solenoid_flag = 0;
-//								break;
-//							
-//							case 1:
-//								g_Flag.midair_solenoid_flag = 1;
-//								break;
-//							
-//							default:
-//								g_Flag.midair_solenoid_flag = 0;
-//								break;
-//					}
+//					default:
+//						g_Flag.control_mode = RC_MODE;
+//						break;
+//			}
+			
+//			switch(data_receive[2])			//确认控制模式
+//			{
+//					case 0:
+//						g_Flag.control_target = POWER_OFF_MODE;
+//						break;
 //					
-//					switch(data_receive[7])			//兑换控制标志位
-//					{
-//							case 0:
-//								g_Flag.exchange_solenoid_flag = 0;
-//								break;
-//							
-//							case 1:
-//								g_Flag.exchange_solenoid_flag = 1;
-//								break;
-//							
-//							default:
-//								g_Flag.exchange_solenoid_flag = 0;
-//								break;
-//					}
+//					case 1:
+//						g_Flag.control_target = CHASSIS_MODE;
+//						break;
+//					
+//					case 2:
+//						g_Flag.control_target = SENIOR_UP_MODE;
+//						break;
+//					
+//					case 3:
+//						g_Flag.control_target = SENIOR_MODE2;
+//						break;
+//					
+//					case 4:
+//						g_Flag.control_target = SENIOR_AUTO_MODE;
+//						break;
+//					
+//					default:
+//						g_Flag.control_target = POWER_OFF_MODE;
+//						break;
+//			}
+			
+				
 
 		
 	}
@@ -335,7 +277,7 @@ void autoModeSwitch(void)
 //			break;
 	
 //		default:
-//			g_Flag.auto_mode = 0;
+//			g_Flag.auto_mode = AUTO_MODE_OFF;
 //			break;
 //	}
 	

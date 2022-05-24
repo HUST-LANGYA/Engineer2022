@@ -121,8 +121,8 @@ void flagInit(void)
 	g_Flag.control_target	= POWER_OFF_MODE;						//默认掉电模式	
 	
 	//模式变量初始化
-	g_Flag.auto_mode = 0;
-	g_Flag.auto_mode_pre = 0;
+	g_Flag.auto_mode = AUTO_MODE_OFF;
+	g_Flag.auto_mode_pre = AUTO_MODE_OFF;
 	//角度陀螺仪是否使用
 	g_Flag.argle_use_flag = 0;
 	

@@ -57,15 +57,30 @@
 //控制模式
 #define RC_MODE     					0X01		//遥控模式
 #define KEY_MODE    					0X02		//键鼠模式
+//键鼠操作下的两个模式
 #define POWER_OFF_MODE 				0X03		//掉电模式
+#define NORMAL_MODE     			0X04		//正常模式
+
+#define AUTO_MODE    					0X05		//自动模式（不用）
 //底盘模式
-#define CHASSIS_MODE					0X04		//底盘运动模式
-#define CHASSIS_MODE_STATIC		0X05		//底盘静步模式
-#define CHASSIS_MODE3					0X06		//底盘模式3
+#define CHASSIS_MODE					0X06		//底盘运动模式
+#define CHASSIS_MODE_STATIC		0X07		//底盘静步模式
+#define CHASSIS_MODE3					0X08		//底盘模式3
 //上层模式
-#define SENIOR_UP_MODE				0X07		//上层上升模式
-#define SENIOR_MODE2					0X08		//上层模式2
-#define SENIOR_AUTO_MODE			0X09		//上层模式3
+#define SENIOR_UP_MODE				0X09		//上层上升模式
+#define SENIOR_MODE2					0X0A		//上层模式2
+#define SENIOR_AUTO_MODE			0X0B		//上层模式3
+
+
+
+//自动执行模式auto_mode
+#define AUTO_MODE_OFF			0X00		//关闭自动模式
+#define LARGE_ISLAND_MINE	0X01		//大资源岛取矿
+#define MINE_MIDAIR				0X02		//空接矿石
+#define GET_MINE_MIDAIR		0X03		//空接接取矿石
+#define SMALL_ISLAND_MINE 0X04		//小资源岛取矿
+#define EXCHANGE_MINE			0X05		//兑换矿石
+
 
 //拨杆位置
 #define UP 		 	1
@@ -76,6 +91,13 @@
 #define LIFT_DOWN         2
 
 /*******接口宏定义*******/
+//叉车电磁阀
+#define FORK_SOLENOID_GPIO_PORT				GPIOA
+#define FORK_SOLENOID_GPIO_CLK				RCC_APB2Periph_GPIOA
+#define FORK_SOLENOID_GPIO_PIN				GPIO_Pin_5
+#define FORK_SOLENOID_ON 							PAout(5)=1										//叉车电磁阀打开
+#define FORK_SOLENOID_OFF 						PAout(5)=0										//叉车电磁阀关闭
+
 //救援电磁阀
 #define RESCUE_SOLENOID_GPIO_PORT			GPIOA
 #define RESCUE_SOLENOID_GPIO_CLK			RCC_APB2Periph_GPIOA
@@ -84,7 +106,7 @@
 #define RESCUE_SOLENOID_OFF 					PAout(6)=0										//救援电磁阀关闭
 
 //复活电磁阀
-#define RESURGE_SOLENOID_GPIO_PORT			GPIOA
+#define RESURGE_SOLENOID_GPIO_PORT		GPIOA
 #define RESURGE_SOLENOID_GPIO_CLK			RCC_APB2Periph_GPIOA
 #define RESURGE_SOLENOID_GPIO_PIN			GPIO_Pin_7
 #define RESURGE_SOLENOID_ON 					PAout(7)=1										//复活电磁阀打开
@@ -210,7 +232,9 @@ typedef union {
 
 typedef struct
 {
-	
+	u8 control_mode;          	//控制模式
+	u8 control_target;         	//控制目标
+	u8 auto_mode;								//是否开启自动模式，0关闭，数值为相应模式
 	
 	u8 forward_flag;						//上层前移标志位，0为收回，1为前移
 	u8 clamp_flag;							//上层夹取标志位，0为松开，1为夹取
@@ -222,9 +246,6 @@ typedef struct
 	
 	u8 warehouse_flag;					//仓库旋转电机标志位，0为不动，1为右旋转，2为左旋转
 	
-	u8 control_mode;          	//控制模式
-	u8 control_target;         	//控制目标
-	
 	
 	u8 gyro_connect;
 	u32 gyro_cnt;
@@ -233,6 +254,7 @@ typedef struct
 	
 	u8 rescue_solenoid_flag;					//救援电磁阀
 	u8 resurge_solenoid_flag;					//复活电磁阀
+	u8 fork_solenoid_flag;						//叉车电磁阀
 	
 	u8 soft_reset_flag;								//软件复位
 	

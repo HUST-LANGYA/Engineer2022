@@ -249,7 +249,7 @@ void autoLargeIslandMine(void)
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
-			g_Flag.auto_mode = 0;
+			g_Flag.auto_mode = AUTO_MODE_OFF;
 			autoModeDelay_ms(100);
 			break;
 			
@@ -357,7 +357,7 @@ void autoSmallIslandMine(void)
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
-			g_Flag.auto_mode = 0;
+			g_Flag.auto_mode = AUTO_MODE_OFF;
 			autoModeDelay_ms(100);
 			break;
 			
@@ -455,7 +455,7 @@ void autoExchange(void)
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
-			g_Flag.auto_mode = 0;
+			g_Flag.auto_mode = AUTO_MODE_OFF;
 			autoModeDelay_ms(100);
 			break;
 			
@@ -603,7 +603,7 @@ void autoGetMineMidair(void)
 		
 		case ATUOEXEC_END:
 			auto_get_midair_enum_next = AUTOEXEC_DEFAULT;
-			g_Flag.auto_mode = 0;
+			g_Flag.auto_mode = AUTO_MODE_OFF;
 			autoModeDelay_ms(100);
 			break;
 		

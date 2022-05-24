@@ -89,15 +89,15 @@ void chassisExec(void)
 	}
 	else 
 	{
-		if(g_Flag.control_target == CHASSIS_MODE || g_Flag.control_target == CHASSIS_MODE_STATIC)
-		{
+//		if(g_Flag.control_target == CHASSIS_MODE || g_Flag.control_target == CHASSIS_MODE_STATIC)
+//		{
 			if (g_Flag.control_mode == RC_MODE)         //处于遥控模式
 			{
 				chassisRcModeCal();
 			}
 			//键鼠控制
-//			else if(g_Flag.control_mode == KEY_MODE)
-			else
+			else if(g_Flag.control_mode == KEY_MODE)
+//			else
 			{
 				chassisKeyModeCal();
 			}
@@ -107,11 +107,11 @@ void chassisExec(void)
 					chassis_vel_follow_pid.SetPoint = LIMIT_MAX_MIN(PID_Calc(&chassis_pos_follow_pid, getYawAngle()), 5.7f, -5.7f);
 					vw = PID_Calc(&chassis_vel_follow_pid, getGz());
 			}
-		}else{
-			vx = 0;
-			vy = 0;
-			vw = 0;
-		}
+//		}else{
+//			vx = 0;
+//			vy = 0;
+//			vw = 0;
+//		}
 		
 		if(g_Flag.control_target == CHASSIS_MODE_STATIC)												//底盘静步模式（缓慢加速，快速刹车）
 		{

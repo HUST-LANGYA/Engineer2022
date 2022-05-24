@@ -1,8 +1,11 @@
 #include "remote.h"
 
 rc_ctrl_t rc_ctrl, rc_ctrl_last;
-short ctrl_rising_flag,shift_rising_flag,v_rising_flag,c_rising_flag,e_rising_flag,x_rising_flag,Press_Key_x_Flag,v_rising_flag;
-short f_rising_flag,mouse_Press_r_rising_flag,r_rising_flag,z_rising_flag,Press_Key_z_Flag,g_rising_flag,q_rising_flag;
+short q_rising_flag,w_rising_flag,e_rising_flag,r_rising_flag,
+		a_rising_flag,s_rising_flag,d_rising_flag,f_rising_flag,g_rising_flag,
+		z_rising_flag,x_rising_flag,c_rising_flag,v_rising_flag,b_rising_flag,
+		shift_rising_flag,ctrl_rising_flag,mouse_Press_l_rising_flag,mouse_Press_r_rising_flag;
+short Press_Key_x_Flag,Press_Key_z_Flag;
 
 /**
   * @brief  discoding message
@@ -88,31 +91,49 @@ void rc_reset(void)
   */
 void key_refresh(void)
 {
-	rc_ctrl_last.rc.s1 = rc_ctrl.rc.s1;				
+	rc_ctrl_last.rc.s1 = rc_ctrl.rc.s1;
 	rc_ctrl_last.rc.s2 = rc_ctrl.rc.s2;
+	rc_ctrl_last.key.q = rc_ctrl.key.q;
+	rc_ctrl_last.key.w = rc_ctrl.key.w;
+	rc_ctrl_last.key.e = rc_ctrl.key.e;
+	rc_ctrl_last.key.r = rc_ctrl.key.r;
+	rc_ctrl_last.key.a = rc_ctrl.key.a;
+	rc_ctrl_last.key.s = rc_ctrl.key.s;
+	rc_ctrl_last.key.d = rc_ctrl.key.d;
+	rc_ctrl_last.key.f = rc_ctrl.key.f;
 	rc_ctrl_last.key.g = rc_ctrl.key.g;
-	rc_ctrl_last.key.b = rc_ctrl.key.b;
 	rc_ctrl_last.key.z = rc_ctrl.key.z;
 	rc_ctrl_last.key.x = rc_ctrl.key.x;
 	rc_ctrl_last.key.c = rc_ctrl.key.c;
-	rc_ctrl_last.key.d = rc_ctrl.key.d;
-	rc_ctrl_last.key.s = rc_ctrl.key.s;
-	rc_ctrl_last.key.f = rc_ctrl.key.f;
-	rc_ctrl_last.key.a = rc_ctrl.key.a;
-	rc_ctrl_last.key.q = rc_ctrl.key.q;
-	rc_ctrl_last.key.e = rc_ctrl.key.e;
-	rc_ctrl_last.key.r = rc_ctrl.key.r;
-	rc_ctrl_last.key.w = rc_ctrl.key.w;
 	rc_ctrl_last.key.v = rc_ctrl.key.v;
+	rc_ctrl_last.key.b = rc_ctrl.key.b;
+	rc_ctrl_last.mouse.press_l = rc_ctrl.mouse.press_l;
+	rc_ctrl_last.mouse.press_r = rc_ctrl.mouse.press_r;
 }
 
 void key_rising_check(void)
 {
-	g_rising_flag = rc_ctrl.key.g - rc_ctrl_last.key.g;
 	q_rising_flag = rc_ctrl.key.q - rc_ctrl_last.key.q;
+	w_rising_flag = rc_ctrl.key.w - rc_ctrl_last.key.w;
 	e_rising_flag = rc_ctrl.key.e - rc_ctrl_last.key.e;
 	r_rising_flag = rc_ctrl.key.r - rc_ctrl_last.key.r;
+	
+	a_rising_flag = rc_ctrl.key.a - rc_ctrl_last.key.a;
+	s_rising_flag = rc_ctrl.key.s - rc_ctrl_last.key.s;
+	d_rising_flag = rc_ctrl.key.d - rc_ctrl_last.key.d;
+	f_rising_flag = rc_ctrl.key.f - rc_ctrl_last.key.f;
+	g_rising_flag = rc_ctrl.key.g - rc_ctrl_last.key.g;
+	
+	z_rising_flag = rc_ctrl.key.z - rc_ctrl_last.key.z;
+	x_rising_flag = rc_ctrl.key.x - rc_ctrl_last.key.x;
+	c_rising_flag = rc_ctrl.key.c - rc_ctrl_last.key.c;
+	v_rising_flag = rc_ctrl.key.v - rc_ctrl_last.key.v;
+	b_rising_flag = rc_ctrl.key.b - rc_ctrl_last.key.b;
+	
 	ctrl_rising_flag = rc_ctrl.key.ctrl - rc_ctrl_last.key.ctrl;
 	shift_rising_flag = rc_ctrl.key.shift - rc_ctrl_last.key.shift;
+	
+	mouse_Press_l_rising_flag = rc_ctrl.mouse.press_l - rc_ctrl_last.mouse.press_l;
+	mouse_Press_r_rising_flag = rc_ctrl.mouse.press_r - rc_ctrl_last.mouse.press_r;
 }
 

@@ -27,8 +27,11 @@ uint32_t  Mode_Switch_high_water;
 
 extern FlagWithSlave_t FlagOfSlave;		//接收到的C板标志位
 
-extern short ctrl_rising_flag,shift_rising_flag,v_rising_flag,c_rising_flag,e_rising_flag,x_rising_flag,Press_Key_x_Flag,v_rising_flag;
-extern short f_rising_flag,mouse_Press_r_rising_flag,r_rising_flag,z_rising_flag,Press_Key_z_Flag,g_rising_flag,q_rising_flag;
+
+extern short q_rising_flag,w_rising_flag,e_rising_flag,r_rising_flag,
+		a_rising_flag,s_rising_flag,d_rising_flag,f_rising_flag,g_rising_flag,
+		z_rising_flag,x_rising_flag,c_rising_flag,v_rising_flag,b_rising_flag,
+		shift_rising_flag,ctrl_rising_flag,mouse_Press_l_rising_flag,mouse_Press_r_rising_flag;
 extern unsigned char Data_Receive_from_F103[8];//Data_Receive存的是接收到的从C板传来的数据
 
 
@@ -62,9 +65,6 @@ void modeSwitchTask(void *pvParameters)
   * @param  None
 	* @retval 
 */
-int test_q = 0;
-int test11 = 1;
-
 void switchMode(void)
 {
 /**************** 键鼠模式下按键状态判断 *****************/
@@ -72,10 +72,138 @@ void switchMode(void)
 	key_refresh();
 /*********************** 状态切换 ************************/
 	controlStateGet();
-	motionTargetGet();																	//获取运动模式
 	
-	/************************************ 遥控器模式修改标志位 **********************************************/
-	/*倘若是上层抬升模式，对抬升的标志位进行判断*/
+	/************************************ 修改标志位 **********************************************/
+	if(g_Flag.control_mode == KEY_MODE)
+			keyModeFlagChange();		//键鼠模式修改标志位 
+	else if(g_Flag.control_mode == RC_MODE)
+	{
+			motionTargetGet();			//获取运动模式
+			rcModeFlagChange();			//遥控器模式修改标志位 
+	}else
+			g_Flag.control_mode = KEY_MODE;		//默认键鼠模式
+
+	
+	
+	if(g_Flag.control_target == POWER_OFF_MODE)			//在这个地方加看门狗!!!!!!!!!!!!!!!!
+	{
+		//根据判断条件修改喂狗标志位
+		
+	}
+	
+	if(g_Flag.rescue_solenoid_flag == 1) 			//是否开启救援模块
+						RESCUE_SOLENOID_ON;
+	else			RESCUE_SOLENOID_OFF;
+	
+	if(g_Flag.resurge_solenoid_flag == 1) 			//是否开启复活模块
+						RESURGE_SOLENOID_ON;
+	else			RESURGE_SOLENOID_OFF;
+	
+	if(g_Flag.fork_solenoid_flag == 1) 			//是否开启叉车模块
+						FORK_SOLENOID_ON;
+	else			FORK_SOLENOID_OFF;
+	
+}
+
+
+
+/**
+  * @brief  键鼠模式下标志位改变函数
+  * @param  None
+	* @retval 
+*/
+void keyModeFlagChange(void)
+{
+	if(g_Flag.control_mode == KEY_MODE)
+	{
+		if(g_Flag.control_target == NORMAL_MODE)
+		{
+			/*********************** q键上升沿控制大资源岛自动取矿 **************************/
+			if(q_rising_flag == 1)
+			{
+				g_Flag.auto_mode = LARGE_ISLAND_MINE;
+			}
+			
+			/*********************** e键上升沿控制小资源岛自动取矿 **************************/
+			if(e_rising_flag == 1)
+			{
+				g_Flag.auto_mode = SMALL_ISLAND_MINE;
+			}
+			
+			/*********************** r键上升沿控制一键自动复位 **************************/
+			if(r_rising_flag == 1)
+			{
+//					g_Flag.auto_mode = MINE_MIDAIR;
+			}
+			
+			/*********************** f键上升沿控制自动空接矿石 **************************/
+			if(f_rising_flag == 1)
+			{
+//				g_Flag.auto_mode = MINE_MIDAIR;
+			}
+			
+			/*********************** g键上升沿控制夹子打开/关闭 **************************/
+			if(g_rising_flag == 1)
+			{
+				g_Flag.clamp_flag = 1 - g_Flag.clamp_flag;
+			}
+			
+			/*********************** z键上升沿控制救援打开/关闭 **************************/
+			if(z_rising_flag == 1)
+			{
+				g_Flag.rescue_solenoid_flag = 1 - g_Flag.rescue_solenoid_flag;
+			}
+			
+			/*********************** x键上升沿控制复活打开/关闭 **************************/
+			if(x_rising_flag == 1)
+			{
+				g_Flag.resurge_solenoid_flag = 1 - g_Flag.resurge_solenoid_flag;
+			}
+			
+			/*********************** c键上升沿控制叉车打开/关闭 **************************/
+			if(c_rising_flag == 1)
+			{
+				g_Flag.fork_solenoid_flag = 1 - g_Flag.fork_solenoid_flag;
+			}
+			
+			/*********************** v键上升沿强制退出自动模式  **************************/
+			if(v_rising_flag == 1)
+			{
+				g_Flag.auto_mode = AUTO_MODE_OFF;
+			}
+			
+			/*********************** b键上升沿控制自动兑换 **************************/
+			if(b_rising_flag == 1)
+			{
+				g_Flag.auto_mode = EXCHANGE_MINE;
+			}
+			
+			/*********************** 自动模式下底盘受上层控制 **************************/
+			if(g_Flag.auto_mode != AUTO_MODE_OFF)
+			{
+					g_Flag.clamp_flag = FlagOfSlave.flag.clamp_flag;
+					g_Flag.exchange_solenoid_flag = FlagOfSlave.flag.exchange_solenoid_flag;
+					g_Flag.forward_flag = FlagOfSlave.flag.forward_flag;
+					g_Flag.lift_down_twice_flag = FlagOfSlave.flag.lift_down_twice_flag;
+					g_Flag.lift_once_flag = FlagOfSlave.flag.lift_once_flag;
+					g_Flag.midair_solenoid_flag = FlagOfSlave.flag.midair_solenoid_flag;
+			}
+			
+		}else 
+		{
+			
+		}
+	}
+}
+
+
+/**
+  * @brief  遥控器模式下标志位改变函数
+  * @param  None
+	* @retval 
+*/
+void rcModeFlagChange(void)
+{
 	if(g_Flag.control_mode == RC_MODE)
 	{
 		switch(g_Flag.control_target)
@@ -118,11 +246,11 @@ void switchMode(void)
 				if(rc_ctrl.rc.ch1 > 1500) 							//右上移动拨杆
 				{
 					g_Flag.lift_once_flag 	= 1; 	//一级抬升
-//					g_Flag.forward_flag			= 1;	//前移
+		//					g_Flag.forward_flag			= 1;	//前移
 				}else if(rc_ctrl.rc.ch1 < 500) 					//右下移动拨杆
 				{
 					g_Flag.lift_once_flag = 0; 	//一级下降
-//					g_Flag.forward_flag			= 0;	//前移收回
+		//					g_Flag.forward_flag			= 0;	//前移收回
 				}
 
 
@@ -170,41 +298,8 @@ void switchMode(void)
 				break;
 		}
 	}
-	
-	/************************************ 键鼠模式修改标志位 **********************************************/
-	if(g_Flag.control_mode == KEY_MODE)
-	{
-		/*********************** q键上升沿控制一级抬升打开/关闭 **************************/
-		if(q_rising_flag == 1)
-		{
-//			test_q ++;
-			g_Flag.lift_once_flag = 1 - g_Flag.lift_once_flag;
-		}
-		
-		/*********************** e键上升沿控制夹取电磁阀打开/关闭 **************************/
-		if(e_rising_flag == 1)
-		{
-			g_Flag.clamp_flag = 1 - g_Flag.clamp_flag;
-		}
-		
-		/*********************** r键上升沿控制二级抬升打开/关闭 **************************/
-		if(r_rising_flag == 1)
-		{
-			g_Flag.lift_down_twice_flag = 1 - g_Flag.lift_down_twice_flag;
-		}
-		
-	}
-
-	
-	if(g_Flag.rescue_solenoid_flag == 1) 			//是否开启救援模块
-						RESCUE_SOLENOID_ON;
-	else			RESCUE_SOLENOID_OFF;
-	
-	if(g_Flag.resurge_solenoid_flag == 1) 			//是否开启复活模块
-						RESURGE_SOLENOID_ON;
-	else			RESURGE_SOLENOID_OFF;
-	
 }
+
 
 /**
   * @brief  控制模式判断函数
@@ -217,23 +312,36 @@ void switchMode(void)
 void controlStateGet(void)															//获取控制模式
 {
 	
-	if (rc_ctrl.rc.s2 == DOWN)															//获取控制模式
+	if (rc_ctrl.rc.s2 == UP)															//获取控制模式
 	{
 		switch(rc_ctrl.rc.s1)
 		{
 			case UP:
-				g_Flag.control_mode = RC_MODE;				//遥控模式
+				g_Flag.control_mode = KEY_MODE;							//键鼠模式
+				g_Flag.control_target = NORMAL_MODE;			//正常模式
+//				g_Flag.auto_mode			= AUTO_MODE_OFF;		//默认关闭自动模式
 				break;
 			case MIDDLE:
-				g_Flag.control_mode = KEY_MODE;				//键鼠模式
+				if(g_Flag.control_target == RC_MODE)
+						g_Flag.control_target = CHASSIS_MODE;		//遥控器底盘运动模式
+				else
+						g_Flag.control_mode = KEY_MODE;
 				break;
 			case DOWN:
-				g_Flag.control_target = POWER_OFF_MODE;	//掉电模式
+				g_Flag.control_mode = RC_MODE;					//遥控模式
 				break;
 			default:
+				g_Flag.control_mode = KEY_MODE;	
 				break;
 		}
 	}
+	
+	if(rc_ctrl.rc.s2 == DOWN && rc_ctrl.rc.s1 == DOWN)
+	{
+		g_Flag.control_target = POWER_OFF_MODE;
+		g_Flag.control_mode = KEY_MODE;	
+	}
+	
 //	if (rc_ctrl.rc.s2 == DOWN)															//获取控制模式
 //	{
 //		switch(rc_ctrl.rc.s1)
@@ -279,7 +387,7 @@ void motionTargetGet(void)															//获取运动模式
 					break;
 				default:
 					break;
-			}			
+			}
 		}
 		else if (rc_ctrl.rc.s2 == UP)			//上层模式
 		{
@@ -298,43 +406,44 @@ void motionTargetGet(void)															//获取运动模式
 					break;
 			}
 		}
-	}else if (g_Flag.control_mode == KEY_MODE)	//键鼠模式
-	{
-		//掉电模式
-		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.b == 1)
-		{
-			g_Flag.control_target = POWER_OFF_MODE;
-		}
-		
-		//底盘模式
-		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.z == 1)
-		{
-			g_Flag.control_target = CHASSIS_MODE;
-		}
-		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.x == 1)
-		{
-			g_Flag.control_target = CHASSIS_MODE_STATIC;
-		}
-		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.c == 1)
-		{
-			g_Flag.control_target = CHASSIS_MODE3;
-		}
-		
-		//上层模式
-		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.q == 1)
-		{
-			g_Flag.control_target = SENIOR_UP_MODE;
-		}
-		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.e == 1)
-		{
-			g_Flag.control_target = SENIOR_MODE2;
-		}
-		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.r == 1)
-		{
-			g_Flag.control_target = SENIOR_AUTO_MODE;
-		}
-		
 	}
+//	else if (g_Flag.control_mode == KEY_MODE)	//键鼠模式
+//	{
+//		//掉电模式
+//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.b == 1)
+//		{
+//			g_Flag.control_target = POWER_OFF_MODE;
+//		}
+//		
+//		//底盘模式
+//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.z == 1)
+//		{
+//			g_Flag.control_target = CHASSIS_MODE;
+//		}
+//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.x == 1)
+//		{
+//			g_Flag.control_target = CHASSIS_MODE_STATIC;
+//		}
+//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.c == 1)
+//		{
+//			g_Flag.control_target = CHASSIS_MODE3;
+//		}
+//		
+//		//上层模式
+//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.q == 1)
+//		{
+//			g_Flag.control_target = SENIOR_UP_MODE;
+//		}
+//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.e == 1)
+//		{
+//			g_Flag.control_target = SENIOR_MODE2;
+//		}
+//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.r == 1)
+//		{
+//			g_Flag.control_target = SENIOR_AUTO_MODE;
+//		}
+//		
+//	}
 	
 
 }

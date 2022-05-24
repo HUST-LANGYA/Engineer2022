@@ -154,7 +154,6 @@ void CAN1_RX0_IRQHandler(void)
 			break;
 			
 			case 0x202:
-			test11 = - test11;
 					chassis_motor[1].angle = (rx_message.Data[0] << 8) | rx_message.Data[1];
 					chassis_motor[1].speed = (rx_message.Data[2] << 8) | rx_message.Data[3];
 			break;

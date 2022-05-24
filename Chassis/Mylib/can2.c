@@ -264,10 +264,10 @@ void can2Master2Slave(void)
 void Data_Send_to_Slave_Init(void)
 {
 	Data2C_tx[0] = '!';
-	Data2C_tx[1] = 0;//控制模式（1:遥控器；2：键鼠；）
-	Data2C_tx[2] = 0;//运动模式（0:掉电模式；  1:底盘模式；2：上层抬升模式；3：上层模式贰；4：上层模式叁）
+	Data2C_tx[1] = 0;//控制模式	宏定义
+	Data2C_tx[2] = 0;//运动模式	宏定义
 	Data2C_tx[3] = 0;//发送给C板的标志位
-	Data2C_tx[4] = 0;//
+	Data2C_tx[4] = 0;//自动控制标志位
 	Data2C_tx[5] = 0;//
 	Data2C_tx[6] = 0;
 	Data2C_tx[7] = 0;
