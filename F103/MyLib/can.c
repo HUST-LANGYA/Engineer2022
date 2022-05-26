@@ -3,7 +3,6 @@
 int can = 0;
 //rmc620_t Track_Motor[2] , forward_motor[2];
 rmc620_t Track_Motor[2], Rotate_Motor;
-CanTxMsg tx_message;
 
 unsigned char Data_Send_to_F105[8];//准备发送给B板的数据
 unsigned char data_receive[8]; //C板接收的数据
