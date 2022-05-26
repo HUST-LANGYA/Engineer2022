@@ -89,39 +89,80 @@ void chassisExec(void)
 	}
 	else 
 	{
+		if (g_Flag.control_mode == RC_MODE)         //处于遥控模式
+		{
+				if(g_Flag.control_target == CHASSIS_MODE || g_Flag.control_target == CHASSIS_MODE_STATIC)
+				{
+					chassisRcModeCal();
+//					if (g_Flag.gyro_use_flag)																										//如果使用陀螺仪数据
+//					{
+//							chassis_vel_follow_pid.SetPoint = LIMIT_MAX_MIN(PID_Calc(&chassis_pos_follow_pid, getYawAngle()), 5.7f, -5.7f);
+//							vw = PID_Calc(&chassis_vel_follow_pid, getGz());
+//					}
+				}else
+				{
+					vx = 0;
+					vy = 0;
+					vw = 0;
+				}
+				
+				if(g_Flag.control_target == CHASSIS_MODE_STATIC)												//底盘静步模式（缓慢加速，快速刹车）
+				{
+					chassisModeStatic();
+				}else																																//正常底盘模式
+				{
+					chassisModeNormal();
+				}
+				
+		}else
+		{
+				chassisKeyModeCal();
+			
+//				if (g_Flag.gyro_use_flag)																										//如果使用陀螺仪数据
+//				{
+//						chassis_vel_follow_pid.SetPoint = LIMIT_MAX_MIN(PID_Calc(&chassis_pos_follow_pid, getYawAngle()), 5.7f, -5.7f);
+//						vw = PID_Calc(&chassis_vel_follow_pid, getGz());
+//				}
+				
+				chassisModeNormal();
+		}
+		
+		
+		chassisCal(vx_set, vy_set, vw_set);
+		
 //		if(g_Flag.control_target == CHASSIS_MODE || g_Flag.control_target == CHASSIS_MODE_STATIC)
 //		{
-			if (g_Flag.control_mode == RC_MODE)         //处于遥控模式
-			{
-				chassisRcModeCal();
-			}
-			//键鼠控制
-			else if(g_Flag.control_mode == KEY_MODE)
-//			else
-			{
-				chassisKeyModeCal();
-			}
-			
-			if (g_Flag.gyro_use_flag)																										//如果使用陀螺仪数据
-			{
-					chassis_vel_follow_pid.SetPoint = LIMIT_MAX_MIN(PID_Calc(&chassis_pos_follow_pid, getYawAngle()), 5.7f, -5.7f);
-					vw = PID_Calc(&chassis_vel_follow_pid, getGz());
-			}
+//			if (g_Flag.control_mode == RC_MODE)         //处于遥控模式
+//			{
+//				chassisRcModeCal();
+//			}
+//			//键鼠控制
+//			else if(g_Flag.control_mode == KEY_MODE)
+////			else
+//			{
+//				chassisKeyModeCal();
+//			}
+//			
+//			if (g_Flag.gyro_use_flag)																										//如果使用陀螺仪数据
+//			{
+//					chassis_vel_follow_pid.SetPoint = LIMIT_MAX_MIN(PID_Calc(&chassis_pos_follow_pid, getYawAngle()), 5.7f, -5.7f);
+//					vw = PID_Calc(&chassis_vel_follow_pid, getGz());
+//			}
 //		}else{
 //			vx = 0;
 //			vy = 0;
 //			vw = 0;
 //		}
-		
-		if(g_Flag.control_target == CHASSIS_MODE_STATIC)												//底盘静步模式（缓慢加速，快速刹车）
-		{
-			chassisModeStatic();
-		}else																																//正常底盘模式
-		{
-			chassisModeNormal();
-		}
-		
-		chassisCal(vx_set, vy_set, vw_set);
+//		
+//		if(g_Flag.control_target == CHASSIS_MODE_STATIC)												//底盘静步模式（缓慢加速，快速刹车）
+//		{
+//			chassisModeStatic();
+//		}else																																//正常底盘模式
+//		{
+//			chassisModeNormal();
+//		}
+//		
+//		chassisCal(vx_set, vy_set, vw_set);
 	}
 }
 
@@ -155,7 +196,11 @@ void chassisRcModeCal(void)
 			if (rc_ctrl.rc.ch2 > 1044 || rc_ctrl.rc.ch2 < 1004)
 			{	
 				if (g_Flag.gyro_use_flag)	//使用陀螺仪数据
+				{
 					chassis_pos_follow_pid.SetPoint += (1024 - rc_ctrl.rc.ch2) / 4000.0f;
+					chassis_vel_follow_pid.SetPoint = LIMIT_MAX_MIN(PID_Calc(&chassis_pos_follow_pid, getYawAngle()), 5.7f, -5.7f);
+					vw = PID_Calc(&chassis_vel_follow_pid, getGz());
+				}
 				else											//不使用陀螺仪数据
 					vw = (1024 - rc_ctrl.rc.ch2) * 10.0f;
 			}
@@ -177,14 +222,20 @@ void chassisKeyModeCal(void)
 		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.0F - rc_ctrl.key.shift * 0.56F+ rc_ctrl.mouse.press_l * 2.0f ) * 2000.0F;
 		chassis_pos_follow_pid.SetPoint -= rc_ctrl.mouse.x / 300.0f * (1.0F - rc_ctrl.key.shift * 0.56F);    //键鼠
 		//chassis_pos_follow_pid.SetPoint += (rc_ctrl.mouse.press_l - rc_ctrl.mouse.press_r)*0.02 * (1.0F - rc_ctrl.key.shift * 0.7F);    //键鼠
+		chassis_vel_follow_pid.SetPoint = LIMIT_MAX_MIN(PID_Calc(&chassis_pos_follow_pid, getYawAngle()), 5.7f, -5.7f);
+		vw = PID_Calc(&chassis_vel_follow_pid, getGz());
 	}
 	else											//不使用陀螺仪数据
 	{			
-		vx = (rc_ctrl.key.a - rc_ctrl.key.d) * (1.0F - rc_ctrl.key.shift * 0.56F ) * 2500.0F;
-		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.0F - rc_ctrl.key.shift * 0.56F ) * 2500.0F;
-		//vw = -rc_ctrl.mouse.x * 100.0f * (1.0F - rc_ctrl.key.shift * 0.7F);
+		vx = (rc_ctrl.key.a - rc_ctrl.key.d) * (1.0F - rc_ctrl.key.shift * 0.56F+ rc_ctrl.mouse.press_l * 2.0f ) * 1500.0F;
+		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.0F - rc_ctrl.key.shift * 0.56F+ rc_ctrl.mouse.press_l * 2.0f ) * 2000.0F;
+//		vx = (rc_ctrl.key.a - rc_ctrl.key.d) * (1.0F - rc_ctrl.key.shift * 0.56F ) * 2500.0F;
+//		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.0F - rc_ctrl.key.shift * 0.56F ) * 2500.0F;
+		vw = -rc_ctrl.mouse.x * 100.0f * (1.0F - rc_ctrl.key.shift * 0.7F);
+		
+		chassis_pos_follow_pid.SetPoint = getYawAngle();
 		//chassis_pos_follow_pid.SetPoint = getYawAngle();
-		vw = (rc_ctrl.mouse.press_l - rc_ctrl.mouse.press_r)*1500.0f*(1.0f - rc_ctrl.key.shift * 0.56F);
+//		vw = (rc_ctrl.mouse.press_l - rc_ctrl.mouse.press_r)*1500.0f*(1.0f - rc_ctrl.key.shift * 0.56F);
 	}
 }
 
@@ -195,21 +246,21 @@ void chassisKeyModeCal(void)
 */
 void chassisModeNormal(void)
 {
-//	vw_set = vw;
-//	
-//	if (ABS(vx - vx_set) > 100.0f && ((vx < -1000) || (vx > 1000)))   //启动时提速，停止时迅速刹车
-//		vx_set = vx + 0.02f * (vx - vx_set);
-//	else
-//		vx_set = vx;
-
-//	if (ABS(vy - vy_set) > 100.0f && ((vy < -1000) || (vy > 1000)))   //启动时提速，停止时迅速刹车
-//		vy_set = vy + 0.02f * (vy - vy_set);
-//	else
-//		vy_set = vy;
+	vw_set = vw;
 	
-	vw_set = chassisModeNormalCalExec(vw, vw_set);
-	vx_set = chassisModeNormalCalExec(vx, vx_set);
-	vy_set = chassisModeNormalCalExec(vy, vy_set);
+	if (ABS(vx - vx_set) > 100.0f && ((vx < -1000) || (vx > 1000)))   //启动时提速，停止时迅速刹车
+		vx_set = vx + 0.02f * (vx - vx_set);
+	else
+		vx_set = vx;
+
+	if (ABS(vy - vy_set) > 100.0f && ((vy < -1000) || (vy > 1000)))   //启动时提速，停止时迅速刹车
+		vy_set = vy + 0.02f * (vy - vy_set);
+	else
+		vy_set = vy;
+	
+//	vw_set = chassisModeNormalCalExec(vw, vw_set);
+//	vx_set = chassisModeNormalCalExec(vx, vx_set);
+//	vy_set = chassisModeNormalCalExec(vy, vy_set);
 }
 
 /**

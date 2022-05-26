@@ -118,66 +118,85 @@ void keyModeFlagChange(void)
 	{
 		if(g_Flag.control_target == NORMAL_MODE)
 		{
-			/*********************** q键上升沿控制大资源岛自动取矿 **************************/
-			if(q_rising_flag == 1)
+			if(rc_ctrl.key.ctrl == 0 && rc_ctrl.key.shift == 0)
 			{
-				g_Flag.auto_mode = LARGE_ISLAND_MINE;
-			}
-			
-			/*********************** e键上升沿控制小资源岛自动取矿 **************************/
-			if(e_rising_flag == 1)
+					/*********************** q键上升沿控制大资源岛自动取矿 **************************/
+					if(q_rising_flag == 1)
+					{
+						g_Flag.auto_mode = LARGE_ISLAND_MINE;
+					}
+					
+					/*********************** e键上升沿控制小资源岛自动取矿 **************************/
+					if(e_rising_flag == 1)
+					{
+						g_Flag.auto_mode = SMALL_ISLAND_MINE;
+					}
+					
+					/*********************** r键上升沿控制一键自动复位 **************************/
+					if(r_rising_flag == 1)
+					{
+		//					g_Flag.auto_mode = MINE_MIDAIR;
+					}
+					
+					/*********************** f键上升沿控制自动空接矿石 **************************/
+					if(f_rising_flag == 1)
+					{
+		//				g_Flag.auto_mode = MINE_MIDAIR;
+					}
+					
+					/*********************** g键上升沿控制夹子打开/关闭 **************************/
+					if(g_rising_flag == 1)
+					{
+						g_Flag.clamp_flag = 1 - g_Flag.clamp_flag;
+					}
+					
+					/*********************** z键上升沿控制救援打开/关闭 **************************/
+					if(z_rising_flag == 1)
+					{
+						g_Flag.rescue_solenoid_flag = 1 - g_Flag.rescue_solenoid_flag;
+					}
+					
+					/*********************** x键上升沿控制复活打开/关闭 **************************/
+					if(x_rising_flag == 1)
+					{
+						g_Flag.resurge_solenoid_flag = 1 - g_Flag.resurge_solenoid_flag;
+					}
+					
+					/*********************** c键上升沿控制叉车打开/关闭 **************************/
+					if(c_rising_flag == 1)
+					{
+						g_Flag.fork_solenoid_flag = 1 - g_Flag.fork_solenoid_flag;
+					}
+					
+					/*********************** v键上升沿强制退出自动模式  **************************/
+					if(v_rising_flag == 1)
+					{
+						g_Flag.auto_mode = AUTO_MODE_OFF;
+					}
+					
+					/*********************** b键上升沿控制自动兑换 **************************/
+					if(b_rising_flag == 1)
+					{
+						g_Flag.auto_mode = EXCHANGE_MINE;
+					}
+			}else if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.shift == 0)
 			{
-				g_Flag.auto_mode = SMALL_ISLAND_MINE;
+					/*********************** ctrl + v键控制图传pitch轴低头  **************************/
+					if(v_rising_flag == 1)
+					{
+						if(g_Flag.camera_pitch == CAMERA_DEFAULT)
+							g_Flag.camera_pitch = CAMERA_PITCH_DOWN;
+						else
+							g_Flag.camera_pitch = CAMERA_DEFAULT;
+					}
+					
+					/*********************** ctrl + b键控制陀螺仪开关 **************************/
+					if(b_rising_flag == 1)
+					{
+						g_Flag.gyro_use_flag = 1 - g_Flag.gyro_use_flag;
+					}
 			}
-			
-			/*********************** r键上升沿控制一键自动复位 **************************/
-			if(r_rising_flag == 1)
-			{
-//					g_Flag.auto_mode = MINE_MIDAIR;
-			}
-			
-			/*********************** f键上升沿控制自动空接矿石 **************************/
-			if(f_rising_flag == 1)
-			{
-//				g_Flag.auto_mode = MINE_MIDAIR;
-			}
-			
-			/*********************** g键上升沿控制夹子打开/关闭 **************************/
-			if(g_rising_flag == 1)
-			{
-				g_Flag.clamp_flag = 1 - g_Flag.clamp_flag;
-			}
-			
-			/*********************** z键上升沿控制救援打开/关闭 **************************/
-			if(z_rising_flag == 1)
-			{
-				g_Flag.rescue_solenoid_flag = 1 - g_Flag.rescue_solenoid_flag;
-			}
-			
-			/*********************** x键上升沿控制复活打开/关闭 **************************/
-			if(x_rising_flag == 1)
-			{
-				g_Flag.resurge_solenoid_flag = 1 - g_Flag.resurge_solenoid_flag;
-			}
-			
-			/*********************** c键上升沿控制叉车打开/关闭 **************************/
-			if(c_rising_flag == 1)
-			{
-				g_Flag.fork_solenoid_flag = 1 - g_Flag.fork_solenoid_flag;
-			}
-			
-			/*********************** v键上升沿强制退出自动模式  **************************/
-			if(v_rising_flag == 1)
-			{
-				g_Flag.auto_mode = AUTO_MODE_OFF;
-			}
-			
-			/*********************** b键上升沿控制自动兑换 **************************/
-			if(b_rising_flag == 1)
-			{
-				g_Flag.auto_mode = EXCHANGE_MINE;
-			}
-			
+				
 			/*********************** 自动模式下底盘受上层控制 **************************/
 			if(g_Flag.auto_mode != AUTO_MODE_OFF)
 			{
@@ -312,53 +331,53 @@ void rcModeFlagChange(void)
 void controlStateGet(void)															//获取控制模式
 {
 	
-	if (rc_ctrl.rc.s2 == UP)															//获取控制模式
-	{
-		switch(rc_ctrl.rc.s1)
-		{
-			case UP:
-				g_Flag.control_mode = KEY_MODE;							//键鼠模式
-				g_Flag.control_target = NORMAL_MODE;			//正常模式
-//				g_Flag.auto_mode			= AUTO_MODE_OFF;		//默认关闭自动模式
-				break;
-			case MIDDLE:
-				if(g_Flag.control_target == RC_MODE)
-						g_Flag.control_target = CHASSIS_MODE;		//遥控器底盘运动模式
-				else
-						g_Flag.control_mode = KEY_MODE;
-				break;
-			case DOWN:
-				g_Flag.control_mode = RC_MODE;					//遥控模式
-				break;
-			default:
-				g_Flag.control_mode = KEY_MODE;	
-				break;
-		}
-	}
-	
-	if(rc_ctrl.rc.s2 == DOWN && rc_ctrl.rc.s1 == DOWN)
-	{
-		g_Flag.control_target = POWER_OFF_MODE;
-		g_Flag.control_mode = KEY_MODE;	
-	}
-	
-//	if (rc_ctrl.rc.s2 == DOWN)															//获取控制模式
+//	if (rc_ctrl.rc.s2 == UP)															//获取控制模式
 //	{
 //		switch(rc_ctrl.rc.s1)
 //		{
 //			case UP:
-//				g_Flag.control_mode = RC_MODE;				//遥控模式
+//				g_Flag.control_mode = KEY_MODE;							//键鼠模式
+//				g_Flag.control_target = NORMAL_MODE;			//正常模式
+////				g_Flag.auto_mode			= AUTO_MODE_OFF;		//默认关闭自动模式
 //				break;
 //			case MIDDLE:
-//				g_Flag.control_mode = KEY_MODE;				//键鼠模式
+//				if(g_Flag.control_target == RC_MODE)
+//						g_Flag.control_target = CHASSIS_MODE;		//遥控器底盘运动模式
+//				else
+//						g_Flag.control_mode = KEY_MODE;
 //				break;
 //			case DOWN:
-//				g_Flag.control_target = POWER_OFF_MODE;	//掉电模式
+//				g_Flag.control_mode = RC_MODE;					//遥控模式
 //				break;
 //			default:
+//				g_Flag.control_mode = KEY_MODE;	
 //				break;
 //		}
 //	}
+//	
+//	if(rc_ctrl.rc.s2 == DOWN && rc_ctrl.rc.s1 == DOWN)
+//	{
+//		g_Flag.control_target = POWER_OFF_MODE;
+//		g_Flag.control_mode = KEY_MODE;	
+//	}
+	
+	if (rc_ctrl.rc.s2 == DOWN)															//获取控制模式
+	{
+		switch(rc_ctrl.rc.s1)
+		{
+			case UP:
+				g_Flag.control_mode = RC_MODE;				//遥控模式
+				break;
+			case MIDDLE:
+				g_Flag.control_mode = KEY_MODE;				//键鼠模式
+				break;
+			case DOWN:
+				g_Flag.control_target = POWER_OFF_MODE;	//掉电模式
+				break;
+			default:
+				break;
+		}
+	}
 }
 
 
@@ -407,45 +426,7 @@ void motionTargetGet(void)															//获取运动模式
 			}
 		}
 	}
-//	else if (g_Flag.control_mode == KEY_MODE)	//键鼠模式
-//	{
-//		//掉电模式
-//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.b == 1)
-//		{
-//			g_Flag.control_target = POWER_OFF_MODE;
-//		}
-//		
-//		//底盘模式
-//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.z == 1)
-//		{
-//			g_Flag.control_target = CHASSIS_MODE;
-//		}
-//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.x == 1)
-//		{
-//			g_Flag.control_target = CHASSIS_MODE_STATIC;
-//		}
-//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.c == 1)
-//		{
-//			g_Flag.control_target = CHASSIS_MODE3;
-//		}
-//		
-//		//上层模式
-//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.q == 1)
-//		{
-//			g_Flag.control_target = SENIOR_UP_MODE;
-//		}
-//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.e == 1)
-//		{
-//			g_Flag.control_target = SENIOR_MODE2;
-//		}
-//		if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.r == 1)
-//		{
-//			g_Flag.control_target = SENIOR_AUTO_MODE;
-//		}
-//		
-//	}
 	
-
 }
 
 

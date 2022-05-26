@@ -167,6 +167,7 @@ void flagModeSwitch(void)
 		if(g_Flag.control_mode == KEY_MODE)
 		{
 				g_Flag.auto_mode = data_receive[4];
+				g_Flag.camera_pitch = data_receive[5];
 				if(g_Flag.auto_mode == AUTO_MODE_OFF)
 				{
 					g_Flag.clamp_solenoid_flag = FlagOfMaster.flag.clamp_flag;
@@ -177,7 +178,6 @@ void flagModeSwitch(void)
 					g_Flag.midair_solenoid_flag = FlagOfMaster.flag.midair_solenoid_flag;
 				}
 		}
-		
 		else if(g_Flag.control_mode == RC_MODE)
 		{
 				if(g_Flag.control_target == SENIOR_AUTO_MODE)

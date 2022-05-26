@@ -172,7 +172,7 @@ void motor_cal_task(void)
 		motorCurrentSend(0,0,0,0);
 	else
 //		motorCurrentSend(0,LiftTrack_Current[0],-LiftTrack_Current[0],Rotate_Motor_Current);
-		motorCurrentSend(0,LiftTrack_Current[0],-LiftTrack_Current[0],0);
+		motorCurrentSend(LiftTrack_Current[0],0,-LiftTrack_Current[0],0);
 
 }
 

@@ -19,10 +19,10 @@ void motorPidInit(void)
 		warehouse_position_init = pos_warehouse;
 //		LiftJourney_1 = 80000;
 //		LiftJourney_1 = 180000;
-		LiftJourney_1 = 120000;
-		LiftJourney_2	= 110000;
+		LiftJourney_1 = 135000;
+		LiftJourney_2	= 125000;
 	
-		lift_offset = 30000;
+		lift_offset = 15000;
 		warehouse_journey = 85000;
 	
 		//左侧电机参数(抬)

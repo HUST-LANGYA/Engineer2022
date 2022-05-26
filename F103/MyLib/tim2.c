@@ -68,7 +68,7 @@ void CameraSteeringEngine_Set(void)
 	switch(g_Flag.camera_pitch)
 	{
 		case CAMERA_DEFAULT:
-			
+			camera_pitch = 1450;	
 		break;
 		
 		case CAMERA_PITCH_UP:
@@ -76,7 +76,7 @@ void CameraSteeringEngine_Set(void)
 		break;
 		
 		case CAMERA_PITCH_DOWN:
-			
+			camera_pitch = 1650;	
 		break;
 		
 		default:

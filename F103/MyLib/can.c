@@ -77,10 +77,10 @@ void CAN1_Config(void)
 	CAN_FilterInitStructure.CAN_FilterNumber=1;	 
 	CAN_FilterInitStructure.CAN_FilterMode=CAN_FilterMode_IdList;	 // 标识符屏蔽位模式
 	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_16bit;   // 32位过滤器
-	CAN_FilterInitStructure.CAN_FilterIdHigh=0x401<<5;			// 过滤器标识符
-	CAN_FilterInitStructure.CAN_FilterIdLow=0x402<<5;				
-	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0x403<<5;		// 过滤器屏蔽标识符
-	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x404<<5;
+	CAN_FilterInitStructure.CAN_FilterIdHigh=0x406<<5;			// 过滤器标识符
+	CAN_FilterInitStructure.CAN_FilterIdLow=0x000<<5;				
+	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0x000<<5;		// 过滤器屏蔽标识符
+	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x000<<5;
 	CAN_FilterInitStructure.CAN_FilterFIFOAssignment=CAN_FIFO1;	 // FIFO0指向过滤器
 	CAN_FilterInitStructure.CAN_FilterActivation=ENABLE;
 	CAN_FilterInit(&CAN_FilterInitStructure);
@@ -109,7 +109,7 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 		switch(rx_message.StdId)
 		{
 			//右抬升电机
-			case 0x202:
+			case 0x201:
 				Track_Motor[0].angle = (rx_message.Data[0] << 8) | rx_message.Data[1];
 				Track_Motor[0].speed = (rx_message.Data[2] << 8) | rx_message.Data[3];
 				Track_Motor[0].flow = (rx_message.Data[4] << 8) | rx_message.Data[5];
@@ -162,7 +162,7 @@ void CAN1_RX1_IRQHandler(void)
 		switch(rx_message.StdId)
 		{
 			//接受B板数据
-			case 0x401:
+			case 0x406:
 				data_receive[0] = rx_message.Data[0];//'!'
 				data_receive[1] = rx_message.Data[1];//控制模式
 				data_receive[2] = rx_message.Data[2];//运动模式

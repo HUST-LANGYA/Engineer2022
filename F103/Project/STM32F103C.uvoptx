@@ -139,6 +139,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
+          <Name></Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -346,7 +347,7 @@
         <Ww>
           <count>33</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Track_Motor</ItemText>
+          <ItemText>Track_Motor,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>34</count>
@@ -397,6 +398,16 @@
           <count>43</count>
           <WinNumber>1</WinNumber>
           <ItemText>FlagOfMaster</ItemText>
+        </Ww>
+        <Ww>
+          <count>44</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>tx_message_t,0x10</ItemText>
+        </Ww>
+        <Ww>
+          <count>45</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>LiftTrack_Current,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

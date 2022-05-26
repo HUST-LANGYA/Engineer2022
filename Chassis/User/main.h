@@ -112,6 +112,12 @@
 #define RESURGE_SOLENOID_ON 					PAout(7)=1										//复活电磁阀打开
 #define RESURGE_SOLENOID_OFF 					PAout(7)=0										//复活电磁阀关闭
 
+//图传的状态
+#define CAMERA_DEFAULT 0
+#define CAMERA_PITCH_UP 1
+#define CAMERA_PITCH_DOWN 2
+#define CAMERA_YAW_REAR 3
+
 
 //IO??????
 #define BITBAND(addr, bitnum) ((addr & 0xF0000000)+0x2000000+((addr &0xFFFFF)<<5)+(bitnum<<2)) 
@@ -229,7 +235,6 @@ typedef union {
 }FlagWithSlave_t;													//和C板之间的标志位通讯
 
 
-
 typedef struct
 {
 	u8 control_mode;          	//控制模式
@@ -255,6 +260,9 @@ typedef struct
 	u8 rescue_solenoid_flag;					//救援电磁阀
 	u8 resurge_solenoid_flag;					//复活电磁阀
 	u8 fork_solenoid_flag;						//叉车电磁阀
+	
+	u8 camera_pitch;							//图传pitch轴
+	u8 camera_yaw;								//图传yaw轴
 	
 	u8 soft_reset_flag;								//软件复位
 	

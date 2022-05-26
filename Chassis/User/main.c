@@ -122,10 +122,14 @@ void gflagInit(void)
 	
 	g_Flag.warehouse_flag						= 0;							//默认仓库电机不动
 	
-	g_Flag.gyro_use_flag = 0;                      		//是否启用陀螺仪（默认为不使用）
+	g_Flag.gyro_use_flag = 1;                      		//是否启用陀螺仪（默认为使用）
 	
 	g_Flag.rescue_solenoid_flag = 0;									//初始时关闭救援模块
 	g_Flag.resurge_solenoid_flag = 0;									//初始时关闭复活模块
+	
+	
+	g_Flag.camera_pitch = CAMERA_DEFAULT;	//图传pitch轴
+	g_Flag.camera_yaw 	= CAMERA_DEFAULT;		//图传yaw轴
 	
 }
 
