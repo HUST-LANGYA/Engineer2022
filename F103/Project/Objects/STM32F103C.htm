@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\STM32F103C.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\STM32F103C.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Thu May 26 15:10:33 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Thu May 26 15:24:59 2022
 <BR><P>
 <H3>Maximum Stack Usage =        152 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -265,10 +265,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZeroCheck
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZeroCheck
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Calc
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 </UL>
 
 <P><STRONG><a name="[4b]"></a>__aeabi_fsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, fadd.o(.text))
@@ -348,8 +348,8 @@ Global Symbols
 <P><STRONG><a name="[49]"></a>_float_epilogue</STRONG> (Thumb, 92 bytes, Stack size 4 bytes, fepilogue.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = _float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
+<BR>[Called By]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 </UL>
 
 <P><STRONG><a name="[43]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
@@ -590,7 +590,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[3e]"></a>Motor_task</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, motortask.o(i.Motor_task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Motor_task &rArr; motor_cal_task &rArr; ZeroCheck_cal &rArr; ZeroCheck &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = Motor_task &rArr; motor_cal_task &rArr; ZeroCheck_cal &rArr; ZeroCheck &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_cal_task
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_Motor_Init
@@ -625,21 +625,21 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[74]"></a>PID_Calc</STRONG> (Thumb, 128 bytes, Stack size 16 bytes, pid.o(i.PID_Calc))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = PID_Calc &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = PID_Calc &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_cal_task
 </UL>
 
 <P><STRONG><a name="[71]"></a>Pid_Motor_Init</STRONG> (Thumb, 216 bytes, Stack size 8 bytes, motortask.o(i.Pid_Motor_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = Pid_Motor_Init &rArr; ZeroCheck_cal &rArr; ZeroCheck &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = Pid_Motor_Init &rArr; ZeroCheck_cal &rArr; ZeroCheck &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZeroCheck_cal
+<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZeroCheck_cal
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_task
 </UL>
@@ -682,8 +682,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[7a]"></a>Slave2Master</STRONG> (Thumb, 198 bytes, Stack size 24 bytes, can.o(i.Slave2Master))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Slave2Master &rArr; CAN_Transmit
+<P><STRONG><a name="[7a]"></a>Slave2Master</STRONG> (Thumb, 202 bytes, Stack size 8 bytes, can.o(i.Slave2Master))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Slave2Master &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Transmit
 </UL>
@@ -847,10 +847,10 @@ Global Symbols
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetCurrDataCounter
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
-<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Verify_modbusCRC16_Check_Sum
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
@@ -925,13 +925,13 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[97]"></a>ZeroCheck</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, zerocheck.o(i.ZeroCheck))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = ZeroCheck &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = ZeroCheck &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 </UL>
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZeroCheck_cal
 </UL>
@@ -945,11 +945,11 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[77]"></a>ZeroCheck_cal</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, zerocheck.o(i.ZeroCheck_cal))
-<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = ZeroCheck_cal &rArr; ZeroCheck &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
+<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = ZeroCheck_cal &rArr; ZeroCheck &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZeroCheck
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_cal_task
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_Motor_Init
@@ -1138,7 +1138,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ab]"></a>modeSwitch</STRONG> (Thumb, 206 bytes, Stack size 8 bytes, statetask.o(i.modeSwitch))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = modeSwitch &rArr; Slave2Master &rArr; CAN_Transmit
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = modeSwitch &rArr; Slave2Master &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Slave2Master
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flagModeSwitch
@@ -1176,15 +1176,15 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[72]"></a>motor_cal_task</STRONG> (Thumb, 612 bytes, Stack size 16 bytes, motortask.o(i.motor_cal_task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = motor_cal_task &rArr; ZeroCheck_cal &rArr; ZeroCheck &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = motor_cal_task &rArr; ZeroCheck_cal &rArr; ZeroCheck &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZeroCheck_cal
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motorCurrentSend
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Calc
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_task
 </UL>
@@ -1192,10 +1192,10 @@ Global Symbols
 <P><STRONG><a name="[70]"></a>motor_lift_task</STRONG> (Thumb, 414 bytes, Stack size 16 bytes, lifttask.o(i.motor_lift_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = motor_lift_task &rArr; __aeabi_frsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
+<LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lift_task
 </UL>

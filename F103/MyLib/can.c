@@ -203,30 +203,30 @@ void USB_HP_CAN1_TX_IRQHandler(void)
             d：0x204电流给定
   * @retval None
   */
-CanTxMsg tx_message_t;
+CanTxMsg tx_message_motor_1;
 void motorCurrentSend(int a, int b, int c, int d)
 {
     
-    tx_message_t.IDE = CAN_ID_STD;    
-    tx_message_t.RTR = CAN_RTR_DATA; 
-    tx_message_t.DLC = 0x08;    
-    tx_message_t.StdId = 0x200;
+    tx_message_motor_1.IDE = CAN_ID_STD;    
+    tx_message_motor_1.RTR = CAN_RTR_DATA; 
+    tx_message_motor_1.DLC = 0x08;    
+    tx_message_motor_1.StdId = 0x200;
 	
     a = LIMIT_MAX_MIN(a, 15000, -15000);
     b = LIMIT_MAX_MIN(b, 15000, -15000);
     c = LIMIT_MAX_MIN(c, 15000, -15000);
     d = LIMIT_MAX_MIN(d, 15000, -15000);
 	
-    tx_message_t.Data[0] = (unsigned char)((a >> 8) & 0xff);
-    tx_message_t.Data[1] = (unsigned char)(a & 0xff);  
-    tx_message_t.Data[2] = (unsigned char)((b >> 8) & 0xff);
-    tx_message_t.Data[3] = (unsigned char)(b & 0xff);
-    tx_message_t.Data[4] = (unsigned char)((c >> 8) & 0xff);
-    tx_message_t.Data[5] = (unsigned char)(c & 0xff);
-    tx_message_t.Data[6] = (unsigned char)((d >> 8) & 0xff); 
-    tx_message_t.Data[7] = (unsigned char)(d & 0xff);
+    tx_message_motor_1.Data[0] = (unsigned char)((a >> 8) & 0xff);
+    tx_message_motor_1.Data[1] = (unsigned char)(a & 0xff);  
+    tx_message_motor_1.Data[2] = (unsigned char)((b >> 8) & 0xff);
+    tx_message_motor_1.Data[3] = (unsigned char)(b & 0xff);
+    tx_message_motor_1.Data[4] = (unsigned char)((c >> 8) & 0xff);
+    tx_message_motor_1.Data[5] = (unsigned char)(c & 0xff);
+    tx_message_motor_1.Data[6] = (unsigned char)((d >> 8) & 0xff); 
+    tx_message_motor_1.Data[7] = (unsigned char)(d & 0xff);
 
-    CAN_Transmit(CAN1, &tx_message_t);
+    CAN_Transmit(CAN1, &tx_message_motor_1);
 }
 
 
@@ -238,29 +238,29 @@ void motorCurrentSend(int a, int b, int c, int d)
             d：0x208电流给定
   * @retval None
   */
+CanTxMsg tx_message_motor_2;
 void motorCurrentSend2(int a, int b, int c, int d)
 {
-    CanTxMsg tx_message;
-    tx_message.IDE = CAN_ID_STD;    
-    tx_message.RTR = CAN_RTR_DATA; 
-    tx_message.DLC = 0x08;    
-    tx_message.StdId = 0x1FF;
+    tx_message_motor_2.IDE = CAN_ID_STD;    
+    tx_message_motor_2.RTR = CAN_RTR_DATA; 
+    tx_message_motor_2.DLC = 0x08;    
+    tx_message_motor_2.StdId = 0x1FF;
 	
     a = LIMIT_MAX_MIN(a, 15000, -15000);
     b = LIMIT_MAX_MIN(b, 15000, -15000);
     c = LIMIT_MAX_MIN(c, 15000, -15000);
     d = LIMIT_MAX_MIN(d, 15000, -15000);
 	
-    tx_message.Data[0] = (unsigned char)((a >> 8) & 0xff);
-    tx_message.Data[1] = (unsigned char)(a & 0xff);  
-    tx_message.Data[2] = (unsigned char)((b >> 8) & 0xff);
-    tx_message.Data[3] = (unsigned char)(b & 0xff);
-    tx_message.Data[4] = (unsigned char)((c >> 8) & 0xff);
-    tx_message.Data[5] = (unsigned char)(c & 0xff);
-    tx_message.Data[6] = (unsigned char)((d >> 8) & 0xff); 
-    tx_message.Data[7] = (unsigned char)(d & 0xff);
+    tx_message_motor_2.Data[0] = (unsigned char)((a >> 8) & 0xff);
+    tx_message_motor_2.Data[1] = (unsigned char)(a & 0xff);  
+    tx_message_motor_2.Data[2] = (unsigned char)((b >> 8) & 0xff);
+    tx_message_motor_2.Data[3] = (unsigned char)(b & 0xff);
+    tx_message_motor_2.Data[4] = (unsigned char)((c >> 8) & 0xff);
+    tx_message_motor_2.Data[5] = (unsigned char)(c & 0xff);
+    tx_message_motor_2.Data[6] = (unsigned char)((d >> 8) & 0xff); 
+    tx_message_motor_2.Data[7] = (unsigned char)(d & 0xff);
 
-    CAN_Transmit(CAN1, &tx_message);
+    CAN_Transmit(CAN1, &tx_message_motor_2);
 }
 
 
@@ -272,13 +272,13 @@ void motorCurrentSend2(int a, int b, int c, int d)
             d：0x208电流给定
   * @retval None
   */
+CanTxMsg tx_message_2master;
 void Slave2Master(void)
 {
-    CanTxMsg tx_message;
-    tx_message.IDE = CAN_ID_STD;    
-    tx_message.RTR = CAN_RTR_DATA; 
-    tx_message.DLC = 0x08;    
-    tx_message.StdId = 0x301;
+    tx_message_2master.IDE = CAN_ID_STD;    
+    tx_message_2master.RTR = CAN_RTR_DATA; 
+    tx_message_2master.DLC = 0x08;    
+    tx_message_2master.StdId = 0x301;
 		
 		Flag2Master.flag.clamp_flag = g_Flag.clamp_solenoid_flag;
 		Flag2Master.flag.exchange_solenoid_flag = g_Flag.exchange_solenoid_flag;
@@ -292,17 +292,17 @@ void Slave2Master(void)
 		
 	
 	
-    tx_message.Data[0] = Data_Send_to_F105[0];
-    tx_message.Data[1] = Data_Send_to_F105[1];		//
-    tx_message.Data[2] = Data_Send_to_F105[2];
-    tx_message.Data[3] = Data_Send_to_F105[3];
-    tx_message.Data[4] = Data_Send_to_F105[4];
-    tx_message.Data[5] = Data_Send_to_F105[5];
-    tx_message.Data[6] = Data_Send_to_F105[6];
-    tx_message.Data[7] = Data_Send_to_F105[7];
+    tx_message_2master.Data[0] = Data_Send_to_F105[0];
+    tx_message_2master.Data[1] = Data_Send_to_F105[1];		//
+    tx_message_2master.Data[2] = Data_Send_to_F105[2];
+    tx_message_2master.Data[3] = Data_Send_to_F105[3];
+    tx_message_2master.Data[4] = Data_Send_to_F105[4];
+    tx_message_2master.Data[5] = Data_Send_to_F105[5];
+    tx_message_2master.Data[6] = Data_Send_to_F105[6];
+    tx_message_2master.Data[7] = Data_Send_to_F105[7];
 
 	
-    CAN_Transmit(CAN1, &tx_message);
+    CAN_Transmit(CAN1, &tx_message_2master);
 }
 
 /**
