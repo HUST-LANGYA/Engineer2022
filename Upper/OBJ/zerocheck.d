@@ -26,6 +26,7 @@
 ..\obj\zerocheck.o: ..\User\main.h
 ..\obj\zerocheck.o: ..\Mylib\tim.h
 ..\obj\zerocheck.o: ..\Mylib\can1.h
+..\obj\zerocheck.o: ..\Mylib\can2.h
 ..\obj\zerocheck.o: ..\Mylib\Nvic.h
 ..\obj\zerocheck.o: ..\Mylib\ZeroCheck.h
 ..\obj\zerocheck.o: ..\Mylib\Usart3.h

@@ -25,6 +25,7 @@
 ..\obj\pid.o: ..\User\main.h
 ..\obj\pid.o: ..\Mylib\tim.h
 ..\obj\pid.o: ..\Mylib\can1.h
+..\obj\pid.o: ..\Mylib\can2.h
 ..\obj\pid.o: ..\Mylib\Nvic.h
 ..\obj\pid.o: ..\Mylib\ZeroCheck.h
 ..\obj\pid.o: ..\Mylib\Usart3.h

@@ -204,12 +204,13 @@ void CAN1_RX1_IRQHandler(void)
 	}
 }
 
+
 /**
   * @brief  CAN1∑¢ÀÕ÷–∂œ
   * @param  None
   * @retval None
   */
-void USB_HP_CAN1_TX_IRQHandler(void)
+void CAN1_TX_IRQHandler(void)
 {
 	if(CAN_GetITStatus(CAN1,CAN_IT_TME)!= RESET) 
 	{

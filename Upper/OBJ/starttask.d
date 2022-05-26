@@ -26,6 +26,7 @@
 ..\obj\starttask.o: ..\User\main.h
 ..\obj\starttask.o: ..\Mylib\tim.h
 ..\obj\starttask.o: ..\Mylib\can1.h
+..\obj\starttask.o: ..\Mylib\can2.h
 ..\obj\starttask.o: ..\Mylib\Nvic.h
 ..\obj\starttask.o: ..\Mylib\ZeroCheck.h
 ..\obj\starttask.o: ..\Mylib\Usart3.h

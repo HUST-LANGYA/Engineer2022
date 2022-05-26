@@ -593,6 +593,11 @@
               <FileType>1</FileType>
               <FilePath>..\Mylib\ZeroCheck.c</FilePath>
             </File>
+            <File>
+              <FileName>can2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Mylib\can2.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

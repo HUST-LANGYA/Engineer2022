@@ -26,6 +26,7 @@
 ..\obj\forwardtask.o: ..\User\main.h
 ..\obj\forwardtask.o: ..\Mylib\tim.h
 ..\obj\forwardtask.o: ..\Mylib\can1.h
+..\obj\forwardtask.o: ..\Mylib\can2.h
 ..\obj\forwardtask.o: ..\Mylib\Nvic.h
 ..\obj\forwardtask.o: ..\Mylib\ZeroCheck.h
 ..\obj\forwardtask.o: ..\Mylib\Usart3.h

@@ -26,6 +26,7 @@
 ..\obj\clampangletask.o: ..\User\main.h
 ..\obj\clampangletask.o: ..\Mylib\tim.h
 ..\obj\clampangletask.o: ..\Mylib\can1.h
+..\obj\clampangletask.o: ..\Mylib\can2.h
 ..\obj\clampangletask.o: ..\Mylib\Nvic.h
 ..\obj\clampangletask.o: ..\Mylib\ZeroCheck.h
 ..\obj\clampangletask.o: ..\Mylib\Usart3.h

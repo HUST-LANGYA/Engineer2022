@@ -26,6 +26,7 @@
 ..\obj\iwdg.o: ..\User\main.h
 ..\obj\iwdg.o: ..\Mylib\tim.h
 ..\obj\iwdg.o: ..\Mylib\can1.h
+..\obj\iwdg.o: ..\Mylib\can2.h
 ..\obj\iwdg.o: ..\Mylib\Nvic.h
 ..\obj\iwdg.o: ..\Mylib\ZeroCheck.h
 ..\obj\iwdg.o: ..\Mylib\Usart3.h

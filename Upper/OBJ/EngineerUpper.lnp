@@ -34,6 +34,7 @@
 "..\obj\tim2.o"
 "..\obj\usart3.o"
 "..\obj\zerocheck.o"
+"..\obj\can2.o"
 "..\obj\modbuscrc16.o"
 "..\obj\pid.o"
 "..\obj\autoexectask.o"

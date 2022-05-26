@@ -26,6 +26,7 @@
 ..\obj\statetask.o: ..\User\main.h
 ..\obj\statetask.o: ..\Mylib\tim.h
 ..\obj\statetask.o: ..\Mylib\can1.h
+..\obj\statetask.o: ..\Mylib\can2.h
 ..\obj\statetask.o: ..\Mylib\Nvic.h
 ..\obj\statetask.o: ..\Mylib\ZeroCheck.h
 ..\obj\statetask.o: ..\Mylib\Usart3.h

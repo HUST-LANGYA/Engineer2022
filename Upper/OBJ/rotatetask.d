@@ -26,6 +26,7 @@
 ..\obj\rotatetask.o: ..\User\main.h
 ..\obj\rotatetask.o: ..\Mylib\tim.h
 ..\obj\rotatetask.o: ..\Mylib\can1.h
+..\obj\rotatetask.o: ..\Mylib\can2.h
 ..\obj\rotatetask.o: ..\Mylib\Nvic.h
 ..\obj\rotatetask.o: ..\Mylib\ZeroCheck.h
 ..\obj\rotatetask.o: ..\Mylib\Usart3.h

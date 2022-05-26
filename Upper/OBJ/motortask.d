@@ -26,6 +26,7 @@
 ..\obj\motortask.o: ..\User\main.h
 ..\obj\motortask.o: ..\Mylib\tim.h
 ..\obj\motortask.o: ..\Mylib\can1.h
+..\obj\motortask.o: ..\Mylib\can2.h
 ..\obj\motortask.o: ..\Mylib\Nvic.h
 ..\obj\motortask.o: ..\Mylib\ZeroCheck.h
 ..\obj\motortask.o: ..\Mylib\Usart3.h

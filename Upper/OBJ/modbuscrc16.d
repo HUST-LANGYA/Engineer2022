@@ -26,6 +26,7 @@
 ..\obj\modbuscrc16.o: ..\User\main.h
 ..\obj\modbuscrc16.o: ..\Mylib\tim.h
 ..\obj\modbuscrc16.o: ..\Mylib\can1.h
+..\obj\modbuscrc16.o: ..\Mylib\can2.h
 ..\obj\modbuscrc16.o: ..\Mylib\Nvic.h
 ..\obj\modbuscrc16.o: ..\Mylib\ZeroCheck.h
 ..\obj\modbuscrc16.o: ..\Mylib\Usart3.h

@@ -26,6 +26,7 @@
 ..\obj\lifttask.o: ..\User\main.h
 ..\obj\lifttask.o: ..\Mylib\tim.h
 ..\obj\lifttask.o: ..\Mylib\can1.h
+..\obj\lifttask.o: ..\Mylib\can2.h
 ..\obj\lifttask.o: ..\Mylib\Nvic.h
 ..\obj\lifttask.o: ..\Mylib\ZeroCheck.h
 ..\obj\lifttask.o: ..\Mylib\Usart3.h

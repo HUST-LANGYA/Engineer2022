@@ -18,6 +18,7 @@
 #include "delay.h"
 #include "tim.h"
 #include "can1.h"
+#include "can2.h"
 #include "Nvic.h"
 #include "ZeroCheck.h"
 #include "Usart3.h"

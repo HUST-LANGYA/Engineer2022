@@ -49,6 +49,7 @@ void BSP_init(void)
 	TIM3_Init();
 	TIM4_Init();
 	CAN1_Config();
+	can2Config();
 	gpioConfig();
 //	IWDG_Config(IWDG_Prescaler_128 ,625);
 }

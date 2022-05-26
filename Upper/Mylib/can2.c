@@ -15,22 +15,7 @@ CAN2与C板通讯以及陀螺仪数据接收，ID号如下：
 /*NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4)*/
 
 
-//rmc620_t forklift_motor[2];
 
-int lift_switch_flag;
-
-
-float yaw_angle;
-float gz;
-unsigned char Data_Receive_from_F103[8];//Data_Receive存的是接收到的从C板传来的数据
-unsigned char Data2C_tx[8]; //发送到c板的数据
-FlagWithSlave_t FlagOfSlave;		//接收到的C板标志位
-//unsigned char Laser_Left,Laser_Right,Laser_Mid;
-
-extern pid_Typedef chassis_pos_follow_pid;
-
-
-//rmc620_t chassis_motor[4];
 
 /**
   * @brief  配置CAN2
@@ -94,7 +79,7 @@ void can2Config(void)
 	CAN_FilterInitStructure.CAN_FilterMode=CAN_FilterMode_IdList;	 // 标识符屏蔽位模式
 //	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_32bit;   // 32位过滤器
 	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_16bit;   // 32位过滤器
-	CAN_FilterInitStructure.CAN_FilterIdHigh=0x301 << 5;			// 过滤器标识符
+	CAN_FilterInitStructure.CAN_FilterIdHigh=0x000 << 5;			// 过滤器标识符
 	CAN_FilterInitStructure.CAN_FilterIdLow=0x000 << 5;				
 	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0x000 << 5;		// 过滤器屏蔽标识符
 	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x000 << 5;
@@ -115,7 +100,7 @@ void can2Config(void)
 	CAN_FilterInitStructure.CAN_FilterNumber=15;	// 
 	CAN_FilterInitStructure.CAN_FilterMode=CAN_FilterMode_IdList;	 // 标识符屏蔽位模式
 	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_16bit;   // 32位过滤器
-	CAN_FilterInitStructure.CAN_FilterIdHigh=0x101 << 5;			// 过滤器标识符
+	CAN_FilterInitStructure.CAN_FilterIdHigh=0x000 << 5;			// 过滤器标识符
 	CAN_FilterInitStructure.CAN_FilterIdLow=0x000 <<5;				
 	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0x000 <<5;		
 	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x000 <<5;
@@ -143,19 +128,19 @@ void CAN2_RX0_IRQHandler(void)
 		switch(rx_message.StdId)
 		{
 			
-			case 0x301:
-				
-				Data_Receive_from_F103[0] = rx_message.Data[0];//'!'
-				Data_Receive_from_F103[1] = rx_message.Data[1];//
-				Data_Receive_from_F103[2] = rx_message.Data[2];//
-				Data_Receive_from_F103[3] = rx_message.Data[3];//
-				Data_Receive_from_F103[4] = rx_message.Data[4];//
-				Data_Receive_from_F103[5] = rx_message.Data[5];//
-				Data_Receive_from_F103[6] = rx_message.Data[6];
-				Data_Receive_from_F103[7] = rx_message.Data[7];
-				
-				FlagOfSlave.data = Data_Receive_from_F103[1];
-				break;
+//			case 0x301:
+//				
+//				Data_Receive_from_F103[0] = rx_message.Data[0];//'!'
+//				Data_Receive_from_F103[1] = rx_message.Data[1];//
+//				Data_Receive_from_F103[2] = rx_message.Data[2];//
+//				Data_Receive_from_F103[3] = rx_message.Data[3];//
+//				Data_Receive_from_F103[4] = rx_message.Data[4];//
+//				Data_Receive_from_F103[5] = rx_message.Data[5];//
+//				Data_Receive_from_F103[6] = rx_message.Data[6];
+//				Data_Receive_from_F103[7] = rx_message.Data[7];
+//				
+//				FlagOfSlave.data = Data_Receive_from_F103[1];
+//				break;
 					
 				
 			default:
@@ -181,15 +166,15 @@ void CAN2_RX1_IRQHandler(void)
 		
 		switch(rx_message.StdId)
 		{
-			case 0x101:
-				memcpy(&yaw_angle,&rx_message.Data,4);
-				memcpy(&gz,&(rx_message.Data[4]),4);
-				if(g_Flag.gyro_initial_flag == 0)
-				{
-					g_Flag.gyro_initial_flag = 1;
-					chassis_pos_follow_pid.SetPoint = yaw_angle;
-				}
-				break;
+//			case 0x101:
+//				memcpy(&yaw_angle,&rx_message.Data,4);
+//				memcpy(&gz,&(rx_message.Data[4]),4);
+//				if(g_Flag.gyro_initial_flag == 0)
+//				{
+//					g_Flag.gyro_initial_flag = 1;
+//					chassis_pos_follow_pid.SetPoint = yaw_angle;
+//				}
+//				break;
 				
 			default:
 				break;
@@ -201,22 +186,7 @@ void CAN2_RX1_IRQHandler(void)
 }	
 
 
-///**
-//  * @brief  CAN2接收中断，FIFO1
-//  * @param  None
-//  * @retval None
-//  */
-//CanRxMsg rx_message_1;	
-//void CAN2_RX1_IRQHandler(void)
-//{
-//	if(CAN_GetITStatus(CAN2, CAN_IT_FMP1) != RESET) 
-//	{
-//    CAN_Receive(CAN2, CAN_FIFO1, &rx_message_1);	
 
-//				
-//		CAN_ClearITPendingBit(CAN2, CAN_IT_FMP1);
-//	}
-//}
 
 
 
@@ -237,73 +207,73 @@ void CAN2_TX_IRQHandler(void)
 
 
 
-/**
-  * @brief  CAN1发送数据 从B板向C板（Master -> Slave）
-  * @param  a：
-            b：
-            c：
-            d：
-  * @retval None
-  */
-void can2Master2Slave(void)
-{
-    CanTxMsg tx_message;
-    tx_message.IDE = CAN_ID_STD;    
-    tx_message.RTR = CAN_RTR_DATA; 
-    tx_message.DLC = 0x08;    
-    tx_message.StdId = 0x406;
-	
-		Data2C_tx[0] = '!';
+///**
+//  * @brief  CAN1发送数据 从B板向C板（Master -> Slave）
+//  * @param  a：
+//            b：
+//            c：
+//            d：
+//  * @retval None
+//  */
+//void can2Master2Slave(void)
+//{
+//    CanTxMsg tx_message;
+//    tx_message.IDE = CAN_ID_STD;    
+//    tx_message.RTR = CAN_RTR_DATA; 
+//    tx_message.DLC = 0x08;    
+//    tx_message.StdId = 0x406;
+//	
+//		Data2C_tx[0] = '!';
 
-    tx_message.Data[0] = Data2C_tx[0];
-    tx_message.Data[1] = Data2C_tx[1];
-    tx_message.Data[2] = Data2C_tx[2];
-    tx_message.Data[3] = Data2C_tx[3];
-    tx_message.Data[4] = Data2C_tx[4];
-    tx_message.Data[5] = Data2C_tx[5];
-    tx_message.Data[6] = Data2C_tx[6];
-    tx_message.Data[7] = Data2C_tx[7];
+//    tx_message.Data[0] = Data2C_tx[0];
+//    tx_message.Data[1] = Data2C_tx[1];
+//    tx_message.Data[2] = Data2C_tx[2];
+//    tx_message.Data[3] = Data2C_tx[3];
+//    tx_message.Data[4] = Data2C_tx[4];
+//    tx_message.Data[5] = Data2C_tx[5];
+//    tx_message.Data[6] = Data2C_tx[6];
+//    tx_message.Data[7] = Data2C_tx[7];
 
-    CAN_Transmit(CAN2, &tx_message);
-}
+//    CAN_Transmit(CAN2, &tx_message);
+//}
 
-/**
-  * @brief  B板到C板发送数据初始化
-  * @param  None
-  * @retval None
-  */
-void Data_Send_to_Slave_Init(void)
-{
-	Data2C_tx[0] = '!';
-	Data2C_tx[1] = 0;//控制模式	宏定义
-	Data2C_tx[2] = 0;//运动模式	宏定义
-	Data2C_tx[3] = 0;//发送给C板的标志位
-	Data2C_tx[4] = 0;//自动控制标志位
-	Data2C_tx[5] = 0;//
-	Data2C_tx[6] = 0;
-	Data2C_tx[7] = 0;
-}
+///**
+//  * @brief  B板到C板发送数据初始化
+//  * @param  None
+//  * @retval None
+//  */
+//void Data_Send_to_Slave_Init(void)
+//{
+//	Data2C_tx[0] = '!';
+//	Data2C_tx[1] = 0;//控制模式	宏定义
+//	Data2C_tx[2] = 0;//运动模式	宏定义
+//	Data2C_tx[3] = 0;//发送给C板的标志位
+//	Data2C_tx[4] = 0;//自动控制标志位
+//	Data2C_tx[5] = 0;//
+//	Data2C_tx[6] = 0;
+//	Data2C_tx[7] = 0;
+//}
 
 
 
-/**
-  * @brief  获取YAW轴角度
-  * @param  None
-  * @retval None
-  */
-float getYawAngle(void)
-{
-	return yaw_angle;
-}
+///**
+//  * @brief  获取YAW轴角度
+//  * @param  None
+//  * @retval None
+//  */
+//float getYawAngle(void)
+//{
+//	return yaw_angle;
+//}
 
-/**
-  * @brief  获取YAW轴角速度
-  * @param  None
-  * @retval None
-  */
-float getGz(void)
-{
-	return gz;
-}
+///**
+//  * @brief  获取YAW轴角速度
+//  * @param  None
+//  * @retval None
+//  */
+//float getGz(void)
+//{
+//	return gz;
+//}
 
 

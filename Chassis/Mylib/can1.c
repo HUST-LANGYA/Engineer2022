@@ -220,6 +220,19 @@ void CAN1_RX1_IRQHandler(void)
 
 
 /**
+  * @brief  CAN1发送中断
+  * @param  None
+  * @retval None
+  */
+void CAN1_TX_IRQHandler(void)
+{
+	if(CAN_GetITStatus(CAN1,CAN_IT_TME)!= RESET) 
+	{
+		CAN_ClearITPendingBit(CAN1,CAN_IT_TME);
+	}
+}
+
+/**
   * @brief  CAN1发送数据1,内带电流限幅 -16384 ~ 0 ~ 16384
   * @param  a：0x201电流给定
             b：0x202电流给定

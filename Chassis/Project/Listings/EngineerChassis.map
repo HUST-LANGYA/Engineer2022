@@ -47,7 +47,7 @@ Section Cross References
     startup_stm32f10x_cl.o(RESET) refers to usart3.o(i.DMA1_Channel3_IRQHandler) for DMA1_Channel3_IRQHandler
     startup_stm32f10x_cl.o(RESET) refers to usart1.o(i.DMA1_Channel4_IRQHandler) for DMA1_Channel4_IRQHandler
     startup_stm32f10x_cl.o(RESET) refers to usart1.o(i.DMA1_Channel5_IRQHandler) for DMA1_Channel5_IRQHandler
-    startup_stm32f10x_cl.o(RESET) refers to can2.o(i.CAN1_TX_IRQHandler) for CAN1_TX_IRQHandler
+    startup_stm32f10x_cl.o(RESET) refers to can1.o(i.CAN1_TX_IRQHandler) for CAN1_TX_IRQHandler
     startup_stm32f10x_cl.o(RESET) refers to can1.o(i.CAN1_RX0_IRQHandler) for CAN1_RX0_IRQHandler
     startup_stm32f10x_cl.o(RESET) refers to can1.o(i.CAN1_RX1_IRQHandler) for CAN1_RX1_IRQHandler
     startup_stm32f10x_cl.o(RESET) refers to tim.o(i.TIM4_IRQHandler) for TIM4_IRQHandler
@@ -133,6 +133,8 @@ Section Cross References
     can1.o(i.CAN1_RX1_IRQHandler) refers to stm32f10x_can.o(i.CAN_Receive) for CAN_Receive
     can1.o(i.CAN1_RX1_IRQHandler) refers to stm32f10x_can.o(i.CAN_ClearITPendingBit) for CAN_ClearITPendingBit
     can1.o(i.CAN1_RX1_IRQHandler) refers to can1.o(.bss) for lift_track_motor
+    can1.o(i.CAN1_TX_IRQHandler) refers to stm32f10x_can.o(i.CAN_GetITStatus) for CAN_GetITStatus
+    can1.o(i.CAN1_TX_IRQHandler) refers to stm32f10x_can.o(i.CAN_ClearITPendingBit) for CAN_ClearITPendingBit
     can1.o(i.can1Config) refers to stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd) for RCC_APB2PeriphClockCmd
     can1.o(i.can1Config) refers to stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd) for RCC_APB1PeriphClockCmd
     can1.o(i.can1Config) refers to stm32f10x_gpio.o(i.GPIO_Init) for GPIO_Init
@@ -145,8 +147,6 @@ Section Cross References
     can1.o(i.can1Config) refers to stm32f10x_can.o(i.CAN_ITConfig) for CAN_ITConfig
     can1.o(i.chassisCurrentSend) refers to stm32f10x_can.o(i.CAN_Transmit) for CAN_Transmit
     can1.o(i.motorCurrentSend) refers to stm32f10x_can.o(i.CAN_Transmit) for CAN_Transmit
-    can2.o(i.CAN1_TX_IRQHandler) refers to stm32f10x_can.o(i.CAN_GetITStatus) for CAN_GetITStatus
-    can2.o(i.CAN1_TX_IRQHandler) refers to stm32f10x_can.o(i.CAN_ClearITPendingBit) for CAN_ClearITPendingBit
     can2.o(i.CAN2_RX0_IRQHandler) refers to stm32f10x_can.o(i.CAN_GetITStatus) for CAN_GetITStatus
     can2.o(i.CAN2_RX0_IRQHandler) refers to stm32f10x_can.o(i.CAN_Receive) for CAN_Receive
     can2.o(i.CAN2_RX0_IRQHandler) refers to stm32f10x_can.o(i.CAN_ClearITPendingBit) for CAN_ClearITPendingBit
@@ -1891,7 +1891,7 @@ Image Symbol Table
     i.BusFault_Handler                       0x08000888   Section        0  stm32f10x_it.o(i.BusFault_Handler)
     i.CAN1_RX0_IRQHandler                    0x0800088c   Section        0  can1.o(i.CAN1_RX0_IRQHandler)
     i.CAN1_RX1_IRQHandler                    0x08000970   Section        0  can1.o(i.CAN1_RX1_IRQHandler)
-    i.CAN1_TX_IRQHandler                     0x08000a2c   Section        0  can2.o(i.CAN1_TX_IRQHandler)
+    i.CAN1_TX_IRQHandler                     0x08000a2c   Section        0  can1.o(i.CAN1_TX_IRQHandler)
     i.CAN2_RX0_IRQHandler                    0x08000a48   Section        0  can2.o(i.CAN2_RX0_IRQHandler)
     i.CAN2_RX1_IRQHandler                    0x08000ac0   Section        0  can2.o(i.CAN2_RX1_IRQHandler)
     i.CAN2_TX_IRQHandler                     0x08000b2c   Section        0  can2.o(i.CAN2_TX_IRQHandler)
@@ -2402,7 +2402,7 @@ Image Symbol Table
     BusFault_Handler                         0x08000889   Thumb Code     4  stm32f10x_it.o(i.BusFault_Handler)
     CAN1_RX0_IRQHandler                      0x0800088d   Thumb Code   218  can1.o(i.CAN1_RX0_IRQHandler)
     CAN1_RX1_IRQHandler                      0x08000971   Thumb Code   174  can1.o(i.CAN1_RX1_IRQHandler)
-    CAN1_TX_IRQHandler                       0x08000a2d   Thumb Code    22  can2.o(i.CAN1_TX_IRQHandler)
+    CAN1_TX_IRQHandler                       0x08000a2d   Thumb Code    22  can1.o(i.CAN1_TX_IRQHandler)
     CAN2_RX0_IRQHandler                      0x08000a49   Thumb Code   108  can2.o(i.CAN2_RX0_IRQHandler)
     CAN2_RX1_IRQHandler                      0x08000ac1   Thumb Code    86  can2.o(i.CAN2_RX1_IRQHandler)
     CAN2_TX_IRQHandler                       0x08000b2d   Thumb Code    22  can2.o(i.CAN2_TX_IRQHandler)
@@ -2831,10 +2831,10 @@ Memory Map of the image
     0x08000888   0x00000004   Code   RO          229    i.BusFault_Handler  stm32f10x_it.o
     0x0800088c   0x000000e4   Code   RO         3345    i.CAN1_RX0_IRQHandler  can1.o
     0x08000970   0x000000bc   Code   RO         3346    i.CAN1_RX1_IRQHandler  can1.o
-    0x08000a2c   0x0000001c   Code   RO         3388    i.CAN1_TX_IRQHandler  can2.o
-    0x08000a48   0x00000078   Code   RO         3389    i.CAN2_RX0_IRQHandler  can2.o
-    0x08000ac0   0x0000006c   Code   RO         3390    i.CAN2_RX1_IRQHandler  can2.o
-    0x08000b2c   0x0000001c   Code   RO         3391    i.CAN2_TX_IRQHandler  can2.o
+    0x08000a2c   0x0000001c   Code   RO         3347    i.CAN1_TX_IRQHandler  can1.o
+    0x08000a48   0x00000078   Code   RO         3394    i.CAN2_RX0_IRQHandler  can2.o
+    0x08000ac0   0x0000006c   Code   RO         3395    i.CAN2_RX1_IRQHandler  can2.o
+    0x08000b2c   0x0000001c   Code   RO         3396    i.CAN2_TX_IRQHandler  can2.o
     0x08000b48   0x000000a8   Code   RO          629    i.CAN_ClearITPendingBit  stm32f10x_can.o
     0x08000bf0   0x00000038   Code   RO          631    i.CAN_DeInit        stm32f10x_can.o
     0x08000c28   0x00000108   Code   RO          633    i.CAN_FilterInit    stm32f10x_can.o
@@ -2928,10 +2928,10 @@ Memory Map of the image
     0x08002780   0x0000000e   Code   RO         5058    i.__mathlib_dbl_overflow  m_ws.l(dunder.o)
     0x0800278e   0x00000002   PAD
     0x08002790   0x00000010   Code   RO         5060    i.__mathlib_dbl_underflow  m_ws.l(dunder.o)
-    0x080027a0   0x00000174   Code   RO         3347    i.can1Config        can1.o
-    0x08002914   0x00000154   Code   RO         3393    i.can2Config        can2.o
+    0x080027a0   0x00000174   Code   RO         3348    i.can1Config        can1.o
+    0x08002914   0x00000154   Code   RO         3398    i.can2Config        can2.o
     0x08002a68   0x00000120   Code   RO         3868    i.chassisCal        chassistask.o
-    0x08002b88   0x000000bc   Code   RO         3348    i.chassisCurrentSend  can1.o
+    0x08002b88   0x000000bc   Code   RO         3349    i.chassisCurrentSend  can1.o
     0x08002c44   0x00000088   Code   RO         3869    i.chassisExec       chassistask.o
     0x08002ccc   0x000002c4   Code   RO         3870    i.chassisKeyModeCal  chassistask.o
     0x08002f90   0x00000138   Code   RO         3871    i.chassisModeNormal  chassistask.o
@@ -2945,8 +2945,8 @@ Memory Map of the image
     0x08003444   0x00000038   Code   RO         3819    i.crc16table        modbuscrc16.o
     0x0800347c   0x0000002c   Code   RO         3540    i.delay_ms          delay.o
     0x080034a8   0x0000006c   Code   RO         4443    i.eTaskGetState     tasks.o
-    0x08003514   0x0000000c   Code   RO         3395    i.getGz             can2.o
-    0x08003520   0x0000000c   Code   RO         3396    i.getYawAngle       can2.o
+    0x08003514   0x0000000c   Code   RO         3400    i.getGz             can2.o
+    0x08003520   0x0000000c   Code   RO         3401    i.getYawAngle       can2.o
     0x0800352c   0x00000034   Code   RO            2    i.gflagInit         main.o
     0x08003560   0x00000070   Code   RO            3    i.gpioConfig        main.o
     0x080035d0   0x0000015c   Code   RO         4084    i.keyModeFlagChange  statetask.o
@@ -2959,7 +2959,7 @@ Memory Map of the image
     0x08003a28   0x00000080   Code   RO         4086    i.motionTargetGet   statetask.o
     0x08003aa8   0x00000258   Code   RO         3983    i.motorCal          motorcaltask.o
     0x08003d00   0x0000001c   Code   RO         3984    i.motorCalTask      motorcaltask.o
-    0x08003d1c   0x000000c0   Code   RO         3349    i.motorCurrentSend  can1.o
+    0x08003d1c   0x000000c0   Code   RO         3350    i.motorCurrentSend  can1.o
     0x08003ddc   0x00000110   Code   RO         4012    i.motorFlag         motorflagtask.o
     0x08003eec   0x0000001c   Code   RO         4013    i.motorFlagTask     motorflagtask.o
     0x08003f08   0x00000138   Code   RO         3985    i.motorPidInit      motorcaltask.o
@@ -3070,7 +3070,7 @@ Memory Map of the image
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   0x00000014   Data   RW         1918    .data               stm32f10x_rcc.o
-    0x20000014   0x0000001d   Data   RW         3397    .data               can2.o
+    0x20000014   0x0000001d   Data   RW         3402    .data               can2.o
     0x20000031   0x00000003   PAD
     0x20000034   0x00000018   Data   RW         3458    .data               usart2.o
     0x2000004c   0x00000008   Data   RW         3507    .data               uart4.o
@@ -3091,7 +3091,7 @@ Memory Map of the image
     0x200001e4   0x00000018   Data   RW         4804    .data               heap_4.o
     0x200001fc   0x00000004   Data   RW         4854    .data               port.o
     0x20000200   0x00000034   Zero   RW            5    .bss                main.o
-    0x20000234   0x0000008c   Zero   RW         3350    .bss                can1.o
+    0x20000234   0x0000008c   Zero   RW         3351    .bss                can1.o
     0x200002c0   0x000000c8   Zero   RW         3457    .bss                usart2.o
     0x20000388   0x00000096   Zero   RW         3506    .bss                uart4.o
     0x2000041e   0x00000064   Zero   RW         3615    .bss                remote.o
@@ -3117,8 +3117,8 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        208         22        769          4          0       3501   algorithmofcrc.o
-      1168         52          0          0        140       9216   can1.o
-       648         66          0         29          0       4435   can2.o
+      1196         58          0          0        140       9665   can1.o
+       620         60          0         29          0       3986   can2.o
       2272        222          0        140        208      11697   chassistask.o
        320         38          0          8          0       2753   delay.o
          0          0          0          0          0       1508   event_groups.o

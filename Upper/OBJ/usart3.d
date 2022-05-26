@@ -26,6 +26,7 @@
 ..\obj\usart3.o: ..\User\main.h
 ..\obj\usart3.o: ..\Mylib\tim.h
 ..\obj\usart3.o: ..\Mylib\can1.h
+..\obj\usart3.o: ..\Mylib\can2.h
 ..\obj\usart3.o: ..\Mylib\Nvic.h
 ..\obj\usart3.o: ..\Mylib\ZeroCheck.h
 ..\obj\usart3.o: ..\Mylib\Usart3.h

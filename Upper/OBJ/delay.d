@@ -26,6 +26,7 @@
 ..\obj\delay.o: ..\Mylib\tim.h
 ..\obj\delay.o: ..\User\main.h
 ..\obj\delay.o: ..\Mylib\can1.h
+..\obj\delay.o: ..\Mylib\can2.h
 ..\obj\delay.o: ..\Mylib\Nvic.h
 ..\obj\delay.o: ..\Mylib\ZeroCheck.h
 ..\obj\delay.o: ..\Mylib\Usart3.h

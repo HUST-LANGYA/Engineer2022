@@ -26,6 +26,7 @@
 ..\obj\autoexectask.o: ..\User\main.h
 ..\obj\autoexectask.o: ..\Mylib\tim.h
 ..\obj\autoexectask.o: ..\Mylib\can1.h
+..\obj\autoexectask.o: ..\Mylib\can2.h
 ..\obj\autoexectask.o: ..\Mylib\Nvic.h
 ..\obj\autoexectask.o: ..\Mylib\ZeroCheck.h
 ..\obj\autoexectask.o: ..\Mylib\Usart3.h
