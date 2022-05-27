@@ -81,18 +81,6 @@ void Pid_Motor_Init(void)
 		Pid_Rotate_Motor_Positioin.D = 0.00f;
 		Pid_Rotate_Motor_Positioin.IMax = 500.0f;
 
-	
-////		Pid_Forward_Motor_speed.P = 20.0f;  //目前没给p的值
-//		Pid_Forward_Motor_speed.P = 6.5f;  //目前没给p的值
-//		Pid_Forward_Motor_speed.I = 0.0f;
-//		Pid_Forward_Motor_speed.D = 0.0f;
-//		Pid_Forward_Motor_speed.IMax = 500.0f;
-//		Pid_Forward_Motor_speed.SetPoint = 0.0f;
-////		Pid_Forward_Motor_Position.P = 6.5f;
-//		Pid_Forward_Motor_Position.P = 0.0f;
-//		Pid_Forward_Motor_Position.I = 0.0f;
-//		Pid_Forward_Motor_Position.D = 0.0f;
-//		Pid_Forward_Motor_Position.IMax = 500.0f;
 		
 	ZeroCheck_cal();	
 	LiftPositionInit[0] = Pos_LiftTrack[0];
@@ -115,6 +103,7 @@ void Pid_Motor_Init(void)
 //int limit = 5000;		//调试
 
 //int test11 = 1;
+int test_current = 0;
 void motor_cal_task(void)
 {
 	
@@ -173,6 +162,7 @@ void motor_cal_task(void)
 	else
 //		motorCurrentSend(0,LiftTrack_Current[0],-LiftTrack_Current[0],Rotate_Motor_Current);
 		motorCurrentSend(LiftTrack_Current[0],0,-LiftTrack_Current[0],0);
+//		motorCurrentSend(test_current,0,-test_current,0);
 
 }
 

@@ -80,6 +80,7 @@
 #define GET_MINE_MIDAIR		0X03		//空接接取矿石
 #define SMALL_ISLAND_MINE 0X04		//小资源岛取矿
 #define EXCHANGE_MINE			0X05		//兑换矿石
+#define RESET_SOFTWARE		0X06		//软件自动复位
 
 
 //拨杆位置

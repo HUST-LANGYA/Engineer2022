@@ -25,7 +25,8 @@ float gz;
 unsigned char Data_Receive_from_F103[8];//Data_Receive存的是接收到的从C板传来的数据
 unsigned char Data2C_tx[8]; //发送到c板的数据
 FlagWithSlave_t FlagOfSlave;		//接收到的C板标志位
-//unsigned char Laser_Left,Laser_Right,Laser_Mid;
+
+rmc620_t warehouse_motor;
 
 extern pid_Typedef chassis_pos_follow_pid;
 
@@ -95,7 +96,7 @@ void can2Config(void)
 //	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_32bit;   // 32位过滤器
 	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_16bit;   // 32位过滤器
 	CAN_FilterInitStructure.CAN_FilterIdHigh=0x301 << 5;			// 过滤器标识符
-	CAN_FilterInitStructure.CAN_FilterIdLow=0x000 << 5;				
+	CAN_FilterInitStructure.CAN_FilterIdLow=0x201 << 5;				
 	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0x000 << 5;		// 过滤器屏蔽标识符
 	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x000 << 5;
 	CAN_FilterInitStructure.CAN_FilterFIFOAssignment=CAN_FIFO0;	 // FIFO0指向过滤器
@@ -157,6 +158,11 @@ void CAN2_RX0_IRQHandler(void)
 				FlagOfSlave.data = Data_Receive_from_F103[1];
 				break;
 					
+					
+			case 0x201:
+				warehouse_motor.angle = (rx_message.Data[0] << 8) | rx_message.Data[1];
+				warehouse_motor.speed = (rx_message.Data[2] << 8) | rx_message.Data[3];
+				break;
 				
 			default:
 				break;
@@ -251,7 +257,7 @@ void can2Master2Slave(void)
     tx_message.IDE = CAN_ID_STD;    
     tx_message.RTR = CAN_RTR_DATA; 
     tx_message.DLC = 0x08;    
-    tx_message.StdId = 0x406;
+    tx_message.StdId = 0x401;
 	
 		Data2C_tx[0] = '!';
 
@@ -267,6 +273,38 @@ void can2Master2Slave(void)
     CAN_Transmit(CAN2, &tx_message);
 }
 
+/**
+  * @brief  CAN2发送数据1,内带电流限幅 -16384 ~ 0 ~ 16384
+  * @param  a：0x201电流给定
+            b：0x202电流给定
+            c：0x203电流给定
+            d：0x204电流给定
+  * @retval None
+  */
+void warehouseCurrentSend(int a, int b, int c, int d)
+{
+		CanTxMsg tx_message;
+    tx_message.IDE = CAN_ID_STD;
+    tx_message.RTR = CAN_RTR_DATA;
+    tx_message.DLC = 0x08;
+    tx_message.StdId = 0x200;
+	
+    a = LIMIT_MAX_MIN(a, 10000, -10000);
+    b = LIMIT_MAX_MIN(b, 10000, -10000);
+    c = LIMIT_MAX_MIN(c, 10000, -10000);
+    d = LIMIT_MAX_MIN(d, 10000, -10000);
+	
+    tx_message.Data[0] = (unsigned char)((a >> 8) & 0xff);
+    tx_message.Data[1] = (unsigned char)(a & 0xff);
+    tx_message.Data[2] = (unsigned char)((b >> 8) & 0xff);
+    tx_message.Data[3] = (unsigned char)(b & 0xff);
+    tx_message.Data[4] = (unsigned char)((c >> 8) & 0xff);
+    tx_message.Data[5] = (unsigned char)(c & 0xff);
+    tx_message.Data[6] = (unsigned char)((d >> 8) & 0xff);
+    tx_message.Data[7] = (unsigned char)(d & 0xff);
+
+    CAN_Transmit(CAN2, &tx_message);
+}
 /**
   * @brief  B板到C板发送数据初始化
   * @param  None

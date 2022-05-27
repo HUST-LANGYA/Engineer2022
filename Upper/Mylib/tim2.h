@@ -9,7 +9,7 @@
 #define CAMERA_YAW_REAR 3
 
 
-void TIM2_PWM_Init(void);
+void TIM3_PWM_Init(void);
 void CameraSteeringEngine_Set(void);      
 
 #endif

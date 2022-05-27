@@ -74,38 +74,39 @@
 #define GET_MINE_MIDAIR		0X03		//空接接取矿石
 #define SMALL_ISLAND_MINE 0X04		//小资源岛取矿
 #define EXCHANGE_MINE			0X05		//兑换矿石
+#define RESET_SOFTWARE		0X06		//软件自动复位
 
 /*******接口宏定义*******/
 //前移气缸电磁阀
 #define FORWARD_SOLENOID_GPIO_PORT		GPIOA
 #define FORWARD_SOLENOID_GPIO_CLK			RCC_APB2Periph_GPIOA
-#define FORWARD_SOLENOID_GPIO_PIN			GPIO_Pin_1
-#define FORWARD_SOLENOID PAout(1)			//前移气缸电磁阀
+#define FORWARD_SOLENOID_GPIO_PIN			GPIO_Pin_4
+#define FORWARD_SOLENOID PAout(4)			//前移气缸电磁阀
 //夹取气缸电磁阀
 #define CLAMP_SOLENOID_GPIO_PORT			GPIOA
 #define CLAMP_SOLENOID_GPIO_CLK				RCC_APB2Periph_GPIOA
-#define CLAMP_SOLENOID_GPIO_PIN				GPIO_Pin_2
-#define CLAMP_SOLENOID   PAout(2)			//夹取气缸电磁阀
+#define CLAMP_SOLENOID_GPIO_PIN				GPIO_Pin_5
+#define CLAMP_SOLENOID   PAout(5)			//夹取气缸电磁阀
 //空接气缸电磁阀
 #define MIDAIR_SOLENOID_GPIO_PORT			GPIOA
 #define MIDAIR_SOLENOID_GPIO_CLK			RCC_APB2Periph_GPIOA
-#define MIDAIR_SOLENOID_GPIO_PIN			GPIO_Pin_3
-#define MIDAIR_SOLENOID  PAout(3)			//空接气缸电磁阀
+#define MIDAIR_SOLENOID_GPIO_PIN			GPIO_Pin_6
+#define MIDAIR_SOLENOID  PAout(6)			//空接气缸电磁阀
 //兑换气缸电磁阀
 #define EXCHANGE_SOLENOID_GPIO_PORT			GPIOA
 #define EXCHANGE_SOLENOID_GPIO_CLK			RCC_APB2Periph_GPIOA
-#define EXCHANGE_SOLENOID_GPIO_PIN			GPIO_Pin_4
-#define EXCHANGE_SOLENOID  PAout(4)			//空接气缸电磁阀
+#define EXCHANGE_SOLENOID_GPIO_PIN			GPIO_Pin_7
+#define EXCHANGE_SOLENOID  PAout(7)			//空接气缸电磁阀
 //光电门
 #define PHOTOGATE_GPIO_PORT							GPIOC
 #define PHOTOGATE_GPIO_CLK							RCC_APB2Periph_GPIOC
-#define PHOTOGATE_GPIO_PIN							GPIO_Pin_13
-#define PHOTOGATE  PCin(13)						//光电门
+#define PHOTOGATE_GPIO_PIN							GPIO_Pin_5
+#define PHOTOGATE  PCin(5)						//光电门
  //光电门地线开关
-#define PHOTOGATE_GND_GPIO_PORT							GPIOA
-#define PHOTOGATE_GND_GPIO_CLK							RCC_APB2Periph_GPIOA
-#define PHOTOGATE_GND_GPIO_PIN							GPIO_Pin_0
-#define PHOTOGATE_GND  PAout(0)						//光电门地线开关
+#define PHOTOGATE_GND_GPIO_PORT							GPIOC
+#define PHOTOGATE_GND_GPIO_CLK							RCC_APB2Periph_GPIOC
+#define PHOTOGATE_GND_GPIO_PIN							GPIO_Pin_4
+#define PHOTOGATE_GND  PAout(4)						//光电门地线开关
 
 
 //IO??????

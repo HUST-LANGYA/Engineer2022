@@ -68,6 +68,14 @@ typedef enum{
 	SE_LAND_ONCE			= 48,					//四连杆降落
 	SE_LAND_TWICE			= 49,					//二级抬升降落
 	
+	
+/***************************软件复位用到的状态**************************/
+	//'SR'，'state reset'缩写
+	SR_FORWARD 				= 81,					//复位前移
+	SR_LIFT_ONCE			= 82,					//复位四连杆
+	SR_MID						= 83,					//复位空接气缸
+	SR_LIFT_TWICE			= 84,					//复位二级抬升
+	
 }FLAG_AUTOEXEC_ENUM;
 
 
@@ -85,6 +93,7 @@ void autoSmallIslandMine(void);
 void autoMineMidair(void);
 void autoExchange(void);
 void autoGetMineMidair(void);
+void autoResetSoftware(void);
 
 
 

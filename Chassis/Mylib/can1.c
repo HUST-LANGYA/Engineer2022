@@ -30,7 +30,7 @@ CAN1控制底盘移动、抬升两电机、底盘仓库旋转电机，ID号如下：
 /*NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4)*/
 
 rmc620_t chassis_motor[4];
-rmc620_t lift_track_motor[2], warehouse_motor;
+rmc620_t lift_track_motor[2];
 
 /**
   * @brief  配置CAN1
@@ -111,8 +111,8 @@ void can1Config(void)
 	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_16bit;   // 32位过滤器
 	CAN_FilterInitStructure.CAN_FilterIdHigh=0x205 <<5;			// 过滤器标识符
 	CAN_FilterInitStructure.CAN_FilterIdLow=0x206 <<5;				
-	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0x207 <<5;		// 过滤器屏蔽标识符
-	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x208 <<5;
+	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0x000 <<5;		// 过滤器屏蔽标识符
+	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x000 <<5;
 	CAN_FilterInitStructure.CAN_FilterFIFOAssignment=CAN_FIFO1;	 // FIFO0指向过滤器
 	CAN_FilterInitStructure.CAN_FilterActivation=ENABLE;
 	CAN_FilterInit(&CAN_FilterInitStructure);
@@ -202,11 +202,6 @@ void CAN1_RX1_IRQHandler(void)
 			case 0x206:
 				lift_track_motor[1].angle = (rx_message.Data[0] << 8) | rx_message.Data[1];
 				lift_track_motor[1].speed = (rx_message.Data[2] << 8) | rx_message.Data[3];
-				break;
-					
-			case 0x207:
-				warehouse_motor.angle = (rx_message.Data[0] << 8) | rx_message.Data[1];
-				warehouse_motor.speed = (rx_message.Data[2] << 8) | rx_message.Data[3];
 				break;
 			
 			default:

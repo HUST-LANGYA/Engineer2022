@@ -103,35 +103,15 @@ void motorCal(void)
 	warehouse_current = LIMIT_MAX_MIN(PID_Calc(&pid_warehouse_speed,(float)warehouse_motor.speed),13000,-13000);
 	
 	
-	
-	
-//	
-//	/*前移的两个电机控制*/
-//	//位置环（左抬升）
-//	Pid_Forward_Motor_speed[0].SetPoint = PID_Calc(&Pid_Forward_Motor_Position[0],pos_warehouse[0]);
-//	Pid_Forward_Motor_speed[0].SetPoint = LIMIT_MAX_MIN(Pid_Forward_Motor_speed[0].SetPoint, 5000, -5000);
-//	//位置环（右抬升）
-//	Pid_Forward_Motor_speed[1].SetPoint = PID_Calc(&Pid_Forward_Motor_Position[1],pos_warehouse[1]);
-//	Pid_Forward_Motor_speed[1].SetPoint = LIMIT_MAX_MIN(Pid_Forward_Motor_speed[1].SetPoint, 5000, -5000);
-//	//速度环（左抬升）
-//	Forward_Motor_Current[0] = LIMIT_MAX_MIN(PID_Calc(&Pid_Forward_Motor_speed[0],(float)forward_motor[0].speed),13000,-13000);
-//	//速度环（右抬升）
-//	Forward_Motor_Current[1] = LIMIT_MAX_MIN(PID_Calc(&Pid_Forward_Motor_speed[1],(float)forward_motor[1].speed),13000,-13000);
-//	
-	
-	
-	
-
-	
 	//电机电流输出
-//	motorCurrentSend(LiftTrack_Current[0],LiftTrack_Current[1],warehouse_current,0);														
 	if(g_Flag.control_target == POWER_OFF_MODE)
 	{
-		motorCurrentSend(0,0,0,0);		
+			motorCurrentSend(0,0,0,0);		
+			warehouseCurrentSend(0,0,0,0);
 	}else	{
-		motorCurrentSend(LiftTrack_Current[0],-LiftTrack_Current[0],warehouse_current,0);			
+			motorCurrentSend(LiftTrack_Current[0],-LiftTrack_Current[0],0,0);		
+			warehouseCurrentSend(warehouse_current,0,0,0);
 	}	
-
 }
 
 void motorCalTask(void *pvParameters)

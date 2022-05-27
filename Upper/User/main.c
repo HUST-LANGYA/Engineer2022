@@ -43,11 +43,11 @@ void BSP_init(void)
 {
 	NVIC_PriorityGroupConfig( NVIC_PriorityGroup_4 );
 	
-	USART3_Configuration();
-//	TIM7_Init();
-	TIM2_PWM_Init();
-	TIM3_Init();
+//	USART3_Configuration();
+	TIM3_PWM_Init();
 	TIM4_Init();
+	TIM6_Configration();
+	TIM7_Configration();
 	CAN1_Config();
 	can2Config();
 	gpioConfig();

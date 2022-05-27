@@ -7,6 +7,7 @@ void can2Config(void);
 void can2Master2Slave(void);
 void Data_Send_to_Slave_Init(void);
 //void ForkLift_current_send(int left, int right);
+void warehouseCurrentSend(int a, int b, int c, int d);
 
 float getYawAngle(void);
 float getGz(void);

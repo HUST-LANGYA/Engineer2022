@@ -34,6 +34,11 @@ FLAG_AUTOEXEC_ENUM auto_small_enum_next 	= AUTOEXEC_DEFAULT;
 FLAG_AUTOEXEC_ENUM auto_exchange_enum 			= AUTOEXEC_DEFAULT;			
 FLAG_AUTOEXEC_ENUM auto_exchange_enum_next 	= AUTOEXEC_DEFAULT;
 
+//软件自动复位状态变量
+		//由于名字较长，命名时用'reset'代替
+FLAG_AUTOEXEC_ENUM auto_reset_enum 			= AUTOEXEC_DEFAULT;			
+FLAG_AUTOEXEC_ENUM auto_reset_enum_next = AUTOEXEC_DEFAULT;
+
 
 //以下为延时需要用到的变量
 u8 auto_delay_flag = 0;						//延时标志位，1表示正在延时
@@ -106,7 +111,8 @@ void autoexec(void)
 			auto_large_enum = auto_large_enum_next;
 			auto_midair_enum = auto_midair_enum_next;
 			auto_get_midair_enum = auto_get_midair_enum_next;
-			
+			auto_reset_enum = auto_reset_enum_next;	
+
 			auto_delay_en_flag 	= 1;
 			auto_delay_flag		 	= 0;
 		}
@@ -129,6 +135,9 @@ void autoexec(void)
 		
 		auto_exchange_enum 		 	= AUTOEXEC_DEFAULT;
 		auto_exchange_enum_next	= AUTOEXEC_DEFAULT;
+		
+		auto_reset_enum 				= AUTOEXEC_DEFAULT;
+		auto_reset_enum_next 		= AUTOEXEC_DEFAULT;
 	}
 	
 	g_Flag.auto_mode_pre = g_Flag.auto_mode;
@@ -156,6 +165,11 @@ void autoexec(void)
 			autoExchange();
 			break;
 		
+		case RESET_SOFTWARE:						//软件自动复位
+			autoResetSoftware();
+			break;
+		
+		
 		default:
 			break;
 	}
@@ -170,16 +184,6 @@ void autoexec(void)
 */
 void autoLargeIslandMine(void)
 {
-	
-//		SL_LIFT_ONCE 	= 11,					//一级抬升
-//		SL_FORWARD 		= 12,					//前移状态
-//		SL_CLAMP   		= 13,					//夹取矿石
-//		SL_LIFT_TWICE	= 14,					//二级抬升
-//		SL_BACK				= 15,					//缩回状态
-//		SL_LAND_ONCE	= 16,					//四连杆降落
-//		SL_LAND_TWICE	= 17,					//二级抬升降落
-//		SL_LOOSE			= 18,					//释放矿石
-
 /******************************************确定下一个状态******************************************/
 	switch(auto_large_enum)
 	{
@@ -615,4 +619,78 @@ void autoGetMineMidair(void)
 	
 }
 
+
+/**
+  	*@brief 		软件自动复位
+  	*@param		  void
+	*@return		  void
+*/
+void autoResetSoftware(void)
+{
+		switch(auto_reset_enum)
+	{
+		case AUTOEXEC_DEFAULT:
+			auto_reset_enum_next = SR_FORWARD;
+			auto_reset_enum = auto_reset_enum_next;
+//			//执行操作
+//			if()//根据条件判断本状态结束，并进入下一状态
+//			{
+//				auto_reset_enum = auto_reset_enum_next;
+//			}
+			break;
+		
+		case SR_FORWARD:
+			auto_reset_enum_next = SR_LIFT_ONCE;
+			if(g_Flag.forward_solenoid_flag == 1)
+			{
+				g_Flag.forward_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				auto_reset_enum = auto_reset_enum_next;
+			break;
+		
+		case SR_LIFT_ONCE:
+			auto_reset_enum_next = SR_MID;
+			if(g_Flag.lift_once_flag == 1)
+			{
+				g_Flag.lift_once_flag = 0;
+				autoModeDelay_ms(800);
+			}else
+				auto_reset_enum = auto_reset_enum_next;
+			break;
+
+		
+		case SR_MID:
+			auto_reset_enum_next = SR_LIFT_TWICE;
+			if(g_Flag.midair_solenoid_flag == 1)
+			{
+				g_Flag.midair_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				auto_reset_enum = auto_reset_enum_next;
+			break;
+		
+		case SR_LIFT_TWICE:
+			auto_reset_enum_next = ATUOEXEC_END;
+			if(g_Flag.lift_twice_flag == 1)
+			{
+				g_Flag.lift_twice_flag = 0;
+				autoModeDelay_ms(800);
+			}else
+				auto_reset_enum = auto_reset_enum_next;
+			break;
+		
+		case ATUOEXEC_END:
+			auto_reset_enum_next = AUTOEXEC_DEFAULT;
+			g_Flag.auto_mode = AUTO_MODE_OFF;
+			autoModeDelay_ms(100);
+			break;
+			
+		default:
+			auto_reset_enum = AUTOEXEC_DEFAULT;
+			auto_reset_enum_next = AUTOEXEC_DEFAULT;
+			break;
+	}
+	
+}
 

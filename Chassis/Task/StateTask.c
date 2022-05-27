@@ -135,7 +135,7 @@ void keyModeFlagChange(void)
 					/*********************** r键上升沿控制一键自动复位 **************************/
 					if(r_rising_flag == 1)
 					{
-		//					g_Flag.auto_mode = MINE_MIDAIR;
+						g_Flag.auto_mode = RESET_SOFTWARE;
 					}
 					
 					/*********************** f键上升沿控制自动空接矿石 **************************/
