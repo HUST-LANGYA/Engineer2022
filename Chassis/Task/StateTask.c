@@ -181,6 +181,55 @@ void keyModeFlagChange(void)
 					}
 			}else if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.shift == 0)
 			{
+				
+					/*********************** shift + q键 **************************/
+					if(q_rising_flag == 1)
+					{
+						
+					}
+					
+					/*********************** shift + e键 **************************/
+					if(e_rising_flag == 1)
+					{
+						
+					}
+					
+					/*********************** shift + r键 **************************/
+					if(r_rising_flag == 1)
+					{
+						
+					}
+					
+					/*********************** shift + f键 **************************/
+					if(f_rising_flag == 1)
+					{
+						
+					}
+					
+					/*********************** shift + g键 **************************/
+					if(g_rising_flag == 1)
+					{
+						
+					}
+					
+					/*********************** shift + z键控制仓库电机旋转 **************************/
+					if(z_rising_flag == 1)
+					{
+						g_Flag.warehouse_flag = 1 - g_Flag.warehouse_flag;
+					}
+					
+					/*********************** shift + x键控制爪子电机旋转 **************************/
+					if(x_rising_flag == 1)
+					{
+						g_Flag.rotate_flag = 1 - g_Flag.rotate_flag;
+					}
+					
+					/*********************** shift + c键 **************************/
+					if(c_rising_flag == 1)
+					{
+						
+					}
+				
 					/*********************** ctrl + v键控制图传pitch轴低头  **************************/
 					if(v_rising_flag == 1)
 					{
@@ -195,8 +244,91 @@ void keyModeFlagChange(void)
 					{
 						g_Flag.gyro_use_flag = 1 - g_Flag.gyro_use_flag;
 					}
+			}else if(rc_ctrl.key.ctrl == 0 && rc_ctrl.key.shift == 1)
+			{
+					/*********************** shift + q键控制大资源岛四连杆抬升 **************************/
+					if(q_rising_flag == 1)
+					{
+						if(g_Flag.lift_once_flag == 0)
+								g_Flag.lift_once_flag = 2;
+						else g_Flag.lift_once_flag = 0;
+					}
+					
+					/*********************** shift + e键控制前移电磁阀开关 **************************/
+					if(e_rising_flag == 1)
+					{
+						g_Flag.forward_flag = 1 - g_Flag.forward_flag;
+					}
+					
+					/*********************** shift + r键控制小资源岛二级抬升 **************************/
+					if(r_rising_flag == 1)
+					{
+						if(g_Flag.lift_down_twice_flag == 0)
+								g_Flag.lift_down_twice_flag = 1;
+						else g_Flag.lift_down_twice_flag = 0;
+					}
+					
+					/*********************** shift + f键 **************************/
+					if(f_rising_flag == 1)
+					{
+						
+					}
+					
+					/*********************** shift + g键 **************************/
+					if(g_rising_flag == 1)
+					{
+						
+					}
+					
+					/*********************** shift + z键控制小资源岛四连杆抬升 **************************/
+					if(z_rising_flag == 1)
+					{
+						if(g_Flag.lift_once_flag == 0)
+								g_Flag.lift_once_flag = 1;
+						else g_Flag.lift_once_flag = 0;
+					}
+					
+					/*********************** shift + x键控制兑换矿石二级抬升 **************************/
+					if(x_rising_flag == 1)
+					{
+						if(g_Flag.lift_down_twice_flag == 0)
+								g_Flag.lift_down_twice_flag = 2;
+						else g_Flag.lift_down_twice_flag = 0;
+					}
+					
+					/*********************** shift + c键控制空接气缸开关 **************************/
+					if(c_rising_flag == 1)
+					{
+						g_Flag.midair_solenoid_flag = 1 - g_Flag.midair_solenoid_flag;
+					}
+					
+					/*********************** shift + v键  **************************/
+					if(v_rising_flag == 1)
+					{
+						
+					}
+					
+					/*********************** shift + b键  **************************/
+					if(b_rising_flag == 1)
+					{
+						
+					}
+			}else if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.shift == 1)
+			{
+				
+					/*********************** ctrl + shift + b键  **************************/
+					if(b_rising_flag == 1)
+					{
+						
+					}
 			}
 				
+			
+			
+			
+			
+			
+			
 			/*********************** 自动模式下底盘受上层控制 **************************/
 			if(g_Flag.auto_mode != AUTO_MODE_OFF)
 			{

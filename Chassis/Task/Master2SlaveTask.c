@@ -43,6 +43,9 @@ void master2Slave(void)
 	Data2C_tx[3] = Flag2Slave.data;					//标志位
 	Data2C_tx[4] = g_Flag.auto_mode;				//自动模式
 	Data2C_tx[5] = g_Flag.camera_pitch;			//图传低抬头
+	
+	Data2C_tx[6] = g_Flag.rotate_flag;			//爪子旋转
+	g_Flag.rotate_flag = 0;
 
 	can2Master2Slave();
 	

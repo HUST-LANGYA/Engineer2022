@@ -5,7 +5,6 @@ uint32_t Lift_high_water;
 extern Pid_Typedef Pid_LiftTrack_Speed[2],Pid_LiftTrack_Positioin[2];//pid结构体
 //extern float Lift_pos_set_pre[2];							//记录抬升电机位置环上次的设定值
 extern int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,lift_once_offset;
-//extern unsigned char data_receive[8]; //C板接收的数据
 extern int volatile Pos_LiftTrack[2];
 
 
@@ -14,9 +13,6 @@ float test_p = 0.84;
 int test_ii = 1;
 void motor_lift_task(void)
 {
-//	if(data_receive[0] == '!' && data_receive[1] == 1 && data_receive[2] == 2)   //如果用遥控器控制并且运动模式为抬升模式
-//	{
-//		if(data_receive[3] == 0) //如果上层抬升标志位为0
 		if(g_Flag.lift_once_flag == 0) //如果上层抬升标志位为0
 		{
 			Lift_pos_set_pre[0] = LiftPositionInit[0] - lift_once_offset - LiftJourney_1;										//记录另一个状态

@@ -124,6 +124,7 @@ void flagInit(void)
 	//模式变量初始化
 	g_Flag.auto_mode = AUTO_MODE_OFF;
 	g_Flag.auto_mode_pre = AUTO_MODE_OFF;
+	g_Flag.auto_end_flag = 0;
 	//角度陀螺仪是否使用
 	g_Flag.argle_use_flag = 0;
 	

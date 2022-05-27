@@ -253,7 +253,8 @@ void autoLargeIslandMine(void)
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
-			g_Flag.auto_mode = AUTO_MODE_OFF;
+//			g_Flag.auto_mode = AUTO_MODE_OFF;
+			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
 			
@@ -361,7 +362,8 @@ void autoSmallIslandMine(void)
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
-			g_Flag.auto_mode = AUTO_MODE_OFF;
+//			g_Flag.auto_mode = AUTO_MODE_OFF;
+			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
 			
@@ -459,7 +461,8 @@ void autoExchange(void)
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
-			g_Flag.auto_mode = AUTO_MODE_OFF;
+//			g_Flag.auto_mode = AUTO_MODE_OFF;
+			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
 			
@@ -530,6 +533,7 @@ void autoMineMidair(void)
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
 			g_Flag.auto_mode = GET_MINE_MIDAIR;
+//			g_Flag.auto_end_flag = 1;
 //			autoModeDelay_ms(100);
 			break;
 		
@@ -607,7 +611,8 @@ void autoGetMineMidair(void)
 		
 		case ATUOEXEC_END:
 			auto_get_midair_enum_next = AUTOEXEC_DEFAULT;
-			g_Flag.auto_mode = AUTO_MODE_OFF;
+//			g_Flag.auto_mode = AUTO_MODE_OFF;
+			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
 		
@@ -651,7 +656,7 @@ void autoResetSoftware(void)
 		
 		case SR_LIFT_ONCE:
 			auto_reset_enum_next = SR_MID;
-			if(g_Flag.lift_once_flag == 1)
+			if(g_Flag.lift_once_flag != 0)
 			{
 				g_Flag.lift_once_flag = 0;
 				autoModeDelay_ms(800);
@@ -672,7 +677,7 @@ void autoResetSoftware(void)
 		
 		case SR_LIFT_TWICE:
 			auto_reset_enum_next = ATUOEXEC_END;
-			if(g_Flag.lift_twice_flag == 1)
+			if(g_Flag.lift_twice_flag != 0)
 			{
 				g_Flag.lift_twice_flag = 0;
 				autoModeDelay_ms(800);
@@ -682,7 +687,8 @@ void autoResetSoftware(void)
 		
 		case ATUOEXEC_END:
 			auto_reset_enum_next = AUTOEXEC_DEFAULT;
-			g_Flag.auto_mode = AUTO_MODE_OFF;
+//			g_Flag.auto_mode = AUTO_MODE_OFF;
+			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
 			

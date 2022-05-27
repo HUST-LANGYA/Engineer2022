@@ -4,8 +4,8 @@ uint32_t motor_cal_high_water;
 
 pid_Typedef Pid_LiftTrack_Speed[2],Pid_LiftTrack_Positioin[2], pid_warehouse_speed, pid_warehouse_position;//pid结构体
 int LiftTrack_Current[2], warehouse_current;//电流
-int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,lift_offset, warehouse_position_init, warehouse_journey;//初始位置,结束位置，行程距离
-
+int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,lift_offset,  warehouse_journey;//初始位置,结束位置，行程距离
+extern int warehouse_set;			//仓库旋转电机设定值
 
 extern rmc620_t lift_track_motor[2], warehouse_motor;//电机的反馈数据
 extern int pos_lift_track[2], pos_warehouse;
@@ -13,10 +13,6 @@ extern int pos_lift_track[2], pos_warehouse;
 
 void motorPidInit(void)
 {
-		ZeroCheck_cal();	
-		LiftPositionInit[0] = pos_lift_track[0];
-		LiftPositionInit[1] = pos_lift_track[1];
-		warehouse_position_init = pos_warehouse;
 //		LiftJourney_1 = 80000;
 //		LiftJourney_1 = 180000;
 		LiftJourney_1 = 135000;
@@ -63,12 +59,18 @@ void motorPidInit(void)
 		pid_warehouse_speed.SetPoint = 0.0f;
 		
 		
-
-	//让电机初始位置保持不动
-	Pid_LiftTrack_Positioin[0].SetPoint = LiftPositionInit[0];
-	Pid_LiftTrack_Positioin[1].SetPoint = LiftPositionInit[1];
-	
-	pid_warehouse_position.SetPoint = warehouse_position_init;
+		
+		ZeroCheck_cal();	
+		
+		LiftPositionInit[0] = pos_lift_track[0];
+		LiftPositionInit[1] = pos_lift_track[1];
+		warehouse_set = pos_warehouse;
+		
+		//让电机初始位置保持不动
+		Pid_LiftTrack_Positioin[0].SetPoint = LiftPositionInit[0];
+		Pid_LiftTrack_Positioin[1].SetPoint = LiftPositionInit[1];
+		
+		pid_warehouse_position.SetPoint = warehouse_set;
 
 }
 

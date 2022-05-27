@@ -191,12 +191,15 @@ typedef struct
 	
 	u8 auto_mode;												//自动执行模式选择
 	u8 auto_mode_pre;
+	u8 auto_end_flag;
 
 	u8 argle_use_flag;									//是否使用角度陀螺仪数据
 	u8 lift_once_flag;									//四连杆抬升标志
 	u8 lift_once_flag_pre;
 	u8 lift_twice_flag;									//二级抬升标志
+	
 	u8 rotate_flag;											//爪子旋转电机标志
+	u8 rotate_flag_pre;
 	
 	u8 forward_solenoid_flag;						//前移电磁阀标志
 	u8 clamp_solenoid_flag;							//夹取电磁阀标志

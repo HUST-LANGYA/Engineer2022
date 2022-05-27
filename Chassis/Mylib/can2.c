@@ -156,6 +156,10 @@ void CAN2_RX0_IRQHandler(void)
 				Data_Receive_from_F103[7] = rx_message.Data[7];
 				
 				FlagOfSlave.data = Data_Receive_from_F103[1];
+				if(Data_Receive_from_F103[2] == 1)
+					g_Flag.auto_mode = AUTO_MODE_OFF;
+				else
+					g_Flag.auto_mode = g_Flag.auto_mode;
 				break;
 					
 					

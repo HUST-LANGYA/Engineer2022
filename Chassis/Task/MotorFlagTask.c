@@ -4,8 +4,8 @@ uint32_t motor_flag_high_water;
 
 
 extern pid_Typedef Pid_LiftTrack_Speed[2],Pid_LiftTrack_Positioin[2], pid_warehouse_speed, pid_warehouse_position;//pid结构体
-extern int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,lift_offset, warehouse_position_init, warehouse_journey;//初始位置,结束位置，行程距离
-
+extern int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,lift_offset, warehouse_journey;//初始位置,结束位置，行程距离
+int warehouse_set;		//仓库旋转电机设定值
 
 
 
@@ -46,17 +46,21 @@ void motorFlag(void)
 		Pid_LiftTrack_Positioin[1].SetPoint = LiftPositionInit[1] + lift_offset + LiftJourney_2;
 	}
 	
-	/////////////////////////////////////////////////////仓库电机逻辑不对，有待修改///////////////////////////////////////
+	//仓库电机
 	if(g_Flag.warehouse_flag == 0)
 	{
-		pid_warehouse_position.SetPoint = warehouse_position_init;
+		warehouse_set = warehouse_set;
 	}else if(g_Flag.warehouse_flag == 1)
 	{
-		pid_warehouse_position.SetPoint = warehouse_position_init + warehouse_journey;
+		warehouse_set = warehouse_set + warehouse_journey;
+		g_Flag.warehouse_flag = 0;
 	}else if(g_Flag.warehouse_flag == 2)
 	{
-		pid_warehouse_position.SetPoint = warehouse_position_init - warehouse_journey;
+		warehouse_set = warehouse_set - warehouse_journey;
+		g_Flag.warehouse_flag = 0;
 	}
+	
+	pid_warehouse_position.SetPoint = warehouse_set;
 	
 }
 

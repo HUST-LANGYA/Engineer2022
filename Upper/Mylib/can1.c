@@ -3,7 +3,7 @@
 int can = 0;
 
 unsigned char Data_Send_to_F105[8];//准备发送给B板的数据
-unsigned char data_receive[8]; //C板接收的数据
+unsigned char data_receive[8] = {0,0,0,0,0,0,0,0},data_receive_pre[8] = {0,0,0,0,0,0,0,0}; //C板接收的数据
 
 FlagWithMaster_t Flag2Master;			//发送给B板标志位
 FlagWithMaster_t FlagOfMaster;		//接收到的B板标志位
@@ -190,7 +190,9 @@ void Slave2Master(void)
 		
 		Data_Send_to_F105[0] = '!';
 		Data_Send_to_F105[1] = Flag2Master.data;
-		
+	
+		Data_Send_to_F105[2] = g_Flag.auto_end_flag;
+		g_Flag.auto_end_flag = 0;
 	
 	
     tx_message.Data[0] = Data_Send_to_F105[0];

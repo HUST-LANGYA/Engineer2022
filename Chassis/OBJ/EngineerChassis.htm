@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\EngineerChassis.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\EngineerChassis.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Thu May 26 22:14:04 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Fri May 27 23:01:29 2022
 <BR><P>
 <H3>Maximum Stack Usage =        352 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -668,7 +668,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_cl.o(RESET)
 </UL>
-<P><STRONG><a name="[46]"></a>CAN2_RX0_IRQHandler</STRONG> (Thumb, 154 bytes, Stack size 24 bytes, can2.o(i.CAN2_RX0_IRQHandler))
+<P><STRONG><a name="[46]"></a>CAN2_RX0_IRQHandler</STRONG> (Thumb, 178 bytes, Stack size 24 bytes, can2.o(i.CAN2_RX0_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = CAN2_RX0_IRQHandler &rArr; CAN_GetITStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Receive
@@ -1553,7 +1553,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_init
 </UL>
 
-<P><STRONG><a name="[11a]"></a>keyModeFlagChange</STRONG> (Thumb, 316 bytes, Stack size 0 bytes, statetask.o(i.keyModeFlagChange))
+<P><STRONG><a name="[11a]"></a>keyModeFlagChange</STRONG> (Thumb, 544 bytes, Stack size 0 bytes, statetask.o(i.keyModeFlagChange))
 <BR><BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switchMode
 </UL>
 
@@ -1579,7 +1579,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[f0]"></a>master2Slave</STRONG> (Thumb, 136 bytes, Stack size 8 bytes, master2slavetask.o(i.master2Slave))
+<P><STRONG><a name="[f0]"></a>master2Slave</STRONG> (Thumb, 148 bytes, Stack size 8 bytes, master2slavetask.o(i.master2Slave))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = master2Slave &rArr; can2Master2Slave &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;can2Master2Slave
@@ -1642,7 +1642,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motorCal
 </UL>
 
-<P><STRONG><a name="[f7]"></a>motorFlag</STRONG> (Thumb, 236 bytes, Stack size 8 bytes, motorflagtask.o(i.motorFlag))
+<P><STRONG><a name="[f7]"></a>motorFlag</STRONG> (Thumb, 248 bytes, Stack size 8 bytes, motorflagtask.o(i.motorFlag))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = motorFlag
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f

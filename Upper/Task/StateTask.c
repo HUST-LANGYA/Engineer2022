@@ -11,14 +11,6 @@ uint32_t  Mode_Switch_high_water;
 
 
 extern FlagWithMaster_t FlagOfMaster;		//接收到的B板标志位
-//extern FLAG_AUTOEXEC_ENUM auto_large_enum;
-//extern FLAG_AUTOEXEC_ENUM auto_large_enum_next;
-
-//extern FLAG_AUTOEXEC_ENUM auto_midair_enum;
-//extern FLAG_AUTOEXEC_ENUM auto_midair_enum_next;
-
-//extern FLAG_AUTOEXEC_ENUM auto_small_enum;
-//extern FLAG_AUTOEXEC_ENUM auto_small_enum_next;
 
 extern DMA_InitTypeDef USART3_TX_dma;
 /**
@@ -82,12 +74,17 @@ void modeSwitch(void)
 	
 	flagModeSwitch();												//模式检测
 	
-	if(g_Flag.control_target == SENIOR_AUTO_MODE)		//自动模式检测
-			autoModeSwitch();
+//	if(g_Flag.control_target == SENIOR_AUTO_MODE)		//自动模式检测
+//			autoModeSwitch();
 	 
 	Slave2Master();								//发送数据给B板
 	CameraSteeringEngine_Set();   //控制图传舵机
-
+	
+	int i = 0;
+	for(i = 0; i < 8; i++)
+	{
+		data_receive_pre[i] = data_receive[i];
+	}
 	
 	switch(g_Flag.forward_solenoid_flag)
 	{
@@ -168,6 +165,9 @@ void flagModeSwitch(void)
 		{
 				g_Flag.auto_mode = data_receive[4];
 				g_Flag.camera_pitch = data_receive[5];
+				if((data_receive_pre[6]-data_receive[6]) == 1)
+					g_Flag.rotate_flag = 1;
+				
 				if(g_Flag.auto_mode == AUTO_MODE_OFF)
 				{
 					g_Flag.clamp_solenoid_flag = FlagOfMaster.flag.clamp_flag;

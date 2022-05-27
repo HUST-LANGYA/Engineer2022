@@ -251,6 +251,7 @@ typedef struct
 	u8 lift_down_twice_flag; 		//底盘控制二级抬升标志位，0为下降，1为抬高
 	
 	u8 warehouse_flag;					//仓库旋转电机标志位，0为不动，1为右旋转，2为左旋转
+	u8 rotate_flag;							//爪子旋转电机标志
 	
 	
 	u8 gyro_connect;
