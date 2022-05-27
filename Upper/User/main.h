@@ -106,7 +106,7 @@
 #define PHOTOGATE_GND_GPIO_PORT							GPIOC
 #define PHOTOGATE_GND_GPIO_CLK							RCC_APB2Periph_GPIOC
 #define PHOTOGATE_GND_GPIO_PIN							GPIO_Pin_4
-#define PHOTOGATE_GND  PAout(4)						//光电门地线开关
+#define PHOTOGATE_GND  PCout(4)						//光电门地线开关
 
 
 //IO??????
