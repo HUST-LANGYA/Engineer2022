@@ -1,12 +1,12 @@
 ..\obj\clampangletask.o: ..\Task\ClampAngleTask.c
 ..\obj\clampangletask.o: ..\Task\ClampAngleTask.h
 ..\obj\clampangletask.o: ..\User\main.h
-..\obj\clampangletask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\clampangletask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\clampangletask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\math.h
+..\obj\clampangletask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\clampangletask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\clampangletask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\clampangletask.o: ..\User\stm32f10x.h
 ..\obj\clampangletask.o: ..\User\core_cm3.h
-..\obj\clampangletask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\clampangletask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\clampangletask.o: ..\User\system_stm32f10x.h
 ..\obj\clampangletask.o: ..\User\stm32f10x_conf.h
 ..\obj\clampangletask.o: ..\Library\inc\stm32f10x_can.h
@@ -16,7 +16,7 @@
 ..\obj\clampangletask.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\clampangletask.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\clampangletask.o: ..\Library\inc\misc.h
-..\obj\clampangletask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\clampangletask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\clampangletask.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\clampangletask.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\clampangletask.o: ..\Library\inc\stm32f10x_dac.h
@@ -44,7 +44,7 @@
 ..\obj\clampangletask.o: ..\Task\RotateTask.h
 ..\obj\clampangletask.o: ..\User\FreeRTOSConfig.h
 ..\obj\clampangletask.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\clampangletask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\clampangletask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\clampangletask.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\clampangletask.o: ..\FreeRTOS\include\portable.h
 ..\obj\clampangletask.o: ..\FreeRTOS\include\deprecated_definitions.h

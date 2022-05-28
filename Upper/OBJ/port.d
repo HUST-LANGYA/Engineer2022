@@ -1,7 +1,7 @@
 ..\obj\port.o: ..\FreeRTOS\port\RVDS\ARM_CM3\port.c
 ..\obj\port.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\port.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
-..\obj\port.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\port.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\port.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\port.o: ..\User\FreeRTOSConfig.h
 ..\obj\port.o: ..\User\stm32f10x.h
 ..\obj\port.o: ..\User\core_cm3.h

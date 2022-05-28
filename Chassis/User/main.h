@@ -45,6 +45,8 @@
 #include "OfflineCheckTask.h"
 #include "MotorCalTask.h"
 #include "MotorFlagTask.h"
+//#include "LaserRangingTask.h"
+#include "ClampAngleTask.h"
 
 /*FreeRTOS*/
 #include "FreeRTOS.h"

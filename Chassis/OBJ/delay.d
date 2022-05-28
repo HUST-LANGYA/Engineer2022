@@ -1,10 +1,10 @@
 ..\obj\delay.o: ..\Mylib\delay.c
 ..\obj\delay.o: ..\Mylib\delay.h
 ..\obj\delay.o: ..\User\main.h
-..\obj\delay.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\delay.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\delay.o: ..\User\stm32f10x.h
 ..\obj\delay.o: ..\User\core_cm3.h
-..\obj\delay.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\delay.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\delay.o: ..\User\system_stm32f10x.h
 ..\obj\delay.o: ..\User\stm32f10x_conf.h
 ..\obj\delay.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\delay.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\delay.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\delay.o: ..\Library\inc\misc.h
-..\obj\delay.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\delay.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\delay.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\delay.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\delay.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\delay.o: ..\Task\OfflineCheckTask.h
 ..\obj\delay.o: ..\Task\MotorCalTask.h
 ..\obj\delay.o: ..\Task\MotorFlagTask.h
+..\obj\delay.o: ..\Task\ClampAngleTask.h
 ..\obj\delay.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\delay.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\delay.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\delay.o: ..\User\FreeRTOSConfig.h
 ..\obj\delay.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\delay.o: ..\FreeRTOS\include\portable.h

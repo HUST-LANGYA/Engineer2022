@@ -1,10 +1,10 @@
 ..\obj\nvic.o: ..\Mylib\nvic.c
 ..\obj\nvic.o: ..\Mylib\nvic.h
 ..\obj\nvic.o: ..\User\main.h
-..\obj\nvic.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\nvic.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\nvic.o: ..\User\stm32f10x.h
 ..\obj\nvic.o: ..\User\core_cm3.h
-..\obj\nvic.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\nvic.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\nvic.o: ..\User\system_stm32f10x.h
 ..\obj\nvic.o: ..\User\stm32f10x_conf.h
 ..\obj\nvic.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\nvic.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\nvic.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\nvic.o: ..\Library\inc\misc.h
-..\obj\nvic.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\nvic.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\nvic.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\nvic.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\nvic.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\nvic.o: ..\Task\OfflineCheckTask.h
 ..\obj\nvic.o: ..\Task\MotorCalTask.h
 ..\obj\nvic.o: ..\Task\MotorFlagTask.h
+..\obj\nvic.o: ..\Task\ClampAngleTask.h
 ..\obj\nvic.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\nvic.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\nvic.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\nvic.o: ..\User\FreeRTOSConfig.h
 ..\obj\nvic.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\nvic.o: ..\FreeRTOS\include\portable.h

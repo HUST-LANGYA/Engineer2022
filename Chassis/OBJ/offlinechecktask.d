@@ -1,10 +1,10 @@
 ..\obj\offlinechecktask.o: ..\Task\OfflineCheckTask.c
 ..\obj\offlinechecktask.o: ..\Task\OfflineCheckTask.h
 ..\obj\offlinechecktask.o: ..\User\main.h
-..\obj\offlinechecktask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\offlinechecktask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\offlinechecktask.o: ..\User\stm32f10x.h
 ..\obj\offlinechecktask.o: ..\User\core_cm3.h
-..\obj\offlinechecktask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\offlinechecktask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\offlinechecktask.o: ..\User\system_stm32f10x.h
 ..\obj\offlinechecktask.o: ..\User\stm32f10x_conf.h
 ..\obj\offlinechecktask.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\offlinechecktask.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\offlinechecktask.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\offlinechecktask.o: ..\Library\inc\misc.h
-..\obj\offlinechecktask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\offlinechecktask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\offlinechecktask.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\offlinechecktask.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\offlinechecktask.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\offlinechecktask.o: ..\Task\OfflineCheckTask.h
 ..\obj\offlinechecktask.o: ..\Task\MotorCalTask.h
 ..\obj\offlinechecktask.o: ..\Task\MotorFlagTask.h
+..\obj\offlinechecktask.o: ..\Task\ClampAngleTask.h
 ..\obj\offlinechecktask.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\offlinechecktask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\offlinechecktask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\offlinechecktask.o: ..\User\FreeRTOSConfig.h
 ..\obj\offlinechecktask.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\offlinechecktask.o: ..\FreeRTOS\include\portable.h

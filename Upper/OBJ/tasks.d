@@ -1,9 +1,9 @@
 ..\obj\tasks.o: ..\FreeRTOS\src\tasks.c
-..\obj\tasks.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\tasks.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\tasks.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\tasks.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\tasks.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\tasks.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
-..\obj\tasks.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\tasks.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\tasks.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\tasks.o: ..\User\FreeRTOSConfig.h
 ..\obj\tasks.o: ..\User\stm32f10x.h
 ..\obj\tasks.o: ..\User\core_cm3.h
@@ -24,4 +24,4 @@
 ..\obj\tasks.o: ..\FreeRTOS\include\list.h
 ..\obj\tasks.o: ..\FreeRTOS\include\timers.h
 ..\obj\tasks.o: ..\FreeRTOS\include\StackMacros.h
-..\obj\tasks.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\tasks.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

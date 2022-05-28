@@ -1,10 +1,10 @@
 ..\obj\modbuscrc16.o: ..\Algorithm\modbusCRC16.c
 ..\obj\modbuscrc16.o: ..\Algorithm\modbusCRC16.h
 ..\obj\modbuscrc16.o: ..\User\main.h
-..\obj\modbuscrc16.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\modbuscrc16.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\modbuscrc16.o: ..\User\stm32f10x.h
 ..\obj\modbuscrc16.o: ..\User\core_cm3.h
-..\obj\modbuscrc16.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\modbuscrc16.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\modbuscrc16.o: ..\User\system_stm32f10x.h
 ..\obj\modbuscrc16.o: ..\User\stm32f10x_conf.h
 ..\obj\modbuscrc16.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\modbuscrc16.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\modbuscrc16.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\modbuscrc16.o: ..\Library\inc\misc.h
-..\obj\modbuscrc16.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\modbuscrc16.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\modbuscrc16.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\modbuscrc16.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\modbuscrc16.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\modbuscrc16.o: ..\Task\OfflineCheckTask.h
 ..\obj\modbuscrc16.o: ..\Task\MotorCalTask.h
 ..\obj\modbuscrc16.o: ..\Task\MotorFlagTask.h
+..\obj\modbuscrc16.o: ..\Task\ClampAngleTask.h
 ..\obj\modbuscrc16.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\modbuscrc16.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\modbuscrc16.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\modbuscrc16.o: ..\User\FreeRTOSConfig.h
 ..\obj\modbuscrc16.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\modbuscrc16.o: ..\FreeRTOS\include\portable.h

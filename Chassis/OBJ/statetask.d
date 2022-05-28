@@ -1,10 +1,10 @@
 ..\obj\statetask.o: ..\Task\StateTask.c
 ..\obj\statetask.o: ..\Task\StateTask.h
 ..\obj\statetask.o: ..\User\main.h
-..\obj\statetask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\statetask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\statetask.o: ..\User\stm32f10x.h
 ..\obj\statetask.o: ..\User\core_cm3.h
-..\obj\statetask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\statetask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\statetask.o: ..\User\system_stm32f10x.h
 ..\obj\statetask.o: ..\User\stm32f10x_conf.h
 ..\obj\statetask.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\statetask.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\statetask.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\statetask.o: ..\Library\inc\misc.h
-..\obj\statetask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\statetask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\statetask.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\statetask.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\statetask.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\statetask.o: ..\Task\OfflineCheckTask.h
 ..\obj\statetask.o: ..\Task\MotorCalTask.h
 ..\obj\statetask.o: ..\Task\MotorFlagTask.h
+..\obj\statetask.o: ..\Task\ClampAngleTask.h
 ..\obj\statetask.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\statetask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\statetask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\statetask.o: ..\User\FreeRTOSConfig.h
 ..\obj\statetask.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\statetask.o: ..\FreeRTOS\include\portable.h

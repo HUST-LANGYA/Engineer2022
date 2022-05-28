@@ -21,9 +21,9 @@ void master2SlaveTask(void *pvParameters)
 		
 		vTaskDelay(1);
 		
-		#if INCLUDE_uxTaskGetStackHighWaterMark
-        master_2_slave_high_water = uxTaskGetStackHighWaterMark(NULL);
-		#endif
+//		#if INCLUDE_uxTaskGetStackHighWaterMark
+//        master_2_slave_high_water = uxTaskGetStackHighWaterMark(NULL);
+//		#endif
   }
 }
 

@@ -50,9 +50,9 @@ void chassisTask(void *pvParameters)
 //		
 //		vTaskDelayUntil(&xLastWakeTime,xFrequency);
 //		
-		#if INCLUDE_uxTaskGetStackHighWaterMark
-        Chassis_high_water = uxTaskGetStackHighWaterMark(NULL);
-		#endif
+//		#if INCLUDE_uxTaskGetStackHighWaterMark
+//        Chassis_high_water = uxTaskGetStackHighWaterMark(NULL);
+//		#endif
   }
 }
 

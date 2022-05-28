@@ -132,9 +132,9 @@ void motorCalTask(void *pvParameters)
 //    xLastWakeTime=xTaskGetTickCount();
 //	vTaskDelayUntil(&xLastWakeTime,xFrequency);
 		 
-#if INCLUDE_uxTaskGetStackHighWaterMark
-        motor_cal_high_water = uxTaskGetStackHighWaterMark(NULL);
-#endif
+//#if INCLUDE_uxTaskGetStackHighWaterMark
+//        motor_cal_high_water = uxTaskGetStackHighWaterMark(NULL);
+//#endif
     }
 }
 

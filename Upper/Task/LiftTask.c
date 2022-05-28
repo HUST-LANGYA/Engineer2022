@@ -95,9 +95,9 @@ void Lift_task(void *pvParameters)
 //    xLastWakeTime=xTaskGetTickCount();
 //		vTaskDelayUntil(&xLastWakeTime,xFrequency);
 //		 
-		#if INCLUDE_uxTaskGetStackHighWaterMark
-						Lift_high_water = uxTaskGetStackHighWaterMark(NULL);
-		#endif
+//		#if INCLUDE_uxTaskGetStackHighWaterMark
+//						Lift_high_water = uxTaskGetStackHighWaterMark(NULL);
+//		#endif
   }
 }
 

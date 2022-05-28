@@ -53,9 +53,9 @@ void modeSwitchTask(void *pvParameters)
 		
 		vTaskDelayUntil(&xLastWakeTime,xFrequency);
 		
-		#if INCLUDE_uxTaskGetStackHighWaterMark
-        Mode_Switch_high_water = uxTaskGetStackHighWaterMark(NULL);
-		#endif
+//		#if INCLUDE_uxTaskGetStackHighWaterMark
+//        Mode_Switch_high_water = uxTaskGetStackHighWaterMark(NULL);
+//		#endif
   }
 }
 
@@ -463,53 +463,53 @@ void rcModeFlagChange(void)
 void controlStateGet(void)															//获取控制模式
 {
 	
-//	if (rc_ctrl.rc.s2 == UP)															//获取控制模式
-//	{
-//		switch(rc_ctrl.rc.s1)
-//		{
-//			case UP:
-//				g_Flag.control_mode = KEY_MODE;							//键鼠模式
-//				g_Flag.control_target = NORMAL_MODE;			//正常模式
-////				g_Flag.auto_mode			= AUTO_MODE_OFF;		//默认关闭自动模式
-//				break;
-//			case MIDDLE:
-//				if(g_Flag.control_target == RC_MODE)
-//						g_Flag.control_target = CHASSIS_MODE;		//遥控器底盘运动模式
-//				else
-//						g_Flag.control_mode = KEY_MODE;
-//				break;
-//			case DOWN:
-//				g_Flag.control_mode = RC_MODE;					//遥控模式
-//				break;
-//			default:
-//				g_Flag.control_mode = KEY_MODE;	
-//				break;
-//		}
-//	}
-//	
-//	if(rc_ctrl.rc.s2 == DOWN && rc_ctrl.rc.s1 == DOWN)
-//	{
-//		g_Flag.control_target = POWER_OFF_MODE;
-//		g_Flag.control_mode = KEY_MODE;	
-//	}
-	
-	if (rc_ctrl.rc.s2 == DOWN)															//获取控制模式
+	if (rc_ctrl.rc.s2 == UP)															//获取控制模式
 	{
 		switch(rc_ctrl.rc.s1)
 		{
 			case UP:
-				g_Flag.control_mode = RC_MODE;				//遥控模式
+				g_Flag.control_mode = KEY_MODE;							//键鼠模式
+				g_Flag.control_target = NORMAL_MODE;			//正常模式
+//				g_Flag.auto_mode			= AUTO_MODE_OFF;		//默认关闭自动模式
 				break;
 			case MIDDLE:
-				g_Flag.control_mode = KEY_MODE;				//键鼠模式
+				if(g_Flag.control_target == RC_MODE)
+						g_Flag.control_target = CHASSIS_MODE;		//遥控器底盘运动模式
+				else
+						g_Flag.control_mode = KEY_MODE;
 				break;
 			case DOWN:
-				g_Flag.control_target = POWER_OFF_MODE;	//掉电模式
+				g_Flag.control_mode = RC_MODE;					//遥控模式
 				break;
 			default:
+				g_Flag.control_mode = KEY_MODE;	
 				break;
 		}
 	}
+	
+	if(rc_ctrl.rc.s2 == DOWN && rc_ctrl.rc.s1 == DOWN)
+	{
+		g_Flag.control_target = POWER_OFF_MODE;
+		g_Flag.control_mode = KEY_MODE;	
+	}
+	
+//	if (rc_ctrl.rc.s2 == DOWN)															//获取控制模式
+//	{
+//		switch(rc_ctrl.rc.s1)
+//		{
+//			case UP:
+//				g_Flag.control_mode = RC_MODE;				//遥控模式
+//				break;
+//			case MIDDLE:
+//				g_Flag.control_mode = KEY_MODE;				//键鼠模式
+//				break;
+//			case DOWN:
+//				g_Flag.control_target = POWER_OFF_MODE;	//掉电模式
+//				break;
+//			default:
+//				break;
+//		}
+//	}
 }
 
 

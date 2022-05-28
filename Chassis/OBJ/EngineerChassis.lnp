@@ -52,6 +52,7 @@
 "..\obj\offlinechecktask.o"
 "..\obj\starttask.o"
 "..\obj\statetask.o"
+"..\obj\clampangletask.o"
 "..\obj\croutine.o"
 "..\obj\event_groups.o"
 "..\obj\list.o"
@@ -61,6 +62,6 @@
 "..\obj\heap_4.o"
 "..\obj\port.o"
 --strict --scatter "..\OBJ\EngineerChassis.sct"
---summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\EngineerChassis.map" -o ..\OBJ\EngineerChassis.axf

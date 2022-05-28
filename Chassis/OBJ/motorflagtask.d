@@ -1,10 +1,10 @@
 ..\obj\motorflagtask.o: ..\Task\MotorFlagTask.c
 ..\obj\motorflagtask.o: ..\Task\MotorFlagTask.h
 ..\obj\motorflagtask.o: ..\User\main.h
-..\obj\motorflagtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\motorflagtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\motorflagtask.o: ..\User\stm32f10x.h
 ..\obj\motorflagtask.o: ..\User\core_cm3.h
-..\obj\motorflagtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\motorflagtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\motorflagtask.o: ..\User\system_stm32f10x.h
 ..\obj\motorflagtask.o: ..\User\stm32f10x_conf.h
 ..\obj\motorflagtask.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\motorflagtask.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\motorflagtask.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\motorflagtask.o: ..\Library\inc\misc.h
-..\obj\motorflagtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\motorflagtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\motorflagtask.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\motorflagtask.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\motorflagtask.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\motorflagtask.o: ..\Task\OfflineCheckTask.h
 ..\obj\motorflagtask.o: ..\Task\MotorCalTask.h
 ..\obj\motorflagtask.o: ..\Task\MotorFlagTask.h
+..\obj\motorflagtask.o: ..\Task\ClampAngleTask.h
 ..\obj\motorflagtask.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\motorflagtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\motorflagtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\motorflagtask.o: ..\User\FreeRTOSConfig.h
 ..\obj\motorflagtask.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\motorflagtask.o: ..\FreeRTOS\include\portable.h

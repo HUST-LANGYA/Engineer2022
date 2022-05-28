@@ -1,10 +1,10 @@
 ..\obj\judgesend.o: ..\Mylib\JudgeSend.c
 ..\obj\judgesend.o: ..\Mylib\JudgeSend.h
 ..\obj\judgesend.o: ..\User\main.h
-..\obj\judgesend.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\judgesend.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\judgesend.o: ..\User\stm32f10x.h
 ..\obj\judgesend.o: ..\User\core_cm3.h
-..\obj\judgesend.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\judgesend.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\judgesend.o: ..\User\system_stm32f10x.h
 ..\obj\judgesend.o: ..\User\stm32f10x_conf.h
 ..\obj\judgesend.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\judgesend.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\judgesend.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\judgesend.o: ..\Library\inc\misc.h
-..\obj\judgesend.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\judgesend.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\judgesend.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\judgesend.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\judgesend.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\judgesend.o: ..\Task\OfflineCheckTask.h
 ..\obj\judgesend.o: ..\Task\MotorCalTask.h
 ..\obj\judgesend.o: ..\Task\MotorFlagTask.h
+..\obj\judgesend.o: ..\Task\ClampAngleTask.h
 ..\obj\judgesend.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\judgesend.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\judgesend.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\judgesend.o: ..\User\FreeRTOSConfig.h
 ..\obj\judgesend.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\judgesend.o: ..\FreeRTOS\include\portable.h

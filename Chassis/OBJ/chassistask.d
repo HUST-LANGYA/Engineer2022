@@ -1,10 +1,10 @@
 ..\obj\chassistask.o: ..\Task\ChassisTask.c
 ..\obj\chassistask.o: ..\Task\ChassisTask.h
 ..\obj\chassistask.o: ..\User\main.h
-..\obj\chassistask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\chassistask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\chassistask.o: ..\User\stm32f10x.h
 ..\obj\chassistask.o: ..\User\core_cm3.h
-..\obj\chassistask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\chassistask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\chassistask.o: ..\User\system_stm32f10x.h
 ..\obj\chassistask.o: ..\User\stm32f10x_conf.h
 ..\obj\chassistask.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\chassistask.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\chassistask.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\chassistask.o: ..\Library\inc\misc.h
-..\obj\chassistask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\chassistask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\chassistask.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\chassistask.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\chassistask.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\chassistask.o: ..\Task\OfflineCheckTask.h
 ..\obj\chassistask.o: ..\Task\MotorCalTask.h
 ..\obj\chassistask.o: ..\Task\MotorFlagTask.h
+..\obj\chassistask.o: ..\Task\ClampAngleTask.h
 ..\obj\chassistask.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\chassistask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\chassistask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\chassistask.o: ..\User\FreeRTOSConfig.h
 ..\obj\chassistask.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\chassistask.o: ..\FreeRTOS\include\portable.h

@@ -1,12 +1,12 @@
 ..\obj\tim.o: ..\Mylib\tim.c
 ..\obj\tim.o: ..\Mylib\tim.h
 ..\obj\tim.o: ..\User\main.h
-..\obj\tim.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\tim.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\tim.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\math.h
+..\obj\tim.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\tim.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\tim.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\tim.o: ..\User\stm32f10x.h
 ..\obj\tim.o: ..\User\core_cm3.h
-..\obj\tim.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\tim.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\tim.o: ..\User\system_stm32f10x.h
 ..\obj\tim.o: ..\User\stm32f10x_conf.h
 ..\obj\tim.o: ..\Library\inc\stm32f10x_can.h
@@ -16,7 +16,7 @@
 ..\obj\tim.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\tim.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\tim.o: ..\Library\inc\misc.h
-..\obj\tim.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\tim.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\tim.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\tim.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\tim.o: ..\Library\inc\stm32f10x_dac.h
@@ -44,7 +44,7 @@
 ..\obj\tim.o: ..\Task\RotateTask.h
 ..\obj\tim.o: ..\User\FreeRTOSConfig.h
 ..\obj\tim.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\tim.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\tim.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\tim.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\tim.o: ..\FreeRTOS\include\portable.h
 ..\obj\tim.o: ..\FreeRTOS\include\deprecated_definitions.h

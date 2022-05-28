@@ -1,10 +1,10 @@
 ..\obj\can1.o: ..\Mylib\can1.c
 ..\obj\can1.o: ..\Mylib\can1.h
 ..\obj\can1.o: ..\User\main.h
-..\obj\can1.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\can1.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\can1.o: ..\User\stm32f10x.h
 ..\obj\can1.o: ..\User\core_cm3.h
-..\obj\can1.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\can1.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\can1.o: ..\User\system_stm32f10x.h
 ..\obj\can1.o: ..\User\stm32f10x_conf.h
 ..\obj\can1.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\can1.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\can1.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\can1.o: ..\Library\inc\misc.h
-..\obj\can1.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\can1.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\can1.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\can1.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\can1.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\can1.o: ..\Task\OfflineCheckTask.h
 ..\obj\can1.o: ..\Task\MotorCalTask.h
 ..\obj\can1.o: ..\Task\MotorFlagTask.h
+..\obj\can1.o: ..\Task\ClampAngleTask.h
 ..\obj\can1.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\can1.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\can1.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\can1.o: ..\User\FreeRTOSConfig.h
 ..\obj\can1.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\can1.o: ..\FreeRTOS\include\portable.h

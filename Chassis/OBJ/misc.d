@@ -2,7 +2,7 @@
 ..\obj\misc.o: ..\Library\inc\misc.h
 ..\obj\misc.o: ..\User\stm32f10x.h
 ..\obj\misc.o: ..\User\core_cm3.h
-..\obj\misc.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\misc.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\misc.o: ..\User\system_stm32f10x.h
 ..\obj\misc.o: ..\User\stm32f10x_conf.h
 ..\obj\misc.o: ..\Library\inc\stm32f10x_can.h

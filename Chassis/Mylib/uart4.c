@@ -3,12 +3,12 @@
 //unsigned char JudgeReceiveBuffer[JudgeBufBiggestSize];
 //unsigned char JudgeSend[SEND_MAX_SIZE];
 //unsigned char SaveBuffer[2*JudgeBufBiggestSize];
-unsigned char ClampAngleReceiveBuffer[50];
-unsigned char ClampAngleSend[50];
+unsigned char ClampAngleReceiveBuffer[15];
+unsigned char ClampAngleSend[15];
 float ClampAngle_X;
 
 int data_length=0;
-uint8_t angle_receive[50];
+uint8_t angle_receive[15];
 
 /**
  * @brief  uart4≥ı ºªØ
@@ -109,7 +109,7 @@ void UART4_Configuration(void)
 			dma.DMA_MemoryInc = DMA_MemoryInc_Enable;
 			dma.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
 			dma.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
-			dma.DMA_Mode = DMA_Mode_Circular;
+			dma.DMA_Mode = DMA_Mode_Normal;
 			dma.DMA_Priority = DMA_Priority_VeryHigh;
 			dma.DMA_M2M = DMA_M2M_Disable;
 

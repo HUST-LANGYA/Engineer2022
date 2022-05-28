@@ -1,12 +1,12 @@
 ..\obj\autoexectask.o: ..\Task\AutoexecTask.c
 ..\obj\autoexectask.o: ..\Task\AutoexecTask.h
 ..\obj\autoexectask.o: ..\User\main.h
-..\obj\autoexectask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\autoexectask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\autoexectask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\math.h
+..\obj\autoexectask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\autoexectask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\autoexectask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\autoexectask.o: ..\User\stm32f10x.h
 ..\obj\autoexectask.o: ..\User\core_cm3.h
-..\obj\autoexectask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\autoexectask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\autoexectask.o: ..\User\system_stm32f10x.h
 ..\obj\autoexectask.o: ..\User\stm32f10x_conf.h
 ..\obj\autoexectask.o: ..\Library\inc\stm32f10x_can.h
@@ -16,7 +16,7 @@
 ..\obj\autoexectask.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\autoexectask.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\autoexectask.o: ..\Library\inc\misc.h
-..\obj\autoexectask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\autoexectask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\autoexectask.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\autoexectask.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\autoexectask.o: ..\Library\inc\stm32f10x_dac.h
@@ -44,7 +44,7 @@
 ..\obj\autoexectask.o: ..\Task\RotateTask.h
 ..\obj\autoexectask.o: ..\User\FreeRTOSConfig.h
 ..\obj\autoexectask.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\autoexectask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\autoexectask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\autoexectask.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\autoexectask.o: ..\FreeRTOS\include\portable.h
 ..\obj\autoexectask.o: ..\FreeRTOS\include\deprecated_definitions.h

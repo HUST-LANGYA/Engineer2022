@@ -1,12 +1,12 @@
 ..\obj\motortask.o: ..\Task\MotorTask.c
 ..\obj\motortask.o: ..\Task\MotorTask.h
 ..\obj\motortask.o: ..\User\main.h
-..\obj\motortask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\motortask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\motortask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\math.h
+..\obj\motortask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\motortask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\motortask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\motortask.o: ..\User\stm32f10x.h
 ..\obj\motortask.o: ..\User\core_cm3.h
-..\obj\motortask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\motortask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\motortask.o: ..\User\system_stm32f10x.h
 ..\obj\motortask.o: ..\User\stm32f10x_conf.h
 ..\obj\motortask.o: ..\Library\inc\stm32f10x_can.h
@@ -16,7 +16,7 @@
 ..\obj\motortask.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\motortask.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\motortask.o: ..\Library\inc\misc.h
-..\obj\motortask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\motortask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\motortask.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\motortask.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\motortask.o: ..\Library\inc\stm32f10x_dac.h
@@ -44,7 +44,7 @@
 ..\obj\motortask.o: ..\Task\RotateTask.h
 ..\obj\motortask.o: ..\User\FreeRTOSConfig.h
 ..\obj\motortask.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\motortask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\motortask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\motortask.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\motortask.o: ..\FreeRTOS\include\portable.h
 ..\obj\motortask.o: ..\FreeRTOS\include\deprecated_definitions.h

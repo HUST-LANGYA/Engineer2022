@@ -1,7 +1,5 @@
 #include "usart1.h"
 
-//错误：设置为UART4了，待修改！！！！！！
-
 //裁判系统数据
 unsigned char JudgeReceiveBuffer[JudgeBufBiggestSize];
 unsigned char JudgeSend[SEND_MAX_SIZE];
@@ -9,7 +7,7 @@ unsigned char SaveBuffer[2*JudgeBufBiggestSize];
 tGameInfo JudgeReceive;
 
 /**
- * @brief  uart4初始化
+ * @brief  usart1初始化
  * @param  None
  * @retval None
  */

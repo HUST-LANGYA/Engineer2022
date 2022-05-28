@@ -1,9 +1,9 @@
 ..\obj\algorithmofcrc.o: ..\Algorithm\algorithmOfCRC.c
 ..\obj\algorithmofcrc.o: ..\User\main.h
-..\obj\algorithmofcrc.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\algorithmofcrc.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\algorithmofcrc.o: ..\User\stm32f10x.h
 ..\obj\algorithmofcrc.o: ..\User\core_cm3.h
-..\obj\algorithmofcrc.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\algorithmofcrc.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\algorithmofcrc.o: ..\User\system_stm32f10x.h
 ..\obj\algorithmofcrc.o: ..\User\stm32f10x_conf.h
 ..\obj\algorithmofcrc.o: ..\Library\inc\stm32f10x_can.h
@@ -13,7 +13,7 @@
 ..\obj\algorithmofcrc.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\algorithmofcrc.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\algorithmofcrc.o: ..\Library\inc\misc.h
-..\obj\algorithmofcrc.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\algorithmofcrc.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\algorithmofcrc.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\algorithmofcrc.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\algorithmofcrc.o: ..\Library\inc\stm32f10x_dac.h
@@ -44,8 +44,9 @@
 ..\obj\algorithmofcrc.o: ..\Task\OfflineCheckTask.h
 ..\obj\algorithmofcrc.o: ..\Task\MotorCalTask.h
 ..\obj\algorithmofcrc.o: ..\Task\MotorFlagTask.h
+..\obj\algorithmofcrc.o: ..\Task\ClampAngleTask.h
 ..\obj\algorithmofcrc.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\algorithmofcrc.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\algorithmofcrc.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\algorithmofcrc.o: ..\User\FreeRTOSConfig.h
 ..\obj\algorithmofcrc.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\algorithmofcrc.o: ..\FreeRTOS\include\portable.h

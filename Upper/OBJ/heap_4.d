@@ -1,8 +1,8 @@
 ..\obj\heap_4.o: ..\FreeRTOS\port\MemMang\heap_4.c
-..\obj\heap_4.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\heap_4.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\heap_4.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\heap_4.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
-..\obj\heap_4.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\heap_4.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\heap_4.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\heap_4.o: ..\User\FreeRTOSConfig.h
 ..\obj\heap_4.o: ..\User\stm32f10x.h
 ..\obj\heap_4.o: ..\User\core_cm3.h

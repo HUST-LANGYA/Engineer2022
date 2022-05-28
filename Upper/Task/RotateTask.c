@@ -50,9 +50,9 @@ void rotate_Task(void *pvParameters)
 //			xLastWakeTime=xTaskGetTickCount();
 //			vTaskDelayUntil(&xLastWakeTime,xFrequency);
 		 
-#if INCLUDE_uxTaskGetStackHighWaterMark
-        rotate_high_water = uxTaskGetStackHighWaterMark(NULL);
-#endif
+//#if INCLUDE_uxTaskGetStackHighWaterMark
+//        rotate_high_water = uxTaskGetStackHighWaterMark(NULL);
+//#endif
     }
 }
 

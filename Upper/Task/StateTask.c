@@ -34,9 +34,9 @@ void modeSwitchTask(void *pvParameters)
 //		IWDG_Feed();
 		vTaskDelayUntil(&xLastWakeTime,xFrequency);
 		
-		#if INCLUDE_uxTaskGetStackHighWaterMark
-        Mode_Switch_high_water = uxTaskGetStackHighWaterMark(NULL);
-		#endif
+//		#if INCLUDE_uxTaskGetStackHighWaterMark
+//        Mode_Switch_high_water = uxTaskGetStackHighWaterMark(NULL);
+//		#endif
   }
 
 }

@@ -8,8 +8,8 @@
 
 #include "Usart3.h"
 //½Ç¶ÈÍÓÂÝÒÇÊý¾Ý
-unsigned char ClampAngleReceiveBuffer[15];
-unsigned char ClampAngleSend[15];
+unsigned char ClampAngleReceiveBuffer[ClampAngleReceiveSize];
+unsigned char ClampAngleSend[ClampAngleSendSize];
 DMA_InitTypeDef 	USART3_TX_dma;
 float ClampAngle_X;
 
@@ -45,7 +45,7 @@ void USART3_Configuration(void)
 
 	USART_DeInit(USART3);
 //	usart.USART_BaudRate = 9600;
-	usart.USART_BaudRate = 9600;
+	usart.USART_BaudRate = 115200;
 	usart.USART_WordLength = USART_WordLength_8b;
 	usart.USART_StopBits = USART_StopBits_1;
 	usart.USART_Parity = USART_Parity_No ;

@@ -2,7 +2,7 @@
 ..\obj\stm32f10x_flash.o: ..\Library\inc\stm32f10x_flash.h
 ..\obj\stm32f10x_flash.o: ..\User\stm32f10x.h
 ..\obj\stm32f10x_flash.o: ..\User\core_cm3.h
-..\obj\stm32f10x_flash.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\stm32f10x_flash.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\stm32f10x_flash.o: ..\User\system_stm32f10x.h
 ..\obj\stm32f10x_flash.o: ..\User\stm32f10x_conf.h
 ..\obj\stm32f10x_flash.o: ..\Library\inc\stm32f10x_can.h

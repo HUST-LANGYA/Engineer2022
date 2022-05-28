@@ -1,10 +1,10 @@
 ..\obj\starttask.o: ..\Task\StartTask.c
 ..\obj\starttask.o: ..\Task\StartTask.h
 ..\obj\starttask.o: ..\User\main.h
-..\obj\starttask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\starttask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\starttask.o: ..\User\stm32f10x.h
 ..\obj\starttask.o: ..\User\core_cm3.h
-..\obj\starttask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\starttask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\starttask.o: ..\User\system_stm32f10x.h
 ..\obj\starttask.o: ..\User\stm32f10x_conf.h
 ..\obj\starttask.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\starttask.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\starttask.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\starttask.o: ..\Library\inc\misc.h
-..\obj\starttask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\starttask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\starttask.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\starttask.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\starttask.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\starttask.o: ..\Task\OfflineCheckTask.h
 ..\obj\starttask.o: ..\Task\MotorCalTask.h
 ..\obj\starttask.o: ..\Task\MotorFlagTask.h
+..\obj\starttask.o: ..\Task\ClampAngleTask.h
 ..\obj\starttask.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\starttask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\starttask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\starttask.o: ..\User\FreeRTOSConfig.h
 ..\obj\starttask.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\starttask.o: ..\FreeRTOS\include\portable.h

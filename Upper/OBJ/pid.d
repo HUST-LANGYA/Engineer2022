@@ -1,11 +1,11 @@
 ..\obj\pid.o: ..\Algorithm\pid.c
 ..\obj\pid.o: ..\User\main.h
-..\obj\pid.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\pid.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\pid.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\math.h
+..\obj\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\pid.o: ..\User\stm32f10x.h
 ..\obj\pid.o: ..\User\core_cm3.h
-..\obj\pid.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\pid.o: ..\User\system_stm32f10x.h
 ..\obj\pid.o: ..\User\stm32f10x_conf.h
 ..\obj\pid.o: ..\Library\inc\stm32f10x_can.h
@@ -15,7 +15,7 @@
 ..\obj\pid.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\pid.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\pid.o: ..\Library\inc\misc.h
-..\obj\pid.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\pid.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\pid.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\pid.o: ..\Library\inc\stm32f10x_dac.h
@@ -43,7 +43,7 @@
 ..\obj\pid.o: ..\Task\RotateTask.h
 ..\obj\pid.o: ..\User\FreeRTOSConfig.h
 ..\obj\pid.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\pid.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\pid.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\pid.o: ..\FreeRTOS\include\portable.h
 ..\obj\pid.o: ..\FreeRTOS\include\deprecated_definitions.h

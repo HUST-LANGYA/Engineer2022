@@ -14,7 +14,7 @@
 **********************************************************************************************************/
 extern unsigned char ClampAngleSend[ClampAngleSendSize];
 
-uint32_t time_test = 15;
+uint32_t time_test = 50;
 uint32_t Clamp_high_water;
 void clampAngleSendTask(void *pvParameters)
 {
@@ -31,67 +31,79 @@ void clampAngleSendTask(void *pvParameters)
 //	clampAngleSend();	
 //	vTaskDelay(100);
 	
-	//解锁
-	ClampAngleSend[0] = 0X50;
-	ClampAngleSend[1] = 0X06;
+//	//解锁
+//	ClampAngleSend[0] = 0X50;
+//	ClampAngleSend[1] = 0X06;
+//	ClampAngleSend[2] = 0X00;
+//	ClampAngleSend[3] = 0X69;
+//	ClampAngleSend[4] = 0XB5;
+//	ClampAngleSend[5] = 0X88;
+//	ClampAngleSend[6] = 0X22;
+//	ClampAngleSend[7] = 0XA1;
+//	clampAngleSend();	
+//	vTaskDelay(100);
+//	
+//	//修改波特率为921600
+//	ClampAngleSend[0] = 0X50;
+//	ClampAngleSend[1] = 0X06;
+//	ClampAngleSend[2] = 0X00;
+//	ClampAngleSend[3] = 0X04;
+//	ClampAngleSend[4] = 0X00;
+//	ClampAngleSend[5] = 0X09;
+//	ClampAngleSend[6] = 0X05;
+//	ClampAngleSend[7] = 0X8C;
+//	clampAngleSend();	
+//	vTaskDelay(100);
+//	
+//	//修改带宽为256HZ
+//	ClampAngleSend[0] = 0X50;
+//	ClampAngleSend[1] = 0X06;
+//	ClampAngleSend[2] = 0X00;
+//	ClampAngleSend[3] = 0X1F;
+//	ClampAngleSend[4] = 0X00;
+//	ClampAngleSend[5] = 0X00;
+//	ClampAngleSend[6] = 0XB5;
+//	ClampAngleSend[7] = 0XB8;
+//	clampAngleSend();	
+//	vTaskDelay(100);
+//	
+//	//保存
+//	ClampAngleSend[0] = 0X50;
+//	ClampAngleSend[1] = 0X06;
+//	ClampAngleSend[2] = 0X00;
+//	ClampAngleSend[3] = 0X00;
+//	ClampAngleSend[4] = 0X00;
+//	ClampAngleSend[5] = 0X00;
+//	ClampAngleSend[6] = 0X84;
+//	ClampAngleSend[7] = 0X4B;
+//	clampAngleSend();	
+//	vTaskDelay(100);
+//	
+//	//修改串口波特率
+//		changeBaudRate();
+//		vTaskDelay(100);
+//		
+//		//获取角度
+//	ClampAngleSend[0] = 0X50;
+//	ClampAngleSend[1] = 0X03;
+//	ClampAngleSend[2] = 0X00;
+//	ClampAngleSend[3] = 0X3D;
+//	ClampAngleSend[4] = 0X00;
+//	ClampAngleSend[5] = 0X03;
+//	ClampAngleSend[6] = 0X99;
+//	ClampAngleSend[7] = 0X86;
+
+
+		//获取距离数据
+	ClampAngleSend[0] = 0X51;
+	ClampAngleSend[1] = 0X0A;
 	ClampAngleSend[2] = 0X00;
-	ClampAngleSend[3] = 0X69;
-	ClampAngleSend[4] = 0XB5;
-	ClampAngleSend[5] = 0X88;
-	ClampAngleSend[6] = 0X22;
-	ClampAngleSend[7] = 0XA1;
-	clampAngleSend();	
-	vTaskDelay(100);
-	
-	//修改波特率为921600
-	ClampAngleSend[0] = 0X50;
-	ClampAngleSend[1] = 0X06;
-	ClampAngleSend[2] = 0X00;
-	ClampAngleSend[3] = 0X04;
+	ClampAngleSend[3] = 0X01;
 	ClampAngleSend[4] = 0X00;
-	ClampAngleSend[5] = 0X09;
-	ClampAngleSend[6] = 0X05;
-	ClampAngleSend[7] = 0X8C;
-	clampAngleSend();	
-	vTaskDelay(100);
-	
-	//修改带宽为256HZ
-	ClampAngleSend[0] = 0X50;
-	ClampAngleSend[1] = 0X06;
-	ClampAngleSend[2] = 0X00;
-	ClampAngleSend[3] = 0X1F;
-	ClampAngleSend[4] = 0X00;
-	ClampAngleSend[5] = 0X00;
-	ClampAngleSend[6] = 0XB5;
-	ClampAngleSend[7] = 0XB8;
-	clampAngleSend();	
-	vTaskDelay(100);
-	
-	//保存
-	ClampAngleSend[0] = 0X50;
-	ClampAngleSend[1] = 0X06;
-	ClampAngleSend[2] = 0X00;
-	ClampAngleSend[3] = 0X00;
-	ClampAngleSend[4] = 0X00;
-	ClampAngleSend[5] = 0X00;
-	ClampAngleSend[6] = 0X84;
-	ClampAngleSend[7] = 0X4B;
-	clampAngleSend();	
-	vTaskDelay(100);
-	
-	//修改串口波特率
-		changeBaudRate();
-		vTaskDelay(100);
-		
-		//获取角度
-	ClampAngleSend[0] = 0X50;
-	ClampAngleSend[1] = 0X03;
-	ClampAngleSend[2] = 0X00;
-	ClampAngleSend[3] = 0X3D;
-	ClampAngleSend[4] = 0X00;
-	ClampAngleSend[5] = 0X03;
-	ClampAngleSend[6] = 0X99;
-	ClampAngleSend[7] = 0X86;
+	ClampAngleSend[5] = 0X05;
+	ClampAngleSend[6] = 0X02;
+	ClampAngleSend[7] = 0X00;
+	ClampAngleSend[8] = 0X63;
 	
 	while(1){
 
@@ -99,9 +111,9 @@ void clampAngleSendTask(void *pvParameters)
 		
 		vTaskDelay(time_test);
 //		vTaskDelay(1);
-		#if INCLUDE_uxTaskGetStackHighWaterMark
-        Clamp_high_water = uxTaskGetStackHighWaterMark(NULL);
-		#endif
+//		#if INCLUDE_uxTaskGetStackHighWaterMark
+//        Clamp_high_water = uxTaskGetStackHighWaterMark(NULL);
+//		#endif
   }
 }
 
@@ -116,8 +128,8 @@ void clampAngleSendTask(void *pvParameters)
 
 void clampAngleSend(void)
 {
-//	(void)USART3->SR;
-//		(void)USART3->DR;
+	(void)USART3->SR;
+	(void)USART3->DR;
 	DMA_InitTypeDef 	dma;
 			RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
 			DMA_DeInit(DMA1_Channel2);

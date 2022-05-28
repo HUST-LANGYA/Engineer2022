@@ -1,8 +1,8 @@
 ..\obj\list.o: ..\FreeRTOS\src\list.c
-..\obj\list.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\list.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\list.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\list.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
-..\obj\list.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\list.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\list.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\list.o: ..\User\FreeRTOSConfig.h
 ..\obj\list.o: ..\User\stm32f10x.h
 ..\obj\list.o: ..\User\core_cm3.h

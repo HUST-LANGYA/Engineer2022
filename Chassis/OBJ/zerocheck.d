@@ -1,10 +1,10 @@
 ..\obj\zerocheck.o: ..\Mylib\ZeroCheck.c
 ..\obj\zerocheck.o: ..\Mylib\ZeroCheck.h
 ..\obj\zerocheck.o: ..\User\main.h
-..\obj\zerocheck.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\zerocheck.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\zerocheck.o: ..\User\stm32f10x.h
 ..\obj\zerocheck.o: ..\User\core_cm3.h
-..\obj\zerocheck.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\zerocheck.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\zerocheck.o: ..\User\system_stm32f10x.h
 ..\obj\zerocheck.o: ..\User\stm32f10x_conf.h
 ..\obj\zerocheck.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\zerocheck.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\zerocheck.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\zerocheck.o: ..\Library\inc\misc.h
-..\obj\zerocheck.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\zerocheck.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\zerocheck.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\zerocheck.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\zerocheck.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\zerocheck.o: ..\Task\OfflineCheckTask.h
 ..\obj\zerocheck.o: ..\Task\MotorCalTask.h
 ..\obj\zerocheck.o: ..\Task\MotorFlagTask.h
+..\obj\zerocheck.o: ..\Task\ClampAngleTask.h
 ..\obj\zerocheck.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\zerocheck.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\zerocheck.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\zerocheck.o: ..\User\FreeRTOSConfig.h
 ..\obj\zerocheck.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\zerocheck.o: ..\FreeRTOS\include\portable.h

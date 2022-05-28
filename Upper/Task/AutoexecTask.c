@@ -78,9 +78,9 @@ void autoexecTask(void)
 		autoexec();
 		
 		vTaskDelay(1);
-		#if INCLUDE_uxTaskGetStackHighWaterMark
-				Autoexec_high_water = uxTaskGetStackHighWaterMark(NULL);
-		#endif
+//		#if INCLUDE_uxTaskGetStackHighWaterMark
+//				Autoexec_high_water = uxTaskGetStackHighWaterMark(NULL);
+//		#endif
   }
 }
 

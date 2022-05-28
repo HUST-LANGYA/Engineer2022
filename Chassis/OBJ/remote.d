@@ -1,10 +1,10 @@
 ..\obj\remote.o: ..\Mylib\remote.c
 ..\obj\remote.o: ..\Mylib\remote.h
 ..\obj\remote.o: ..\User\main.h
-..\obj\remote.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\remote.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\remote.o: ..\User\stm32f10x.h
 ..\obj\remote.o: ..\User\core_cm3.h
-..\obj\remote.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\remote.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\remote.o: ..\User\system_stm32f10x.h
 ..\obj\remote.o: ..\User\stm32f10x_conf.h
 ..\obj\remote.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\remote.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\remote.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\remote.o: ..\Library\inc\misc.h
-..\obj\remote.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\remote.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\remote.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\remote.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\remote.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\remote.o: ..\Task\OfflineCheckTask.h
 ..\obj\remote.o: ..\Task\MotorCalTask.h
 ..\obj\remote.o: ..\Task\MotorFlagTask.h
+..\obj\remote.o: ..\Task\ClampAngleTask.h
 ..\obj\remote.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\remote.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\remote.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\remote.o: ..\User\FreeRTOSConfig.h
 ..\obj\remote.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\remote.o: ..\FreeRTOS\include\portable.h

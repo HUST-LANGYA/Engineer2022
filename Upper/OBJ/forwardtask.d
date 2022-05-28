@@ -1,12 +1,12 @@
 ..\obj\forwardtask.o: ..\Task\ForwardTask.c
 ..\obj\forwardtask.o: ..\Task\ForwardTask.h
 ..\obj\forwardtask.o: ..\User\main.h
-..\obj\forwardtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\forwardtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdlib.h
-..\obj\forwardtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\math.h
+..\obj\forwardtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\forwardtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\forwardtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\forwardtask.o: ..\User\stm32f10x.h
 ..\obj\forwardtask.o: ..\User\core_cm3.h
-..\obj\forwardtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\forwardtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\forwardtask.o: ..\User\system_stm32f10x.h
 ..\obj\forwardtask.o: ..\User\stm32f10x_conf.h
 ..\obj\forwardtask.o: ..\Library\inc\stm32f10x_can.h
@@ -16,7 +16,7 @@
 ..\obj\forwardtask.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\forwardtask.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\forwardtask.o: ..\Library\inc\misc.h
-..\obj\forwardtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\forwardtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\forwardtask.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\forwardtask.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\forwardtask.o: ..\Library\inc\stm32f10x_dac.h
@@ -44,7 +44,7 @@
 ..\obj\forwardtask.o: ..\Task\RotateTask.h
 ..\obj\forwardtask.o: ..\User\FreeRTOSConfig.h
 ..\obj\forwardtask.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\forwardtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\forwardtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\forwardtask.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\forwardtask.o: ..\FreeRTOS\include\portable.h
 ..\obj\forwardtask.o: ..\FreeRTOS\include\deprecated_definitions.h

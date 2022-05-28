@@ -1,9 +1,9 @@
 ..\obj\main.o: ..\User\main.c
 ..\obj\main.o: ..\User\main.h
-..\obj\main.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\main.o: ..\User\stm32f10x.h
 ..\obj\main.o: ..\User\core_cm3.h
-..\obj\main.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\main.o: ..\User\system_stm32f10x.h
 ..\obj\main.o: ..\User\stm32f10x_conf.h
 ..\obj\main.o: ..\Library\inc\stm32f10x_can.h
@@ -13,7 +13,7 @@
 ..\obj\main.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\main.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\main.o: ..\Library\inc\misc.h
-..\obj\main.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\main.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\main.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\main.o: ..\Library\inc\stm32f10x_dac.h
@@ -44,8 +44,9 @@
 ..\obj\main.o: ..\Task\OfflineCheckTask.h
 ..\obj\main.o: ..\Task\MotorCalTask.h
 ..\obj\main.o: ..\Task\MotorFlagTask.h
+..\obj\main.o: ..\Task\ClampAngleTask.h
 ..\obj\main.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\main.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\main.o: ..\User\FreeRTOSConfig.h
 ..\obj\main.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\main.o: ..\FreeRTOS\include\portable.h

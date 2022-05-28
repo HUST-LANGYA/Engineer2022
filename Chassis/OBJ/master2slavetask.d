@@ -1,10 +1,10 @@
 ..\obj\master2slavetask.o: ..\Task\Master2SlaveTask.c
 ..\obj\master2slavetask.o: ..\Task\Master2SlaveTask.h
 ..\obj\master2slavetask.o: ..\User\main.h
-..\obj\master2slavetask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\master2slavetask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\master2slavetask.o: ..\User\stm32f10x.h
 ..\obj\master2slavetask.o: ..\User\core_cm3.h
-..\obj\master2slavetask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\master2slavetask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\master2slavetask.o: ..\User\system_stm32f10x.h
 ..\obj\master2slavetask.o: ..\User\stm32f10x_conf.h
 ..\obj\master2slavetask.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\master2slavetask.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\master2slavetask.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\master2slavetask.o: ..\Library\inc\misc.h
-..\obj\master2slavetask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\master2slavetask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\master2slavetask.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\master2slavetask.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\master2slavetask.o: ..\Library\inc\stm32f10x_dac.h
@@ -45,8 +45,9 @@
 ..\obj\master2slavetask.o: ..\Task\OfflineCheckTask.h
 ..\obj\master2slavetask.o: ..\Task\MotorCalTask.h
 ..\obj\master2slavetask.o: ..\Task\MotorFlagTask.h
+..\obj\master2slavetask.o: ..\Task\ClampAngleTask.h
 ..\obj\master2slavetask.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\master2slavetask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\master2slavetask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\master2slavetask.o: ..\User\FreeRTOSConfig.h
 ..\obj\master2slavetask.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\master2slavetask.o: ..\FreeRTOS\include\portable.h
