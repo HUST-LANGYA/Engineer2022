@@ -3,12 +3,12 @@
 //unsigned char JudgeReceiveBuffer[JudgeBufBiggestSize];
 //unsigned char JudgeSend[SEND_MAX_SIZE];
 //unsigned char SaveBuffer[2*JudgeBufBiggestSize];
-unsigned char ClampAngleReceiveBuffer[15];
-unsigned char ClampAngleSend[15];
+unsigned char ClampAngleReceiveBuffer[2*ClampAngleReceiveSize];
+unsigned char ClampAngleSend[2*ClampAngleSendSize];
 float ClampAngle_X;
 
 int data_length=0;
-uint8_t angle_receive[15];
+uint8_t angle_receive[2*ClampAngleReceiveSize];
 
 /**
  * @brief  uart4初始化
@@ -129,15 +129,15 @@ void UART4_IRQHandler(void)
 		(void)UART4->DR;	   //清除UART4的空闲中断标志位
 		DMA_Cmd(DMA2_Channel3,DISABLE);
 		data_length = ClampAngleReceiveSize - DMA_GetCurrDataCounter(DMA1_Channel5);
-		for( i = 0; i < data_length; i++ )
-		{
-			angle_receive[i] = ClampAngleReceiveBuffer[i];
-		}
-		
-		if(Verify_modbusCRC16_Check_Sum(angle_receive,data_length))
-		{
-			ClampAngle_X = ((float)((angle_receive[3]<<8)|angle_receive[4]))/32768*180;
-		}
+//		for( i = 0; i < data_length; i++ )
+//		{
+//			angle_receive[i] = ClampAngleReceiveBuffer[i];
+//		}
+//		
+//		if(Verify_modbusCRC16_Check_Sum(angle_receive,data_length))
+//		{
+//			ClampAngle_X = ((float)((angle_receive[3]<<8)|angle_receive[4]))/32768*180;
+//		}
 		
 		DMA_SetCurrDataCounter(DMA2_Channel3,ClampAngleReceiveSize);
 		DMA_Cmd(DMA2_Channel3,ENABLE);

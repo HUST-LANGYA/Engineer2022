@@ -50,7 +50,7 @@ void BSP_init(void)
 	uasrt1Config();
 	uasrt2Config();
 	usart3Config();
-//	UART4_Configuration();
+	UART4_Configuration();
 
 /*------------------------------------------参数初始化---------------------------------------------------------------*/
 	rc_reset();                                    		//遥控器初始化函数（所有位清零）
