@@ -199,61 +199,98 @@ void autoLargeIslandMine(void)
 		
 		case SL_CLAMP_PRE:
 			auto_large_enum_next = SL_LIFT_ONCE;
-			g_Flag.clamp_solenoid_flag = 0;
-			autoModeDelay_ms(300);
+			if(g_Flag.clamp_solenoid_flag != 0)
+			{
+				g_Flag.clamp_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SL_LIFT_ONCE:
 			auto_large_enum_next = SL_FORWARD;
-			g_Flag.lift_once_flag = 2;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_once_flag != 2)
+			{
+				g_Flag.lift_once_flag = 2;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SL_FORWARD:
 			auto_large_enum_next = SL_CLAMP;
-			g_Flag.forward_solenoid_flag = 1;
-			autoModeDelay_ms(300);
+			if(g_Flag.forward_solenoid_flag != 1)
+			{
+				g_Flag.forward_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SL_CLAMP:
 			auto_large_enum_next = SL_LIFT_TWICE;
-			g_Flag.clamp_solenoid_flag = 1;
-			autoModeDelay_ms(300);
+			if(g_Flag.clamp_solenoid_flag != 1)
+			{
+				g_Flag.clamp_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 
 		case SL_LIFT_TWICE:
 			auto_large_enum_next = SL_BACK;
-			g_Flag.lift_twice_flag = 1;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_twice_flag != 1)
+			{
+				g_Flag.lift_twice_flag = 1;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SL_BACK:
 			auto_large_enum_next = SL_LAND_ONCE;
-			g_Flag.forward_solenoid_flag = 0;
-			autoModeDelay_ms(300);
+			if(g_Flag.forward_solenoid_flag != 0)
+			{
+				g_Flag.forward_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SL_LAND_ONCE:
 			auto_large_enum_next = SL_LAND_TWICE;
-			g_Flag.lift_once_flag = 0;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_once_flag != 0)
+			{
+				g_Flag.lift_once_flag = 0;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SL_LAND_TWICE:
-			auto_large_enum_next = SL_LOOSE;
-			g_Flag.lift_twice_flag = 0;
-			autoModeDelay_ms(800);
+			auto_large_enum_next = ATUOEXEC_END;
+			if(g_Flag.lift_twice_flag != 0)
+			{
+				g_Flag.lift_twice_flag = 0;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
-		case SL_LOOSE:
-			auto_large_enum_next = ATUOEXEC_END;
-			g_Flag.clamp_solenoid_flag = 0;
-			autoModeDelay_ms(300);
-			break;
+//		case SL_LOOSE:
+//			auto_large_enum_next = ATUOEXEC_END;
+////			if(g_Flag.clamp_solenoid_flag != 0)
+////			{
+////				g_Flag.clamp_solenoid_flag = 0;
+////				autoModeDelay_ms(300);
+////			}else
+////				autoModeDelay_ms(50);
+//			g_Flag.clamp_solenoid_flag = 0;
+//			autoModeDelay_ms(300);
+//			break;
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
-//			g_Flag.auto_mode = AUTO_MODE_OFF;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
@@ -291,78 +328,117 @@ void autoSmallIslandMine(void)
 		
 		case SS_CLAMP_PRE:
 			auto_small_enum_next = SS_LIFT_TWICE;
-			g_Flag.clamp_solenoid_flag = 0;
-			autoModeDelay_ms(300);
+			if(g_Flag.clamp_solenoid_flag != 0)
+			{
+				g_Flag.clamp_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SS_LIFT_TWICE:
 			auto_small_enum_next = SS_LIFT_ONCE;
-			g_Flag.lift_twice_flag = 1;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_twice_flag != 1)
+			{
+				g_Flag.lift_twice_flag = 1;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 
 		
 		case SS_LIFT_ONCE:
 			auto_small_enum_next = SS_FORWARD;
-			g_Flag.lift_once_flag = 1;
-			autoModeDelay_ms(800);
-//			vTaskDelay(2000);
-//			auto_small_enum = auto_small_enum_next;
+			if(g_Flag.lift_once_flag != 1)
+			{
+					g_Flag.lift_once_flag = 1;
+					autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SS_FORWARD:
 			auto_small_enum_next = SS_CLAMP;
-			g_Flag.forward_solenoid_flag = 1;
-			autoModeDelay_ms(300);
-//			vTaskDelay(2000);
-//			auto_small_enum = auto_small_enum_next;
+			if(g_Flag.forward_solenoid_flag != 1)
+			{
+				g_Flag.forward_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SS_CLAMP:
 			auto_small_enum_next = SS_GET;
-			g_Flag.clamp_solenoid_flag = 1;
-			autoModeDelay_ms(300);
+			if(g_Flag.clamp_solenoid_flag != 1)
+			{
+				g_Flag.clamp_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SS_GET:
 			auto_small_enum_next = SS_LAND_ONCE;
-			g_Flag.midair_solenoid_flag = 1;
-			autoModeDelay_ms(300);
+			if(g_Flag.midair_solenoid_flag != 1)
+			{
+				g_Flag.midair_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SS_LAND_ONCE:
 			auto_small_enum_next = SS_BACK;
-			g_Flag.lift_once_flag = 0;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_once_flag != 0)
+			{
+				g_Flag.lift_once_flag = 0;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SS_BACK:
 			auto_small_enum_next = SS_MID_OFF;
-			g_Flag.forward_solenoid_flag = 0;
-			autoModeDelay_ms(300);
+			if(g_Flag.forward_solenoid_flag != 0)
+			{
+				g_Flag.forward_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SS_MID_OFF:
 			auto_small_enum_next = SS_LAND_TWICE;
-			g_Flag.midair_solenoid_flag = 0;
-			autoModeDelay_ms(300);
+			if(g_Flag.midair_solenoid_flag != 0)
+			{
+				g_Flag.midair_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SS_LAND_TWICE:
 			auto_small_enum_next = SS_LOOSE;
-			g_Flag.lift_twice_flag = 0;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_twice_flag != 0)
+			{
+				g_Flag.lift_twice_flag = 0;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 			
 		case SS_LOOSE:
 			auto_small_enum_next = ATUOEXEC_END;
-			g_Flag.clamp_solenoid_flag = 0;
-			autoModeDelay_ms(300);
+			if(g_Flag.clamp_solenoid_flag != 0)
+			{
+				g_Flag.clamp_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
-//			g_Flag.auto_mode = AUTO_MODE_OFF;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
@@ -400,68 +476,99 @@ void autoExchange(void)
 		
 		case SE_CLAMP:
 			auto_exchange_enum_next = SE_LIFT_TWICE;
-			g_Flag.clamp_solenoid_flag = 1;
-			autoModeDelay_ms(300);
+			if(g_Flag.clamp_solenoid_flag != 1)
+			{
+				g_Flag.clamp_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 
 		
 		case SE_LIFT_TWICE:
 			auto_exchange_enum_next = SE_LIFT_ONCE;
-			g_Flag.lift_twice_flag = 2;
-			autoModeDelay_ms(800);
-//			vTaskDelay(2000);
-//			auto_exchange_enum = auto_exchange_enum_next;
+			if(g_Flag.lift_twice_flag != 2)
+			{
+				g_Flag.lift_twice_flag = 2;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SE_LIFT_ONCE:
 			auto_exchange_enum_next = SE_FORWARD;
-			g_Flag.lift_once_flag = 1;
-			autoModeDelay_ms(800);
-//			vTaskDelay(2000);
-//			auto_exchange_enum = auto_exchange_enum_next;
+			if(g_Flag.lift_once_flag != 1)
+			{
+				g_Flag.lift_once_flag = 1;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SE_FORWARD:
 			auto_exchange_enum_next = SE_LOOSE;
-			g_Flag.forward_solenoid_flag = 1;
-			autoModeDelay_ms(300);
+			if(g_Flag.forward_solenoid_flag != 1)
+			{
+				g_Flag.forward_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SE_LOOSE:
 			auto_exchange_enum_next = SE_EXCHANGE;
-			g_Flag.clamp_solenoid_flag = 0;
-			autoModeDelay_ms(300);
+			if(g_Flag.clamp_solenoid_flag != 0)
+			{
+					g_Flag.clamp_solenoid_flag = 0;
+					autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		
 		case SE_EXCHANGE:
 			auto_exchange_enum_next = SE_BACK;
-			g_Flag.exchange_solenoid_flag = 1;
-			autoModeDelay_ms(300);
+			if(g_Flag.exchange_solenoid_flag != 1)
+			{
+				g_Flag.exchange_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SE_BACK:
 			auto_exchange_enum_next = SE_LAND_ONCE;		
-			g_Flag.exchange_solenoid_flag = 0;
-			g_Flag.forward_solenoid_flag = 0;
-			autoModeDelay_ms(300);
+			if(g_Flag.exchange_solenoid_flag != 0 || g_Flag.forward_solenoid_flag != 0)
+			{
+				g_Flag.exchange_solenoid_flag = 0;
+				g_Flag.forward_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SE_LAND_ONCE:
 			auto_exchange_enum_next = SE_LAND_TWICE;
-			g_Flag.lift_once_flag = 0;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_once_flag != 0)
+			{
+				g_Flag.lift_once_flag = 0;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SE_LAND_TWICE:
 			auto_exchange_enum_next = ATUOEXEC_END;
-			g_Flag.lift_twice_flag = 0;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_twice_flag != 0)
+			{
+				g_Flag.lift_twice_flag = 0;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
-//			g_Flag.auto_mode = AUTO_MODE_OFF;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
@@ -502,39 +609,59 @@ void autoMineMidair(void)
 		
 		case SM_CLAMP_PRE:
 			auto_midair_enum_next = SM_LIFT_TWICE;
-			g_Flag.clamp_solenoid_flag = 0;
-			autoModeDelay_ms(100);
+			if(g_Flag.clamp_solenoid_flag != 0)
+			{
+				g_Flag.clamp_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SM_LIFT_TWICE:
 			auto_midair_enum_next = SM_LIFT_ONCE;
-			g_Flag.lift_twice_flag = 1;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_twice_flag != 1)
+			{
+				g_Flag.lift_twice_flag = 1;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SM_LIFT_ONCE:
 			auto_midair_enum_next = SM_FORWARD;
-			g_Flag.lift_once_flag = 2;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_once_flag != 2)
+			{
+				g_Flag.lift_once_flag = 2;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 
 		case SM_FORWARD:
 			auto_midair_enum_next = SM_MID_ON;
-			g_Flag.forward_solenoid_flag = 1;
-			autoModeDelay_ms(300);
+			if(g_Flag.forward_solenoid_flag != 1)
+			{
+				g_Flag.forward_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SM_MID_ON:
 			auto_midair_enum_next = ATUOEXEC_END;
-			g_Flag.midair_solenoid_flag = 1;
-			autoModeDelay_ms(300);
+			if(g_Flag.midair_solenoid_flag != 1)
+			{
+				g_Flag.midair_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
-			g_Flag.auto_mode = GET_MINE_MIDAIR;
-//			g_Flag.auto_end_flag = 1;
-//			autoModeDelay_ms(100);
+//			g_Flag.auto_mode = GET_MINE_MIDAIR;
+			g_Flag.auto_end_flag = 2;					//
+			autoModeDelay_ms(100);
 			break;
 		
 		default:
@@ -575,43 +702,66 @@ void autoGetMineMidair(void)
 		
 		case SM_CLAMP:
 			auto_get_midair_enum_next = SM_BACK;
-			g_Flag.clamp_solenoid_flag = 1;
-			autoModeDelay_ms(300);
+			if(g_Flag.clamp_solenoid_flag != 1)
+			{
+				g_Flag.clamp_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SM_BACK:
 			auto_get_midair_enum_next = SM_LAND_ONCE;
-			g_Flag.forward_solenoid_flag = 0;
-			autoModeDelay_ms(300);
+			if(g_Flag.forward_solenoid_flag != 0)
+			{
+				g_Flag.forward_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 
 		case SM_LAND_ONCE:
 			auto_get_midair_enum_next = SM_MID_OFF;
-			g_Flag.lift_once_flag = 0;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_once_flag != 0)
+			{
+				g_Flag.lift_once_flag = 0;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SM_MID_OFF:
 			auto_get_midair_enum_next = SM_LAND_TWICE;
-			g_Flag.midair_solenoid_flag = 0;
-			autoModeDelay_ms(300);
+			if(g_Flag.midair_solenoid_flag != 0)
+			{
+				g_Flag.midair_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 
 		case SM_LAND_TWICE:
 			auto_get_midair_enum_next = SM_LOOSE;
-			g_Flag.lift_twice_flag = 0;
-			autoModeDelay_ms(800);
+			if(g_Flag.lift_twice_flag != 0)
+			{
+				g_Flag.lift_twice_flag = 0;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case SM_LOOSE:
 			auto_get_midair_enum_next = ATUOEXEC_END;
-			g_Flag.clamp_solenoid_flag = 0;
-			autoModeDelay_ms(300);
+			if(g_Flag.clamp_solenoid_flag != 0)
+			{
+				g_Flag.clamp_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
 			break;
 		
 		case ATUOEXEC_END:
 			auto_get_midair_enum_next = AUTOEXEC_DEFAULT;
-//			g_Flag.auto_mode = AUTO_MODE_OFF;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
@@ -646,12 +796,12 @@ void autoResetSoftware(void)
 		
 		case SR_FORWARD:
 			auto_reset_enum_next = SR_LIFT_ONCE;
-			if(g_Flag.forward_solenoid_flag == 1)
+			if(g_Flag.forward_solenoid_flag != 0)
 			{
 				g_Flag.forward_solenoid_flag = 0;
 				autoModeDelay_ms(300);
 			}else
-				auto_reset_enum = auto_reset_enum_next;
+				autoModeDelay_ms(50);
 			break;
 		
 		case SR_LIFT_ONCE:
@@ -661,18 +811,18 @@ void autoResetSoftware(void)
 				g_Flag.lift_once_flag = 0;
 				autoModeDelay_ms(800);
 			}else
-				auto_reset_enum = auto_reset_enum_next;
+				autoModeDelay_ms(50);
 			break;
 
 		
 		case SR_MID:
 			auto_reset_enum_next = SR_LIFT_TWICE;
-			if(g_Flag.midair_solenoid_flag == 1)
+			if(g_Flag.midair_solenoid_flag != 0)
 			{
 				g_Flag.midair_solenoid_flag = 0;
 				autoModeDelay_ms(300);
 			}else
-				auto_reset_enum = auto_reset_enum_next;
+				autoModeDelay_ms(50);
 			break;
 		
 		case SR_LIFT_TWICE:
@@ -682,12 +832,11 @@ void autoResetSoftware(void)
 				g_Flag.lift_twice_flag = 0;
 				autoModeDelay_ms(800);
 			}else
-				auto_reset_enum = auto_reset_enum_next;
+				autoModeDelay_ms(50);
 			break;
 		
 		case ATUOEXEC_END:
 			auto_reset_enum_next = AUTOEXEC_DEFAULT;
-//			g_Flag.auto_mode = AUTO_MODE_OFF;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;

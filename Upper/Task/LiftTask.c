@@ -35,8 +35,8 @@ void motor_lift_task(void)
 			lift_pos_set[0] = LiftPositionInit[0] - lift_once_offset - LiftJourney_1;									//修改目标值
 			lift_pos_set[1] = LiftPositionInit[1] + lift_once_offset + LiftJourney_1;
 			
-							Pid_LiftTrack_Positioin[0].P = 0.3f;
-							Pid_LiftTrack_Positioin[0].I = 0.001f;
+							Pid_LiftTrack_Positioin[0].P = 1.0f;
+							Pid_LiftTrack_Positioin[0].I = 0.002f;
 							Pid_LiftTrack_Positioin[0].D = 0.00f;
 							Pid_LiftTrack_Positioin[0].IMax = 10000.0f;
 		}
@@ -48,9 +48,9 @@ void motor_lift_task(void)
 			lift_pos_set[0] = LiftPositionInit[0] - lift_once_offset - LiftJourney_2;									//修改目标值
 			lift_pos_set[1] = LiftPositionInit[1] + lift_once_offset + LiftJourney_2;
 			
-							Pid_LiftTrack_Positioin[0].P = 0.05f;
+							Pid_LiftTrack_Positioin[0].P = 0.1f;
 							Pid_LiftTrack_Positioin[0].I = 0.001f;
-							Pid_LiftTrack_Positioin[0].D = 0.00f;
+							Pid_LiftTrack_Positioin[0].D = 0.000f;
 							Pid_LiftTrack_Positioin[0].IMax = 10000.0f;
 		}
 		

@@ -141,7 +141,7 @@ void keyModeFlagChange(void)
 					/*********************** f键上升沿控制自动空接矿石 **************************/
 					if(f_rising_flag == 1)
 					{
-		//				g_Flag.auto_mode = MINE_MIDAIR;
+						g_Flag.auto_mode = MINE_MIDAIR;
 					}
 					
 					/*********************** g键上升沿控制夹子打开/关闭 **************************/
@@ -470,7 +470,6 @@ void controlStateGet(void)															//获取控制模式
 			case UP:
 				g_Flag.control_mode = KEY_MODE;							//键鼠模式
 				g_Flag.control_target = NORMAL_MODE;			//正常模式
-//				g_Flag.auto_mode			= AUTO_MODE_OFF;		//默认关闭自动模式
 				break;
 			case MIDDLE:
 				if(g_Flag.control_target == RC_MODE)

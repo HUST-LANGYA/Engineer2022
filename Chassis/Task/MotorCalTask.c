@@ -15,7 +15,7 @@ void motorPidInit(void)
 {
 //		LiftJourney_1 = 80000;
 //		LiftJourney_1 = 180000;
-		LiftJourney_1 = 135000;
+		LiftJourney_1 = 170000;
 		LiftJourney_2	= 125000;
 	
 		lift_offset = 15000;

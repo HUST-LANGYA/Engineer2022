@@ -158,6 +158,8 @@ void CAN2_RX0_IRQHandler(void)
 				FlagOfSlave.data = Data_Receive_from_F103[1];
 				if(Data_Receive_from_F103[2] == 1)
 					g_Flag.auto_mode = AUTO_MODE_OFF;
+				else if(Data_Receive_from_F103[2] == 2)
+					g_Flag.auto_mode = GET_MINE_MIDAIR;
 				else
 					g_Flag.auto_mode = g_Flag.auto_mode;
 				break;

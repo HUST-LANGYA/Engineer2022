@@ -25,8 +25,8 @@ void Pid_Motor_Init(void)
 
 //		ForwardPositionInit[0] = Pos_Forward_Motor[0];
 //		ForwardPositionInit[1] = Pos_Forward_Motor[1];
-		LiftJourney_2 = -60000;
-		LiftJourney_1 = -40000;
+		LiftJourney_2 = -70000;
+		LiftJourney_1 = -46000;
 		RotateJourney = 0;
 	
 	
@@ -130,13 +130,13 @@ void motor_cal_task(void)
 	
 	/*抬升的两个电机控制*/
 	//位置环（左抬升）
-	Pid_LiftTrack_Speed[0].SetPoint = LIMIT_MAX_MIN(PID_Calc(&Pid_LiftTrack_Positioin[0],Pos_LiftTrack[0]), 5000, -5000);
+	Pid_LiftTrack_Speed[0].SetPoint = LIMIT_MAX_MIN(PID_Calc(&Pid_LiftTrack_Positioin[0],Pos_LiftTrack[0]), 100000, -100000);
 //	Pid_LiftTrack_Speed[0].SetPoint = 0;
 	//位置环（右抬升）
-	Pid_LiftTrack_Speed[1].SetPoint = LIMIT_MAX_MIN(PID_Calc(&Pid_LiftTrack_Positioin[1],Pos_LiftTrack[1]), 5000, -5000);
+	Pid_LiftTrack_Speed[1].SetPoint = LIMIT_MAX_MIN(PID_Calc(&Pid_LiftTrack_Positioin[1],Pos_LiftTrack[1]), 10000, -10000);
 //	Pid_LiftTrack_Speed[1].SetPoint = 0;
 	//速度环（左抬升）
-	LiftTrack_Current[0] = LIMIT_MAX_MIN(PID_Calc(&Pid_LiftTrack_Speed[0],(float)Track_Motor[0].speed),13000,-13000);
+	LiftTrack_Current[0] = LIMIT_MAX_MIN(PID_Calc(&Pid_LiftTrack_Speed[0],(float)Track_Motor[0].speed),15000,-15000);
 	//速度环（右抬升）
 	LiftTrack_Current[1] = LIMIT_MAX_MIN(PID_Calc(&Pid_LiftTrack_Speed[1],(float)Track_Motor[1].speed),13000,-13000);
 	
