@@ -516,7 +516,7 @@ void autoExchange(void)
 			break;
 		
 		case SE_LOOSE:
-			auto_exchange_enum_next = SE_EXCHANGE;
+			auto_exchange_enum_next = SE_FORWARD_BACK_2;
 			if(g_Flag.clamp_solenoid_flag != 0)
 			{
 					g_Flag.clamp_solenoid_flag = 0;
@@ -525,12 +525,31 @@ void autoExchange(void)
 				autoModeDelay_ms(50);
 			break;
 		
-		
-		case SE_EXCHANGE:
-			auto_exchange_enum_next = SE_BACK;
-			if(g_Flag.exchange_solenoid_flag != 1)
+		case SE_FORWARD_BACK_2:
+			auto_exchange_enum_next = SE_CLAMP_2;
+			if(g_Flag.forward_solenoid_flag != 0)
 			{
-				g_Flag.exchange_solenoid_flag = 1;
+					g_Flag.forward_solenoid_flag = 0;
+					autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
+			break;
+		
+		case SE_CLAMP_2:
+			auto_exchange_enum_next = SE_FORWARD_2;
+			if(g_Flag.clamp_solenoid_flag != 1)
+			{
+					g_Flag.clamp_solenoid_flag = 1;
+					autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
+			break;
+		
+		case SE_FORWARD_2:
+			auto_exchange_enum_next = SE_BACK;
+			if(g_Flag.forward_solenoid_flag != 1)
+			{
+				g_Flag.forward_solenoid_flag = 1;
 				autoModeDelay_ms(300);
 			}else
 				autoModeDelay_ms(50);
@@ -558,11 +577,21 @@ void autoExchange(void)
 			break;
 		
 		case SE_LAND_TWICE:
-			auto_exchange_enum_next = ATUOEXEC_END;
+			auto_exchange_enum_next = SE_LOOSE_2;
 			if(g_Flag.lift_twice_flag != 0)
 			{
 				g_Flag.lift_twice_flag = 0;
 				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
+			break;
+		
+		case SE_LOOSE_2:
+			auto_exchange_enum_next = ATUOEXEC_END;
+			if(g_Flag.clamp_solenoid_flag != 0)
+			{
+				g_Flag.clamp_solenoid_flag = 0;
+				autoModeDelay_ms(300);
 			}else
 				autoModeDelay_ms(50);
 			break;
@@ -661,7 +690,7 @@ void autoMineMidair(void)
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
 //			g_Flag.auto_mode = GET_MINE_MIDAIR;
 			g_Flag.auto_end_flag = 2;					//
-			autoModeDelay_ms(100);
+//			autoModeDelay_ms(100);
 			break;
 		
 		default:

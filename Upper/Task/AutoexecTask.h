@@ -62,11 +62,16 @@ typedef enum{
 	SE_LIFT_TWICE			= 42,					//二级抬升
 	SE_LIFT_ONCE			= 43,					//四连杆抬升
 	SE_FORWARD 				= 44,					//电磁阀前移
-	SE_EXCHANGE				= 45,					//兑换电磁阀打开
-	SE_LOOSE					= 46,					//释放矿石
-	SE_BACK						= 47,					//缩回状态(前移电磁阀关闭)
-	SE_LAND_ONCE			= 48,					//四连杆降落
-	SE_LAND_TWICE			= 49,					//二级抬升降落
+	SE_LOOSE					= 45,					//释放矿石
+	
+	SE_FORWARD_BACK_2	= 46,					//
+	SE_CLAMP_2				= 47,
+	SE_FORWARD_2			= 48,
+	
+	SE_BACK						= 49,					//缩回状态(前移电磁阀关闭)
+	SE_LAND_ONCE			= 50,					//四连杆降落
+	SE_LAND_TWICE			= 51,					//二级抬升降落_2			
+	SE_LOOSE_2				= 52,
 	
 	
 /***************************软件复位用到的状态**************************/

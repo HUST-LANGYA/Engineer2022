@@ -125,18 +125,18 @@ void modeSwitch(void)
 			break;
 	}
 	
-	switch(g_Flag.exchange_solenoid_flag)
-	{
-		case 0:
-			EXCHANGE_SOLENOID = 0;
-			break;
-		case 1:
-			EXCHANGE_SOLENOID = 1;
-			break;
-		default:
-			EXCHANGE_SOLENOID = 0;
-			break;
-	}
+//	switch(g_Flag.exchange_solenoid_flag)
+//	{
+//		case 0:
+//			EXCHANGE_SOLENOID = 0;
+//			break;
+//		case 1:
+//			EXCHANGE_SOLENOID = 1;
+//			break;
+//		default:
+//			EXCHANGE_SOLENOID = 0;
+//			break;
+//	}
 	
 }
 
