@@ -46,6 +46,8 @@
 ..\obj\offlinechecktask.o: ..\Task\MotorCalTask.h
 ..\obj\offlinechecktask.o: ..\Task\MotorFlagTask.h
 ..\obj\offlinechecktask.o: ..\Task\ClampAngleTask.h
+..\obj\offlinechecktask.o: ..\Task\GraphicsSendTask.h
+..\obj\offlinechecktask.o: ..\Task\CharSendTask.h
 ..\obj\offlinechecktask.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\offlinechecktask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\offlinechecktask.o: ..\User\FreeRTOSConfig.h

@@ -1,4 +1,5 @@
 ..\obj\algorithmofcrc.o: ..\Algorithm\algorithmOfCRC.c
+..\obj\algorithmofcrc.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\algorithmofcrc.o: ..\User\main.h
 ..\obj\algorithmofcrc.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\algorithmofcrc.o: ..\User\stm32f10x.h
@@ -45,6 +46,8 @@
 ..\obj\algorithmofcrc.o: ..\Task\MotorCalTask.h
 ..\obj\algorithmofcrc.o: ..\Task\MotorFlagTask.h
 ..\obj\algorithmofcrc.o: ..\Task\ClampAngleTask.h
+..\obj\algorithmofcrc.o: ..\Task\GraphicsSendTask.h
+..\obj\algorithmofcrc.o: ..\Task\CharSendTask.h
 ..\obj\algorithmofcrc.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\algorithmofcrc.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\algorithmofcrc.o: ..\User\FreeRTOSConfig.h

@@ -550,7 +550,7 @@ void motionTargetGet(void)															//获取运动模式
 					g_Flag.control_target = SENIOR_MODE2;
 					break;
 				case DOWN:					//上层模式3
-					g_Flag.control_target = SENIOR_AUTO_MODE;
+//					g_Flag.control_target = SENIOR_AUTO_MODE;
 					break;
 				default:
 					break;

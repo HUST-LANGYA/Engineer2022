@@ -44,6 +44,10 @@ static TaskHandle_t MotorFlagTask_Handler; //任务句柄
 #define CLAMP_ANGLE_STK_SIZE 256 //任务堆栈
 static TaskHandle_t ClampAngleTask_Handler; //任务句柄
 
+#define GRAPHIC_TASK_PRIO 4  //任务优先级
+#define GRAPHIC_STK_SIZE 128 //任务堆栈
+static TaskHandle_t Graphic_Handler; //任务句柄
+
 //#define ReturnState_TASK_PRIO 17  //任务优先级
 //#define ReturnState_STK_SIZE 512 //任务堆栈
 //static TaskHandle_t ReturnStateTask_Handler; //任务句柄
@@ -103,6 +107,14 @@ xTaskCreate((TaskFunction_t)motorFlagTask,          //任务函数
                 (UBaseType_t)CLAMP_ANGLE_TASK_PRIO,        //任务优先级
                 (TaskHandle_t *)&ClampAngleTask_Handler); //任务句柄				
 
+								
+	xTaskCreate((TaskFunction_t)GraphicSendtask,          //任务函数
+								(const char *)"Graphic_task",          //任务名称
+								(uint16_t)GRAPHIC_STK_SIZE,            //任务堆栈大小
+								(void *)NULL,                        //传递给任务函数的参数
+								(UBaseType_t)GRAPHIC_TASK_PRIO,        //任务优先级
+									(TaskHandle_t *)&Graphic_Handler); //任务句柄
+								
 //断线检测函数有问题，有待修改！！！！！！！！！
 //xTaskCreate((TaskFunction_t)offlineCheckTask,          //任务函数
 //                (const char *)"offlineCheckTask",          //任务名称

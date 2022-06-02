@@ -33,6 +33,7 @@
 ..\obj\clampangletask.o: ..\Mylib\iwdg.h
 ..\obj\clampangletask.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\clampangletask.o: ..\Mylib\tim2.h
+..\obj\clampangletask.o: ..\Mylib\uart4.h
 ..\obj\clampangletask.o: ..\Algorithm\pid.h
 ..\obj\clampangletask.o: ..\Algorithm\ModbusCRC16.h
 ..\obj\clampangletask.o: ..\Task\StartTask.h

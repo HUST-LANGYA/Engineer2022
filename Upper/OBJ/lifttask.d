@@ -33,6 +33,7 @@
 ..\obj\lifttask.o: ..\Mylib\iwdg.h
 ..\obj\lifttask.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\lifttask.o: ..\Mylib\tim2.h
+..\obj\lifttask.o: ..\Mylib\uart4.h
 ..\obj\lifttask.o: ..\Algorithm\pid.h
 ..\obj\lifttask.o: ..\Algorithm\ModbusCRC16.h
 ..\obj\lifttask.o: ..\Task\StartTask.h

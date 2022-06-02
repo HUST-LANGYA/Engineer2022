@@ -46,6 +46,8 @@
 ..\obj\motorflagtask.o: ..\Task\MotorCalTask.h
 ..\obj\motorflagtask.o: ..\Task\MotorFlagTask.h
 ..\obj\motorflagtask.o: ..\Task\ClampAngleTask.h
+..\obj\motorflagtask.o: ..\Task\GraphicsSendTask.h
+..\obj\motorflagtask.o: ..\Task\CharSendTask.h
 ..\obj\motorflagtask.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\motorflagtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\motorflagtask.o: ..\User\FreeRTOSConfig.h

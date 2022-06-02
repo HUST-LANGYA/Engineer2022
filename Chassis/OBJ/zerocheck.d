@@ -46,6 +46,8 @@
 ..\obj\zerocheck.o: ..\Task\MotorCalTask.h
 ..\obj\zerocheck.o: ..\Task\MotorFlagTask.h
 ..\obj\zerocheck.o: ..\Task\ClampAngleTask.h
+..\obj\zerocheck.o: ..\Task\GraphicsSendTask.h
+..\obj\zerocheck.o: ..\Task\CharSendTask.h
 ..\obj\zerocheck.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\zerocheck.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\zerocheck.o: ..\User\FreeRTOSConfig.h

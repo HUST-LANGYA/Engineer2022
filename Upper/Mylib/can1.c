@@ -5,6 +5,10 @@ int can = 0;
 unsigned char Data_Send_to_F105[8];//准备发送给B板的数据
 unsigned char data_receive[8] = {0,0,0,0,0,0,0,0},data_receive_pre[8] = {0,0,0,0,0,0,0,0}; //C板接收的数据
 
+float yaw_angle;
+float gz;
+float pitch_angle;
+float g_pitch;
 FlagWithMaster_t Flag2Master;			//发送给B板标志位
 FlagWithMaster_t FlagOfMaster;		//接收到的B板标志位
 //unsigned char Laser_Left,Laser_Right,Laser_Mid;
@@ -77,8 +81,8 @@ void CAN1_Config(void)
 	CAN_FilterInitStructure.CAN_FilterNumber=1;	 
 	CAN_FilterInitStructure.CAN_FilterMode=CAN_FilterMode_IdList;	 // 标识符屏蔽位模式
 	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_16bit;   // 32位过滤器
-	CAN_FilterInitStructure.CAN_FilterIdHigh=0x000 <<5;			// 过滤器标识符
-	CAN_FilterInitStructure.CAN_FilterIdLow=0x000 <<5;				
+	CAN_FilterInitStructure.CAN_FilterIdHigh=0x100 <<5;			// 过滤器标识符
+	CAN_FilterInitStructure.CAN_FilterIdLow=0x101 <<5;				
 	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0x000 <<5;		// 过滤器屏蔽标识符
 	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x000 <<5;
 	CAN_FilterInitStructure.CAN_FilterFIFOAssignment=CAN_FIFO1;	 // FIFO0指向过滤器
@@ -143,6 +147,25 @@ void CAN1_RX1_IRQHandler(void)
 		CAN_Receive(CAN1, CAN_FIFO1, &rx_message);
 		switch(rx_message.StdId)
 		{
+			case 0x100:
+				memcpy(&pitch_angle,&rx_message.Data,4);
+				memcpy(&g_pitch,&(rx_message.Data[4]),4);
+//				if(g_Flag.gyro_initial_flag == 0)
+//				{
+//					g_Flag.gyro_initial_flag = 1;
+//					chassis_pos_follow_pid.SetPoint = yaw_angle;
+//				}
+				break;
+			
+			case 0x101:
+				memcpy(&yaw_angle,&rx_message.Data,4);
+				memcpy(&gz,&(rx_message.Data[4]),4);
+//				if(g_Flag.gyro_initial_flag == 0)
+//				{
+//					g_Flag.gyro_initial_flag = 1;
+//					chassis_pos_follow_pid.SetPoint = yaw_angle;
+//				}
+				break;
 			
 			default:
 				break;

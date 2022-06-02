@@ -51,6 +51,7 @@ void BSP_init(void)
 	CAN1_Config();
 	can2Config();
 	gpioConfig();
+	UART4_Configuration();
 //	IWDG_Config(IWDG_Prescaler_128 ,625);
 }
 

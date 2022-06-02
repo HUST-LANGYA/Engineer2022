@@ -33,6 +33,7 @@
 ..\obj\tim.o: ..\Mylib\iwdg.h
 ..\obj\tim.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\tim.o: ..\Mylib\tim2.h
+..\obj\tim.o: ..\Mylib\uart4.h
 ..\obj\tim.o: ..\Algorithm\pid.h
 ..\obj\tim.o: ..\Algorithm\ModbusCRC16.h
 ..\obj\tim.o: ..\Task\StartTask.h

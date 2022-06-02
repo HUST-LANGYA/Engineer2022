@@ -76,7 +76,7 @@ void modeSwitch(void)
 	
 //	if(g_Flag.control_target == SENIOR_AUTO_MODE)		//自动模式检测
 //			autoModeSwitch();
-	 
+	
 	Slave2Master();								//发送数据给B板
 	CameraSteeringEngine_Set();   //控制图传舵机
 	
@@ -182,7 +182,7 @@ void flagModeSwitch(void)
 		{
 				if(g_Flag.control_target == SENIOR_AUTO_MODE)
 				{
-					g_Flag.auto_mode = SMALL_ISLAND_MINE;
+//					g_Flag.auto_mode = SMALL_ISLAND_MINE;
 				}else
 					g_Flag.auto_mode = AUTO_MODE_OFF;
 				

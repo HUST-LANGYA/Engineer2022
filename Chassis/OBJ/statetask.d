@@ -46,6 +46,8 @@
 ..\obj\statetask.o: ..\Task\MotorCalTask.h
 ..\obj\statetask.o: ..\Task\MotorFlagTask.h
 ..\obj\statetask.o: ..\Task\ClampAngleTask.h
+..\obj\statetask.o: ..\Task\GraphicsSendTask.h
+..\obj\statetask.o: ..\Task\CharSendTask.h
 ..\obj\statetask.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\statetask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\statetask.o: ..\User\FreeRTOSConfig.h

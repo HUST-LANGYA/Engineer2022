@@ -18,7 +18,7 @@
 #include "can1.h"
 #include "can2.h"
 #include "led.h"
-	//#include "usart.h"
+//#include "usart.h"
 #include "delay.h"
 #include "nvic.h"
 #include "remote.h"
@@ -47,6 +47,8 @@
 #include "MotorFlagTask.h"
 //#include "LaserRangingTask.h"
 #include "ClampAngleTask.h"
+#include "GraphicsSendTask.h"
+#include "CharSendTask.h"
 
 /*FreeRTOS*/
 #include "FreeRTOS.h"

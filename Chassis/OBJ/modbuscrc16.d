@@ -46,6 +46,8 @@
 ..\obj\modbuscrc16.o: ..\Task\MotorCalTask.h
 ..\obj\modbuscrc16.o: ..\Task\MotorFlagTask.h
 ..\obj\modbuscrc16.o: ..\Task\ClampAngleTask.h
+..\obj\modbuscrc16.o: ..\Task\GraphicsSendTask.h
+..\obj\modbuscrc16.o: ..\Task\CharSendTask.h
 ..\obj\modbuscrc16.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\modbuscrc16.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\modbuscrc16.o: ..\User\FreeRTOSConfig.h

@@ -46,6 +46,8 @@
 ..\obj\chassistask.o: ..\Task\MotorCalTask.h
 ..\obj\chassistask.o: ..\Task\MotorFlagTask.h
 ..\obj\chassistask.o: ..\Task\ClampAngleTask.h
+..\obj\chassistask.o: ..\Task\GraphicsSendTask.h
+..\obj\chassistask.o: ..\Task\CharSendTask.h
 ..\obj\chassistask.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\chassistask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\chassistask.o: ..\User\FreeRTOSConfig.h

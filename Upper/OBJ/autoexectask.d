@@ -33,6 +33,7 @@
 ..\obj\autoexectask.o: ..\Mylib\iwdg.h
 ..\obj\autoexectask.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\autoexectask.o: ..\Mylib\tim2.h
+..\obj\autoexectask.o: ..\Mylib\uart4.h
 ..\obj\autoexectask.o: ..\Algorithm\pid.h
 ..\obj\autoexectask.o: ..\Algorithm\ModbusCRC16.h
 ..\obj\autoexectask.o: ..\Task\StartTask.h

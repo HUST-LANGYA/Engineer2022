@@ -32,6 +32,7 @@
 ..\obj\iwdg.o: ..\Mylib\Usart3.h
 ..\obj\iwdg.o: ..\Mylib\iwdg.h
 ..\obj\iwdg.o: ..\Mylib\tim2.h
+..\obj\iwdg.o: ..\Mylib\uart4.h
 ..\obj\iwdg.o: ..\Algorithm\pid.h
 ..\obj\iwdg.o: ..\Algorithm\ModbusCRC16.h
 ..\obj\iwdg.o: ..\Task\StartTask.h

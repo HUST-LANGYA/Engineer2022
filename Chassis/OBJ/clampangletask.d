@@ -46,6 +46,8 @@
 ..\obj\clampangletask.o: ..\Task\MotorCalTask.h
 ..\obj\clampangletask.o: ..\Task\MotorFlagTask.h
 ..\obj\clampangletask.o: ..\Task\ClampAngleTask.h
+..\obj\clampangletask.o: ..\Task\GraphicsSendTask.h
+..\obj\clampangletask.o: ..\Task\CharSendTask.h
 ..\obj\clampangletask.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\clampangletask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\clampangletask.o: ..\User\FreeRTOSConfig.h

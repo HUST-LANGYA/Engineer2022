@@ -33,6 +33,7 @@
 ..\obj\statetask.o: ..\Mylib\iwdg.h
 ..\obj\statetask.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\statetask.o: ..\Mylib\tim2.h
+..\obj\statetask.o: ..\Mylib\uart4.h
 ..\obj\statetask.o: ..\Algorithm\pid.h
 ..\obj\statetask.o: ..\Algorithm\ModbusCRC16.h
 ..\obj\statetask.o: ..\Task\StartTask.h

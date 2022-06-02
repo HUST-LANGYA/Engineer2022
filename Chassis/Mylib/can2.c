@@ -102,16 +102,7 @@ void can2Config(void)
 	CAN_FilterInitStructure.CAN_FilterFIFOAssignment=CAN_FIFO0;	 // FIFO0指向过滤器
 	CAN_FilterInitStructure.CAN_FilterActivation=ENABLE;
 	CAN_FilterInit(&CAN_FilterInitStructure);
-//	CAN_FilterInitStructure.CAN_FilterNumber=14;	 
-//	CAN_FilterInitStructure.CAN_FilterMode=CAN_FilterMode_IdList;	 // 标识符屏蔽位模式
-//	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_16bit;   // 32位过滤器
-//	CAN_FilterInitStructure.CAN_FilterIdHigh=0x201 << 5;			// 过滤器标识符
-//	CAN_FilterInitStructure.CAN_FilterIdLow=0x202 << 5;				
-//	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0x203 << 5;		// 过滤器屏蔽标识符
-//	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x204 << 5;
-//	CAN_FilterInitStructure.CAN_FilterFIFOAssignment=CAN_FIFO0;	 // FIFO0指向过滤器
-//	CAN_FilterInitStructure.CAN_FilterActivation=ENABLE;
-//	CAN_FilterInit(&CAN_FilterInitStructure);
+	
 	
 	CAN_FilterInitStructure.CAN_FilterNumber=15;	// 
 	CAN_FilterInitStructure.CAN_FilterMode=CAN_FilterMode_IdList;	 // 标识符屏蔽位模式
@@ -213,22 +204,7 @@ void CAN2_RX1_IRQHandler(void)
 }	
 
 
-///**
-//  * @brief  CAN2接收中断，FIFO1
-//  * @param  None
-//  * @retval None
-//  */
-//CanRxMsg rx_message_1;	
-//void CAN2_RX1_IRQHandler(void)
-//{
-//	if(CAN_GetITStatus(CAN2, CAN_IT_FMP1) != RESET) 
-//	{
-//    CAN_Receive(CAN2, CAN_FIFO1, &rx_message_1);	
 
-//				
-//		CAN_ClearITPendingBit(CAN2, CAN_IT_FMP1);
-//	}
-//}
 
 
 

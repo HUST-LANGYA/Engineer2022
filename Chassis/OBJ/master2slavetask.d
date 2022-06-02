@@ -46,6 +46,8 @@
 ..\obj\master2slavetask.o: ..\Task\MotorCalTask.h
 ..\obj\master2slavetask.o: ..\Task\MotorFlagTask.h
 ..\obj\master2slavetask.o: ..\Task\ClampAngleTask.h
+..\obj\master2slavetask.o: ..\Task\GraphicsSendTask.h
+..\obj\master2slavetask.o: ..\Task\CharSendTask.h
 ..\obj\master2slavetask.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\master2slavetask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\master2slavetask.o: ..\User\FreeRTOSConfig.h

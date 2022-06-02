@@ -46,6 +46,8 @@
 ..\obj\can2.o: ..\Task\MotorCalTask.h
 ..\obj\can2.o: ..\Task\MotorFlagTask.h
 ..\obj\can2.o: ..\Task\ClampAngleTask.h
+..\obj\can2.o: ..\Task\GraphicsSendTask.h
+..\obj\can2.o: ..\Task\CharSendTask.h
 ..\obj\can2.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\can2.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\can2.o: ..\User\FreeRTOSConfig.h

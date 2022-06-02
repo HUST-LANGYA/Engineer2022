@@ -33,6 +33,7 @@
 ..\obj\zerocheck.o: ..\Mylib\iwdg.h
 ..\obj\zerocheck.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\zerocheck.o: ..\Mylib\tim2.h
+..\obj\zerocheck.o: ..\Mylib\uart4.h
 ..\obj\zerocheck.o: ..\Algorithm\pid.h
 ..\obj\zerocheck.o: ..\Algorithm\ModbusCRC16.h
 ..\obj\zerocheck.o: ..\Task\StartTask.h

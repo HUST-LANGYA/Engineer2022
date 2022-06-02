@@ -32,6 +32,7 @@
 ..\obj\can1.o: ..\Mylib\iwdg.h
 ..\obj\can1.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\can1.o: ..\Mylib\tim2.h
+..\obj\can1.o: ..\Mylib\uart4.h
 ..\obj\can1.o: ..\Algorithm\pid.h
 ..\obj\can1.o: ..\Algorithm\ModbusCRC16.h
 ..\obj\can1.o: ..\Task\StartTask.h

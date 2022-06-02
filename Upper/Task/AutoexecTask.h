@@ -64,7 +64,7 @@ typedef enum{
 	SE_FORWARD 				= 44,					//电磁阀前移
 	SE_LOOSE					= 45,					//释放矿石
 	
-	SE_FORWARD_BACK_2	= 46,					//
+	SE_FORWARD_BACK_2	= 46,					//前移收回
 	SE_CLAMP_2				= 47,
 	SE_FORWARD_2			= 48,
 	

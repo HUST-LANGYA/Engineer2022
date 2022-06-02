@@ -24,6 +24,7 @@
 #include "Usart3.h"
 #include "iwdg.h"
 #include "tim2.h"
+#include "uart4.h"
 
 /*Algorithm*/
 #include "pid.h"

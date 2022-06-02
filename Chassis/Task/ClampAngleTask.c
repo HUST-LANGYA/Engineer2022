@@ -131,22 +131,8 @@ void clampAngleSend(void)
 {
 	(void)UART4->SR;
 	(void)UART4->DR;
-//	DMA_InitTypeDef 	dma;
-//			RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
-//			DMA_DeInit(DMA1_Channel2);
-//			dma.DMA_PeripheralBaseAddr = (uint32_t)&(USART3->DR);
-//			dma.DMA_MemoryBaseAddr = (uint32_t)ClampAngleSend;
-//			dma.DMA_DIR = DMA_DIR_PeripheralDST;
-//			dma.DMA_BufferSize = ClampAngleSendSize;
-//			dma.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
-//			dma.DMA_MemoryInc = DMA_MemoryInc_Enable;
-//			dma.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
-//			dma.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
-//			dma.DMA_Mode = DMA_Mode_Normal;
-//			dma.DMA_Priority = DMA_Priority_VeryHigh;
-//			dma.DMA_M2M = DMA_M2M_Disable;
-//	DMA_Init(DMA2_Channel5,&dma);
 	DMA2_Channel5->CNDTR = ClampAngleSendSize;
 	DMA_Cmd(DMA2_Channel5,ENABLE);
+
 }
 

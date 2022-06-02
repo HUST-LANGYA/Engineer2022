@@ -33,6 +33,7 @@
 ..\obj\forwardtask.o: ..\Mylib\iwdg.h
 ..\obj\forwardtask.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\forwardtask.o: ..\Mylib\tim2.h
+..\obj\forwardtask.o: ..\Mylib\uart4.h
 ..\obj\forwardtask.o: ..\Algorithm\pid.h
 ..\obj\forwardtask.o: ..\Algorithm\ModbusCRC16.h
 ..\obj\forwardtask.o: ..\Task\StartTask.h

@@ -300,7 +300,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0x20000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -571,6 +571,11 @@
               <FileName>can2.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Mylib\can2.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Mylib\uart4.c</FilePath>
             </File>
           </Files>
         </Group>

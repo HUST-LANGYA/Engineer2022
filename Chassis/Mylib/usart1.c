@@ -81,7 +81,7 @@ void uasrt1Config(void)
 		USART_DMACmd(USART1,USART_DMAReq_Tx,ENABLE);
 	
     nvic.NVIC_IRQChannel = DMA1_Channel4_IRQn;
-		nvic.NVIC_IRQChannelPreemptionPriority = 7;
+		nvic.NVIC_IRQChannelPreemptionPriority = 1;
 		nvic.NVIC_IRQChannelSubPriority = 1;
 		nvic.NVIC_IRQChannelCmd = ENABLE;
 		NVIC_Init(&nvic);
@@ -92,12 +92,12 @@ void uasrt1Config(void)
 			dma.DMA_PeripheralBaseAddr = (uint32_t)&(USART1->DR);
 			dma.DMA_MemoryBaseAddr = (uint32_t)JudgeSend;
 			dma.DMA_DIR = DMA_DIR_PeripheralDST;
-			dma.DMA_BufferSize = 30;
+			dma.DMA_BufferSize = SEND_MAX_SIZE;
 			dma.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
 			dma.DMA_MemoryInc = DMA_MemoryInc_Enable;
 			dma.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
 			dma.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
-			dma.DMA_Mode = DMA_Mode_Circular;
+			dma.DMA_Mode = DMA_Mode_Normal;
 			dma.DMA_Priority = DMA_Priority_VeryHigh;
 			dma.DMA_M2M = DMA_M2M_Disable;
 
@@ -124,6 +124,7 @@ void DMA1_Channel4_IRQHandler(void)
 		DMA_ClearFlag(DMA1_IT_TC4);
 		DMA_ClearITPendingBit(DMA1_IT_TC4);
 		DMA_Cmd(DMA1_Channel4,DISABLE);
+		
 	}	
 }
 
@@ -148,23 +149,6 @@ void JudgeBuffReceive(unsigned char ReceiveBuffer[],uint16_t DataLen)
 					JudgeReceive.RobotLevel=SaveBuffer[PackPoint+8];
 					JudgeReceive.remainHP=(SaveBuffer[PackPoint+10]<<8)|SaveBuffer[PackPoint+9]; 
 				}
-//				if((cmd_id==0x0207)&&(Verify_CRC16_Check_Sum(&SaveBuffer[PackPoint],DataLen+9)))
-//				{
-//					if(SaveBuffer[PackPoint+7+0]==1)
-//					{
-//						JudgeReceive.bulletFreq= SaveBuffer[PackPoint+7+1];
-//						memcpy(&JudgeReceive.bulletSpeed,&SaveBuffer[PackPoint+7+2],4);
-//					}
-//				}
-//				if((cmd_id==0x0202)&&(Verify_CRC16_Check_Sum(&SaveBuffer[PackPoint],DataLen+9)))
-//				{
-//					memcpy(&JudgeReceive.realChassisOutV,&SaveBuffer[PackPoint+7+0],2);
-//					JudgeReceive.realChassisOutV = JudgeReceive.realChassisOutV /1000.0f;
-//					memcpy(&JudgeReceive.realChassisOutA,&SaveBuffer[PackPoint+7+2],2);
-//					memcpy(&JudgeReceive.realChassispower,&SaveBuffer[PackPoint+7+4],4);
-//					memcpy(&JudgeReceive.remainEnergy,&SaveBuffer[PackPoint+7+8],2);
-//					memcpy(&JudgeReceive.shooterHeat17,&SaveBuffer[PackPoint+7+10],2);
-//				}
 			}
 		}
 	}

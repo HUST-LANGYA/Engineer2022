@@ -22,8 +22,8 @@ pid_Typedef chassis_pos_follow_pid = {
 	.SetPoint = 0.0f
 };
 pid_Typedef chassis_vel_follow_pid = {
-	.P = 1750.0f,
-	.I = 0.0f,
+	.P = 1200.0f,
+	.I = 0.0005f,
 	.D = 150.0f,
 	.IMax = 0.0f,
 	.SetPoint = 0.0f
@@ -70,7 +70,7 @@ void chassisVelPidInit(float p, float i, float d, float i_max)
 		chassis_vel_pid[j].P = p;
 		chassis_vel_pid[j].I = i;
 		chassis_vel_pid[j].D = d;
-        chassis_vel_pid[j].IMax = i_max;
+    chassis_vel_pid[j].IMax = i_max;
 		chassis_vel_pid[j].SetPoint = 0.0f;
 	}
 }
@@ -221,7 +221,6 @@ void chassisKeyModeCal(void)
 		vx = (rc_ctrl.key.a - rc_ctrl.key.d) * (1.0F - rc_ctrl.key.shift * 0.56F+ rc_ctrl.mouse.press_l * 2.0f ) * 1500.0F;
 		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.0F - rc_ctrl.key.shift * 0.56F+ rc_ctrl.mouse.press_l * 2.0f ) * 2000.0F;
 		chassis_pos_follow_pid.SetPoint -= rc_ctrl.mouse.x / 300.0f * (1.0F - rc_ctrl.key.shift * 0.56F);    //¼üÊó
-		//chassis_pos_follow_pid.SetPoint += (rc_ctrl.mouse.press_l - rc_ctrl.mouse.press_r)*0.02 * (1.0F - rc_ctrl.key.shift * 0.7F);    //¼üÊó
 		chassis_vel_follow_pid.SetPoint = LIMIT_MAX_MIN(PID_Calc(&chassis_pos_follow_pid, getYawAngle()), 5.7f, -5.7f);
 		vw = PID_Calc(&chassis_vel_follow_pid, getGz());
 	}

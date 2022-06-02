@@ -46,6 +46,8 @@
 ..\obj\judgesend.o: ..\Task\MotorCalTask.h
 ..\obj\judgesend.o: ..\Task\MotorFlagTask.h
 ..\obj\judgesend.o: ..\Task\ClampAngleTask.h
+..\obj\judgesend.o: ..\Task\GraphicsSendTask.h
+..\obj\judgesend.o: ..\Task\CharSendTask.h
 ..\obj\judgesend.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\judgesend.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\judgesend.o: ..\User\FreeRTOSConfig.h

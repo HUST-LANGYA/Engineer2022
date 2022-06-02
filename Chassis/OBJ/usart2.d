@@ -45,6 +45,8 @@
 ..\obj\usart2.o: ..\Task\MotorCalTask.h
 ..\obj\usart2.o: ..\Task\MotorFlagTask.h
 ..\obj\usart2.o: ..\Task\ClampAngleTask.h
+..\obj\usart2.o: ..\Task\GraphicsSendTask.h
+..\obj\usart2.o: ..\Task\CharSendTask.h
 ..\obj\usart2.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\usart2.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\usart2.o: ..\User\FreeRTOSConfig.h
