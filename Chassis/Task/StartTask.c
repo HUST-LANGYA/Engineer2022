@@ -40,9 +40,9 @@ static TaskHandle_t MotorCalTask_Handler; //任务句柄
 static TaskHandle_t MotorFlagTask_Handler; //任务句柄
 
 
-#define CLAMP_ANGLE_TASK_PRIO 10  //任务优先级
-#define CLAMP_ANGLE_STK_SIZE 256 //任务堆栈
-static TaskHandle_t ClampAngleTask_Handler; //任务句柄
+#define LASER_RANGING_TASK_PRIO 10  //任务优先级
+#define LASER_RANGING_STK_SIZE 256 //任务堆栈
+static TaskHandle_t LaserRangingTask_Handler; //任务句柄
 
 #define GRAPHIC_TASK_PRIO 4  //任务优先级
 #define GRAPHIC_STK_SIZE 128 //任务堆栈
@@ -99,13 +99,13 @@ xTaskCreate((TaskFunction_t)motorFlagTask,          //任务函数
                 (UBaseType_t)MOTOR_FLAG_TASK_PRIO,        //任务优先级
                 (TaskHandle_t *)&MotorFlagTask_Handler); //任务句柄			
 				
-								
-	xTaskCreate((TaskFunction_t)clampAngleSendTask,          //任务函数
-                (const char *)"clampAngleSendTask",          //任务名称
-                (uint16_t)CLAMP_ANGLE_STK_SIZE,            //任务堆栈大小
+
+	xTaskCreate((TaskFunction_t)laserRangingSendTask,          //任务函数
+                (const char *)"laserRangingSendTask",          //任务名称
+                (uint16_t)LASER_RANGING_STK_SIZE,            //任务堆栈大小
                 (void *)NULL,                        //传递给任务函数的参数
-                (UBaseType_t)CLAMP_ANGLE_TASK_PRIO,        //任务优先级
-                (TaskHandle_t *)&ClampAngleTask_Handler); //任务句柄				
+                (UBaseType_t)LASER_RANGING_TASK_PRIO,        //任务优先级
+                (TaskHandle_t *)&LaserRangingTask_Handler); //任务句柄					
 
 								
 	xTaskCreate((TaskFunction_t)GraphicSendtask,          //任务函数

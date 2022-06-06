@@ -218,16 +218,18 @@ void chassisKeyModeCal(void)
 	
 	if (g_Flag.gyro_use_flag)	//使用陀螺仪数据
 	{
-		vx = (rc_ctrl.key.a - rc_ctrl.key.d) * (1.0F - rc_ctrl.key.shift * 0.56F+ rc_ctrl.mouse.press_l * 2.0f ) * 1500.0F;
-		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.0F - rc_ctrl.key.shift * 0.56F+ rc_ctrl.mouse.press_l * 2.0f ) * 2000.0F;
-		chassis_pos_follow_pid.SetPoint -= rc_ctrl.mouse.x / 300.0f * (1.0F - rc_ctrl.key.shift * 0.56F);    //键鼠
+//		vx = (rc_ctrl.key.a - rc_ctrl.key.d)  * (1.0F - rc_ctrl.key.shift * 0.56F+ rc_ctrl.mouse.press_l * 2.0f ) * 1500.0F;
+//		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.0F - rc_ctrl.key.shift * 0.56F+ rc_ctrl.mouse.press_l * 2.0f ) * 2000.0F;
+		vx = (rc_ctrl.key.a - rc_ctrl.key.d)  * (2.0F - rc_ctrl.key.shift * 1.5F+ rc_ctrl.mouse.press_l * 1.0f ) * 1500.0F;
+		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (2.0F - rc_ctrl.key.shift * 1.5F+ rc_ctrl.mouse.press_l * 1.0f ) * 2000.0F;
+		chassis_pos_follow_pid.SetPoint -= rc_ctrl.mouse.x / 500.0f * (1.0F - rc_ctrl.key.shift * 0.56F);    //键鼠
 		chassis_vel_follow_pid.SetPoint = LIMIT_MAX_MIN(PID_Calc(&chassis_pos_follow_pid, getYawAngle()), 5.7f, -5.7f);
 		vw = PID_Calc(&chassis_vel_follow_pid, getGz());
 	}
 	else											//不使用陀螺仪数据
-	{			
-		vx = (rc_ctrl.key.a - rc_ctrl.key.d) * (1.0F - rc_ctrl.key.shift * 0.56F+ rc_ctrl.mouse.press_l * 2.0f ) * 1500.0F;
-		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.0F - rc_ctrl.key.shift * 0.56F+ rc_ctrl.mouse.press_l * 2.0f ) * 2000.0F;
+	{
+		vx = (rc_ctrl.key.a - rc_ctrl.key.d)  * (1.5F - rc_ctrl.key.shift * 1.0F+ rc_ctrl.mouse.press_l * 1.5f ) * 1500.0F;
+		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.5F - rc_ctrl.key.shift * 1.0F+ rc_ctrl.mouse.press_l * 1.5f ) * 2000.0F;
 //		vx = (rc_ctrl.key.a - rc_ctrl.key.d) * (1.0F - rc_ctrl.key.shift * 0.56F ) * 2500.0F;
 //		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.0F - rc_ctrl.key.shift * 0.56F ) * 2500.0F;
 		vw = -rc_ctrl.mouse.x * 100.0f * (1.0F - rc_ctrl.key.shift * 0.7F);
@@ -236,6 +238,15 @@ void chassisKeyModeCal(void)
 		//chassis_pos_follow_pid.SetPoint = getYawAngle();
 //		vw = (rc_ctrl.mouse.press_l - rc_ctrl.mouse.press_r)*1500.0f*(1.0f - rc_ctrl.key.shift * 0.56F);
 	}
+	
+//	if(g_Flag.laser_mid != LASER_MID_INIT)
+//	{
+//		if(g_Flag.laser_mid < LASER_MID_INIT)
+//			vx += 750;
+//		else 
+//			vx -= 750;
+//	}
+	
 }
 
 /**

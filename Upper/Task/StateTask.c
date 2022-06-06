@@ -9,6 +9,7 @@
 
 uint32_t  Mode_Switch_high_water;
 
+extern int LaserRanging;
 
 extern FlagWithMaster_t FlagOfMaster;		//接收到的B板标志位
 
@@ -31,7 +32,7 @@ void modeSwitchTask(void *pvParameters)
 		
 //		clampAngleSend();
 		modeSwitch();
-//		IWDG_Feed();
+		IWDG_Feed();
 		vTaskDelayUntil(&xLastWakeTime,xFrequency);
 		
 //		#if INCLUDE_uxTaskGetStackHighWaterMark
@@ -71,6 +72,10 @@ void modeInit(void)
 void modeSwitch(void)
 {
 	g_Flag.photogate_flag =	PHOTOGATE;			//获取光电门数据
+	if(LaserRanging >= 50)
+		g_Flag.laser_ranging_flag = 1;
+	else
+		g_Flag.laser_ranging_flag = 0;
 	
 	flagModeSwitch();												//模式检测
 	
@@ -167,6 +172,12 @@ void flagModeSwitch(void)
 				g_Flag.camera_pitch = data_receive[5];
 				if((data_receive_pre[6]-data_receive[6]) == 1)
 					g_Flag.rotate_flag = 1;
+				
+				if((data_receive_pre[7]-data_receive[7]) == 1)
+					g_Flag.lift_once_init_flag = 1;
+				else if ((data_receive_pre[7]-data_receive[7]) == 2)
+					g_Flag.lift_once_init_flag = 2;
+					
 				
 				if(g_Flag.auto_mode == AUTO_MODE_OFF)
 				{

@@ -70,7 +70,7 @@ u8 offlineDetect(void)
 	
 	if (g_Flag.gyro_cnt > 50)
 	{
-		g_Flag.gyro_use_flag = 0;    //µôÏß
+		g_Flag.gyro_use_flag_pre = 0;    //µôÏß
 		g_Flag.offline_flag |= 0x04;
 	}
 //	else

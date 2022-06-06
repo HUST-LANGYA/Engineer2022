@@ -20,7 +20,7 @@ FLAG_AUTOEXEC_ENUM auto_midair_enum				= AUTOEXEC_DEFAULT;
 FLAG_AUTOEXEC_ENUM auto_midair_enum_next	= AUTOEXEC_DEFAULT;
 
 //空接矿石接取状态变量
-		//命名时用'midair'
+		//命名时用'get_midair'
 FLAG_AUTOEXEC_ENUM auto_get_midair_enum				= AUTOEXEC_DEFAULT;
 FLAG_AUTOEXEC_ENUM auto_get_midair_enum_next	= AUTOEXEC_DEFAULT;
 
@@ -30,14 +30,19 @@ FLAG_AUTOEXEC_ENUM auto_small_enum 				= AUTOEXEC_DEFAULT;
 FLAG_AUTOEXEC_ENUM auto_small_enum_next 	= AUTOEXEC_DEFAULT;
 
 //自动兑换状态变量
-		//由于名字较长，命名时用'exchange'代替
+		//命名时用'exchange'代替
 FLAG_AUTOEXEC_ENUM auto_exchange_enum 			= AUTOEXEC_DEFAULT;			
 FLAG_AUTOEXEC_ENUM auto_exchange_enum_next 	= AUTOEXEC_DEFAULT;
 
 //软件自动复位状态变量
-		//由于名字较长，命名时用'reset'代替
+		//命名时用'reset'代替
 FLAG_AUTOEXEC_ENUM auto_reset_enum 			= AUTOEXEC_DEFAULT;			
 FLAG_AUTOEXEC_ENUM auto_reset_enum_next = AUTOEXEC_DEFAULT;
+
+//激光对位空接动作准备状态变量
+		//命名时用'laser'代替
+FLAG_AUTOEXEC_ENUM auto_laser_enum 			= AUTOEXEC_DEFAULT;			
+FLAG_AUTOEXEC_ENUM auto_laser_enum_next = AUTOEXEC_DEFAULT;
 
 
 //以下为延时需要用到的变量
@@ -112,6 +117,7 @@ void autoexec(void)
 			auto_midair_enum = auto_midair_enum_next;
 			auto_get_midair_enum = auto_get_midair_enum_next;
 			auto_reset_enum = auto_reset_enum_next;	
+			auto_laser_enum = auto_laser_enum_next;
 
 			auto_delay_en_flag 	= 1;
 			auto_delay_flag		 	= 0;
@@ -121,23 +127,26 @@ void autoexec(void)
 /*************************状态改变时需要执行的修改**********************/
 	if(g_Flag.auto_mode_pre != g_Flag.auto_mode)
 	{
-		auto_large_enum 		 		= AUTOEXEC_DEFAULT;
-		auto_large_enum_next 		= AUTOEXEC_DEFAULT;
+		auto_large_enum 		 			= AUTOEXEC_DEFAULT;
+		auto_large_enum_next 			= AUTOEXEC_DEFAULT;
 		
-		auto_midair_enum				= AUTOEXEC_DEFAULT;
-		auto_midair_enum_next		= AUTOEXEC_DEFAULT;
+		auto_midair_enum					= AUTOEXEC_DEFAULT;
+		auto_midair_enum_next			= AUTOEXEC_DEFAULT;
 		
-		auto_get_midair_enum				= AUTOEXEC_DEFAULT;
-		auto_get_midair_enum_next		= AUTOEXEC_DEFAULT;
+		auto_get_midair_enum			= AUTOEXEC_DEFAULT;
+		auto_get_midair_enum_next	= AUTOEXEC_DEFAULT;
 		
-		auto_small_enum 		 		= AUTOEXEC_DEFAULT;
-		auto_small_enum_next 		= AUTOEXEC_DEFAULT;
+		auto_small_enum 		 			= AUTOEXEC_DEFAULT;
+		auto_small_enum_next 			= AUTOEXEC_DEFAULT;
 		
-		auto_exchange_enum 		 	= AUTOEXEC_DEFAULT;
-		auto_exchange_enum_next	= AUTOEXEC_DEFAULT;
+		auto_exchange_enum 		 		= AUTOEXEC_DEFAULT;
+		auto_exchange_enum_next		= AUTOEXEC_DEFAULT;
 		
-		auto_reset_enum 				= AUTOEXEC_DEFAULT;
-		auto_reset_enum_next 		= AUTOEXEC_DEFAULT;
+		auto_reset_enum 					= AUTOEXEC_DEFAULT;
+		auto_reset_enum_next 			= AUTOEXEC_DEFAULT;
+		
+		auto_laser_enum 					= AUTOEXEC_DEFAULT;
+		auto_laser_enum_next			= AUTOEXEC_DEFAULT;
 	}
 	
 	g_Flag.auto_mode_pre = g_Flag.auto_mode;
@@ -169,6 +178,9 @@ void autoexec(void)
 			autoResetSoftware();
 			break;
 		
+		case LASER_ALIGNING_MID_PRE:						//软件自动复位
+			autoResetSoftware();
+			break;
 		
 		default:
 			break;
@@ -258,7 +270,7 @@ void autoLargeIslandMine(void)
 			break;
 		
 		case SL_LAND_ONCE:
-			auto_large_enum_next = SL_LAND_TWICE;
+			auto_large_enum_next = ATUOEXEC_END;
 			if(g_Flag.lift_once_flag != 0)
 			{
 				g_Flag.lift_once_flag = 0;
@@ -267,15 +279,15 @@ void autoLargeIslandMine(void)
 				autoModeDelay_ms(50);
 			break;
 		
-		case SL_LAND_TWICE:
-			auto_large_enum_next = ATUOEXEC_END;
-			if(g_Flag.lift_twice_flag != 0)
-			{
-				g_Flag.lift_twice_flag = 0;
-				autoModeDelay_ms(800);
-			}else
-				autoModeDelay_ms(50);
-			break;
+//		case SL_LAND_TWICE:
+//			auto_large_enum_next = SL_LOOSE;
+//			if(g_Flag.lift_twice_flag != 0)
+//			{
+//				g_Flag.lift_twice_flag = 0;
+//				autoModeDelay_ms(800);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
 		
 //		case SL_LOOSE:
 //			auto_large_enum_next = ATUOEXEC_END;
@@ -408,7 +420,7 @@ void autoSmallIslandMine(void)
 			break;
 		
 		case SS_MID_OFF:
-			auto_small_enum_next = SS_LAND_TWICE;
+			auto_small_enum_next = ATUOEXEC_END;
 			if(g_Flag.midair_solenoid_flag != 0)
 			{
 				g_Flag.midair_solenoid_flag = 0;
@@ -417,25 +429,25 @@ void autoSmallIslandMine(void)
 				autoModeDelay_ms(50);
 			break;
 		
-		case SS_LAND_TWICE:
-			auto_small_enum_next = SS_LOOSE;
-			if(g_Flag.lift_twice_flag != 0)
-			{
-				g_Flag.lift_twice_flag = 0;
-				autoModeDelay_ms(800);
-			}else
-				autoModeDelay_ms(50);
-			break;
-			
-		case SS_LOOSE:
-			auto_small_enum_next = ATUOEXEC_END;
-			if(g_Flag.clamp_solenoid_flag != 0)
-			{
-				g_Flag.clamp_solenoid_flag = 0;
-				autoModeDelay_ms(300);
-			}else
-				autoModeDelay_ms(50);
-			break;
+//		case SS_LAND_TWICE:
+//			auto_small_enum_next = SS_LOOSE;
+//			if(g_Flag.lift_twice_flag != 0)
+//			{
+//				g_Flag.lift_twice_flag = 0;
+//				autoModeDelay_ms(800);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
+//			
+//		case SS_LOOSE:
+//			auto_small_enum_next = ATUOEXEC_END;
+//			if(g_Flag.clamp_solenoid_flag != 0)
+//			{
+//				g_Flag.clamp_solenoid_flag = 0;
+//				autoModeDelay_ms(300);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
@@ -506,95 +518,95 @@ void autoExchange(void)
 			break;
 		
 		case SE_FORWARD:
-			auto_exchange_enum_next = SE_LOOSE;
-			if(g_Flag.forward_solenoid_flag != 1)
-			{
-				g_Flag.forward_solenoid_flag = 1;
-				autoModeDelay_ms(300);
-			}else
-				autoModeDelay_ms(50);
-			break;
-		
-		case SE_LOOSE:
-			auto_exchange_enum_next = SE_FORWARD_BACK_2;
-			if(g_Flag.clamp_solenoid_flag != 0)
-			{
-					g_Flag.clamp_solenoid_flag = 0;
-					autoModeDelay_ms(300);
-			}else
-				autoModeDelay_ms(50);
-			break;
-		
-		case SE_FORWARD_BACK_2:
-			auto_exchange_enum_next = SE_CLAMP_2;
-			if(g_Flag.forward_solenoid_flag != 0)
-			{
-					g_Flag.forward_solenoid_flag = 0;
-					autoModeDelay_ms(300);
-			}else
-				autoModeDelay_ms(50);
-			break;
-		
-		case SE_CLAMP_2:
-			auto_exchange_enum_next = SE_FORWARD_2;
-			if(g_Flag.clamp_solenoid_flag != 1)
-			{
-					g_Flag.clamp_solenoid_flag = 1;
-					autoModeDelay_ms(300);
-			}else
-				autoModeDelay_ms(50);
-			break;
-		
-		case SE_FORWARD_2:
-			auto_exchange_enum_next = SE_BACK;
-			if(g_Flag.forward_solenoid_flag != 1)
-			{
-				g_Flag.forward_solenoid_flag = 1;
-				autoModeDelay_ms(300);
-			}else
-				autoModeDelay_ms(50);
-			break;
-		
-		case SE_BACK:
-			auto_exchange_enum_next = SE_LAND_ONCE;		
-			if(g_Flag.exchange_solenoid_flag != 0 || g_Flag.forward_solenoid_flag != 0)
-			{
-				g_Flag.exchange_solenoid_flag = 0;
-				g_Flag.forward_solenoid_flag = 0;
-				autoModeDelay_ms(300);
-			}else
-				autoModeDelay_ms(50);
-			break;
-		
-		case SE_LAND_ONCE:
-			auto_exchange_enum_next = SE_LAND_TWICE;
-			if(g_Flag.lift_once_flag != 0)
-			{
-				g_Flag.lift_once_flag = 0;
-				autoModeDelay_ms(800);
-			}else
-				autoModeDelay_ms(50);
-			break;
-		
-		case SE_LAND_TWICE:
-			auto_exchange_enum_next = SE_LOOSE_2;
-			if(g_Flag.lift_twice_flag != 0)
-			{
-				g_Flag.lift_twice_flag = 0;
-				autoModeDelay_ms(800);
-			}else
-				autoModeDelay_ms(50);
-			break;
-		
-		case SE_LOOSE_2:
 			auto_exchange_enum_next = ATUOEXEC_END;
-			if(g_Flag.clamp_solenoid_flag != 0)
+			if(g_Flag.forward_solenoid_flag != 1)
 			{
-				g_Flag.clamp_solenoid_flag = 0;
+				g_Flag.forward_solenoid_flag = 1;
 				autoModeDelay_ms(300);
 			}else
 				autoModeDelay_ms(50);
 			break;
+		
+//		case SE_LOOSE:
+//			auto_exchange_enum_next = SE_FORWARD_BACK_2;
+//			if(g_Flag.clamp_solenoid_flag != 0)
+//			{
+//					g_Flag.clamp_solenoid_flag = 0;
+//					autoModeDelay_ms(300);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
+//		
+//		case SE_FORWARD_BACK_2:
+//			auto_exchange_enum_next = SE_CLAMP_2;
+//			if(g_Flag.forward_solenoid_flag != 0)
+//			{
+//					g_Flag.forward_solenoid_flag = 0;
+//					autoModeDelay_ms(300);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
+//		
+//		case SE_CLAMP_2:
+//			auto_exchange_enum_next = SE_FORWARD_2;
+//			if(g_Flag.clamp_solenoid_flag != 1)
+//			{
+//					g_Flag.clamp_solenoid_flag = 1;
+//					autoModeDelay_ms(300);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
+//		
+//		case SE_FORWARD_2:
+//			auto_exchange_enum_next = SE_BACK;
+//			if(g_Flag.forward_solenoid_flag != 1)
+//			{
+//				g_Flag.forward_solenoid_flag = 1;
+//				autoModeDelay_ms(300);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
+//		
+//		case SE_BACK:
+//			auto_exchange_enum_next = SE_LAND_ONCE;		
+//			if(g_Flag.exchange_solenoid_flag != 0 || g_Flag.forward_solenoid_flag != 0)
+//			{
+//				g_Flag.exchange_solenoid_flag = 0;
+//				g_Flag.forward_solenoid_flag = 0;
+//				autoModeDelay_ms(300);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
+//		
+//		case SE_LAND_ONCE:
+//			auto_exchange_enum_next = SE_LAND_TWICE;
+//			if(g_Flag.lift_once_flag != 0)
+//			{
+//				g_Flag.lift_once_flag = 0;
+//				autoModeDelay_ms(800);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
+//		
+//		case SE_LAND_TWICE:
+//			auto_exchange_enum_next = SE_LOOSE_2;
+//			if(g_Flag.lift_twice_flag != 0)
+//			{
+//				g_Flag.lift_twice_flag = 0;
+//				autoModeDelay_ms(800);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
+//		
+//		case SE_LOOSE_2:
+//			auto_exchange_enum_next = ATUOEXEC_END;
+//			if(g_Flag.clamp_solenoid_flag != 0)
+//			{
+//				g_Flag.clamp_solenoid_flag = 0;
+//				autoModeDelay_ms(300);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
 		
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
@@ -726,7 +738,7 @@ void autoGetMineMidair(void)
 		case SM_MID_WAIT:
 			auto_get_midair_enum_next = SM_CLAMP;
 			if(g_Flag.photogate_flag == 1)
-							autoModeDelay_ms(25);
+							autoModeDelay_ms(30);
 			break;
 		
 		case SM_CLAMP:
@@ -760,7 +772,7 @@ void autoGetMineMidair(void)
 			break;
 		
 		case SM_MID_OFF:
-			auto_get_midair_enum_next = SM_LAND_TWICE;
+			auto_get_midair_enum_next = ATUOEXEC_END;
 			if(g_Flag.midair_solenoid_flag != 0)
 			{
 				g_Flag.midair_solenoid_flag = 0;
@@ -769,25 +781,25 @@ void autoGetMineMidair(void)
 				autoModeDelay_ms(50);
 			break;
 
-		case SM_LAND_TWICE:
-			auto_get_midair_enum_next = SM_LOOSE;
-			if(g_Flag.lift_twice_flag != 0)
-			{
-				g_Flag.lift_twice_flag = 0;
-				autoModeDelay_ms(800);
-			}else
-				autoModeDelay_ms(50);
-			break;
-		
-		case SM_LOOSE:
-			auto_get_midair_enum_next = ATUOEXEC_END;
-			if(g_Flag.clamp_solenoid_flag != 0)
-			{
-				g_Flag.clamp_solenoid_flag = 0;
-				autoModeDelay_ms(300);
-			}else
-				autoModeDelay_ms(50);
-			break;
+//		case SM_LAND_TWICE:
+//			auto_get_midair_enum_next = SM_LOOSE;
+//			if(g_Flag.lift_twice_flag != 0)
+//			{
+//				g_Flag.lift_twice_flag = 0;
+//				autoModeDelay_ms(800);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
+//		
+//		case SM_LOOSE:
+//			auto_get_midair_enum_next = ATUOEXEC_END;
+//			if(g_Flag.clamp_solenoid_flag != 0)
+//			{
+//				g_Flag.clamp_solenoid_flag = 0;
+//				autoModeDelay_ms(300);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
 		
 		case ATUOEXEC_END:
 			auto_get_midair_enum_next = AUTOEXEC_DEFAULT;
@@ -876,5 +888,78 @@ void autoResetSoftware(void)
 			break;
 	}
 	
+}
+
+/**
+  	*@brief 		激光对位空接动作准备
+  	*@param		  void
+	*@return		  void
+*/
+void autoLaserMidPre(void)
+{
+		switch(auto_laser_enum)
+	{
+		case AUTOEXEC_DEFAULT:
+			auto_laser_enum_next = LP_LOOSE;
+			auto_laser_enum = auto_laser_enum_next;
+//			//执行操作
+//			if()//根据条件判断本状态结束，并进入下一状态
+//			{
+//				auto_laser_enum = auto_laser_enum_next;
+//			}
+			break;
+		
+		case LP_LOOSE:
+			auto_laser_enum_next = LP_LIFT_ONCE;
+			if(g_Flag.clamp_solenoid_flag != 0)
+			{
+				g_Flag.clamp_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
+			break;
+		
+		case LP_LIFT_ONCE:
+			auto_laser_enum_next = LP_FORWARD;
+			if(g_Flag.lift_once_flag != 2)
+			{
+				g_Flag.lift_once_flag = 2;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
+			break;
+
+		
+		case LP_FORWARD:
+			auto_laser_enum_next = LP_CLAMP;
+			if(g_Flag.forward_solenoid_flag != 1)
+			{
+				g_Flag.forward_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
+			break;
+		
+		case LP_CLAMP:
+			auto_laser_enum_next = ATUOEXEC_END;
+			if(g_Flag.clamp_solenoid_flag != 1)
+			{
+				g_Flag.clamp_solenoid_flag = 1;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
+			break;
+		
+		case ATUOEXEC_END:
+			auto_laser_enum_next = AUTOEXEC_DEFAULT;
+			g_Flag.auto_end_flag = 1;
+			autoModeDelay_ms(100);
+			break;
+			
+		default:
+			auto_laser_enum = AUTOEXEC_DEFAULT;
+			auto_laser_enum_next = AUTOEXEC_DEFAULT;
+			break;
+	}
 }
 

@@ -29,9 +29,9 @@ static TaskHandle_t modeSwitchTask_Handler; //任务句柄
 #define AUTOEXEC_STK_SIZE 512 //任务堆栈
 static TaskHandle_t autoexecTask_Handler; //任务句柄
 
-#define CLAMP_ANGLE_TASK_PRIO 10  //任务优先级
-#define CLAMP_ANGLE_STK_SIZE 256 //任务堆栈
-static TaskHandle_t ClampAngleTask_Handler; //任务句柄
+#define LASER_RANGING_TASK_PRIO 10  //任务优先级
+#define LASER_RANGING_STK_SIZE 256 //任务堆栈
+static TaskHandle_t LaserRangingTask_Handler; //任务句柄
 
 #define MOTOR_TASK_PRIO 17  //任务优先级
 #define MOTOR_STK_SIZE 256 //任务堆栈
@@ -81,12 +81,12 @@ void start_task(void *pvParameters)
                 (UBaseType_t)AUTOEXEC_TASK_PRIO,        //任务优先级
                 (TaskHandle_t *)&autoexecTask_Handler); //任务句柄
 
-	xTaskCreate((TaskFunction_t)clampAngleSendTask,          //任务函数
-                (const char *)"clampAngleSendTask",          //任务名称
-                (uint16_t)CLAMP_ANGLE_STK_SIZE,            //任务堆栈大小
+	xTaskCreate((TaskFunction_t)laserRangingSendTask,          //任务函数
+                (const char *)"laserRangingSendTask",          //任务名称
+                (uint16_t)LASER_RANGING_STK_SIZE,            //任务堆栈大小
                 (void *)NULL,                        //传递给任务函数的参数
-                (UBaseType_t)CLAMP_ANGLE_TASK_PRIO,        //任务优先级
-                (TaskHandle_t *)&ClampAngleTask_Handler); //任务句柄				
+                (UBaseType_t)LASER_RANGING_TASK_PRIO,        //任务优先级
+                (TaskHandle_t *)&LaserRangingTask_Handler); //任务句柄				
 
 	xTaskCreate((TaskFunction_t)Motor_task,          //任务函数
                 (const char *)"Motor_task",          //任务名称

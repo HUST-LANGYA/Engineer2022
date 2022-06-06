@@ -35,12 +35,12 @@
 ..\obj\can2.o: ..\Mylib\tim2.h
 ..\obj\can2.o: ..\Mylib\uart4.h
 ..\obj\can2.o: ..\Algorithm\pid.h
-..\obj\can2.o: ..\Algorithm\ModbusCRC16.h
+..\obj\can2.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\can2.o: ..\Task\StartTask.h
 ..\obj\can2.o: ..\Task\StateTask.h
 ..\obj\can2.o: ..\Task\AutoexecTask.h
 ..\obj\can2.o: ..\Task\MotorTask.h
-..\obj\can2.o: ..\Task\ClampAngleTask.h
+..\obj\can2.o: ..\Task\LaserRangingTask.h
 ..\obj\can2.o: ..\Task\LiftTask.h
 ..\obj\can2.o: ..\Task\RotateTask.h
 ..\obj\can2.o: ..\User\FreeRTOSConfig.h

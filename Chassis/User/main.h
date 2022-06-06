@@ -30,7 +30,7 @@
 #include "uart5.h"
 #include "JudgeSend.h"
 #include "ZeroCheck.h"
-//#include "iwdg.h"
+#include "iwdg.h"
 
 /*Algorithm*/
 #include "pid.h"
@@ -45,8 +45,7 @@
 #include "OfflineCheckTask.h"
 #include "MotorCalTask.h"
 #include "MotorFlagTask.h"
-//#include "LaserRangingTask.h"
-#include "ClampAngleTask.h"
+#include "LaserRangingTask.h"
 #include "GraphicsSendTask.h"
 #include "CharSendTask.h"
 
@@ -64,8 +63,8 @@
 //键鼠操作下的两个模式
 #define POWER_OFF_MODE 				0X03		//掉电模式
 #define NORMAL_MODE     			0X04		//正常模式
+#define CHECK_MODE     				0X05		//检录模式
 
-#define AUTO_MODE    					0X05		//自动模式（不用）
 //底盘模式
 #define CHASSIS_MODE					0X06		//底盘运动模式
 #define CHASSIS_MODE_STATIC		0X07		//底盘静步模式
@@ -75,16 +74,23 @@
 #define SENIOR_MODE2					0X0A		//上层模式2
 #define SENIOR_AUTO_MODE			0X0B		//上层模式3
 
+#define AUTO_MODE    					0X0C		//自动模式（不用）
+
 
 
 //自动执行模式auto_mode
-#define AUTO_MODE_OFF			0X00		//关闭自动模式
-#define LARGE_ISLAND_MINE	0X01		//大资源岛取矿
-#define MINE_MIDAIR				0X02		//空接矿石
-#define GET_MINE_MIDAIR		0X03		//空接接取矿石
-#define SMALL_ISLAND_MINE 0X04		//小资源岛取矿
-#define EXCHANGE_MINE			0X05		//兑换矿石
-#define RESET_SOFTWARE		0X06		//软件自动复位
+#define AUTO_MODE_OFF						0X00		//关闭自动模式
+#define LARGE_ISLAND_MINE				0X01		//大资源岛取矿
+#define MINE_MIDAIR							0X02		//空接矿石
+#define GET_MINE_MIDAIR					0X03		//空接接取矿石
+#define SMALL_ISLAND_MINE 			0X04		//小资源岛取矿
+#define EXCHANGE_MINE						0X05		//兑换矿石
+#define RESET_SOFTWARE					0X06		//软件自动复位
+#define LASER_ALIGNING_MID_PRE	0X07		//激光对位空接动作准备
+#define LASER_ALIGNING_MID			0X08		//激光对位空接
+
+//激光对位标志初始值
+#define LASER_MID_INIT 10
 
 
 //拨杆位置
@@ -95,13 +101,14 @@
 #define LIFT_UP           1
 #define LIFT_DOWN         2
 
+
 /*******接口宏定义*******/
 //叉车电磁阀
 #define FORK_SOLENOID_GPIO_PORT				GPIOA
 #define FORK_SOLENOID_GPIO_CLK				RCC_APB2Periph_GPIOA
-#define FORK_SOLENOID_GPIO_PIN				GPIO_Pin_5
-#define FORK_SOLENOID_ON 							PAout(5)=1										//叉车电磁阀打开
-#define FORK_SOLENOID_OFF 						PAout(5)=0										//叉车电磁阀关闭
+#define FORK_SOLENOID_GPIO_PIN				GPIO_Pin_4
+#define FORK_SOLENOID_ON 							PAout(4)=1										//叉车电磁阀打开
+#define FORK_SOLENOID_OFF 						PAout(4)=0										//叉车电磁阀关闭
 
 //救援电磁阀
 #define RESCUE_SOLENOID_GPIO_PORT			GPIOA
@@ -252,6 +259,8 @@ typedef struct
 	u8 exchange_solenoid_flag;	//兑换电磁阀标志位
 	
 	u8 lift_once_flag;					//上层一级抬升标志位，0为下降，1为抬升
+	u8 lift_once_init_flag;	//四连杆复位标志位，0表示不变，1表示回到初始位置，2表示往前
+	
 	u8 lift_down_twice_flag; 		//底盘控制二级抬升标志位，0为下降，1为抬高
 	
 	u8 warehouse_flag;					//仓库旋转电机标志位，0为不动，1为右旋转，2为左旋转
@@ -261,6 +270,7 @@ typedef struct
 	u8 gyro_connect;
 	u32 gyro_cnt;
 	u8 gyro_use_flag;         		//是否启用陀螺仪
+	u8 gyro_use_flag_pre;         //是否启用陀螺仪
 	u8 gyro_initial_flag;
 	
 	u8 rescue_solenoid_flag;					//救援电磁阀
@@ -270,8 +280,14 @@ typedef struct
 	u8 camera_pitch;							//图传pitch轴
 	u8 camera_yaw;								//图传yaw轴
 	
-	u8 soft_reset_flag;								//软件复位
+	u8 laser_ranging_flag;						//激光测距标志
+	u8 laser_ranging_flag_pre;
+	int laser_ranging_flag_rising;
+	u8 laser_mid;
 	
+	
+	u8 soft_reset_flag;								//软件复位
+
 	u8 can1_connect;
 	u32 can1_cnt;
 	

@@ -35,6 +35,8 @@
 ..\obj\chassistask.o: ..\Mylib\uart5.h
 ..\obj\chassistask.o: ..\Mylib\JudgeSend.h
 ..\obj\chassistask.o: ..\Mylib\ZeroCheck.h
+..\obj\chassistask.o: ..\Mylib\iwdg.h
+..\obj\chassistask.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\chassistask.o: ..\Algorithm\pid.h
 ..\obj\chassistask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\chassistask.o: ..\Algorithm\modbusCRC16.h
@@ -45,7 +47,7 @@
 ..\obj\chassistask.o: ..\Task\OfflineCheckTask.h
 ..\obj\chassistask.o: ..\Task\MotorCalTask.h
 ..\obj\chassistask.o: ..\Task\MotorFlagTask.h
-..\obj\chassistask.o: ..\Task\ClampAngleTask.h
+..\obj\chassistask.o: ..\Task\LaserRangingTask.h
 ..\obj\chassistask.o: ..\Task\GraphicsSendTask.h
 ..\obj\chassistask.o: ..\Task\CharSendTask.h
 ..\obj\chassistask.o: ..\FreeRTOS\include\FreeRTOS.h

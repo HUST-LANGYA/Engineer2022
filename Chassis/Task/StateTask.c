@@ -50,6 +50,7 @@ void modeSwitchTask(void *pvParameters)
 		xLastWakeTime=xTaskGetTickCount();
 		
 		switchMode();
+		IWDG_Feed();
 		
 		vTaskDelayUntil(&xLastWakeTime,xFrequency);
 		
@@ -83,7 +84,10 @@ void switchMode(void)
 	}else
 			g_Flag.control_mode = KEY_MODE;		//默认键鼠模式
 
-	
+	if(rc_ctrl.key.ctrl == 0 && rc_ctrl.key.shift == 1)
+		g_Flag.gyro_use_flag = 0;
+	else
+		g_Flag.gyro_use_flag = g_Flag.gyro_use_flag_pre;
 	
 	if(g_Flag.control_target == POWER_OFF_MODE)			//在这个地方加看门狗!!!!!!!!!!!!!!!!
 	{
@@ -91,6 +95,24 @@ void switchMode(void)
 		
 	}
 	
+	
+	/*************************激光测距状态检测**************************/
+	g_Flag.laser_ranging_flag_rising 	= g_Flag.laser_ranging_flag - g_Flag.laser_ranging_flag_pre;
+	g_Flag.laser_ranging_flag_pre 		= g_Flag.laser_ranging_flag;
+	if(g_Flag.laser_mid != LASER_MID_INIT)
+	{
+		if(g_Flag.laser_mid < LASER_MID_INIT)
+		{
+			if(g_Flag.laser_ranging_flag_rising == 1)
+				g_Flag.laser_mid ++;
+		}else if(g_Flag.laser_mid > LASER_MID_INIT)
+		{
+			if(g_Flag.laser_ranging_flag_rising == -1)
+				g_Flag.laser_mid --;
+		}
+	}
+	
+	/***************************电磁阀*******************************/
 	if(g_Flag.rescue_solenoid_flag == 1) 			//是否开启救援模块
 						RESCUE_SOLENOID_ON;
 	else			RESCUE_SOLENOID_OFF;
@@ -120,28 +142,12 @@ void keyModeFlagChange(void)
 		{
 			if(rc_ctrl.key.ctrl == 0 && rc_ctrl.key.shift == 0)
 			{
-					/*********************** q键上升沿控制大资源岛自动取矿 **************************/
-					if(q_rising_flag == 1)
-					{
-						g_Flag.auto_mode = LARGE_ISLAND_MINE;
-					}
 					
-					/*********************** e键上升沿控制小资源岛自动取矿 **************************/
-					if(e_rising_flag == 1)
-					{
-						g_Flag.auto_mode = SMALL_ISLAND_MINE;
-					}
 					
 					/*********************** r键上升沿控制一键自动复位 **************************/
 					if(r_rising_flag == 1)
 					{
 						g_Flag.auto_mode = RESET_SOFTWARE;
-					}
-					
-					/*********************** f键上升沿控制自动空接矿石 **************************/
-					if(f_rising_flag == 1)
-					{
-						g_Flag.auto_mode = MINE_MIDAIR;
 					}
 					
 					/*********************** g键上升沿控制夹子打开/关闭 **************************/
@@ -172,6 +178,7 @@ void keyModeFlagChange(void)
 					if(v_rising_flag == 1)
 					{
 						g_Flag.auto_mode = AUTO_MODE_OFF;
+						g_Flag.laser_mid = LASER_MID_INIT;
 					}
 					
 					/*********************** b键上升沿控制自动兑换 **************************/
@@ -182,49 +189,50 @@ void keyModeFlagChange(void)
 			}else if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.shift == 0)
 			{
 				
-					/*********************** shift + q键 **************************/
+					/*********************** ctrl + q键上升沿控制大资源岛自动取矿 **************************/
 					if(q_rising_flag == 1)
 					{
-						
+						g_Flag.auto_mode = LARGE_ISLAND_MINE;
 					}
 					
-					/*********************** shift + e键 **************************/
+					/*********************** ctrl + e键上升沿控制小资源岛自动取矿 **************************/
 					if(e_rising_flag == 1)
 					{
-						
+						g_Flag.auto_mode = SMALL_ISLAND_MINE;
 					}
 					
-					/*********************** shift + r键 **************************/
+					
+					/*********************** ctrl + r键 **************************/
 					if(r_rising_flag == 1)
 					{
 						
 					}
 					
-					/*********************** shift + f键 **************************/
+					/*********************** ctrl + f键上升沿控制自动空接矿石 **************************/
 					if(f_rising_flag == 1)
 					{
-						
+						g_Flag.auto_mode = MINE_MIDAIR;
 					}
 					
-					/*********************** shift + g键 **************************/
+					/*********************** ctrl + g键 **************************/
 					if(g_rising_flag == 1)
 					{
 						
 					}
 					
-					/*********************** shift + z键控制仓库电机旋转 **************************/
+					/*********************** ctrl + z键控制仓库电机旋转 **************************/
 					if(z_rising_flag == 1)
 					{
 						g_Flag.warehouse_flag = 1 - g_Flag.warehouse_flag;
 					}
 					
-					/*********************** shift + x键控制爪子电机旋转 **************************/
+					/*********************** ctrl + x键控制爪子电机旋转 **************************/
 					if(x_rising_flag == 1)
 					{
 						g_Flag.rotate_flag = 1 - g_Flag.rotate_flag;
 					}
 					
-					/*********************** shift + c键 **************************/
+					/*********************** ctrl + c键 **************************/
 					if(c_rising_flag == 1)
 					{
 						
@@ -242,7 +250,7 @@ void keyModeFlagChange(void)
 					/*********************** ctrl + b键控制陀螺仪开关 **************************/
 					if(b_rising_flag == 1)
 					{
-						g_Flag.gyro_use_flag = 1 - g_Flag.gyro_use_flag;
+						g_Flag.gyro_use_flag_pre = 1 - g_Flag.gyro_use_flag_pre;
 					}
 			}else if(rc_ctrl.key.ctrl == 0 && rc_ctrl.key.shift == 1)
 			{
@@ -315,6 +323,17 @@ void keyModeFlagChange(void)
 					}
 			}else if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.shift == 1)
 			{
+					/*********************** ctrl + shift + z键控制激光对位左移 **************************/
+					if(z_rising_flag == 1)
+					{
+						g_Flag.laser_mid --;
+					}
+					
+					/*********************** ctrl + shift + x键控制激光对位右移 **************************/
+					if(x_rising_flag == 1)
+					{
+						g_Flag.laser_mid ++;
+					}
 				
 					/*********************** ctrl + shift + b键  **************************/
 					if(b_rising_flag == 1)
@@ -491,6 +510,13 @@ void controlStateGet(void)															//获取控制模式
 		g_Flag.control_target = POWER_OFF_MODE;
 		g_Flag.control_mode = KEY_MODE;	
 	}
+	if(rc_ctrl.rc.s2 == MIDDLE && rc_ctrl.rc.s1 == MIDDLE)
+	{
+		g_Flag.control_target = CHECK_MODE;
+		g_Flag.control_mode 	= KEY_MODE;	
+	}
+	
+	
 	
 //	if (rc_ctrl.rc.s2 == DOWN)															//获取控制模式
 //	{

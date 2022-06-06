@@ -35,6 +35,8 @@
 ..\obj\can1.o: ..\Mylib\uart5.h
 ..\obj\can1.o: ..\Mylib\JudgeSend.h
 ..\obj\can1.o: ..\Mylib\ZeroCheck.h
+..\obj\can1.o: ..\Mylib\iwdg.h
+..\obj\can1.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\can1.o: ..\Algorithm\pid.h
 ..\obj\can1.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\can1.o: ..\Algorithm\modbusCRC16.h
@@ -45,7 +47,7 @@
 ..\obj\can1.o: ..\Task\OfflineCheckTask.h
 ..\obj\can1.o: ..\Task\MotorCalTask.h
 ..\obj\can1.o: ..\Task\MotorFlagTask.h
-..\obj\can1.o: ..\Task\ClampAngleTask.h
+..\obj\can1.o: ..\Task\LaserRangingTask.h
 ..\obj\can1.o: ..\Task\GraphicsSendTask.h
 ..\obj\can1.o: ..\Task\CharSendTask.h
 ..\obj\can1.o: ..\FreeRTOS\include\FreeRTOS.h

@@ -7,12 +7,30 @@ extern Pid_Typedef Pid_LiftTrack_Speed[2],Pid_LiftTrack_Positioin[2];//pid结构体
 extern int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,lift_once_offset;
 extern int volatile Pos_LiftTrack[2];
 
+extern int Lift_Init_Change_Journey;
+
 
 int lift_pos_set[2],Lift_pos_set_pre[2];		//设定值,上一值
 float test_p = 0.84;
 int test_ii = 1;
 void motor_lift_task(void)
 {
+	/************************修正四连杆状态*********************/
+	if(g_Flag.lift_once_init_flag == 1)
+	{
+		LiftPositionInit[0] = LiftPositionInit[0] + Lift_Init_Change_Journey;
+		LiftPositionInit[1] = LiftPositionInit[1] - Lift_Init_Change_Journey;
+		g_Flag.lift_once_init_flag = 0;
+	}else if(g_Flag.lift_once_init_flag == 2)
+	{
+		LiftPositionInit[0] = LiftPositionInit[0] - Lift_Init_Change_Journey;
+		LiftPositionInit[1] = LiftPositionInit[1] + Lift_Init_Change_Journey;
+		g_Flag.lift_once_init_flag = 0;
+	}
+	
+	
+	
+	/************************修改位置环*********************/
 		if(g_Flag.lift_once_flag == 0) //如果上层抬升标志位为0
 		{
 			Lift_pos_set_pre[0] = LiftPositionInit[0] - lift_once_offset - LiftJourney_1;										//记录另一个状态

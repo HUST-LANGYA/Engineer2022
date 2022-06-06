@@ -3,12 +3,14 @@
 //unsigned char JudgeReceiveBuffer[JudgeBufBiggestSize];
 //unsigned char JudgeSend[SEND_MAX_SIZE];
 //unsigned char SaveBuffer[2*JudgeBufBiggestSize];
-unsigned char ClampAngleReceiveBuffer[2*ClampAngleReceiveSize];
-unsigned char ClampAngleSend[2*ClampAngleSendSize];
-int ClampAngle_X;
+unsigned char LaserRangingReceiveBuffer[2*LaserRangingReceiveSize];
+unsigned char LaserRangingSend[2*LaserRangingSendSize];
+int LaserRanging;
+//int LaserRanging_test;
+
 
 int data_length=0;
-uint8_t angle_receive[2*ClampAngleReceiveSize];
+uint8_t angle_receive[2*LaserRangingReceiveSize];
 
 /**
  * @brief  uart4初始化
@@ -72,9 +74,9 @@ void UART4_Configuration(void)
 		DMA_DeInit(DMA2_Channel3);
 
 		dma.DMA_PeripheralBaseAddr = (uint32_t)&(UART4->DR);
-		dma.DMA_MemoryBaseAddr = (uint32_t)ClampAngleReceiveBuffer;
+		dma.DMA_MemoryBaseAddr = (uint32_t)LaserRangingReceiveBuffer;
 		dma.DMA_DIR = DMA_DIR_PeripheralSRC;
-		dma.DMA_BufferSize = ClampAngleReceiveSize;
+		dma.DMA_BufferSize = LaserRangingReceiveSize;
 		dma.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
 		dma.DMA_MemoryInc = DMA_MemoryInc_Enable;
 		dma.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
@@ -102,9 +104,9 @@ void UART4_Configuration(void)
 			RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA2, ENABLE);
 			DMA_DeInit(DMA2_Channel5);
 			dma.DMA_PeripheralBaseAddr = (uint32_t)&(UART4->DR);
-			dma.DMA_MemoryBaseAddr = (uint32_t)ClampAngleSend;
+			dma.DMA_MemoryBaseAddr = (uint32_t)LaserRangingSend;
 			dma.DMA_DIR = DMA_DIR_PeripheralDST;
-			dma.DMA_BufferSize = ClampAngleSendSize;
+			dma.DMA_BufferSize = LaserRangingSendSize;
 			dma.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
 			dma.DMA_MemoryInc = DMA_MemoryInc_Enable;
 			dma.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
@@ -119,29 +121,33 @@ void UART4_Configuration(void)
 	 }		
 		
 }
-
+int test_11 = 1;
 void UART4_IRQHandler(void)
 {
 	int i = 0;
 	if(USART_GetITStatus(UART4,USART_IT_IDLE)!=RESET)
 	{
+
 		(void)UART4->SR;
 		(void)UART4->DR;	   //清除UART4的空闲中断标志位
 		DMA_Cmd(DMA2_Channel3,DISABLE);
-		data_length = ClampAngleReceiveSize - DMA_GetCurrDataCounter(DMA2_Channel3);
+		data_length = LaserRangingReceiveSize - DMA_GetCurrDataCounter(DMA2_Channel3);
 		for( i = 0; i < data_length; i++ )
 		{
-			angle_receive[i] = ClampAngleReceiveBuffer[i];
+			angle_receive[i] = LaserRangingReceiveBuffer[i];
 		}
-		
-		ClampAngle_X = (angle_receive[8]<<8)|angle_receive[9];		//mm
-		
+//		if(Verify_CRC16_Check_Sum(angle_receive,data_length))
+		if(angle_receive[5]==0X00 && angle_receive[0]==0X55 && angle_receive[1]==0X0A)
+		{
+				LaserRanging = (angle_receive[8]<<8)|angle_receive[9];		//mm
+		}
+//		LaserRanging_test = (angle_receive[8]<<8)|angle_receive[9];		//mm
 //		if(Verify_modbusCRC16_Check_Sum(angle_receive,data_length))
 //		{
-//			ClampAngle_X = ((float)((angle_receive[3]<<8)|angle_receive[4]))/32768*180;
+//			LaserRanging = ((float)((angle_receive[3]<<8)|angle_receive[4]))/32768*180;
 //		}
 		
-		DMA_SetCurrDataCounter(DMA2_Channel3,ClampAngleReceiveSize);
+		DMA_SetCurrDataCounter(DMA2_Channel3,LaserRangingReceiveSize);
 		DMA_Cmd(DMA2_Channel3,ENABLE);
 	}
 }
@@ -152,7 +158,9 @@ void DMA2_Channel3_IRQHandler(void)
 {	
 	if(DMA_GetFlagStatus(DMA2_FLAG_TC3) == SET)
 	{
-		DMA_ClearFlag(DMA2_FLAG_TC3);
+		DMA_ClearFlag(DMA2_FLAG_TC3);			
+		test_11 = - test_11;
+
 	}
 }
 
@@ -182,10 +190,10 @@ void DMA2_Channel5_IRQHandler(void)
 // 
 
 
-//void ClampAngleBuffReceive(unsigned char ReceiveBuffer[])
+//void LaserRangingBuffReceive(unsigned char ReceiveBuffer[])
 //{
-//	if(Verify_CRC16_Check_Sum(ReceiveBuffer,ClampAngleReceiveSize))
+//	if(Verify_CRC16_Check_Sum(ReceiveBuffer,LaserRangingReceiveSize))
 //	{
-//		ClampAngle_X = ((float)((ReceiveBuffer[3]<<8)|ReceiveBuffer[4]))/32768*180;
+//		LaserRanging = ((float)((ReceiveBuffer[3]<<8)|ReceiveBuffer[4]))/32768*180;
 //	}
 //}

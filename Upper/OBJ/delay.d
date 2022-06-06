@@ -35,12 +35,12 @@
 ..\obj\delay.o: ..\Mylib\tim2.h
 ..\obj\delay.o: ..\Mylib\uart4.h
 ..\obj\delay.o: ..\Algorithm\pid.h
-..\obj\delay.o: ..\Algorithm\ModbusCRC16.h
+..\obj\delay.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\delay.o: ..\Task\StartTask.h
 ..\obj\delay.o: ..\Task\StateTask.h
 ..\obj\delay.o: ..\Task\AutoexecTask.h
 ..\obj\delay.o: ..\Task\MotorTask.h
-..\obj\delay.o: ..\Task\ClampAngleTask.h
+..\obj\delay.o: ..\Task\LaserRangingTask.h
 ..\obj\delay.o: ..\Task\LiftTask.h
 ..\obj\delay.o: ..\Task\RotateTask.h
 ..\obj\delay.o: ..\User\FreeRTOSConfig.h

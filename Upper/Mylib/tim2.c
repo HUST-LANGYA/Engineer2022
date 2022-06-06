@@ -10,8 +10,6 @@
 unsigned short camera_pitch = 1450;	
 unsigned short camera_yaw 	= 1250;
 
-
-
 /**
  * @brief  tim3≥ı ºªØ
  * @param  None
@@ -60,45 +58,37 @@ void TIM3_PWM_Init(void)
 	
 void CameraSteeringEngine_Set(void)       
 {
-	switch(g_Flag.camera_pitch)
+	if(g_Flag.control_target == CHECK_MODE)
+		camera_pitch = 2200;
+	else
 	{
-		case CAMERA_DEFAULT:
-			camera_pitch = 1450;	
-		break;
-		
-		case CAMERA_PITCH_UP:
+		switch(g_Flag.camera_pitch)
+		{
+			case CAMERA_DEFAULT:
+				camera_pitch = 1450;	
+			break;
 			
-		break;
-		
-		case CAMERA_PITCH_DOWN:
-			camera_pitch = 1650;	
-		break;
-		
-		default:
+			case CAMERA_PITCH_UP:
+				
+			break;
 			
-		break;
+			case CAMERA_PITCH_DOWN:
+				camera_pitch = 1650;	
+			break;
+			
+			default:
+				camera_pitch = 1450;
+			break;
+		}
 	}
 	
-	switch(g_Flag.camera_yaw)
-	{
-		case CAMERA_DEFAULT:
-			
-		break;
-		
-		case CAMERA_YAW_REAR:
-			
-		break;
-		
-		default:
-			
-		break;
-	}
-	
-	
+	if(g_Flag.control_target == CHECK_MODE)
+		camera_yaw = 2000;
+	else
+		camera_yaw = 1250;
+
 	TIM_SetCompare1(TIM3,camera_pitch);
 	TIM_SetCompare2(TIM3,camera_yaw);
-	
-	
 }
 
 

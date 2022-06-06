@@ -35,6 +35,7 @@
 ..\obj\iwdg.o: ..\Mylib\uart5.h
 ..\obj\iwdg.o: ..\Mylib\JudgeSend.h
 ..\obj\iwdg.o: ..\Mylib\ZeroCheck.h
+..\obj\iwdg.o: ..\Mylib\iwdg.h
 ..\obj\iwdg.o: ..\Algorithm\pid.h
 ..\obj\iwdg.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\iwdg.o: ..\Algorithm\modbusCRC16.h
@@ -45,7 +46,7 @@
 ..\obj\iwdg.o: ..\Task\OfflineCheckTask.h
 ..\obj\iwdg.o: ..\Task\MotorCalTask.h
 ..\obj\iwdg.o: ..\Task\MotorFlagTask.h
-..\obj\iwdg.o: ..\Task\ClampAngleTask.h
+..\obj\iwdg.o: ..\Task\LaserRangingTask.h
 ..\obj\iwdg.o: ..\Task\GraphicsSendTask.h
 ..\obj\iwdg.o: ..\Task\CharSendTask.h
 ..\obj\iwdg.o: ..\FreeRTOS\include\FreeRTOS.h

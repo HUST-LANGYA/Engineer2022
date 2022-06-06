@@ -81,6 +81,16 @@ typedef enum{
 	SR_MID						= 83,					//复位空接气缸
 	SR_LIFT_TWICE			= 84,					//复位二级抬升
 	
+	
+/************************激光对位空接动作准备状态***********************/
+	//'LP'，'laser pre' 缩写
+	LP_LOOSE					= 91,					//松开爪子
+	LP_LIFT_ONCE			= 92,					//四连杆抬升
+	LP_FORWARD				= 93,					//前移伸出
+	LP_CLAMP					= 94,					//夹子关闭
+
+
+	
 }FLAG_AUTOEXEC_ENUM;
 
 
@@ -99,7 +109,7 @@ void autoMineMidair(void);
 void autoExchange(void);
 void autoGetMineMidair(void);
 void autoResetSoftware(void);
-
+void autoLaserMidPre(void);
 
 
 #endif

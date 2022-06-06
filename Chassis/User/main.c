@@ -115,6 +115,8 @@ void gflagInit(void)
 	
 	g_Flag.lift_down_twice_flag 		= 0;							//默认二级抬升的初始状态为下降
 	g_Flag.lift_once_flag						= 0;							//默认一级抬升处于下降状态
+	g_Flag.lift_once_init_flag			= 0;			//默认不会改变四连杆初始状态
+	
 	g_Flag.forward_flag							= 0;							//默认上层前移处于收回状态
 	g_Flag.clamp_flag								= 0;							//默认上层夹取为松开状态
 	g_Flag.midair_solenoid_flag			= 0;							//默认空接电磁阀关闭
@@ -123,10 +125,15 @@ void gflagInit(void)
 	g_Flag.warehouse_flag						= 0;							//默认仓库电机不动
 	
 	g_Flag.gyro_use_flag = 1;                      		//是否启用陀螺仪（默认为使用）
+	g_Flag.gyro_use_flag_pre = 1;
 	
 	g_Flag.rescue_solenoid_flag = 0;									//初始时关闭救援模块
 	g_Flag.resurge_solenoid_flag = 0;									//初始时关闭复活模块
 	
+	g_Flag.laser_ranging_flag 				= 0;							//激光测距
+	g_Flag.laser_ranging_flag_pre 		= 0;
+	g_Flag.laser_ranging_flag_rising 	= 0;
+	g_Flag.laser_mid 			= LASER_MID_INIT;							//对位初始值
 	
 	g_Flag.camera_pitch = CAMERA_DEFAULT;	//图传pitch轴
 	g_Flag.camera_yaw 	= CAMERA_DEFAULT;		//图传yaw轴

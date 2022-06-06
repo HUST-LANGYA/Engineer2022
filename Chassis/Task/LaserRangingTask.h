@@ -3,8 +3,8 @@
 
 #include "main.h"
 
-void clampAngleSendTask(void *pvParameters);
-void clampAngleSend(void);
+void laserRangingSendTask(void *pvParameters);
+void laserRangingSend(void);
 
 #endif
 

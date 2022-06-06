@@ -35,6 +35,8 @@
 ..\obj\delay.o: ..\Mylib\uart5.h
 ..\obj\delay.o: ..\Mylib\JudgeSend.h
 ..\obj\delay.o: ..\Mylib\ZeroCheck.h
+..\obj\delay.o: ..\Mylib\iwdg.h
+..\obj\delay.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\delay.o: ..\Algorithm\pid.h
 ..\obj\delay.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\delay.o: ..\Algorithm\modbusCRC16.h
@@ -45,7 +47,7 @@
 ..\obj\delay.o: ..\Task\OfflineCheckTask.h
 ..\obj\delay.o: ..\Task\MotorCalTask.h
 ..\obj\delay.o: ..\Task\MotorFlagTask.h
-..\obj\delay.o: ..\Task\ClampAngleTask.h
+..\obj\delay.o: ..\Task\LaserRangingTask.h
 ..\obj\delay.o: ..\Task\GraphicsSendTask.h
 ..\obj\delay.o: ..\Task\CharSendTask.h
 ..\obj\delay.o: ..\FreeRTOS\include\FreeRTOS.h

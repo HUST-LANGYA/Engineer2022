@@ -35,6 +35,8 @@
 ..\obj\modbuscrc16.o: ..\Mylib\uart5.h
 ..\obj\modbuscrc16.o: ..\Mylib\JudgeSend.h
 ..\obj\modbuscrc16.o: ..\Mylib\ZeroCheck.h
+..\obj\modbuscrc16.o: ..\Mylib\iwdg.h
+..\obj\modbuscrc16.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\modbuscrc16.o: ..\Algorithm\pid.h
 ..\obj\modbuscrc16.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\modbuscrc16.o: ..\Algorithm\modbusCRC16.h
@@ -45,7 +47,7 @@
 ..\obj\modbuscrc16.o: ..\Task\OfflineCheckTask.h
 ..\obj\modbuscrc16.o: ..\Task\MotorCalTask.h
 ..\obj\modbuscrc16.o: ..\Task\MotorFlagTask.h
-..\obj\modbuscrc16.o: ..\Task\ClampAngleTask.h
+..\obj\modbuscrc16.o: ..\Task\LaserRangingTask.h
 ..\obj\modbuscrc16.o: ..\Task\GraphicsSendTask.h
 ..\obj\modbuscrc16.o: ..\Task\CharSendTask.h
 ..\obj\modbuscrc16.o: ..\FreeRTOS\include\FreeRTOS.h

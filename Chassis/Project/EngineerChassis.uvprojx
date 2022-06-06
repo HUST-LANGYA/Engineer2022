@@ -668,11 +668,6 @@
               <FilePath>..\Task\StateTask.c</FilePath>
             </File>
             <File>
-              <FileName>ClampAngleTask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Task\ClampAngleTask.c</FilePath>
-            </File>
-            <File>
               <FileName>CharSendTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\CharSendTask.c</FilePath>
@@ -681,6 +676,11 @@
               <FileName>GraphicsSendTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\GraphicsSendTask.c</FilePath>
+            </File>
+            <File>
+              <FileName>LaserRangingTask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Task\LaserRangingTask.c</FilePath>
             </File>
           </Files>
         </Group>

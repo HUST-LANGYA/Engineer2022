@@ -1,10 +1,10 @@
 ..\obj\laserrangingtask.o: ..\Task\LaserRangingTask.c
 ..\obj\laserrangingtask.o: ..\Task\LaserRangingTask.h
 ..\obj\laserrangingtask.o: ..\User\main.h
-..\obj\laserrangingtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\laserrangingtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\laserrangingtask.o: ..\User\stm32f10x.h
 ..\obj\laserrangingtask.o: ..\User\core_cm3.h
-..\obj\laserrangingtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\laserrangingtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\laserrangingtask.o: ..\User\system_stm32f10x.h
 ..\obj\laserrangingtask.o: ..\User\stm32f10x_conf.h
 ..\obj\laserrangingtask.o: ..\Library\inc\stm32f10x_can.h
@@ -14,7 +14,7 @@
 ..\obj\laserrangingtask.o: ..\Library\inc\stm32f10x_rcc.h
 ..\obj\laserrangingtask.o: ..\Library\inc\stm32f10x_usart.h
 ..\obj\laserrangingtask.o: ..\Library\inc\misc.h
-..\obj\laserrangingtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\laserrangingtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\laserrangingtask.o: ..\Library\inc\stm32f10x_dma.h
 ..\obj\laserrangingtask.o: ..\Library\inc\stm32f10x_tim.h
 ..\obj\laserrangingtask.o: ..\Library\inc\stm32f10x_dac.h
@@ -35,6 +35,8 @@
 ..\obj\laserrangingtask.o: ..\Mylib\uart5.h
 ..\obj\laserrangingtask.o: ..\Mylib\JudgeSend.h
 ..\obj\laserrangingtask.o: ..\Mylib\ZeroCheck.h
+..\obj\laserrangingtask.o: ..\Mylib\iwdg.h
+..\obj\laserrangingtask.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\laserrangingtask.o: ..\Algorithm\pid.h
 ..\obj\laserrangingtask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\laserrangingtask.o: ..\Algorithm\modbusCRC16.h
@@ -46,8 +48,10 @@
 ..\obj\laserrangingtask.o: ..\Task\MotorCalTask.h
 ..\obj\laserrangingtask.o: ..\Task\MotorFlagTask.h
 ..\obj\laserrangingtask.o: ..\Task\LaserRangingTask.h
+..\obj\laserrangingtask.o: ..\Task\GraphicsSendTask.h
+..\obj\laserrangingtask.o: ..\Task\CharSendTask.h
 ..\obj\laserrangingtask.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\laserrangingtask.o: D:\langya\littlecomputer\keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\laserrangingtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\laserrangingtask.o: ..\User\FreeRTOSConfig.h
 ..\obj\laserrangingtask.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\laserrangingtask.o: ..\FreeRTOS\include\portable.h

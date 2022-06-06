@@ -35,12 +35,12 @@
 ..\obj\lifttask.o: ..\Mylib\tim2.h
 ..\obj\lifttask.o: ..\Mylib\uart4.h
 ..\obj\lifttask.o: ..\Algorithm\pid.h
-..\obj\lifttask.o: ..\Algorithm\ModbusCRC16.h
+..\obj\lifttask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\lifttask.o: ..\Task\StartTask.h
 ..\obj\lifttask.o: ..\Task\StateTask.h
 ..\obj\lifttask.o: ..\Task\AutoexecTask.h
 ..\obj\lifttask.o: ..\Task\MotorTask.h
-..\obj\lifttask.o: ..\Task\ClampAngleTask.h
+..\obj\lifttask.o: ..\Task\LaserRangingTask.h
 ..\obj\lifttask.o: ..\Task\LiftTask.h
 ..\obj\lifttask.o: ..\Task\RotateTask.h
 ..\obj\lifttask.o: ..\User\FreeRTOSConfig.h

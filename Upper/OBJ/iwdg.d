@@ -34,12 +34,12 @@
 ..\obj\iwdg.o: ..\Mylib\tim2.h
 ..\obj\iwdg.o: ..\Mylib\uart4.h
 ..\obj\iwdg.o: ..\Algorithm\pid.h
-..\obj\iwdg.o: ..\Algorithm\ModbusCRC16.h
+..\obj\iwdg.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\iwdg.o: ..\Task\StartTask.h
 ..\obj\iwdg.o: ..\Task\StateTask.h
 ..\obj\iwdg.o: ..\Task\AutoexecTask.h
 ..\obj\iwdg.o: ..\Task\MotorTask.h
-..\obj\iwdg.o: ..\Task\ClampAngleTask.h
+..\obj\iwdg.o: ..\Task\LaserRangingTask.h
 ..\obj\iwdg.o: ..\Task\LiftTask.h
 ..\obj\iwdg.o: ..\Task\RotateTask.h
 ..\obj\iwdg.o: ..\User\FreeRTOSConfig.h

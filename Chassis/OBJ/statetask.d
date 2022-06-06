@@ -35,6 +35,8 @@
 ..\obj\statetask.o: ..\Mylib\uart5.h
 ..\obj\statetask.o: ..\Mylib\JudgeSend.h
 ..\obj\statetask.o: ..\Mylib\ZeroCheck.h
+..\obj\statetask.o: ..\Mylib\iwdg.h
+..\obj\statetask.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\statetask.o: ..\Algorithm\pid.h
 ..\obj\statetask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\statetask.o: ..\Algorithm\modbusCRC16.h
@@ -45,7 +47,7 @@
 ..\obj\statetask.o: ..\Task\OfflineCheckTask.h
 ..\obj\statetask.o: ..\Task\MotorCalTask.h
 ..\obj\statetask.o: ..\Task\MotorFlagTask.h
-..\obj\statetask.o: ..\Task\ClampAngleTask.h
+..\obj\statetask.o: ..\Task\LaserRangingTask.h
 ..\obj\statetask.o: ..\Task\GraphicsSendTask.h
 ..\obj\statetask.o: ..\Task\CharSendTask.h
 ..\obj\statetask.o: ..\FreeRTOS\include\FreeRTOS.h

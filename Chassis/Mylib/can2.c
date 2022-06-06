@@ -153,7 +153,11 @@ void CAN2_RX0_IRQHandler(void)
 					g_Flag.auto_mode = GET_MINE_MIDAIR;
 				else
 					g_Flag.auto_mode = g_Flag.auto_mode;
+				
+				g_Flag.laser_ranging_flag = Data_Receive_from_F103[3];
+
 				break;
+				
 					
 					
 			case 0x201:

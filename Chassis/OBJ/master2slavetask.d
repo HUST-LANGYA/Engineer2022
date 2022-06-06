@@ -35,6 +35,8 @@
 ..\obj\master2slavetask.o: ..\Mylib\uart5.h
 ..\obj\master2slavetask.o: ..\Mylib\JudgeSend.h
 ..\obj\master2slavetask.o: ..\Mylib\ZeroCheck.h
+..\obj\master2slavetask.o: ..\Mylib\iwdg.h
+..\obj\master2slavetask.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\master2slavetask.o: ..\Algorithm\pid.h
 ..\obj\master2slavetask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\master2slavetask.o: ..\Algorithm\modbusCRC16.h
@@ -45,7 +47,7 @@
 ..\obj\master2slavetask.o: ..\Task\OfflineCheckTask.h
 ..\obj\master2slavetask.o: ..\Task\MotorCalTask.h
 ..\obj\master2slavetask.o: ..\Task\MotorFlagTask.h
-..\obj\master2slavetask.o: ..\Task\ClampAngleTask.h
+..\obj\master2slavetask.o: ..\Task\LaserRangingTask.h
 ..\obj\master2slavetask.o: ..\Task\GraphicsSendTask.h
 ..\obj\master2slavetask.o: ..\Task\CharSendTask.h
 ..\obj\master2slavetask.o: ..\FreeRTOS\include\FreeRTOS.h

@@ -40,7 +40,7 @@
 ..\obj\modbuscrc16.o: ..\Task\StateTask.h
 ..\obj\modbuscrc16.o: ..\Task\AutoexecTask.h
 ..\obj\modbuscrc16.o: ..\Task\MotorTask.h
-..\obj\modbuscrc16.o: ..\Task\ClampAngleTask.h
+..\obj\modbuscrc16.o: ..\Task\LaserRangingTask.h
 ..\obj\modbuscrc16.o: ..\Task\LiftTask.h
 ..\obj\modbuscrc16.o: ..\Task\RotateTask.h
 ..\obj\modbuscrc16.o: ..\User\FreeRTOSConfig.h

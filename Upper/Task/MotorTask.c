@@ -10,6 +10,7 @@ Pid_Typedef Pid_LiftTrack_Speed[2],Pid_LiftTrack_Positioin[2],Pid_Rotate_Motor_S
 
 int LiftTrack_Current[2], Rotate_Motor_Current;//电流
 int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,lift_once_offset, RotatePositionInit, RotateJourney;//初始位置,结束位置，行程距离
+int Lift_Init_Change_Journey = -75000;
 
 //extern rmc620_t Track_Motor[2], forward_motor[2];//电机的反馈数据
 //extern int Pos_LiftTrack[2], Pos_Forward_Motor[2];
@@ -27,7 +28,7 @@ void Pid_Motor_Init(void)
 //		ForwardPositionInit[1] = Pos_Forward_Motor[1];
 		LiftJourney_2 = -70000;
 		LiftJourney_1 = -46000;
-		RotateJourney = 0;
+		RotateJourney = 30000;
 	
 	
 	
@@ -160,10 +161,12 @@ void motor_cal_task(void)
 	if(g_Flag.control_target == POWER_OFF_MODE)
 		motorCurrentSend(0,0,0,0);
 	else
+	{
 //		motorCurrentSend(0,LiftTrack_Current[0],-LiftTrack_Current[0],Rotate_Motor_Current);
 		motorCurrentSend(LiftTrack_Current[0],0,-LiftTrack_Current[0],0);
+		motorCurrentSend2(Rotate_Motor_Current,0,0,0);
 //		motorCurrentSend(test_current,0,-test_current,0);
-
+	}
 }
 
 void Motor_task(void *pvParameters)

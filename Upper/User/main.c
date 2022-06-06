@@ -126,18 +126,21 @@ void flagInit(void)
 	g_Flag.auto_mode = AUTO_MODE_OFF;
 	g_Flag.auto_mode_pre = AUTO_MODE_OFF;
 	g_Flag.auto_end_flag = 0;
-	//角度陀螺仪是否使用
-	g_Flag.argle_use_flag = 0;
+
 	
 	/***********************状态机执行标志位*****************/
-	g_Flag.lift_once_flag = 0;					//二级抬升处于下降状态
+	g_Flag.lift_once_flag = 0;					//四连杆抬升处于下降状态
 	g_Flag.lift_once_flag_pre = g_Flag.lift_once_flag;
+	g_Flag.lift_once_init_flag = 0;
+	
 	g_Flag.rotate_flag = 0;							//旋转电机不动
 	
 	g_Flag.forward_solenoid_flag = 0;		//前移电磁阀关闭
 	g_Flag.clamp_solenoid_flag = 0;			//夹取电磁阀关闭
 	g_Flag.midair_solenoid_flag = 0;		//空接电磁阀关闭
 	g_Flag.exchange_solenoid_flag = 0;	//兑换电磁阀关闭
+	
+	g_Flag.laser_ranging_flag = 0;			//激光测距
 	
 	g_Flag.camera_pitch = CAMERA_DEFAULT;
 	g_Flag.camera_yaw = CAMERA_DEFAULT;

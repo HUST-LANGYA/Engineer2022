@@ -35,12 +35,12 @@
 ..\obj\forwardtask.o: ..\Mylib\tim2.h
 ..\obj\forwardtask.o: ..\Mylib\uart4.h
 ..\obj\forwardtask.o: ..\Algorithm\pid.h
-..\obj\forwardtask.o: ..\Algorithm\ModbusCRC16.h
+..\obj\forwardtask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\forwardtask.o: ..\Task\StartTask.h
 ..\obj\forwardtask.o: ..\Task\StateTask.h
 ..\obj\forwardtask.o: ..\Task\AutoexecTask.h
 ..\obj\forwardtask.o: ..\Task\MotorTask.h
-..\obj\forwardtask.o: ..\Task\ClampAngleTask.h
+..\obj\forwardtask.o: ..\Task\LaserRangingTask.h
 ..\obj\forwardtask.o: ..\Task\LiftTask.h
 ..\obj\forwardtask.o: ..\Task\RotateTask.h
 ..\obj\forwardtask.o: ..\User\FreeRTOSConfig.h

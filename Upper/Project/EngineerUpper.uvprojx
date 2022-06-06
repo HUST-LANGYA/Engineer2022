@@ -583,14 +583,14 @@
           <GroupName>Algorithm</GroupName>
           <Files>
             <File>
-              <FileName>ModbusCRC16.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Algorithm\ModbusCRC16.c</FilePath>
-            </File>
-            <File>
               <FileName>pid.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Algorithm\pid.c</FilePath>
+            </File>
+            <File>
+              <FileName>algorithmOfCRC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Algorithm\algorithmOfCRC.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -601,11 +601,6 @@
               <FileName>AutoexecTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\AutoexecTask.c</FilePath>
-            </File>
-            <File>
-              <FileName>ClampAngleTask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Task\ClampAngleTask.c</FilePath>
             </File>
             <File>
               <FileName>ForwardTask.c</FileName>
@@ -636,6 +631,11 @@
               <FileName>StateTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\StateTask.c</FilePath>
+            </File>
+            <File>
+              <FileName>LaserRangingTask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Task\LaserRangingTask.c</FilePath>
             </File>
           </Files>
         </Group>

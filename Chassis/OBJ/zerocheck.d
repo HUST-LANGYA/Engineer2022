@@ -35,6 +35,8 @@
 ..\obj\zerocheck.o: ..\Mylib\uart5.h
 ..\obj\zerocheck.o: ..\Mylib\JudgeSend.h
 ..\obj\zerocheck.o: ..\Mylib\ZeroCheck.h
+..\obj\zerocheck.o: ..\Mylib\iwdg.h
+..\obj\zerocheck.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\zerocheck.o: ..\Algorithm\pid.h
 ..\obj\zerocheck.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\zerocheck.o: ..\Algorithm\modbusCRC16.h
@@ -45,7 +47,7 @@
 ..\obj\zerocheck.o: ..\Task\OfflineCheckTask.h
 ..\obj\zerocheck.o: ..\Task\MotorCalTask.h
 ..\obj\zerocheck.o: ..\Task\MotorFlagTask.h
-..\obj\zerocheck.o: ..\Task\ClampAngleTask.h
+..\obj\zerocheck.o: ..\Task\LaserRangingTask.h
 ..\obj\zerocheck.o: ..\Task\GraphicsSendTask.h
 ..\obj\zerocheck.o: ..\Task\CharSendTask.h
 ..\obj\zerocheck.o: ..\FreeRTOS\include\FreeRTOS.h

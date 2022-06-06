@@ -217,6 +217,7 @@ void Slave2Master(void)
 		Data_Send_to_F105[2] = g_Flag.auto_end_flag;
 		g_Flag.auto_end_flag = 0;
 	
+		Data_Send_to_F105[3] = g_Flag.laser_ranging_flag;
 	
     tx_message.Data[0] = Data_Send_to_F105[0];
     tx_message.Data[1] = Data_Send_to_F105[1];		//

@@ -35,6 +35,8 @@
 ..\obj\judgesend.o: ..\Mylib\uart5.h
 ..\obj\judgesend.o: ..\Mylib\JudgeSend.h
 ..\obj\judgesend.o: ..\Mylib\ZeroCheck.h
+..\obj\judgesend.o: ..\Mylib\iwdg.h
+..\obj\judgesend.o: ..\Library\inc\stm32f10x_iwdg.h
 ..\obj\judgesend.o: ..\Algorithm\pid.h
 ..\obj\judgesend.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\judgesend.o: ..\Algorithm\modbusCRC16.h
@@ -45,7 +47,7 @@
 ..\obj\judgesend.o: ..\Task\OfflineCheckTask.h
 ..\obj\judgesend.o: ..\Task\MotorCalTask.h
 ..\obj\judgesend.o: ..\Task\MotorFlagTask.h
-..\obj\judgesend.o: ..\Task\ClampAngleTask.h
+..\obj\judgesend.o: ..\Task\LaserRangingTask.h
 ..\obj\judgesend.o: ..\Task\GraphicsSendTask.h
 ..\obj\judgesend.o: ..\Task\CharSendTask.h
 ..\obj\judgesend.o: ..\FreeRTOS\include\FreeRTOS.h

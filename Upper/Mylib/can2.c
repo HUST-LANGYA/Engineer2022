@@ -83,7 +83,7 @@ void can2Config(void)
 	CAN_FilterInitStructure.CAN_FilterIdHigh=0x201 << 5;			// 过滤器标识符
 	CAN_FilterInitStructure.CAN_FilterIdLow=0x202 << 5;				
 	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0x203 << 5;		// 过滤器屏蔽标识符
-	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x204 << 5;
+	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x205 << 5;
 	CAN_FilterInitStructure.CAN_FilterFIFOAssignment=CAN_FIFO0;	 // FIFO0指向过滤器
 	CAN_FilterInitStructure.CAN_FilterActivation=ENABLE;
 	CAN_FilterInit(&CAN_FilterInitStructure);
@@ -145,7 +145,7 @@ void CAN2_RX0_IRQHandler(void)
 				break;
 			
 			//爪子旋转电机数据
-			case 0x204:
+			case 0x205:
 				Rotate_Motor.angle = (rx_message.Data[0] << 8) | rx_message.Data[1];
 				Rotate_Motor.speed = (rx_message.Data[2] << 8) | rx_message.Data[3];
 				break;
