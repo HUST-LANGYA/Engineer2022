@@ -34,6 +34,8 @@ extern short q_rising_flag,w_rising_flag,e_rising_flag,r_rising_flag,
 		shift_rising_flag,ctrl_rising_flag,mouse_Press_l_rising_flag,mouse_Press_r_rising_flag;
 extern unsigned char Data_Receive_from_F103[8];//Data_Receive存的是接收到的从C板传来的数据
 
+extern uint8_t graphic_init_flag;  //图形界面初始化标志位
+
 
 /**
   * @brief  模式转换任务，状态机
@@ -181,10 +183,18 @@ void keyModeFlagChange(void)
 						g_Flag.laser_mid = LASER_MID_INIT;
 					}
 					
-					/*********************** b键上升沿控制自动兑换 **************************/
-					if(b_rising_flag == 1)
+					/*********************** f键上升沿控制自动兑换 **************************/
+					if(f_rising_flag == 1)
 					{
 						g_Flag.auto_mode = EXCHANGE_MINE;
+					}
+					/*********************** b键上升沿重新初始化全部图形 **************************/
+					if(b_rising_flag == 1)
+					{
+						if(graphic_init_flag == 1)
+							graphic_init_flag = 0;
+						else
+							graphic_init_flag = 1;
 					}
 			}else if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.shift == 0)
 			{
@@ -513,7 +523,7 @@ void controlStateGet(void)															//获取控制模式
 	if(rc_ctrl.rc.s2 == MIDDLE && rc_ctrl.rc.s1 == MIDDLE)
 	{
 		g_Flag.control_target = CHECK_MODE;
-		g_Flag.control_mode 	= KEY_MODE;	
+//		g_Flag.control_mode 	= KEY_MODE;	
 	}
 	
 	

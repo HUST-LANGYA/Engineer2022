@@ -47,8 +47,8 @@ void uasrt1Config(void)
 	USART_DMACmd(USART1, USART_DMAReq_Rx, ENABLE); 
 	
 	nvic.NVIC_IRQChannel = DMA1_Channel5_IRQn;
-	nvic.NVIC_IRQChannelPreemptionPriority = 8;
-	nvic.NVIC_IRQChannelSubPriority = 1;
+	nvic.NVIC_IRQChannelPreemptionPriority = 0;
+	nvic.NVIC_IRQChannelSubPriority = 0;
 	nvic.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&nvic);
 	
@@ -107,7 +107,11 @@ void uasrt1Config(void)
 	 }		
 }
 
-
+/**
+ * @brief  usart1 RX DMA 中断服务函数
+ * @param  None
+ * @retval None
+ */
 void DMA1_Channel5_IRQHandler(void)
 {	
 	if(DMA_GetFlagStatus(DMA1_FLAG_TC5) == SET)
@@ -117,6 +121,13 @@ void DMA1_Channel5_IRQHandler(void)
 	}
 }
 
+/**
+ * @brief  usart1 TX DMA 中断服务函数
+ * @param  None
+ * @retval None
+ */
+volatile char dma_tx_busy=0;
+
 void DMA1_Channel4_IRQHandler(void)
 {
 	if(DMA_GetITStatus(DMA1_IT_TC4)!=RESET)
@@ -124,7 +135,7 @@ void DMA1_Channel4_IRQHandler(void)
 		DMA_ClearFlag(DMA1_IT_TC4);
 		DMA_ClearITPendingBit(DMA1_IT_TC4);
 		DMA_Cmd(DMA1_Channel4,DISABLE);
-		
+		dma_tx_busy=0;
 	}	
 }
 

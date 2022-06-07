@@ -99,8 +99,8 @@ void motorCal(void)
 	
 	/*仓库旋转电机控制*/
 	//位置环
-	pid_warehouse_speed.SetPoint = PID_Calc(&pid_warehouse_position,pos_warehouse);
-	pid_warehouse_speed.SetPoint = LIMIT_MAX_MIN(pid_warehouse_speed.SetPoint, 5000, -5000);
+//	pid_warehouse_speed.SetPoint = PID_Calc(&pid_warehouse_position,pos_warehouse);
+//	pid_warehouse_speed.SetPoint = LIMIT_MAX_MIN(pid_warehouse_speed.SetPoint, 5000, -5000);
 	//速度环
 	warehouse_current = LIMIT_MAX_MIN(PID_Calc(&pid_warehouse_speed,(float)warehouse_motor.speed),13000,-13000);
 	

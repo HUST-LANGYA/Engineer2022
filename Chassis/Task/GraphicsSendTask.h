@@ -4,8 +4,9 @@
 #include "stdint.h"
 #include "main.h"
 
+#define LOAD_TIME_FLAG_MAX 2	
 
-#define SEND_MAX_SIZE    200    //上传数据最大的长度
+#define SEND_MAX_SIZE    128    //上传数据最大的长度
 #define frameheader_len  5       //帧头长度
 #define cmd_len          2       //命令码长度
 #define crc_len          2       //CRC16校验
@@ -28,6 +29,17 @@
 #define Cyan		 6
 #define Black    7
 #define White    8
+
+//直线数据
+typedef struct
+{
+	short start_x;
+	short end_x;
+	short start_y;
+	short end_y ;
+	uint8_t layer;
+	uint8_t color;
+}graphic_straight_line_t;
 
 
 //图形数据
@@ -106,9 +118,16 @@ typedef __packed struct
 
 
 //void JudgementDataSend(void);
-void JudgementCustomizeGraphics(int Op_type);
+//void JudgementCustomizeGraphics(int Op_type);
+void JudgementCustomizeGraphics(void);
 void referee_data_pack_handle(uint8_t sof,uint16_t cmd_id, uint8_t *p_data, uint16_t len);
 void referee_data_load_Graphic(int Op_type);
+
+void referee_data_load_5_Graphic(graphic_data_struct_t g0, graphic_data_struct_t g1, graphic_data_struct_t g2, graphic_data_struct_t g3, graphic_data_struct_t g4);
+//void referee_data_load_7_Graphic(graphic_data_struct_t g0, graphic_data_struct_t g1, graphic_data_struct_t g2, graphic_data_struct_t g3, graphic_data_struct_t g4, 
+//	graphic_data_struct_t g5, graphic_data_struct_t g6);
+
+void fetch_load_Graphic(int Op_type);
 
 //void referee_data_load_shootUI(uint8_t operate_type,uint8_t robot_level);
 //void referee_data_load_NumberUI(void);

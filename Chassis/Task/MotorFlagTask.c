@@ -29,7 +29,7 @@ void motorFlagTask(void  *pvParameters)
   }
 }
 
-
+float test_speed = 500.0;
 void motorFlag(void)
 {
 	if(g_Flag.lift_down_twice_flag == 0)
@@ -47,20 +47,28 @@ void motorFlag(void)
 	}
 	
 	//²Ö¿âµç»ú
-	if(g_Flag.warehouse_flag == 0)
+	if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.shift == 0 )
 	{
-		warehouse_set = warehouse_set;
-	}else if(g_Flag.warehouse_flag == 1)
-	{
-		warehouse_set = warehouse_set + warehouse_journey;
-		g_Flag.warehouse_flag = 0;
-	}else if(g_Flag.warehouse_flag == 2)
-	{
-		warehouse_set = warehouse_set - warehouse_journey;
-		g_Flag.warehouse_flag = 0;
-	}
+		pid_warehouse_speed.SetPoint = (rc_ctrl.key.a - rc_ctrl.key.d)  * test_speed;
+	}else
+		pid_warehouse_speed.SetPoint = 0;
 	
-	pid_warehouse_position.SetPoint = warehouse_set;
+	
+	
+//	if(g_Flag.warehouse_flag == 0)
+//	{
+//		warehouse_set = warehouse_set;
+//	}else if(g_Flag.warehouse_flag == 1)
+//	{
+//		warehouse_set = warehouse_set + warehouse_journey;
+//		g_Flag.warehouse_flag = 0;
+//	}else if(g_Flag.warehouse_flag == 2)
+//	{
+//		warehouse_set = warehouse_set - warehouse_journey;
+//		g_Flag.warehouse_flag = 0;
+//	}
+//	
+//	pid_warehouse_position.SetPoint = warehouse_set;
 	
 }
 

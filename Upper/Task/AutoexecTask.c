@@ -738,7 +738,7 @@ void autoGetMineMidair(void)
 		case SM_MID_WAIT:
 			auto_get_midair_enum_next = SM_CLAMP;
 			if(g_Flag.photogate_flag == 1)
-							autoModeDelay_ms(30);
+							autoModeDelay_ms(50);
 			break;
 		
 		case SM_CLAMP:
