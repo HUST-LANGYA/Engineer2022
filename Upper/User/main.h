@@ -78,9 +78,10 @@
 #define GET_MINE_MIDAIR					0X03		//空接接取矿石
 #define SMALL_ISLAND_MINE 			0X04		//小资源岛取矿
 #define EXCHANGE_MINE						0X05		//兑换矿石
-#define RESET_SOFTWARE					0X06		//软件自动复位
-#define LASER_ALIGNING_MID_PRE	0X07		//激光对位空接动作准备
-#define LASER_ALIGNING_MID			0X08		//激光对位空接
+#define EXCHANGE_MINE_TWICE			0X06		//兑换矿石
+#define RESET_SOFTWARE					0X07		//软件自动复位
+#define LASER_ALIGNING_MID_PRE	0X08		//激光对位空接动作准备
+#define LASER_ALIGNING_MID			0X09		//激光对位空接
 
 
 ////激光对位标志初始值
@@ -224,6 +225,11 @@ typedef struct
 	
 	u8 camera_pitch;	//图传pitch轴
 	u8 camera_yaw;		//图传yaw轴
+	
+	
+	u8 rotate_w;									//爪子前后转
+	u8 rotate_s;
+	
 //	u8 can_connect;
 //	u32 can_cnt;
 //	

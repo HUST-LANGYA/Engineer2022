@@ -59,19 +59,20 @@ typedef enum{
 /***************************自动兑换用到的状态**************************/
 	//'SE'，'state exchange'缩写
 	SE_CLAMP   				= 41,					//夹取矿石
-	SE_LIFT_TWICE			= 42,					//二级抬升
-	SE_LIFT_ONCE			= 43,					//四连杆抬升
+	SE_LIFT_ONCE			= 42,					//四连杆抬升
+	SE_LIFT_TWICE			= 43,					//二级抬升
 	SE_FORWARD 				= 44,					//电磁阀前移
+	
 	SE_LOOSE					= 45,					//释放矿石
-	
 	SE_FORWARD_BACK_2	= 46,					//前移收回
-	SE_CLAMP_2				= 47,
-	SE_FORWARD_2			= 48,
+	SE_LIFT_ONCE_2		= 47,					//二次四连杆抬升
+	SE_CLAMP_2				= 48,
+	SE_FORWARD_2			= 49,
 	
-	SE_BACK						= 49,					//缩回状态(前移电磁阀关闭)
-	SE_LAND_ONCE			= 50,					//四连杆降落
-	SE_LAND_TWICE			= 51,					//二级抬升降落_2			
-	SE_LOOSE_2				= 52,
+	SE_BACK						= 50,					//缩回状态(前移电磁阀关闭)
+	SE_LAND_ONCE			= 51,					//四连杆降落
+	SE_LAND_TWICE			= 52,					//二级抬升降落_2			
+	SE_LOOSE_2				= 53,
 	
 	
 /***************************软件复位用到的状态**************************/
@@ -107,6 +108,7 @@ void autoLargeIslandMine(void);
 void autoSmallIslandMine(void);
 void autoMineMidair(void);
 void autoExchange(void);
+void autoExchangeTwice(void);
 void autoGetMineMidair(void);
 void autoResetSoftware(void);
 void autoLaserMidPre(void);

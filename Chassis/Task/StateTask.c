@@ -212,10 +212,10 @@ void keyModeFlagChange(void)
 					}
 					
 					
-					/*********************** ctrl + r键 **************************/
+					/*********************** ctrl + r键上升沿控制自动兑换二次操作 **************************/
 					if(r_rising_flag == 1)
 					{
-						
+						g_Flag.auto_mode = EXCHANGE_MINE_TWICE;
 					}
 					
 					/*********************** ctrl + f键上升沿控制自动空接矿石 **************************/
@@ -264,62 +264,9 @@ void keyModeFlagChange(void)
 					}
 			}else if(rc_ctrl.key.ctrl == 0 && rc_ctrl.key.shift == 1)
 			{
-					/*********************** shift + q键控制大资源岛四连杆抬升 **************************/
-					if(q_rising_flag == 1)
-					{
-						if(g_Flag.lift_once_flag == 0)
-								g_Flag.lift_once_flag = 2;
-						else g_Flag.lift_once_flag = 0;
-					}
-					
-					/*********************** shift + e键控制前移电磁阀开关 **************************/
-					if(e_rising_flag == 1)
-					{
-						g_Flag.forward_flag = 1 - g_Flag.forward_flag;
-					}
-					
-					/*********************** shift + r键控制小资源岛二级抬升 **************************/
-					if(r_rising_flag == 1)
-					{
-						if(g_Flag.lift_down_twice_flag == 0)
-								g_Flag.lift_down_twice_flag = 1;
-						else g_Flag.lift_down_twice_flag = 0;
-					}
-					
-					/*********************** shift + f键 **************************/
-					if(f_rising_flag == 1)
-					{
-						
-					}
-					
-					/*********************** shift + g键 **************************/
-					if(g_rising_flag == 1)
-					{
-						
-					}
-					
-					/*********************** shift + z键控制小资源岛四连杆抬升 **************************/
-					if(z_rising_flag == 1)
-					{
-						if(g_Flag.lift_once_flag == 0)
-								g_Flag.lift_once_flag = 1;
-						else g_Flag.lift_once_flag = 0;
-					}
-					
-					/*********************** shift + x键控制兑换矿石二级抬升 **************************/
-					if(x_rising_flag == 1)
-					{
-						if(g_Flag.lift_down_twice_flag == 0)
-								g_Flag.lift_down_twice_flag = 2;
-						else g_Flag.lift_down_twice_flag = 0;
-					}
-					
-					/*********************** shift + c键控制空接气缸开关 **************************/
-					if(c_rising_flag == 1)
-					{
-						g_Flag.midair_solenoid_flag = 1 - g_Flag.midair_solenoid_flag;
-					}
-					
+					/*********************** shift + b键  **************************/
+									//底盘速度增加向前偏移量
+				
 					/*********************** shift + v键  **************************/
 					if(v_rising_flag == 1)
 					{
@@ -333,17 +280,81 @@ void keyModeFlagChange(void)
 					}
 			}else if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.shift == 1)
 			{
-					/*********************** ctrl + shift + z键控制激光对位左移 **************************/
-					if(z_rising_flag == 1)
+					/*********************** ctrl + shift + q键控制大资源岛四连杆抬升 **************************/
+					if(q_rising_flag == 1)
 					{
-						g_Flag.laser_mid --;
+						if(g_Flag.lift_once_flag == 0)
+								g_Flag.lift_once_flag = 2;
+						else g_Flag.lift_once_flag = 0;
 					}
 					
-					/*********************** ctrl + shift + x键控制激光对位右移 **************************/
+					/*********************** ctrl + shift + e键控制前移电磁阀开关 **************************/
+					if(e_rising_flag == 1)
+					{
+						g_Flag.forward_flag = 1 - g_Flag.forward_flag;
+					}
+					
+					/*********************** ctrl + shift + r键控制大资源岛二级抬升 **************************/
+					if(r_rising_flag == 1)
+					{
+						if(g_Flag.lift_down_twice_flag != 3)
+								g_Flag.lift_down_twice_flag = 3;
+						else g_Flag.lift_down_twice_flag = 0;
+					}
+					
+					/*********************** ctrl + shift + f键 **************************/
+					if(f_rising_flag == 1)
+					{
+						
+					}
+					
+					/*********************** ctrl + shift + g键 **************************/
+					if(g_rising_flag == 1)
+					{
+						
+					}
+					
+					/*********************** ctrl + shift + z键控制小资源岛四连杆抬升 **************************/
+					if(z_rising_flag == 1)
+					{
+						if(g_Flag.lift_once_flag == 0)
+								g_Flag.lift_once_flag = 1;
+						else g_Flag.lift_once_flag = 0;
+					}
+					
+					/*********************** ctrl + shift + x键控制兑换矿石二级抬升 **************************/
 					if(x_rising_flag == 1)
 					{
-						g_Flag.laser_mid ++;
+						if(g_Flag.lift_down_twice_flag != 2)
+								g_Flag.lift_down_twice_flag = 2;
+						else g_Flag.lift_down_twice_flag = 0;
 					}
+					
+					/*********************** ctrl + shift + c键控制空接气缸开关 **************************/
+					if(c_rising_flag == 1)
+					{
+						g_Flag.midair_solenoid_flag = 1 - g_Flag.midair_solenoid_flag;
+					}
+				
+					/*********************** ctrl + shift + v键控制小资源岛取矿二级抬升  **************************/
+					if(v_rising_flag == 1)
+					{
+						if(g_Flag.lift_down_twice_flag != 1)
+								g_Flag.lift_down_twice_flag = 1;
+						else g_Flag.lift_down_twice_flag = 0;
+					}
+				
+//					/*********************** ctrl + shift + z键控制激光对位左移 **************************/
+//					if(z_rising_flag == 1)
+//					{
+//						g_Flag.laser_mid --;
+//					}
+//					
+//					/*********************** ctrl + shift + x键控制激光对位右移 **************************/
+//					if(x_rising_flag == 1)
+//					{
+//						g_Flag.laser_mid ++;
+//					}
 				
 					/*********************** ctrl + shift + b键  **************************/
 					if(b_rising_flag == 1)
@@ -353,7 +364,15 @@ void keyModeFlagChange(void)
 			}
 				
 			
-			
+			if(rc_ctrl.key.ctrl == 1 && rc_ctrl.key.shift == 0)
+			{
+				g_Flag.rotate_w = rc_ctrl.key.w;
+				g_Flag.rotate_s = rc_ctrl.key.s;
+			}else
+			{
+				g_Flag.rotate_w = 0;
+				g_Flag.rotate_s = 0;
+			}
 			
 			
 			

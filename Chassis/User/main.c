@@ -43,7 +43,7 @@ void BSP_init(void)
 	TIM6_Configration();
 	TIM7_Configration();
 	
-//	IWDG_Config(IWDG_Prescaler_128 ,625);
+	IWDG_Config(IWDG_Prescaler_128 ,625);
 /*-----------------------------------------功能初始化-------------------------------------------------------------*/
 	LED_Config();
 	gpioConfig();
@@ -137,6 +137,10 @@ void gflagInit(void)
 	
 	g_Flag.camera_pitch = CAMERA_DEFAULT;	//图传pitch轴
 	g_Flag.camera_yaw 	= CAMERA_DEFAULT;		//图传yaw轴
+	
+	g_Flag.rotate_w = 0;
+	g_Flag.rotate_s = 0;
+	
 	
 }
 

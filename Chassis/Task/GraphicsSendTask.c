@@ -10,6 +10,8 @@
 //#define PACK_NUM 5
 
 ext_student_interactive_header_data_t custom_grapic_draw;			//自定义图像绘制
+ext_student_interactive_char_header_data_t custom_char_draw;  //自定义字符绘制
+
 
 extern unsigned char JudgeSend[SEND_MAX_SIZE];
 extern tGameInfo JudgeReceive;
@@ -18,22 +20,115 @@ uint8_t graphic_init_flag = 1;  //需分两次发送
 
 /*********************************图形结构体及其初始化***********************************/
 
+/*救援状态灯偏移量*/
+graphic_data_struct_t gds_rescue_L = {
+	.graphic_name[0] = 0,
+	.graphic_name[1] = 1,
+	.graphic_name[2] = 1,//图形名，用于图形索引，可自行定义
+	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+	.graphic_tpye    = UI_Circle,//图形类型，0为直线，其他的查看用户手册
+	.layer           = 1,//图层数
+	.color           = Green,//颜色
+	.start_angle     = 0,
+	.end_angle       = 0,
+	.width           = 20,
+	.start_x         = SCREEN_LENGTH/2-300-50,
+	.end_x           = 0,
+	.start_y 					= SCREEN_WIDTH/2-330,
+	.end_y           = 0,
+	.radius          = 10
+};
+
+graphic_data_struct_t gds_rescue_R = {
+	.graphic_name[0] = 0,
+	.graphic_name[1] = 1,
+	.graphic_name[2] = 2,//图形名，用于图形索引，可自行定义
+	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+	.graphic_tpye    = UI_Circle,//图形类型，0为直线，其他的查看用户手册
+	.layer           = 1,//图层数
+	.color           = Green,//颜色
+	.start_angle     = 0,
+	.end_angle       = 0,
+	.width           = 20,
+	.start_x         = SCREEN_LENGTH/2-300+50,
+	.end_x           = 0,
+	.start_y 					= SCREEN_WIDTH/2-330,
+	.end_y           = 0,
+	.radius          = 10
+};
+
+/*复活状态灯偏移量*/
+graphic_data_struct_t gds_revive = {
+	.graphic_name[0] = 0,
+	.graphic_name[1] = 1,
+	.graphic_name[2] = 3,//图形名，用于图形索引，可自行定义
+	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+	.graphic_tpye    = UI_Circle,//图形类型，0为直线，其他的查看用户手册
+	.layer           = 0,//图层数
+	.color           = Green,//颜色
+	.start_angle     = 0,
+	.end_angle       = 0,
+	.width           = 20,
+	.start_x 					= SCREEN_LENGTH/2-300,
+	.end_x   					= 0,
+	.start_y 					= SCREEN_WIDTH/2-330,
+	.end_y   					= 0,
+	.radius          = 10
+};
+
+/*叉车状态灯偏移量*/
+graphic_data_struct_t gds_fork_L = {
+	.graphic_name[0] = 0,
+	.graphic_name[1] = 1,
+	.graphic_name[2] = 4,//图形名，用于图形索引，可自行定义
+	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+	.graphic_tpye    = UI_Circle,//图形类型，0为直线，其他的查看用户手册
+	.layer           = 0,//图层数
+	.color           = Green,//颜色
+	.start_angle     = 0,
+	.end_angle       = 0,
+	.width           = 20,
+	.start_x 					= SCREEN_LENGTH/2-300-100,
+	.end_x   					= 0,
+	.start_y 					= SCREEN_WIDTH/2-330,
+	.end_y   					= 0,
+	.radius          = 10
+};
+
+graphic_data_struct_t gds_fork_R = {
+	.graphic_name[0] = 0,
+	.graphic_name[1] = 1,
+	.graphic_name[2] = 5,//图形名，用于图形索引，可自行定义
+	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+	.graphic_tpye    = UI_Circle,//图形类型，0为直线，其他的查看用户手册
+	.layer           = 0,//图层数
+	.color           = Green,//颜色
+	.start_angle     = 0,
+	.end_angle       = 0,
+	.width           = 20,
+	.start_x = SCREEN_LENGTH/2-300+100,
+	.end_x   = 0,
+	.start_y 					= SCREEN_WIDTH/2-330,
+	.end_y   = 0,
+	.radius          = 10
+};
+
 /*对矿线偏移量*/
 graphic_data_struct_t gds_fetch_L = {
 	.graphic_name[0] = 0,
 	.graphic_name[1] = 0,
 	.graphic_name[2] = 1,//图形名，用于图形索引，可自行定义
 	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
-	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
+	.graphic_tpye    = UI_Line,//图形类型，0为直线，其他的查看用户手册
 	.layer           = 0,//图层数
-	.color           = Yellow,//颜色
+	.color           = Orange,//颜色
 	.start_angle     = 0,
 	.end_angle       = 0,
-	.width           = 5,
+	.width           = 2,
 	.start_x 			   = SCREEN_LENGTH/2-100,
 	.end_x   			   = SCREEN_LENGTH/2-100,
-	.start_y 			   = SCREEN_WIDTH/2+100,
-	.end_y   			   = SCREEN_WIDTH/2,
+	.start_y 			   = 0,
+	.end_y   			   = SCREEN_WIDTH,
 	.radius          = 0
 };
 
@@ -42,165 +137,180 @@ graphic_data_struct_t gds_fetch_R = {
 	.graphic_name[1] = 0,
 	.graphic_name[2] = 2,//图形名，用于图形索引，可自行定义
 	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
-	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
+	.graphic_tpye    = UI_Line,//图形类型，0为直线，其他的查看用户手册
 	.layer           = 0,//图层数
-	.color           = Yellow,//颜色
+	.color           = Orange,//颜色
 	.start_angle     = 0,
 	.end_angle       = 0,
-	.width           = 5,
-	.start_x 			   = SCREEN_LENGTH/2-100,
-	.end_x   			   = SCREEN_LENGTH/2-50,
-	.start_y 			   = SCREEN_WIDTH/2+100,
-	.end_y   			   = SCREEN_WIDTH/2,
+	.width           = 2,
+	.start_x 			   = SCREEN_LENGTH/2+100,
+	.end_x   			   = SCREEN_LENGTH/2+100,
+	.start_y 			   = 0,
+	.end_y   			   = SCREEN_WIDTH,
 	.radius          = 0
 };
 
-graphic_data_struct_t gds_fetch_bottom = {
-	.graphic_name[0] = 0,
-	.graphic_name[1] = 0,
-	.graphic_name[2] = 3,//图形名，用于图形索引，可自行定义
-	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
-	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
-	.layer           = 0,//图层数
-	.color           = Yellow,//颜色
-	.start_angle     = 0,
-	.end_angle       = 0,
-	.width           = 5,
-	.start_x 			   = SCREEN_LENGTH/2-200,
-	.end_x   			   = SCREEN_LENGTH/2+200,
-	.start_y 			   = SCREEN_WIDTH/2-200,
-	.end_y   			   = SCREEN_WIDTH/2-200,
-	.radius          = 0
+/***********************字符*************************/
+/*底盘三个字符*/
+//救援
+ext_client_custom_character_t char_rescue = {
+	.grapic_data_struct = {
+		.graphic_name[0] = 0,
+		.graphic_name[1] = 0,
+		.graphic_name[2] = 3,//图形名，用于图形索引，可自行定义
+		.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+		.graphic_tpye    = UI_Character,//图形类型，0为直线，其他的查看用户手册
+		.layer           = 0,//图层数
+		.color           = Yellow,//颜色
+		.start_angle     = 25,
+		.end_angle       = 0,
+		.width           = 5,
+		.start_x 			   = SCREEN_LENGTH/2-100,
+		.end_x   			   = 0,
+		.start_y 			   = SCREEN_WIDTH/2-300,
+		.end_y   			   = 0,
+		.radius          = 0
+	},
+	.data = "rescue:"
+};
+//复活
+ext_client_custom_character_t char_reveive = {
+	.grapic_data_struct = {
+		.graphic_name[0] = 0,
+		.graphic_name[1] = 0,
+		.graphic_name[2] = 4,//图形名，用于图形索引，可自行定义
+		.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+		.graphic_tpye    = UI_Character,//图形类型，0为直线，其他的查看用户手册
+		.layer           = 0,//图层数
+		.color           = Yellow,//颜色
+		.start_angle     = 25,
+		.end_angle       = 0,
+		.width           = 5,
+		.start_x 			   = SCREEN_LENGTH/2,
+		.end_x   			   = 0,
+		.start_y 			   = SCREEN_WIDTH/2-300,
+		.end_y   			   = 0,
+		.radius          = 0
+	},
+	.data = "reveive:"
+};
+//叉车
+ext_client_custom_character_t char_fork = {
+	.grapic_data_struct = {
+		.graphic_name[0] = 0,
+		.graphic_name[1] = 0,
+		.graphic_name[2] = 5,//图形名，用于图形索引，可自行定义
+		.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+		.graphic_tpye    = UI_Character,//图形类型，0为直线，其他的查看用户手册
+		.layer           = 0,//图层数
+		.color           = Yellow,//颜色
+		.start_angle     = 0,
+		.end_angle       = 0,
+		.width           = 5,
+		.start_x 			   = SCREEN_LENGTH/2-500,
+		.end_x   			   = 0,
+		.start_y 			   = SCREEN_WIDTH/2-300,
+		.end_y   			   = 0,
+		.radius          = 0
+	},
+	.data = "fork:"
+};
+/*爪子状态字符*/
+ext_client_custom_character_t char_clamp = {
+	.grapic_data_struct = {
+		.graphic_name[0] = 0,
+		.graphic_name[1] = 0,
+		.graphic_name[2] = 6,//图形名，用于图形索引，可自行定义
+		.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+		.graphic_tpye    = UI_Character,//图形类型，0为直线，其他的查看用户手册
+		.layer           = 0,//图层数
+		.color           = Yellow,//颜色
+		.start_angle     = 0,
+		.end_angle       = 0,
+		.width           = 5,
+		.start_x 			   = SCREEN_LENGTH/2-500,
+		.end_x   			   = 0,
+		.start_y 			   = SCREEN_WIDTH/2+300,
+		.end_y   			   = 0,
+		.radius          = 0
+	},
+	.data = "clamp:"
 };
 
-/*复活线偏移量*/
-graphic_data_struct_t gds_revive_L = {
-	.graphic_name[0] = 0,
-	.graphic_name[1] = 2,
-	.graphic_name[2] = 1,//图形名，用于图形索引，可自行定义
-	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
-	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
-	.layer           = 0,//图层数
-	.color           = Green,//颜色
-	.start_angle     = 0,
-	.end_angle       = 0,
-	.width           = 5,
-	.start_x = SCREEN_LENGTH/2-200,
-	.end_x   = SCREEN_LENGTH/2-150,
-	.start_y = SCREEN_WIDTH/2-300,
-	.end_y   = SCREEN_WIDTH/2-100,
-	.radius          = 0
-};
 
-graphic_data_struct_t gds_revive_R = {
-	.graphic_name[0] = 0,
-	.graphic_name[1] = 2,
-	.graphic_name[2] = 2,//图形名，用于图形索引，可自行定义
-	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
-	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
-	.layer           = 0,//图层数
-	.color           = Green,//颜色
-	.start_angle     = 0,
-	.end_angle       = 0,
-	.width           = 5,
-	.start_x         = SCREEN_LENGTH/2+200,
-	.end_x   				 = SCREEN_LENGTH/2+150,
-	.start_y         = SCREEN_WIDTH/2-300,
-	.end_y           = SCREEN_WIDTH/2-100,
-	.radius          = 0
-};
 
-/*兑换线偏移量*/
-graphic_data_struct_t gds_redeem_L = {
-	.graphic_name[0] = 0,
-	.graphic_name[1] = 1,
-	.graphic_name[2] = 1,//图形名，用于图形索引，可自行定义
-	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
-	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
-	.layer           = 1,//图层数
-	.color           = Green,//颜色
-	.start_angle     = 0,
-	.end_angle       = 0,
-	.width           = 5,
-	.start_x 			   = SCREEN_LENGTH/2-200,
-	.end_x   			   = SCREEN_LENGTH/2-50,
-	.start_y 			   = SCREEN_WIDTH/2,
-	.end_y   			   = SCREEN_WIDTH/2,
-	.radius          = 0
-};
+//graphic_data_struct_t gds_fetch_bottom = {
+//	.graphic_name[0] = 0,
+//	.graphic_name[1] = 0,
+//	.graphic_name[2] = 3,//图形名，用于图形索引，可自行定义
+//	.operate_tpye 	 = Op_None,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+//	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
+//	.layer           = 0,//图层数
+//	.color           = Yellow,//颜色
+//	.start_angle     = 0,
+//	.end_angle       = 0,
+//	.width           = 5,
+//	.start_x 			   = SCREEN_LENGTH/2-200,
+//	.end_x   			   = SCREEN_LENGTH/2+200,
+//	.start_y 			   = SCREEN_WIDTH/2-200,
+//	.end_y   			   = SCREEN_WIDTH/2-200,
+//	.radius          = 0
+//};
 
-graphic_data_struct_t gds_redeem_R = {
-	.graphic_name[0] = 0,
-	.graphic_name[1] = 1,
-	.graphic_name[2] = 2,//图形名，用于图形索引，可自行定义
-	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
-	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
-	.layer           = 1,//图层数
-	.color           = Green,//颜色
-	.start_angle     = 0,
-	.end_angle       = 0,
-	.width           = 5,
-	.start_x 			   = SCREEN_LENGTH/2-200,
-	.end_x   			   = SCREEN_LENGTH/2-50,
-	.start_y 			   = SCREEN_WIDTH/2+300,
-	.end_y   			   = SCREEN_WIDTH/2,
-	.radius          = 0
-};
+//graphic_data_struct_t gds_redeem_L = {
+//	.graphic_name[0] = 0,
+//	.graphic_name[1] = 0,
+//	.graphic_name[2] = 4,//图形名，用于图形索引，可自行定义
+//	.operate_tpye 	 = Op_None,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+//	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
+//	.layer           = 1,//图层数
+//	.color           = Green,//颜色
+//	.start_angle     = 0,
+//	.end_angle       = 0,
+//	.width           = 5,
+//	.start_x 			   = SCREEN_LENGTH/2-200,
+//	.end_x   			   = SCREEN_LENGTH/2-50,
+//	.start_y 			   = SCREEN_WIDTH/2,
+//	.end_y   			   = SCREEN_WIDTH/2,
+//	.radius          = 0
+//};
 
-graphic_data_struct_t gds_redeem_bottom = {
-	.graphic_name[0] = 0,
-	.graphic_name[1] = 1,
-	.graphic_name[2] = 3,//图形名，用于图形索引，可自行定义
-	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
-	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
-	.layer           = 1,//图层数
-	.color           = Green,//颜色
-	.start_angle     = 0,
-	.end_angle       = 0,
-	.width           = 5,
-	.start_x 			   = SCREEN_LENGTH/2-200,
-	.end_x   			   = SCREEN_LENGTH/2+200,
-	.start_y 			   = SCREEN_WIDTH/2-400,
-	.end_y   			   = SCREEN_WIDTH/2-400,
-	.radius          = 0
-};
+//graphic_data_struct_t gds_redeem_R = {
+//	.graphic_name[0] = 0,
+//	.graphic_name[1] = 0,
+//	.graphic_name[2] = 5,//图形名，用于图形索引，可自行定义
+//	.operate_tpye 	 = Op_None,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+//	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
+//	.layer           = 1,//图层数
+//	.color           = Green,//颜色
+//	.start_angle     = 0,
+//	.end_angle       = 0,
+//	.width           = 5,
+//	.start_x 			   = SCREEN_LENGTH/2-200,
+//	.end_x   			   = SCREEN_LENGTH/2-50,
+//	.start_y 			   = SCREEN_WIDTH/2+300,
+//	.end_y   			   = SCREEN_WIDTH/2,
+//	.radius          = 0
+//};
 
-/*救援线偏移量*/
-graphic_data_struct_t gds_rescue_L = {
-	.graphic_name[0] = 0,
-	.graphic_name[1] = 2,
-	.graphic_name[2] = 1,//图形名，用于图形索引，可自行定义
-	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
-	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
-	.layer           = 1,//图层数
-	.color           = Green,//颜色
-	.start_angle     = 0,
-	.end_angle       = 0,
-	.width           = 5,
-	.start_x         = SCREEN_LENGTH/2-200,
-	.end_x           = SCREEN_LENGTH/2-150,
-	.start_y         = SCREEN_WIDTH/2-500,
-	.end_y           = SCREEN_WIDTH/2,
-	.radius          = 0
-};
+//graphic_data_struct_t gds_redeem_bottom = {
+//	.graphic_name[0] = 0,
+//	.graphic_name[1] = 0,
+//	.graphic_name[2] = 6,//图形名，用于图形索引，可自行定义
+//	.operate_tpye 	 = Op_None,//图形操作，0：空操作；1：增加；2：修改；3：删除；
+//	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
+//	.layer           = 1,//图层数
+//	.color           = Green,//颜色
+//	.start_angle     = 0,
+//	.end_angle       = 0,
+//	.width           = 5,
+//	.start_x 			   = SCREEN_LENGTH/2-200,
+//	.end_x   			   = SCREEN_LENGTH/2+200,
+//	.start_y 			   = SCREEN_WIDTH/2-400,
+//	.end_y   			   = SCREEN_WIDTH/2-400,
+//	.radius          = 0
+//};
 
-graphic_data_struct_t gds_rescue_R = {
-	.graphic_name[0] = 0,
-	.graphic_name[1] = 2,
-	.graphic_name[2] = 2,//图形名，用于图形索引，可自行定义
-	.operate_tpye 	 = Op_Add,//图形操作，0：空操作；1：增加；2：修改；3：删除；
-	.graphic_tpye    = 0,//图形类型，0为直线，其他的查看用户手册
-	.layer           = 1,//图层数
-	.color           = Green,//颜色
-	.start_angle     = 0,
-	.end_angle       = 0,
-	.width           = 5,
-	.start_x         = SCREEN_LENGTH/2+200,
-	.end_x           = SCREEN_LENGTH/2+150,
-	.start_y         = SCREEN_WIDTH/2-500,
-	.end_y           = SCREEN_WIDTH/2,
-	.radius          = 0
-};
 
 /**********************************************************************************************************
 *函 数 名: Graphic_Change_Check
@@ -249,22 +359,99 @@ void JudgementCustomizeGraphics(void)
 		if(JudgeReceive.RobotID == 2)		//红方工程
 				custom_grapic_draw.receiver_ID = 0x0102;	//红方工程操作手客户端
 		
+		
+		custom_char_draw.sender_ID=JudgeReceive.RobotID;//发送者ID，机器人对应ID
+//		custom_char_draw.sender_ID=2;//发送者ID，机器人对应ID
+//				custom_char_draw.receiver_ID = 0x0102;	
+		if(JudgeReceive.RobotID == 102) //蓝方工程
+				custom_char_draw.receiver_ID = 0x0166;  //蓝方工程操作手客户端
+		if(JudgeReceive.RobotID == 2)		//红方工程
+				custom_char_draw.receiver_ID = 0x0102;	//红方工程操作手客户端
+		
 /*********************************确定各图形变化量***********************************/
 		
 
 /*********************************装载自定义图像数据***********************************/
-		load_time_flag = load_time_flag + 1;
-		if(load_time_flag == LOAD_TIME_FLAG_MAX)
-			load_time_flag = 0;
 		
-		if(load_time_flag == 0){
-			referee_data_load_5_Graphic(gds_fetch_L, gds_fetch_R,gds_fetch_bottom, gds_redeem_L, gds_redeem_R);
-			referee_data_pack_handle(0xA5,0x0301,(uint8_t *)&custom_grapic_draw,sizeof(custom_grapic_draw));
-		}
-		else if(load_time_flag == 1){
-			referee_data_load_5_Graphic(gds_redeem_L, gds_redeem_R, gds_redeem_bottom, gds_rescue_L, gds_rescue_R);
-			referee_data_pack_handle(0xA5,0x0301,(uint8_t *)&custom_grapic_draw,sizeof(custom_grapic_draw));
-		}
+		//救援复活线接反了
+	if(g_Flag.rescue_solenoid_flag == 0){
+		gds_revive.color = Green;
+	}else{
+		gds_revive.color = Orange;
+	}
+	
+	if(g_Flag.resurge_solenoid_flag == 0){
+		gds_rescue_L.color = Green;
+		gds_rescue_R.color = Green;
+	}else{
+		gds_rescue_L.color = Orange;
+		gds_rescue_R.color = Orange;
+	}
+	
+	if(g_Flag.fork_solenoid_flag == 0){
+		gds_fork_L.color = Green;
+		gds_fork_R.color = Green;
+	}else{
+		gds_fork_L.color = Orange;
+		gds_fork_R.color = Orange;
+	}
+	
+	
+	
+	if(graphic_init_flag != 0)
+	{
+		gds_rescue_L.operate_tpye = Op_Add;
+		gds_rescue_R.operate_tpye = Op_Add;
+		gds_revive.operate_tpye 	 = Op_Add;
+		gds_fork_L.operate_tpye 	 = Op_Add;
+		gds_fork_R.operate_tpye 	 = Op_Add;
+		gds_fetch_L.operate_tpye 	 = Op_Add;
+		gds_fetch_R.operate_tpye 	 = Op_Add;
+	}else 
+	{
+		gds_rescue_L.operate_tpye = Op_Change;
+		gds_rescue_R.operate_tpye = Op_Change;
+		gds_revive.operate_tpye 	 = Op_Change;
+		gds_fork_L.operate_tpye 	 = Op_Change;
+		gds_fork_R.operate_tpye 	 = Op_Change;
+		gds_fetch_L.operate_tpye 	 = Op_None;
+		gds_fetch_R.operate_tpye 	 = Op_None;
+	}
+	
+	if(load_time_flag == 0){
+		referee_data_load_7_Graphic(gds_rescue_L, gds_rescue_R,gds_revive, gds_fork_L, gds_fork_R, gds_fetch_L, gds_fetch_R);
+		referee_data_pack_handle(0xA5,0x0301,(uint8_t *)&custom_grapic_draw,sizeof(custom_grapic_draw));
+	}
+	else if(load_time_flag == 1){
+		custom_char_draw.char_custom = char_rescue;
+		memset(custom_char_draw.char_custom.data,'\0',sizeof(custom_char_draw.char_custom.data));
+		strcpy(custom_char_draw.char_custom.data,char_rescue.data);
+		custom_char_draw.char_custom.grapic_data_struct.end_angle = strlen(custom_char_draw.char_custom.data);
+		referee_data_pack_handle(0xA5,0x0301,(uint8_t *)&custom_char_draw,sizeof(custom_char_draw));
+	}
+	else if(load_time_flag == 2){
+		custom_char_draw.char_custom = char_reveive;
+		memset(custom_char_draw.char_custom.data,'\0',sizeof(custom_char_draw.char_custom.data));
+		strcpy(custom_char_draw.char_custom.data,char_reveive.data);
+		referee_data_pack_handle(0xA5,0x0301,(uint8_t *)&custom_char_draw,sizeof(custom_char_draw));
+	}
+	else if(load_time_flag == 3){
+		custom_char_draw.char_custom = char_fork;
+		referee_data_pack_handle(0xA5,0x0301,(uint8_t *)&custom_char_draw,sizeof(custom_char_draw));
+	}
+	else if(load_time_flag == 4){
+		custom_char_draw.char_custom = char_clamp;
+		referee_data_pack_handle(0xA5,0x0301,(uint8_t *)&custom_char_draw,sizeof(custom_char_draw));
+	}
+	
+	
+		
+	load_time_flag = load_time_flag + 1;
+	if(load_time_flag == LOAD_TIME_FLAG_MAX)
+	{
+		load_time_flag = 0;
+		graphic_init_flag = 0;
+	}
 }
 
 /**********************************************************************************************************
@@ -290,13 +477,18 @@ void referee_data_load_5_Graphic(graphic_data_struct_t g0, graphic_data_struct_t
 *形    参: 无
 *返 回 值: 无
 **********************************************************************************************************/
-//void referee_data_load_7_Graphic(graphic_data_struct_t g1, graphic_data_struct_t g2)
-//{
-//	custom_grapic_draw.data_cmd_id=0x0104;//绘制七个图形（内容ID，查询裁判系统手册）
-//	
-//	custom_grapic_draw.graphic_custom.grapic_data_struct[0] = g1;
-//	custom_grapic_draw.graphic_custom.grapic_data_struct[1] = g2;
-//}
+void referee_data_load_7_Graphic(graphic_data_struct_t g0, graphic_data_struct_t g1, graphic_data_struct_t g2, graphic_data_struct_t g3, graphic_data_struct_t g4, graphic_data_struct_t g5, graphic_data_struct_t g6)
+{
+	custom_grapic_draw.data_cmd_id=0x0104;//绘制七个图形（内容ID，查询裁判系统手册）
+	
+	custom_grapic_draw.graphic_custom.grapic_data_struct[0] = g0;
+	custom_grapic_draw.graphic_custom.grapic_data_struct[1] = g1;
+	custom_grapic_draw.graphic_custom.grapic_data_struct[2] = g2;
+	custom_grapic_draw.graphic_custom.grapic_data_struct[3] = g3;
+	custom_grapic_draw.graphic_custom.grapic_data_struct[4] = g4;
+	custom_grapic_draw.graphic_custom.grapic_data_struct[5] = g5;
+	custom_grapic_draw.graphic_custom.grapic_data_struct[6] = g6;
+}
 
 /**********************************************************************************************************
 *函 数 名: referee_data_load_NumberUI
@@ -489,9 +681,13 @@ void GraphicSendtask(void *pvParameters)
 //				referee_data_pack_handle(0xA5,0x0301,(uint8_t *)&custom_grapic_draw,sizeof(custom_grapic_draw));
 //			}
 			
-			if(graphic_init_flag != 0){		//初始化未完成
+//			if(graphic_init_flag != 0){		//初始化未完成
 				JudgementCustomizeGraphics();
-			}
+//				graphic_init_flag = 0;
+//			}else
+//			{
+//				
+//			}
 
 			vTaskDelay(50); 	 
 //#if INCLUDE_uxTaskGetStackHighWaterMark

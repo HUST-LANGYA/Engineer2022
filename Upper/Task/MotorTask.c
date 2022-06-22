@@ -9,7 +9,7 @@ Pid_Typedef Pid_LiftTrack_Speed[2],Pid_LiftTrack_Positioin[2],Pid_Rotate_Motor_S
 //float Lift_pos_set_pre[2];							//记录抬升电机位置环上次的设定值
 
 int LiftTrack_Current[2], Rotate_Motor_Current;//电流
-int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,lift_once_offset, RotatePositionInit, RotateJourney;//初始位置,结束位置，行程距离
+int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,LiftJourney_3,lift_once_offset, RotatePositionInit, RotateJourney;//初始位置,结束位置，行程距离
 int Lift_Init_Change_Journey = -75000;
 
 //extern rmc620_t Track_Motor[2], forward_motor[2];//电机的反馈数据
@@ -27,7 +27,10 @@ void Pid_Motor_Init(void)
 //		ForwardPositionInit[0] = Pos_Forward_Motor[0];
 //		ForwardPositionInit[1] = Pos_Forward_Motor[1];
 		LiftJourney_2 = -70000;
-		LiftJourney_1 = -46000;
+		LiftJourney_1 = -60000;
+//		LiftJourney_1 = -40000;
+//		LiftJourney_3 = -65000;
+		LiftJourney_3 = -70000;
 		RotateJourney = 30000;
 	
 	
@@ -73,7 +76,7 @@ void Pid_Motor_Init(void)
 //		Pid_Rotate_Motor_Speed.P = 23.0f;
 //		Pid_Rotate_Motor_Speed.P = 12.0f;
 		Pid_Rotate_Motor_Speed.P = 13.0f;
-		Pid_Rotate_Motor_Speed.I = 0.01f;
+		Pid_Rotate_Motor_Speed.I = 0.0f;
 		Pid_Rotate_Motor_Speed.D = 0.0f;
 		Pid_Rotate_Motor_Speed.IMax = 5000.0f;
 		Pid_Rotate_Motor_Speed.SetPoint = 0.0f;
@@ -146,7 +149,7 @@ void motor_cal_task(void)
 	/*******爪子旋转电机********/
 	//位置环
 //	Pid_LiftTrack_Speed[1].SetPoint = PID_Calc(&Pid_LiftTrack_Positioin[1],Pos_LiftTrack[1]);
-	Pid_Rotate_Motor_Speed.SetPoint = LIMIT_MAX_MIN(PID_Calc(&Pid_Rotate_Motor_Positioin,Pos_Rotate_Motor), 5000, -5000);
+//	Pid_Rotate_Motor_Speed.SetPoint = LIMIT_MAX_MIN(PID_Calc(&Pid_Rotate_Motor_Positioin,Pos_Rotate_Motor), 5000, -5000);
 	//速度环
 	Rotate_Motor_Current = LIMIT_MAX_MIN(PID_Calc(&Pid_Rotate_Motor_Speed,(float)Rotate_Motor.speed),13000,-13000);
 	

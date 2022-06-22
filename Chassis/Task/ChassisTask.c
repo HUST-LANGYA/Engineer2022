@@ -229,8 +229,8 @@ void chassisKeyModeCal(void)
 		}
 		else											//不使用陀螺仪数据
 		{
-			vx = (rc_ctrl.key.a - rc_ctrl.key.d)  * (1.5F - rc_ctrl.key.shift * 1.0F+ rc_ctrl.mouse.press_l * 1.5f ) * 1500.0F;
-			vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.5F - rc_ctrl.key.shift * 1.0F+ rc_ctrl.mouse.press_l * 1.5f ) * 2000.0F;
+			vx = (rc_ctrl.key.a - rc_ctrl.key.d)  * (1.5F - rc_ctrl.key.shift * 0.5F+ rc_ctrl.mouse.press_l * 1.5f ) * 1500.0F;
+			vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.5F - rc_ctrl.key.shift * 0.5F+ rc_ctrl.mouse.press_l * 1.5f ) * 2000.0F;
 	//		vx = (rc_ctrl.key.a - rc_ctrl.key.d) * (1.0F - rc_ctrl.key.shift * 0.56F ) * 2500.0F;
 	//		vy = (-rc_ctrl.key.w + rc_ctrl.key.s) * (1.0F - rc_ctrl.key.shift * 0.56F ) * 2500.0F;
 			vw = -rc_ctrl.mouse.x * 100.0f * (1.0F - rc_ctrl.key.shift * 0.7F);
@@ -245,6 +245,11 @@ void chassisKeyModeCal(void)
 		vy = 0;
 		vw = 0;
 	}
+		/*********************** shift + b键  **************************/
+									//底盘速度增加向前偏移量
+	if(rc_ctrl.key.ctrl == 0 && rc_ctrl.key.shift == 1 && rc_ctrl.key.b == 1)
+		vy -= 500;
+	
 	
 //	if(g_Flag.laser_mid != LASER_MID_INIT)
 //	{

@@ -4,7 +4,7 @@ uint32_t Lift_high_water;
 
 extern Pid_Typedef Pid_LiftTrack_Speed[2],Pid_LiftTrack_Positioin[2];//pid结构体
 //extern float Lift_pos_set_pre[2];							//记录抬升电机位置环上次的设定值
-extern int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,lift_once_offset;
+extern int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,LiftJourney_3,lift_once_offset;
 extern int volatile Pos_LiftTrack[2];
 
 extern int Lift_Init_Change_Journey;
@@ -69,6 +69,19 @@ void motor_lift_task(void)
 							Pid_LiftTrack_Positioin[0].P = 0.1f;
 							Pid_LiftTrack_Positioin[0].I = 0.001f;
 							Pid_LiftTrack_Positioin[0].D = 0.000f;
+							Pid_LiftTrack_Positioin[0].IMax = 10000.0f;
+		}
+		else if(g_Flag.lift_once_flag == 3)//如果上层抬升标志位为3
+		{
+			Lift_pos_set_pre[0] = LiftPositionInit[0] - lift_once_offset;																	//记录另一个状态
+			Lift_pos_set_pre[1] = LiftPositionInit[1] - lift_once_offset;
+			
+			lift_pos_set[0] = LiftPositionInit[0] - lift_once_offset - LiftJourney_3;									//修改目标值
+			lift_pos_set[1] = LiftPositionInit[1] + lift_once_offset + LiftJourney_3;
+			
+							Pid_LiftTrack_Positioin[0].P = 1.5f;
+							Pid_LiftTrack_Positioin[0].I = 0.002f;
+							Pid_LiftTrack_Positioin[0].D = 0.00f;
 							Pid_LiftTrack_Positioin[0].IMax = 10000.0f;
 		}
 		

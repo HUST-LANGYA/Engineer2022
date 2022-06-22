@@ -4,7 +4,7 @@ uint32_t motor_cal_high_water;
 
 pid_Typedef Pid_LiftTrack_Speed[2],Pid_LiftTrack_Positioin[2], pid_warehouse_speed, pid_warehouse_position;//pid结构体
 int LiftTrack_Current[2], warehouse_current;//电流
-int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,lift_offset,  warehouse_journey;//初始位置,结束位置，行程距离
+int LiftPositionInit[2],LiftJourney_1,LiftJourney_2,LiftJourney_3,lift_offset,  warehouse_journey;//初始位置,结束位置，行程距离
 extern int warehouse_set;			//仓库旋转电机设定值
 
 extern rmc620_t lift_track_motor[2], warehouse_motor;//电机的反馈数据
@@ -16,7 +16,9 @@ void motorPidInit(void)
 //		LiftJourney_1 = 80000;
 //		LiftJourney_1 = 180000;
 		LiftJourney_1 = 165000;
-		LiftJourney_2	= 125000;
+//		LiftJourney_2	= 200000;
+		LiftJourney_2	= 225000;
+		LiftJourney_3 = 225000;
 	
 		lift_offset = 15000;
 		warehouse_journey = 85000;

@@ -11,27 +11,33 @@ uint32_t rotate_high_water;
 
 void motorRotate(void)
 {
-	if(g_Flag.rotate_flag == 0)
-	{
-//					Pid_Rotate_Motor_Positioin.SetPoint = Pos_Rotate_Motor;
-		rotate_set = rotate_set;
-	}else if(g_Flag.rotate_flag == 1)			//短按
-	{
-		rotate_set = Pos_Rotate_Motor + RotateJourney;
-		g_Flag.rotate_flag = 0;
-	}else if(g_Flag.rotate_flag == 2)
-	{
-		rotate_set = Pos_Rotate_Motor - RotateJourney;
-		g_Flag.rotate_flag = 0;
-	}else if(g_Flag.rotate_flag == 3)			//长按
-	{
-		rotate_set += 100;
-	}else if(g_Flag.rotate_flag == 4)
-	{
-		rotate_set -= 100;
-	}
 	
-		Pid_Rotate_Motor_Positioin.SetPoint = rotate_set;
+	Pid_Rotate_Motor_Speed.SetPoint = (g_Flag.rotate_s - g_Flag.rotate_w)  * 1000.0;
+	
+	
+	
+	
+//	if(g_Flag.rotate_flag == 0)
+//	{
+////					Pid_Rotate_Motor_Positioin.SetPoint = Pos_Rotate_Motor;
+//		rotate_set = rotate_set;
+//	}else if(g_Flag.rotate_flag == 1)			//短按
+//	{
+//		rotate_set = Pos_Rotate_Motor + RotateJourney;
+//		g_Flag.rotate_flag = 0;
+//	}else if(g_Flag.rotate_flag == 2)
+//	{
+//		rotate_set = Pos_Rotate_Motor - RotateJourney;
+//		g_Flag.rotate_flag = 0;
+//	}else if(g_Flag.rotate_flag == 3)			//长按
+//	{
+//		rotate_set += 100;
+//	}else if(g_Flag.rotate_flag == 4)
+//	{
+//		rotate_set -= 100;
+//	}
+//	
+//		Pid_Rotate_Motor_Positioin.SetPoint = rotate_set;
 }
 
 

@@ -145,7 +145,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>JL2CM3</Key>
-          <Name>-U20200909 -O111 -S1 -ZTIFSpeedSel10000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_CL.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F105RB$Flash\STM32F10x_CL.FLM)</Name>
+          <Name>-U20200909 -O111 -S4 -ZTIFSpeedSel2000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(1BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO15 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_CL.FLM -FS08000000 -FL080000 -FP0($$Device:STM32F105RB$Flash\STM32F10x_CL.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -178,202 +178,147 @@
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>yaw_angle</ItemText>
+          <ItemText>rx_message</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>rx_message</ItemText>
+          <ItemText>JudgeReceive</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>JudgeReceive</ItemText>
+          <ItemText>tx_message</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>tx_message</ItemText>
+          <ItemText>lift_track_motor,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>8</count>
           <WinNumber>1</WinNumber>
-          <ItemText>lift_track_motor,0x0A</ItemText>
+          <ItemText>pos_lift_track,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>1</WinNumber>
-          <ItemText>pos_lift_track,0x0A</ItemText>
+          <ItemText>Data2C_tx</ItemText>
         </Ww>
         <Ww>
           <count>10</count>
           <WinNumber>1</WinNumber>
-          <ItemText>LiftJourney_1,0x0A</ItemText>
+          <ItemText>g_Flag</ItemText>
         </Ww>
         <Ww>
           <count>11</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Data2C_tx</ItemText>
+          <ItemText>chassis_pos_follow_pid,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>12</count>
           <WinNumber>1</WinNumber>
-          <ItemText>g_Flag</ItemText>
+          <ItemText>CPU_RunInfo1</ItemText>
         </Ww>
         <Ww>
           <count>13</count>
           <WinNumber>1</WinNumber>
-          <ItemText>lift_offset,0x0A</ItemText>
+          <ItemText>CPU_RunInfo2</ItemText>
         </Ww>
         <Ww>
           <count>14</count>
           <WinNumber>1</WinNumber>
-          <ItemText>yaw_angle</ItemText>
+          <ItemText>Mode_Switch_high_water,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>15</count>
           <WinNumber>1</WinNumber>
-          <ItemText>gz</ItemText>
+          <ItemText>Clamp_high_water,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>16</count>
           <WinNumber>1</WinNumber>
-          <ItemText>chassis_pos_follow_pid,0x0A</ItemText>
+          <ItemText>CPU_RunInfo2</ItemText>
         </Ww>
         <Ww>
           <count>17</count>
           <WinNumber>1</WinNumber>
-          <ItemText>time_test,0x0A</ItemText>
+          <ItemText>g_Flag,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>18</count>
           <WinNumber>1</WinNumber>
-          <ItemText>CPU_RunInfo1</ItemText>
+          <ItemText>ClampAngleReceiveBuffer</ItemText>
         </Ww>
         <Ww>
           <count>19</count>
           <WinNumber>1</WinNumber>
-          <ItemText>CPU_RunInfo2</ItemText>
+          <ItemText>Data_Receive_from_F103</ItemText>
         </Ww>
         <Ww>
           <count>20</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Mode_Switch_high_water,0x0A</ItemText>
+          <ItemText>lift_offset</ItemText>
         </Ww>
         <Ww>
           <count>21</count>
           <WinNumber>1</WinNumber>
-          <ItemText>motor_cal_high_water,0x0A</ItemText>
+          <ItemText>LiftJourney_2,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>22</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Clamp_high_water,0x0A</ItemText>
+          <ItemText>ClampAngle_X,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>23</count>
           <WinNumber>1</WinNumber>
-          <ItemText>motor_flag_high_water,0x0A</ItemText>
+          <ItemText>angle_receive</ItemText>
         </Ww>
         <Ww>
           <count>24</count>
           <WinNumber>1</WinNumber>
-          <ItemText>master_2_slave_high_water,0x0A</ItemText>
+          <ItemText>data_length,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>25</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Chassis_high_water,0x0A</ItemText>
+          <ItemText>JudgeSend,0x10</ItemText>
         </Ww>
         <Ww>
           <count>26</count>
           <WinNumber>1</WinNumber>
-          <ItemText>CPU_high_water,0x0A</ItemText>
+          <ItemText>frame_length</ItemText>
         </Ww>
         <Ww>
           <count>27</count>
           <WinNumber>1</WinNumber>
-          <ItemText>CPU_RunInfo2</ItemText>
+          <ItemText>custom_grapic_draw</ItemText>
         </Ww>
         <Ww>
           <count>28</count>
           <WinNumber>1</WinNumber>
-          <ItemText>g_Flag,0x0A</ItemText>
+          <ItemText>JudgeReceive,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>29</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ClampAngleReceiveBuffer</ItemText>
+          <ItemText>JudgeSend,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>30</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Data_Receive_from_F103</ItemText>
+          <ItemText>Data2C_tx,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>31</count>
           <WinNumber>1</WinNumber>
-          <ItemText>LiftJourney_1,0x0A</ItemText>
+          <ItemText>LiftJourney_3,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>32</count>
           <WinNumber>1</WinNumber>
-          <ItemText>lift_offset</ItemText>
-        </Ww>
-        <Ww>
-          <count>33</count>
-          <WinNumber>1</WinNumber>
           <ItemText>LiftJourney_2,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>34</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>ClampAngle_X,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>35</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>angle_receive</ItemText>
-        </Ww>
-        <Ww>
-          <count>36</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>data_length,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>37</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>JudgeSend,0x10</ItemText>
-        </Ww>
-        <Ww>
-          <count>38</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>frame_length</ItemText>
-        </Ww>
-        <Ww>
-          <count>39</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>custom_grapic_draw</ItemText>
-        </Ww>
-        <Ww>
-          <count>40</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>JudgeReceive,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>41</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>graphic_init_flag</ItemText>
-        </Ww>
-        <Ww>
-          <count>42</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>JudgeSend,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>43</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>dma_tx_busy</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

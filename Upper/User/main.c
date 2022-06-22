@@ -144,6 +144,10 @@ void flagInit(void)
 	
 	g_Flag.camera_pitch = CAMERA_DEFAULT;
 	g_Flag.camera_yaw = CAMERA_DEFAULT;
+	
+	
+	g_Flag.rotate_w = 0;
+	g_Flag.rotate_s = 0;
 }
 
 ///**********************************************************************************************************

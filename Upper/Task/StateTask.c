@@ -170,8 +170,13 @@ void flagModeSwitch(void)
 		{
 				g_Flag.auto_mode = data_receive[4];
 				g_Flag.camera_pitch = data_receive[5];
-				if((data_receive_pre[6]-data_receive[6]) == 1)
-					g_Flag.rotate_flag = 1;
+			
+			
+				g_Flag.rotate_w = (data_receive[6] & 0x02)>>1;
+				g_Flag.rotate_s = data_receive[6] & 0x01;
+			
+//				if((data_receive_pre[6]-data_receive[6]) == 1)
+//					g_Flag.rotate_flag = 1;
 				
 				if((data_receive_pre[7]-data_receive[7]) == 1)
 					g_Flag.lift_once_init_flag = 1;

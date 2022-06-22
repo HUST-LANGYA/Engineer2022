@@ -44,8 +44,8 @@ void master2Slave(void)
 	Data2C_tx[4] = g_Flag.auto_mode;				//自动模式
 	Data2C_tx[5] = g_Flag.camera_pitch;			//图传低抬头
 	
-	Data2C_tx[6] = g_Flag.rotate_flag;			//爪子旋转
-	g_Flag.rotate_flag = 0;
+	Data2C_tx[6] = (g_Flag.rotate_w<<1) | g_Flag.rotate_s;			//爪子旋转
+//	g_Flag.rotate_flag = 0;
 	
 	Data2C_tx[7] = g_Flag.lift_once_init_flag;	//修改四连杆初始状态
 	g_Flag.lift_once_init_flag = 0;

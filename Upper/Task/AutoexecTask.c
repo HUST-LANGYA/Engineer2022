@@ -174,6 +174,10 @@ void autoexec(void)
 			autoExchange();
 			break;
 		
+		case EXCHANGE_MINE_TWICE:				//二次兑换矿石
+			autoExchangeTwice();
+			break;
+		
 		case RESET_SOFTWARE:						//软件自动复位
 			autoResetSoftware();
 			break;
@@ -251,9 +255,9 @@ void autoLargeIslandMine(void)
 
 		case SL_LIFT_TWICE:
 			auto_large_enum_next = SL_BACK;
-			if(g_Flag.lift_twice_flag != 1)
+			if(g_Flag.lift_twice_flag != 3)
 			{
-				g_Flag.lift_twice_flag = 1;
+				g_Flag.lift_twice_flag = 3;
 				autoModeDelay_ms(800);
 			}else
 				autoModeDelay_ms(50);
@@ -487,7 +491,7 @@ void autoExchange(void)
 			break;
 		
 		case SE_CLAMP:
-			auto_exchange_enum_next = SE_LIFT_TWICE;
+			auto_exchange_enum_next = SE_LIFT_ONCE;
 			if(g_Flag.clamp_solenoid_flag != 1)
 			{
 				g_Flag.clamp_solenoid_flag = 1;
@@ -495,23 +499,23 @@ void autoExchange(void)
 			}else
 				autoModeDelay_ms(50);
 			break;
-
 		
-		case SE_LIFT_TWICE:
-			auto_exchange_enum_next = SE_LIFT_ONCE;
-			if(g_Flag.lift_twice_flag != 2)
+		case SE_LIFT_ONCE:
+			auto_exchange_enum_next = SE_LIFT_TWICE;
+			if(g_Flag.lift_once_flag != 1)
 			{
-				g_Flag.lift_twice_flag = 2;
+				g_Flag.lift_once_flag = 1;
 				autoModeDelay_ms(800);
 			}else
 				autoModeDelay_ms(50);
 			break;
+
 		
-		case SE_LIFT_ONCE:
+		case SE_LIFT_TWICE:
 			auto_exchange_enum_next = SE_FORWARD;
-			if(g_Flag.lift_once_flag != 1)
+			if(g_Flag.lift_twice_flag != 2)
 			{
-				g_Flag.lift_once_flag = 1;
+				g_Flag.lift_twice_flag = 2;
 				autoModeDelay_ms(800);
 			}else
 				autoModeDelay_ms(50);
@@ -527,45 +531,93 @@ void autoExchange(void)
 				autoModeDelay_ms(50);
 			break;
 		
-//		case SE_LOOSE:
-//			auto_exchange_enum_next = SE_FORWARD_BACK_2;
-//			if(g_Flag.clamp_solenoid_flag != 0)
+		case ATUOEXEC_END:
+			auto_large_enum_next = AUTOEXEC_DEFAULT;
+			g_Flag.auto_end_flag = 1;
+			autoModeDelay_ms(100);
+			break;
+			
+		default:
+			auto_exchange_enum = AUTOEXEC_DEFAULT;
+			auto_exchange_enum_next = AUTOEXEC_DEFAULT;
+			break;
+	}
+	
+	
+/*****************************执行相关动作，并根据判断条件将当前状态赋值为下一状态*****************************/
+	
+}
+
+/**
+  	*@brief 		二次兑换矿石
+  	*@param		  void
+	*@return		  void
+*/
+void autoExchangeTwice(void)
+{
+/******************************************确定下一个状态******************************************/
+	switch(auto_exchange_enum)
+	{
+		case AUTOEXEC_DEFAULT:
+			auto_exchange_enum_next = SE_LOOSE;
+			auto_exchange_enum = auto_exchange_enum_next;
+//			//执行操作
+//			if()//根据条件判断本状态结束，并进入下一状态
 //			{
-//					g_Flag.clamp_solenoid_flag = 0;
-//					autoModeDelay_ms(300);
-//			}else
-//				autoModeDelay_ms(50);
-//			break;
-//		
-//		case SE_FORWARD_BACK_2:
-//			auto_exchange_enum_next = SE_CLAMP_2;
-//			if(g_Flag.forward_solenoid_flag != 0)
-//			{
-//					g_Flag.forward_solenoid_flag = 0;
-//					autoModeDelay_ms(300);
-//			}else
-//				autoModeDelay_ms(50);
-//			break;
-//		
-//		case SE_CLAMP_2:
-//			auto_exchange_enum_next = SE_FORWARD_2;
-//			if(g_Flag.clamp_solenoid_flag != 1)
-//			{
-//					g_Flag.clamp_solenoid_flag = 1;
-//					autoModeDelay_ms(300);
-//			}else
-//				autoModeDelay_ms(50);
-//			break;
-//		
-//		case SE_FORWARD_2:
-//			auto_exchange_enum_next = SE_BACK;
-//			if(g_Flag.forward_solenoid_flag != 1)
-//			{
-//				g_Flag.forward_solenoid_flag = 1;
-//				autoModeDelay_ms(300);
-//			}else
-//				autoModeDelay_ms(50);
-//			break;
+//				auto_exchange_enum = auto_exchange_enum_next;
+//			}
+			break;
+		
+		case SE_LOOSE:
+			auto_exchange_enum_next = SE_FORWARD_BACK_2;
+			if(g_Flag.clamp_solenoid_flag != 0)
+			{
+					g_Flag.clamp_solenoid_flag = 0;
+					autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
+			break;
+		
+		case SE_FORWARD_BACK_2:
+			auto_exchange_enum_next = SE_LIFT_ONCE_2;
+			if(g_Flag.forward_solenoid_flag != 0)
+			{
+					g_Flag.forward_solenoid_flag = 0;
+					autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
+			break;
+			
+			
+		case SE_LIFT_ONCE_2:
+			auto_exchange_enum_next = SE_CLAMP_2;
+			if(g_Flag.lift_once_flag != 3)
+			{
+				g_Flag.lift_once_flag = 3;
+				autoModeDelay_ms(400);
+			}else
+				autoModeDelay_ms(50);
+			break;
+		
+		case SE_CLAMP_2:
+			auto_exchange_enum_next = SE_FORWARD_2;
+			if(g_Flag.clamp_solenoid_flag != 1)
+			{
+					g_Flag.clamp_solenoid_flag = 1;
+					autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
+			break;
+		
+		case SE_FORWARD_2:
+			auto_exchange_enum_next = ATUOEXEC_END;
+			if(g_Flag.forward_solenoid_flag != 1)
+			{
+				g_Flag.forward_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
+			break;
 //		
 //		case SE_BACK:
 //			auto_exchange_enum_next = SE_LAND_ONCE;		
@@ -660,9 +712,9 @@ void autoMineMidair(void)
 		
 		case SM_LIFT_TWICE:
 			auto_midair_enum_next = SM_LIFT_ONCE;
-			if(g_Flag.lift_twice_flag != 1)
+			if(g_Flag.lift_twice_flag != 3)
 			{
-				g_Flag.lift_twice_flag = 1;
+				g_Flag.lift_twice_flag = 3;
 				autoModeDelay_ms(800);
 			}else
 				autoModeDelay_ms(50);
