@@ -522,7 +522,7 @@ void autoExchange(void)
 			break;
 		
 		case SE_FORWARD:
-			auto_exchange_enum_next = ATUOEXEC_END;
+			auto_exchange_enum_next = SE_EXCHANGE_ON;
 			if(g_Flag.forward_solenoid_flag != 1)
 			{
 				g_Flag.forward_solenoid_flag = 1;
@@ -531,11 +531,51 @@ void autoExchange(void)
 				autoModeDelay_ms(50);
 			break;
 		
+			
+			//≤‚ ‘
+		case SE_EXCHANGE_ON:
+			auto_exchange_enum_next = SE_LOOSE;
+			if(g_Flag.exchange_solenoid_flag != 1)
+			{
+				g_Flag.exchange_solenoid_flag = 1;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
+			break;
+			
+		case SE_LOOSE:
+			auto_exchange_enum_next = SE_EXCHANGE_OFF;
+			if(g_Flag.clamp_solenoid_flag != 0)
+			{
+				g_Flag.clamp_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
+			break;
+			
+		case SE_EXCHANGE_OFF:
+			auto_exchange_enum_next = ATUOEXEC_END;
+			if(g_Flag.exchange_solenoid_flag != 0)
+			{
+				g_Flag.exchange_solenoid_flag = 0;
+				autoModeDelay_ms(300);
+			}else
+				autoModeDelay_ms(50);
+			break;
+			
 		case ATUOEXEC_END:
 			auto_large_enum_next = AUTOEXEC_DEFAULT;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
+		
+			//≤‚ ‘
+//			
+//		case ATUOEXEC_END:
+//			auto_large_enum_next = AUTOEXEC_DEFAULT;
+//			g_Flag.auto_end_flag = 1;
+//			autoModeDelay_ms(100);
+//			break;
 			
 		default:
 			auto_exchange_enum = AUTOEXEC_DEFAULT;
@@ -790,7 +830,7 @@ void autoGetMineMidair(void)
 		case SM_MID_WAIT:
 			auto_get_midair_enum_next = SM_CLAMP;
 			if(g_Flag.photogate_flag == 1)
-							autoModeDelay_ms(50);
+							autoModeDelay_ms(125);
 			break;
 		
 		case SM_CLAMP:

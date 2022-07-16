@@ -74,6 +74,8 @@ typedef enum{
 	SE_LAND_TWICE			= 52,					//二级抬升降落_2			
 	SE_LOOSE_2				= 53,
 	
+	SE_EXCHANGE_ON	= 54,			//兑换电磁阀打开
+	SE_EXCHANGE_OFF	= 55,			//兑换电磁阀关闭
 	
 /***************************软件复位用到的状态**************************/
 	//'SR'，'state reset'缩写

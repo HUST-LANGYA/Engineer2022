@@ -86,12 +86,12 @@ void gpioConfig(void)
 	gpio.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(MIDAIR_SOLENOID_GPIO_PORT,&gpio);
 	
-//	//兑换气缸电磁阀(接口见宏定义)
-//	RCC_APB2PeriphClockCmd(EXCHANGE_SOLENOID_GPIO_CLK, ENABLE);
-//	gpio.GPIO_Pin = EXCHANGE_SOLENOID_GPIO_PIN;
-//	gpio.GPIO_Mode = GPIO_Mode_Out_PP;
-//	gpio.GPIO_Speed = GPIO_Speed_50MHz;
-//	GPIO_Init(EXCHANGE_SOLENOID_GPIO_PORT,&gpio);
+	//兑换气缸电磁阀(接口见宏定义)
+	RCC_APB2PeriphClockCmd(EXCHANGE_SOLENOID_GPIO_CLK, ENABLE);
+	gpio.GPIO_Pin = EXCHANGE_SOLENOID_GPIO_PIN;
+	gpio.GPIO_Mode = GPIO_Mode_Out_PP;
+	gpio.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(EXCHANGE_SOLENOID_GPIO_PORT,&gpio);
 
 
 	//光电门(接口见宏定义)

@@ -1,7 +1,7 @@
 Dependencies for Project 'EngineerUpper', Target 'EngineerUpper': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
-F (..\User\main.c)(0x629F744A)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
-I (..\User\main.h)(0x62A24AA1)
+F (..\User\main.c)(0x62CD80C7)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -37,7 +37,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -349,7 +349,7 @@ I (..\Library\inc\stm32f10x_gpio.h)(0x629326BF)
 I (..\Library\inc\stm32f10x_rcc.h)(0x629326BF)
 I (..\Library\inc\stm32f10x_usart.h)(0x629326BF)
 F (..\Mylib\can1.c)(0x62992528)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\can1.o --omf_browse ..\obj\can1.crf --depend ..\obj\can1.d)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -385,7 +385,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -402,7 +402,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Mylib\delay.c)(0x629326BF)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)
 I (..\Mylib\delay.h)(0x629326BF)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -437,7 +437,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -454,7 +454,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Mylib\iwdg.c)(0x629326BF)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\iwdg.o --omf_browse ..\obj\iwdg.crf --depend ..\obj\iwdg.d)
 I (..\Mylib\iwdg.h)(0x629326BF)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -488,7 +488,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -505,7 +505,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 I (..\Library\inc\stm32f10x_iwdg.h)(0x629326BF)
 F (..\Mylib\Nvic.c)(0x629326BF)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\nvic.o --omf_browse ..\obj\nvic.crf --depend ..\obj\nvic.d)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -541,7 +541,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -558,7 +558,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Mylib\tim.c)(0x629326BF)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\tim.o --omf_browse ..\obj\tim.crf --depend ..\obj\tim.d)
 I (..\Mylib\tim.h)(0x629326BF)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -593,7 +593,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -610,7 +610,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Mylib\tim2.c)(0x629933FA)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\tim2.o --omf_browse ..\obj\tim2.crf --depend ..\obj\tim2.d)
 I (..\Mylib\tim2.h)(0x6298EB4F)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -645,7 +645,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -663,7 +663,7 @@ I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Mylib\Usart3.c)(0x6294E8A8)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\usart3.o --omf_browse ..\obj\usart3.crf --depend ..\obj\usart3.d)
 F (..\Mylib\ZeroCheck.c)(0x629326BF)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\zerocheck.o --omf_browse ..\obj\zerocheck.crf --depend ..\obj\zerocheck.d)
 I (..\Mylib\ZeroCheck.h)(0x629326BF)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -698,7 +698,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -715,7 +715,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Mylib\can2.c)(0x629A228C)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\can2.o --omf_browse ..\obj\can2.crf --depend ..\obj\can2.d)
 I (..\Mylib\can2.h)(0x629326BF)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -750,7 +750,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -767,7 +767,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Mylib\uart4.c)(0x62992C28)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\uart4.o --omf_browse ..\obj\uart4.crf --depend ..\obj\uart4.d)
 I (..\Mylib\uart4.h)(0x629914A7)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -802,7 +802,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -818,7 +818,7 @@ I (..\FreeRTOS\include\mpu_wrappers.h)(0x629326BF)
 I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Algorithm\pid.c)(0x629326BF)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\pid.o --omf_browse ..\obj\pid.crf --depend ..\obj\pid.d)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -854,7 +854,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -871,7 +871,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Algorithm\algorithmOfCRC.c)(0x629782A3)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\algorithmofcrc.o --omf_browse ..\obj\algorithmofcrc.crf --depend ..\obj\algorithmofcrc.d)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -906,7 +906,7 @@ I (..\Mylib\uart4.h)(0x629914A7)
 I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -921,9 +921,9 @@ I (..\FreeRTOS\port\RVDS\ARM_CM3\portmacro.h)(0x629326BF)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x629326BF)
 I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
-F (..\Task\AutoexecTask.c)(0x62A2597A)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\autoexectask.o --omf_browse ..\obj\autoexectask.crf --depend ..\obj\autoexectask.d)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
-I (..\User\main.h)(0x62A24AA1)
+F (..\Task\AutoexecTask.c)(0x62CFB8DD)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\autoexectask.o --omf_browse ..\obj\autoexectask.crf --depend ..\obj\autoexectask.d)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -975,7 +975,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Task\ForwardTask.c)(0x629326C0)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\forwardtask.o --omf_browse ..\obj\forwardtask.crf --depend ..\obj\forwardtask.d)
 I (..\Task\ForwardTask.h)(0x629326C0)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -1011,7 +1011,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -1028,7 +1028,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Task\LiftTask.c)(0x62A249E6)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\lifttask.o --omf_browse ..\obj\lifttask.crf --depend ..\obj\lifttask.d)
 I (..\Task\LiftTask.h)(0x629326C0)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -1064,7 +1064,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\RotateTask.h)(0x629326C0)
@@ -1080,7 +1080,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Task\MotorTask.c)(0x62A338FE)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\motortask.o --omf_browse ..\obj\motortask.crf --depend ..\obj\motortask.d)
 I (..\Task\MotorTask.h)(0x629326C0)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -1116,7 +1116,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
 I (..\Task\RotateTask.h)(0x629326C0)
@@ -1130,9 +1130,9 @@ I (..\FreeRTOS\port\RVDS\ARM_CM3\portmacro.h)(0x629326BF)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x629326BF)
 I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
-F (..\Task\RotateTask.c)(0x629F7EA6)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\rotatetask.o --omf_browse ..\obj\rotatetask.crf --depend ..\obj\rotatetask.d)
+F (..\Task\RotateTask.c)(0x62D01361)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\rotatetask.o --omf_browse ..\obj\rotatetask.crf --depend ..\obj\rotatetask.d)
 I (..\Task\RotateTask.h)(0x629326C0)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -1168,7 +1168,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -1184,7 +1184,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Task\StartTask.c)(0x62991552)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\starttask.o --omf_browse ..\obj\starttask.crf --depend ..\obj\starttask.d)
 I (..\Task\StartTask.h)(0x629326C0)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -1219,7 +1219,7 @@ I (..\Mylib\uart4.h)(0x629914A7)
 I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -1234,9 +1234,9 @@ I (..\FreeRTOS\port\RVDS\ARM_CM3\portmacro.h)(0x629326BF)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x629326BF)
 I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
-F (..\Task\StateTask.c)(0x629F7E33)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\statetask.o --omf_browse ..\obj\statetask.crf --depend ..\obj\statetask.d)
+F (..\Task\StateTask.c)(0x62CFAD64)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\statetask.o --omf_browse ..\obj\statetask.crf --depend ..\obj\statetask.d)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -1271,7 +1271,7 @@ I (..\Mylib\uart4.h)(0x629914A7)
 I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LaserRangingTask.h)(0x62991509)
 I (..\Task\LiftTask.h)(0x629326C0)
@@ -1288,7 +1288,7 @@ I (..\FreeRTOS\include\task.h)(0x629326BF)
 I (..\FreeRTOS\include\list.h)(0x629326BF)
 F (..\Task\LaserRangingTask.c)(0x6299F40B)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Library\inc -I ..\Mylib -I ..\Algorithm -I ..\Task -I ..\FreeRTOS\include -I ..\FreeRTOS\port\MemMang -I ..\FreeRTOS\port\RVDS\ARM_CM3-I.\RTE\_EngineerUpper-IC:\Users\ÑÌ»ðÒã\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"D:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_CL -DSTM32F10X_CL -DUSE_STDPERIPH_DRIVER-o ..\obj\laserrangingtask.o --omf_browse ..\obj\laserrangingtask.crf --depend ..\obj\laserrangingtask.d)
 I (..\Task\LaserRangingTask.h)(0x62991509)
-I (..\User\main.h)(0x62A24AA1)
+I (..\User\main.h)(0x62CD809E)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9AD21A)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9AD212)
@@ -1324,7 +1324,7 @@ I (..\Algorithm\pid.h)(0x629326BF)
 I (..\Algorithm\algorithmOfCRC.h)(0x62978393)
 I (..\Task\StartTask.h)(0x629326C0)
 I (..\Task\StateTask.h)(0x629326C0)
-I (..\Task\AutoexecTask.h)(0x62A24D06)
+I (..\Task\AutoexecTask.h)(0x62CFAB47)
 I (..\Task\MotorTask.h)(0x629326C0)
 I (..\Task\LiftTask.h)(0x629326C0)
 I (..\Task\RotateTask.h)(0x629326C0)
