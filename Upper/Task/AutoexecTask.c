@@ -8,42 +8,8 @@
 
 uint32_t  Autoexec_high_water;
 
-
-//大资源岛取矿状态变量
-		//由于名字较长，命名时用'large'代替
-FLAG_AUTOEXEC_ENUM auto_large_enum 				= AUTOEXEC_DEFAULT;			
-FLAG_AUTOEXEC_ENUM auto_large_enum_next 	= AUTOEXEC_DEFAULT;
-
-//空接矿石准备状态变量
-		//命名时用'midair'
-FLAG_AUTOEXEC_ENUM auto_midair_enum				= AUTOEXEC_DEFAULT;
-FLAG_AUTOEXEC_ENUM auto_midair_enum_next	= AUTOEXEC_DEFAULT;
-
-//空接矿石接取状态变量
-		//命名时用'get_midair'
-FLAG_AUTOEXEC_ENUM auto_get_midair_enum				= AUTOEXEC_DEFAULT;
-FLAG_AUTOEXEC_ENUM auto_get_midair_enum_next	= AUTOEXEC_DEFAULT;
-
-//小资源岛取矿状态变量
-		//由于名字较长，命名时用'small'代替
-FLAG_AUTOEXEC_ENUM auto_small_enum 				= AUTOEXEC_DEFAULT;			
-FLAG_AUTOEXEC_ENUM auto_small_enum_next 	= AUTOEXEC_DEFAULT;
-
-//自动兑换状态变量
-		//命名时用'exchange'代替
-FLAG_AUTOEXEC_ENUM auto_exchange_enum 			= AUTOEXEC_DEFAULT;			
-FLAG_AUTOEXEC_ENUM auto_exchange_enum_next 	= AUTOEXEC_DEFAULT;
-
-//软件自动复位状态变量
-		//命名时用'reset'代替
-FLAG_AUTOEXEC_ENUM auto_reset_enum 			= AUTOEXEC_DEFAULT;			
-FLAG_AUTOEXEC_ENUM auto_reset_enum_next = AUTOEXEC_DEFAULT;
-
-//激光对位空接动作准备状态变量
-		//命名时用'laser'代替
-FLAG_AUTOEXEC_ENUM auto_laser_enum 			= AUTOEXEC_DEFAULT;			
-FLAG_AUTOEXEC_ENUM auto_laser_enum_next = AUTOEXEC_DEFAULT;
-
+FLAG_AUTOEXEC_ENUM auto_state_enum				= AUTOEXEC_DEFAULT;
+FLAG_AUTOEXEC_ENUM auto_state_enum_next		= AUTOEXEC_DEFAULT;
 
 //以下为延时需要用到的变量
 u8 auto_delay_flag = 0;						//延时标志位，1表示正在延时
@@ -111,13 +77,7 @@ void autoexec(void)
 		//时间到了延时结束
 		if(t_length >= auto_delay_length)
 		{
-			auto_small_enum = auto_small_enum_next;
-			auto_exchange_enum = auto_exchange_enum_next;
-			auto_large_enum = auto_large_enum_next;
-			auto_midair_enum = auto_midair_enum_next;
-			auto_get_midair_enum = auto_get_midair_enum_next;
-			auto_reset_enum = auto_reset_enum_next;	
-			auto_laser_enum = auto_laser_enum_next;
+			auto_state_enum = auto_state_enum_next;
 
 			auto_delay_en_flag 	= 1;
 			auto_delay_flag		 	= 0;
@@ -127,26 +87,8 @@ void autoexec(void)
 /*************************状态改变时需要执行的修改**********************/
 	if(g_Flag.auto_mode_pre != g_Flag.auto_mode)
 	{
-		auto_large_enum 		 			= AUTOEXEC_DEFAULT;
-		auto_large_enum_next 			= AUTOEXEC_DEFAULT;
-		
-		auto_midair_enum					= AUTOEXEC_DEFAULT;
-		auto_midair_enum_next			= AUTOEXEC_DEFAULT;
-		
-		auto_get_midair_enum			= AUTOEXEC_DEFAULT;
-		auto_get_midair_enum_next	= AUTOEXEC_DEFAULT;
-		
-		auto_small_enum 		 			= AUTOEXEC_DEFAULT;
-		auto_small_enum_next 			= AUTOEXEC_DEFAULT;
-		
-		auto_exchange_enum 		 		= AUTOEXEC_DEFAULT;
-		auto_exchange_enum_next		= AUTOEXEC_DEFAULT;
-		
-		auto_reset_enum 					= AUTOEXEC_DEFAULT;
-		auto_reset_enum_next 			= AUTOEXEC_DEFAULT;
-		
-		auto_laser_enum 					= AUTOEXEC_DEFAULT;
-		auto_laser_enum_next			= AUTOEXEC_DEFAULT;
+		auto_state_enum 		 			= AUTOEXEC_DEFAULT;
+		auto_state_enum_next 			= AUTOEXEC_DEFAULT;
 	}
 	
 	g_Flag.auto_mode_pre = g_Flag.auto_mode;
@@ -165,10 +107,10 @@ void autoexec(void)
 		case MINE_MIDAIR:								//空接矿石
 			autoMineMidair();
 			break;
-		
-		case GET_MINE_MIDAIR:						//空接接取矿石
-			autoGetMineMidair();
-			break;
+
+//		case GET_MINE_MIDAIR:						//空接接取矿石
+//			autoGetMineMidair();
+//			break;
 		
 		case EXCHANGE_MINE:							//兑换矿石
 			autoExchange();
@@ -201,20 +143,20 @@ void autoexec(void)
 void autoLargeIslandMine(void)
 {
 /******************************************确定下一个状态******************************************/
-	switch(auto_large_enum)
+	switch(auto_state_enum)
 	{
 		case AUTOEXEC_DEFAULT:
-			auto_large_enum_next = SL_CLAMP_PRE;
-			auto_large_enum = auto_large_enum_next;
+			auto_state_enum_next = SL_CLAMP_PRE;
+			auto_state_enum = auto_state_enum_next;
 //			//执行操作
 //			if()//根据条件判断本状态结束，并进入下一状态
 //			{
-//				auto_large_enum = auto_large_enum_next;
+//				auto_state_enum = auto_state_enum_next;
 //			}
 			break;
 		
 		case SL_CLAMP_PRE:
-			auto_large_enum_next = SL_LIFT_ONCE;
+			auto_state_enum_next = SL_LIFT_ONCE;
 			if(g_Flag.clamp_solenoid_flag != 0)
 			{
 				g_Flag.clamp_solenoid_flag = 0;
@@ -224,7 +166,7 @@ void autoLargeIslandMine(void)
 			break;
 		
 		case SL_LIFT_ONCE:
-			auto_large_enum_next = SL_FORWARD;
+			auto_state_enum_next = SL_FORWARD;
 			if(g_Flag.lift_once_flag != 2)
 			{
 				g_Flag.lift_once_flag = 2;
@@ -234,7 +176,7 @@ void autoLargeIslandMine(void)
 			break;
 		
 		case SL_FORWARD:
-			auto_large_enum_next = SL_CLAMP;
+			auto_state_enum_next = SL_CLAMP;
 			if(g_Flag.forward_solenoid_flag != 1)
 			{
 				g_Flag.forward_solenoid_flag = 1;
@@ -244,7 +186,7 @@ void autoLargeIslandMine(void)
 			break;
 		
 		case SL_CLAMP:
-			auto_large_enum_next = SL_LIFT_TWICE;
+			auto_state_enum_next = SL_LIFT_TWICE;
 			if(g_Flag.clamp_solenoid_flag != 1)
 			{
 				g_Flag.clamp_solenoid_flag = 1;
@@ -254,7 +196,7 @@ void autoLargeIslandMine(void)
 			break;
 
 		case SL_LIFT_TWICE:
-			auto_large_enum_next = SL_BACK;
+			auto_state_enum_next = SL_BACK;
 			if(g_Flag.lift_twice_flag != 3)
 			{
 				g_Flag.lift_twice_flag = 3;
@@ -264,7 +206,7 @@ void autoLargeIslandMine(void)
 			break;
 		
 		case SL_BACK:
-			auto_large_enum_next = SL_LAND_ONCE;
+			auto_state_enum_next = SL_LAND_ONCE;
 			if(g_Flag.forward_solenoid_flag != 0)
 			{
 				g_Flag.forward_solenoid_flag = 0;
@@ -274,7 +216,7 @@ void autoLargeIslandMine(void)
 			break;
 		
 		case SL_LAND_ONCE:
-			auto_large_enum_next = ATUOEXEC_END;
+			auto_state_enum_next = ATUOEXEC_END;
 			if(g_Flag.lift_once_flag != 0)
 			{
 				g_Flag.lift_once_flag = 0;
@@ -284,7 +226,7 @@ void autoLargeIslandMine(void)
 			break;
 		
 //		case SL_LAND_TWICE:
-//			auto_large_enum_next = SL_LOOSE;
+//			auto_state_enum_next = SL_LOOSE;
 //			if(g_Flag.lift_twice_flag != 0)
 //			{
 //				g_Flag.lift_twice_flag = 0;
@@ -294,7 +236,7 @@ void autoLargeIslandMine(void)
 //			break;
 		
 //		case SL_LOOSE:
-//			auto_large_enum_next = ATUOEXEC_END;
+//			auto_state_enum_next = ATUOEXEC_END;
 ////			if(g_Flag.clamp_solenoid_flag != 0)
 ////			{
 ////				g_Flag.clamp_solenoid_flag = 0;
@@ -306,14 +248,14 @@ void autoLargeIslandMine(void)
 //			break;
 		
 		case ATUOEXEC_END:
-			auto_large_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
 			
 		default:
-			auto_large_enum = AUTOEXEC_DEFAULT;
-			auto_large_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			break;
 	}
 	
@@ -330,20 +272,20 @@ void autoLargeIslandMine(void)
 void autoSmallIslandMine(void)
 {
 /******************************************确定下一个状态******************************************/
-	switch(auto_small_enum)
+	switch(auto_state_enum)
 	{
 		case AUTOEXEC_DEFAULT:
-			auto_small_enum_next = SS_CLAMP_PRE;
-			auto_small_enum = auto_small_enum_next;
+			auto_state_enum_next = SS_CLAMP_PRE;
+			auto_state_enum = auto_state_enum_next;
 //			//执行操作
 //			if()//根据条件判断本状态结束，并进入下一状态
 //			{
-//				auto_small_enum = auto_small_enum_next;
+//				auto_state_enum = auto_state_enum_next;
 //			}
 			break;
 		
 		case SS_CLAMP_PRE:
-			auto_small_enum_next = SS_LIFT_TWICE;
+			auto_state_enum_next = SS_LIFT_TWICE;
 			if(g_Flag.clamp_solenoid_flag != 0)
 			{
 				g_Flag.clamp_solenoid_flag = 0;
@@ -353,7 +295,7 @@ void autoSmallIslandMine(void)
 			break;
 		
 		case SS_LIFT_TWICE:
-			auto_small_enum_next = SS_LIFT_ONCE;
+			auto_state_enum_next = SS_LIFT_ONCE;
 			if(g_Flag.lift_twice_flag != 1)
 			{
 				g_Flag.lift_twice_flag = 1;
@@ -364,7 +306,7 @@ void autoSmallIslandMine(void)
 
 		
 		case SS_LIFT_ONCE:
-			auto_small_enum_next = SS_FORWARD;
+			auto_state_enum_next = SS_FORWARD;
 			if(g_Flag.lift_once_flag != 1)
 			{
 					g_Flag.lift_once_flag = 1;
@@ -374,7 +316,7 @@ void autoSmallIslandMine(void)
 			break;
 		
 		case SS_FORWARD:
-			auto_small_enum_next = SS_CLAMP;
+			auto_state_enum_next = SS_CLAMP;
 			if(g_Flag.forward_solenoid_flag != 1)
 			{
 				g_Flag.forward_solenoid_flag = 1;
@@ -384,7 +326,7 @@ void autoSmallIslandMine(void)
 			break;
 		
 		case SS_CLAMP:
-			auto_small_enum_next = SS_GET;
+			auto_state_enum_next = SS_GET;
 			if(g_Flag.clamp_solenoid_flag != 1)
 			{
 				g_Flag.clamp_solenoid_flag = 1;
@@ -394,7 +336,7 @@ void autoSmallIslandMine(void)
 			break;
 		
 		case SS_GET:
-			auto_small_enum_next = SS_LAND_ONCE;
+			auto_state_enum_next = SS_LAND_ONCE;
 			if(g_Flag.midair_solenoid_flag != 1)
 			{
 				g_Flag.midair_solenoid_flag = 1;
@@ -404,7 +346,7 @@ void autoSmallIslandMine(void)
 			break;
 		
 		case SS_LAND_ONCE:
-			auto_small_enum_next = SS_BACK;
+			auto_state_enum_next = SS_BACK;
 			if(g_Flag.lift_once_flag != 0)
 			{
 				g_Flag.lift_once_flag = 0;
@@ -414,7 +356,7 @@ void autoSmallIslandMine(void)
 			break;
 		
 		case SS_BACK:
-			auto_small_enum_next = SS_MID_OFF;
+			auto_state_enum_next = SS_MID_OFF;
 			if(g_Flag.forward_solenoid_flag != 0)
 			{
 				g_Flag.forward_solenoid_flag = 0;
@@ -424,7 +366,7 @@ void autoSmallIslandMine(void)
 			break;
 		
 		case SS_MID_OFF:
-			auto_small_enum_next = ATUOEXEC_END;
+			auto_state_enum_next = ATUOEXEC_END;
 			if(g_Flag.midair_solenoid_flag != 0)
 			{
 				g_Flag.midair_solenoid_flag = 0;
@@ -434,7 +376,7 @@ void autoSmallIslandMine(void)
 			break;
 		
 //		case SS_LAND_TWICE:
-//			auto_small_enum_next = SS_LOOSE;
+//			auto_state_enum_next = SS_LOOSE;
 //			if(g_Flag.lift_twice_flag != 0)
 //			{
 //				g_Flag.lift_twice_flag = 0;
@@ -444,7 +386,7 @@ void autoSmallIslandMine(void)
 //			break;
 //			
 //		case SS_LOOSE:
-//			auto_small_enum_next = ATUOEXEC_END;
+//			auto_state_enum_next = ATUOEXEC_END;
 //			if(g_Flag.clamp_solenoid_flag != 0)
 //			{
 //				g_Flag.clamp_solenoid_flag = 0;
@@ -454,14 +396,14 @@ void autoSmallIslandMine(void)
 //			break;
 		
 		case ATUOEXEC_END:
-			auto_large_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
 			
 		default:
-			auto_small_enum = AUTOEXEC_DEFAULT;
-			auto_small_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			break;
 	}
 	
@@ -478,20 +420,20 @@ void autoSmallIslandMine(void)
 void autoExchange(void)
 {
 /******************************************确定下一个状态******************************************/
-	switch(auto_exchange_enum)
+	switch(auto_state_enum)
 	{
 		case AUTOEXEC_DEFAULT:
-			auto_exchange_enum_next = SE_CLAMP;
-			auto_exchange_enum = auto_exchange_enum_next;
+			auto_state_enum_next = SE_CLAMP;
+			auto_state_enum = auto_state_enum_next;
 //			//执行操作
 //			if()//根据条件判断本状态结束，并进入下一状态
 //			{
-//				auto_exchange_enum = auto_exchange_enum_next;
+//				auto_state_enum = auto_state_enum_next;
 //			}
 			break;
 		
 		case SE_CLAMP:
-			auto_exchange_enum_next = SE_LIFT_ONCE;
+			auto_state_enum_next = SE_LIFT_ONCE;
 			if(g_Flag.clamp_solenoid_flag != 1)
 			{
 				g_Flag.clamp_solenoid_flag = 1;
@@ -501,7 +443,7 @@ void autoExchange(void)
 			break;
 		
 		case SE_LIFT_ONCE:
-			auto_exchange_enum_next = SE_LIFT_TWICE;
+			auto_state_enum_next = SE_LIFT_TWICE;
 			if(g_Flag.lift_once_flag != 1)
 			{
 				g_Flag.lift_once_flag = 1;
@@ -512,7 +454,7 @@ void autoExchange(void)
 
 		
 		case SE_LIFT_TWICE:
-			auto_exchange_enum_next = SE_FORWARD;
+			auto_state_enum_next = SE_FORWARD;
 			if(g_Flag.lift_twice_flag != 2)
 			{
 				g_Flag.lift_twice_flag = 2;
@@ -522,7 +464,7 @@ void autoExchange(void)
 			break;
 		
 		case SE_FORWARD:
-			auto_exchange_enum_next = SE_EXCHANGE_ON;
+			auto_state_enum_next = SE_EXCHANGE_ON;
 			if(g_Flag.forward_solenoid_flag != 1)
 			{
 				g_Flag.forward_solenoid_flag = 1;
@@ -534,7 +476,7 @@ void autoExchange(void)
 			
 			//测试
 		case SE_EXCHANGE_ON:
-			auto_exchange_enum_next = SE_LOOSE;
+			auto_state_enum_next = SE_LOOSE;
 			if(g_Flag.exchange_solenoid_flag != 1)
 			{
 				g_Flag.exchange_solenoid_flag = 1;
@@ -544,7 +486,7 @@ void autoExchange(void)
 			break;
 			
 		case SE_LOOSE:
-			auto_exchange_enum_next = SE_EXCHANGE_OFF;
+			auto_state_enum_next = SE_EXCHANGE_OFF;
 			if(g_Flag.clamp_solenoid_flag != 0)
 			{
 				g_Flag.clamp_solenoid_flag = 0;
@@ -554,7 +496,7 @@ void autoExchange(void)
 			break;
 			
 		case SE_EXCHANGE_OFF:
-			auto_exchange_enum_next = ATUOEXEC_END;
+			auto_state_enum_next = ATUOEXEC_END;
 			if(g_Flag.exchange_solenoid_flag != 0)
 			{
 				g_Flag.exchange_solenoid_flag = 0;
@@ -564,7 +506,7 @@ void autoExchange(void)
 			break;
 			
 		case ATUOEXEC_END:
-			auto_large_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
@@ -572,14 +514,14 @@ void autoExchange(void)
 			//测试
 //			
 //		case ATUOEXEC_END:
-//			auto_large_enum_next = AUTOEXEC_DEFAULT;
+//			auto_state_enum_next = AUTOEXEC_DEFAULT;
 //			g_Flag.auto_end_flag = 1;
 //			autoModeDelay_ms(100);
 //			break;
 			
 		default:
-			auto_exchange_enum = AUTOEXEC_DEFAULT;
-			auto_exchange_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			break;
 	}
 	
@@ -596,20 +538,20 @@ void autoExchange(void)
 void autoExchangeTwice(void)
 {
 /******************************************确定下一个状态******************************************/
-	switch(auto_exchange_enum)
+	switch(auto_state_enum)
 	{
 		case AUTOEXEC_DEFAULT:
-			auto_exchange_enum_next = SE_LOOSE;
-			auto_exchange_enum = auto_exchange_enum_next;
+			auto_state_enum_next = SE_LOOSE;
+			auto_state_enum = auto_state_enum_next;
 //			//执行操作
 //			if()//根据条件判断本状态结束，并进入下一状态
 //			{
-//				auto_exchange_enum = auto_exchange_enum_next;
+//				auto_state_enum = auto_state_enum_next;
 //			}
 			break;
 		
 		case SE_LOOSE:
-			auto_exchange_enum_next = SE_FORWARD_BACK_2;
+			auto_state_enum_next = SE_FORWARD_BACK_2;
 			if(g_Flag.clamp_solenoid_flag != 0)
 			{
 					g_Flag.clamp_solenoid_flag = 0;
@@ -619,7 +561,7 @@ void autoExchangeTwice(void)
 			break;
 		
 		case SE_FORWARD_BACK_2:
-			auto_exchange_enum_next = SE_LIFT_ONCE_2;
+			auto_state_enum_next = SE_LIFT_ONCE_2;
 			if(g_Flag.forward_solenoid_flag != 0)
 			{
 					g_Flag.forward_solenoid_flag = 0;
@@ -630,7 +572,7 @@ void autoExchangeTwice(void)
 			
 			
 		case SE_LIFT_ONCE_2:
-			auto_exchange_enum_next = SE_CLAMP_2;
+			auto_state_enum_next = SE_CLAMP_2;
 			if(g_Flag.lift_once_flag != 3)
 			{
 				g_Flag.lift_once_flag = 3;
@@ -640,7 +582,7 @@ void autoExchangeTwice(void)
 			break;
 		
 		case SE_CLAMP_2:
-			auto_exchange_enum_next = SE_FORWARD_2;
+			auto_state_enum_next = SE_FORWARD_2;
 			if(g_Flag.clamp_solenoid_flag != 1)
 			{
 					g_Flag.clamp_solenoid_flag = 1;
@@ -650,7 +592,7 @@ void autoExchangeTwice(void)
 			break;
 		
 		case SE_FORWARD_2:
-			auto_exchange_enum_next = ATUOEXEC_END;
+			auto_state_enum_next = ATUOEXEC_END;
 			if(g_Flag.forward_solenoid_flag != 1)
 			{
 				g_Flag.forward_solenoid_flag = 1;
@@ -660,7 +602,7 @@ void autoExchangeTwice(void)
 			break;
 //		
 //		case SE_BACK:
-//			auto_exchange_enum_next = SE_LAND_ONCE;		
+//			auto_state_enum_next = SE_LAND_ONCE;		
 //			if(g_Flag.exchange_solenoid_flag != 0 || g_Flag.forward_solenoid_flag != 0)
 //			{
 //				g_Flag.exchange_solenoid_flag = 0;
@@ -671,7 +613,7 @@ void autoExchangeTwice(void)
 //			break;
 //		
 //		case SE_LAND_ONCE:
-//			auto_exchange_enum_next = SE_LAND_TWICE;
+//			auto_state_enum_next = SE_LAND_TWICE;
 //			if(g_Flag.lift_once_flag != 0)
 //			{
 //				g_Flag.lift_once_flag = 0;
@@ -681,7 +623,7 @@ void autoExchangeTwice(void)
 //			break;
 //		
 //		case SE_LAND_TWICE:
-//			auto_exchange_enum_next = SE_LOOSE_2;
+//			auto_state_enum_next = SE_LOOSE_2;
 //			if(g_Flag.lift_twice_flag != 0)
 //			{
 //				g_Flag.lift_twice_flag = 0;
@@ -691,7 +633,7 @@ void autoExchangeTwice(void)
 //			break;
 //		
 //		case SE_LOOSE_2:
-//			auto_exchange_enum_next = ATUOEXEC_END;
+//			auto_state_enum_next = ATUOEXEC_END;
 //			if(g_Flag.clamp_solenoid_flag != 0)
 //			{
 //				g_Flag.clamp_solenoid_flag = 0;
@@ -701,14 +643,14 @@ void autoExchangeTwice(void)
 //			break;
 		
 		case ATUOEXEC_END:
-			auto_large_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
 			
 		default:
-			auto_exchange_enum = AUTOEXEC_DEFAULT;
-			auto_exchange_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			break;
 	}
 	
@@ -728,20 +670,20 @@ void autoMineMidair(void)
 {
 /******************************************确定下一个状态******************************************/
 	//由于K210识别暂时没有，因此状态机里面暂时未加上SM_ALIGN自动对齐这一步
-	switch(auto_midair_enum)
+	switch(auto_state_enum)
 	{
 		case AUTOEXEC_DEFAULT:
-			auto_midair_enum_next = SM_CLAMP_PRE;
-			auto_midair_enum = auto_midair_enum_next;
+			auto_state_enum_next = SM_CLAMP_PRE;
+			auto_state_enum = auto_state_enum_next;
 //			//执行操作
 //			if()//根据条件判断本状态结束，并进入下一状态
 //			{
-//				auto_midair_enum = auto_midair_enum_next;
+//				auto_state_enum = auto_state_enum_next;
 //			}
 			break;
 		
 		case SM_CLAMP_PRE:
-			auto_midair_enum_next = SM_LIFT_TWICE;
+			auto_state_enum_next = SM_LIFT_ONCE;
 			if(g_Flag.clamp_solenoid_flag != 0)
 			{
 				g_Flag.clamp_solenoid_flag = 0;
@@ -750,18 +692,8 @@ void autoMineMidair(void)
 				autoModeDelay_ms(50);
 			break;
 		
-		case SM_LIFT_TWICE:
-			auto_midair_enum_next = SM_LIFT_ONCE;
-			if(g_Flag.lift_twice_flag != 3)
-			{
-				g_Flag.lift_twice_flag = 3;
-				autoModeDelay_ms(800);
-			}else
-				autoModeDelay_ms(50);
-			break;
-		
 		case SM_LIFT_ONCE:
-			auto_midair_enum_next = SM_FORWARD;
+			auto_state_enum_next = SM_FORWARD;
 			if(g_Flag.lift_once_flag != 2)
 			{
 				g_Flag.lift_once_flag = 2;
@@ -771,7 +703,7 @@ void autoMineMidair(void)
 			break;
 
 		case SM_FORWARD:
-			auto_midair_enum_next = SM_MID_ON;
+			auto_state_enum_next = SM_LIFT_TWICE;
 			if(g_Flag.forward_solenoid_flag != 1)
 			{
 				g_Flag.forward_solenoid_flag = 1;
@@ -780,8 +712,18 @@ void autoMineMidair(void)
 				autoModeDelay_ms(50);
 			break;
 		
+		case SM_LIFT_TWICE:
+			auto_state_enum_next = SM_MID_ON;
+			if(g_Flag.lift_twice_flag != 3)
+			{
+				g_Flag.lift_twice_flag = 3;
+				autoModeDelay_ms(800);
+			}else
+				autoModeDelay_ms(50);
+			break;
+		
 		case SM_MID_ON:
-			auto_midair_enum_next = ATUOEXEC_END;
+			auto_state_enum_next = SM_MID_WAIT;
 			if(g_Flag.midair_solenoid_flag != 1)
 			{
 				g_Flag.midair_solenoid_flag = 1;
@@ -789,52 +731,16 @@ void autoMineMidair(void)
 			}else
 				autoModeDelay_ms(50);
 			break;
-		
-		case ATUOEXEC_END:
-			auto_large_enum_next = AUTOEXEC_DEFAULT;
-//			g_Flag.auto_mode = GET_MINE_MIDAIR;
-			g_Flag.auto_end_flag = 2;					//
-//			autoModeDelay_ms(100);
-			break;
-		
-		default:
-			auto_midair_enum = AUTOEXEC_DEFAULT;
-			auto_midair_enum_next = AUTOEXEC_DEFAULT;
-			break;
-	}
-	
-}
-
-
-/**
-  	*@brief 		空接接取矿石
-  	*@param		  void
-	*@return		  void
-*/
-void autoGetMineMidair(void)
-{
-/******************************************确定下一个状态******************************************/
-	//由于K210识别暂时没有，因此状态机里面暂时未加上SM_ALIGN自动对齐这一步
-	switch(auto_get_midair_enum)
-	{
-		case AUTOEXEC_DEFAULT:
-			auto_get_midair_enum_next = SM_MID_WAIT;
-			auto_get_midair_enum = auto_get_midair_enum_next;
-//			//执行操作
-//			if()//根据条件判断本状态结束，并进入下一状态
-//			{
-//				auto_get_midair_enum = auto_get_midair_enum_next;
-//			}
-			break;
+			
 		
 		case SM_MID_WAIT:
-			auto_get_midair_enum_next = SM_CLAMP;
+			auto_state_enum_next = SM_CLAMP;
 			if(g_Flag.photogate_flag == 1)
 							autoModeDelay_ms(125);
 			break;
 		
 		case SM_CLAMP:
-			auto_get_midair_enum_next = SM_BACK;
+			auto_state_enum_next = SM_BACK;
 			if(g_Flag.clamp_solenoid_flag != 1)
 			{
 				g_Flag.clamp_solenoid_flag = 1;
@@ -844,7 +750,7 @@ void autoGetMineMidair(void)
 			break;
 		
 		case SM_BACK:
-			auto_get_midair_enum_next = SM_LAND_ONCE;
+			auto_state_enum_next = SM_LAND_ONCE;
 			if(g_Flag.forward_solenoid_flag != 0)
 			{
 				g_Flag.forward_solenoid_flag = 0;
@@ -854,7 +760,7 @@ void autoGetMineMidair(void)
 			break;
 
 		case SM_LAND_ONCE:
-			auto_get_midair_enum_next = SM_MID_OFF;
+			auto_state_enum_next = SM_MID_OFF;
 			if(g_Flag.lift_once_flag != 0)
 			{
 				g_Flag.lift_once_flag = 0;
@@ -864,7 +770,7 @@ void autoGetMineMidair(void)
 			break;
 		
 		case SM_MID_OFF:
-			auto_get_midair_enum_next = ATUOEXEC_END;
+			auto_state_enum_next = ATUOEXEC_END;
 			if(g_Flag.midair_solenoid_flag != 0)
 			{
 				g_Flag.midair_solenoid_flag = 0;
@@ -872,40 +778,120 @@ void autoGetMineMidair(void)
 			}else
 				autoModeDelay_ms(50);
 			break;
+		
+		case ATUOEXEC_END:
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
+			g_Flag.auto_end_flag = 1;				
+			break;
+		
+		default:
+			auto_state_enum = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
+			break;
+	}
+}
 
-//		case SM_LAND_TWICE:
-//			auto_get_midair_enum_next = SM_LOOSE;
-//			if(g_Flag.lift_twice_flag != 0)
+
+///**
+//  	*@brief 		空接接取矿石
+//  	*@param		  void
+//	*@return		  void
+//*/
+//void autoGetMineMidair(void)
+//{
+///******************************************确定下一个状态******************************************/
+//	//由于K210识别暂时没有，因此状态机里面暂时未加上SM_ALIGN自动对齐这一步
+//	switch(auto_state_enum)
+//	{
+//		case AUTOEXEC_DEFAULT:
+//			auto_state_enum_next = SM_MID_WAIT;
+//			auto_state_enum = auto_state_enum_next;
+////			//执行操作
+////			if()//根据条件判断本状态结束，并进入下一状态
+////			{
+////				auto_state_enum = auto_state_enum_next;
+////			}
+//			break;
+//		
+//		case SM_MID_WAIT:
+//			auto_state_enum_next = SM_CLAMP;
+//			if(g_Flag.photogate_flag == 1)
+//							autoModeDelay_ms(125);
+//			break;
+//		
+//		case SM_CLAMP:
+//			auto_state_enum_next = SM_BACK;
+//			if(g_Flag.clamp_solenoid_flag != 1)
 //			{
-//				g_Flag.lift_twice_flag = 0;
+//				g_Flag.clamp_solenoid_flag = 1;
+//				autoModeDelay_ms(300);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
+//		
+//		case SM_BACK:
+//			auto_state_enum_next = SM_LAND_ONCE;
+//			if(g_Flag.forward_solenoid_flag != 0)
+//			{
+//				g_Flag.forward_solenoid_flag = 0;
+//				autoModeDelay_ms(300);
+//			}else
+//				autoModeDelay_ms(50);
+//			break;
+
+//		case SM_LAND_ONCE:
+//			auto_state_enum_next = SM_MID_OFF;
+//			if(g_Flag.lift_once_flag != 0)
+//			{
+//				g_Flag.lift_once_flag = 0;
 //				autoModeDelay_ms(800);
 //			}else
 //				autoModeDelay_ms(50);
 //			break;
 //		
-//		case SM_LOOSE:
-//			auto_get_midair_enum_next = ATUOEXEC_END;
-//			if(g_Flag.clamp_solenoid_flag != 0)
+//		case SM_MID_OFF:
+//			auto_state_enum_next = ATUOEXEC_END;
+//			if(g_Flag.midair_solenoid_flag != 0)
 //			{
-//				g_Flag.clamp_solenoid_flag = 0;
+//				g_Flag.midair_solenoid_flag = 0;
 //				autoModeDelay_ms(300);
 //			}else
 //				autoModeDelay_ms(50);
 //			break;
-		
-		case ATUOEXEC_END:
-			auto_get_midair_enum_next = AUTOEXEC_DEFAULT;
-			g_Flag.auto_end_flag = 1;
-			autoModeDelay_ms(100);
-			break;
-		
-		default:
-			auto_get_midair_enum = AUTOEXEC_DEFAULT;
-			auto_get_midair_enum_next = AUTOEXEC_DEFAULT;
-			break;
-	}
-	
-}
+
+////		case SM_LAND_TWICE:
+////			auto_state_enum_next = SM_LOOSE;
+////			if(g_Flag.lift_twice_flag != 0)
+////			{
+////				g_Flag.lift_twice_flag = 0;
+////				autoModeDelay_ms(800);
+////			}else
+////				autoModeDelay_ms(50);
+////			break;
+////		
+////		case SM_LOOSE:
+////			auto_state_enum_next = ATUOEXEC_END;
+////			if(g_Flag.clamp_solenoid_flag != 0)
+////			{
+////				g_Flag.clamp_solenoid_flag = 0;
+////				autoModeDelay_ms(300);
+////			}else
+////				autoModeDelay_ms(50);
+////			break;
+//		
+//		case ATUOEXEC_END:
+//			auto_state_enum_next = AUTOEXEC_DEFAULT;
+//			g_Flag.auto_end_flag = 1;
+//			autoModeDelay_ms(100);
+//			break;
+//		
+//		default:
+//			auto_state_enum = AUTOEXEC_DEFAULT;
+//			auto_state_enum_next = AUTOEXEC_DEFAULT;
+//			break;
+//	}
+//	
+//}
 
 
 /**
@@ -915,20 +901,20 @@ void autoGetMineMidair(void)
 */
 void autoResetSoftware(void)
 {
-		switch(auto_reset_enum)
+		switch(auto_state_enum)
 	{
 		case AUTOEXEC_DEFAULT:
-			auto_reset_enum_next = SR_FORWARD;
-			auto_reset_enum = auto_reset_enum_next;
+			auto_state_enum_next = SR_FORWARD;
+			auto_state_enum = auto_state_enum_next;
 //			//执行操作
 //			if()//根据条件判断本状态结束，并进入下一状态
 //			{
-//				auto_reset_enum = auto_reset_enum_next;
+//				auto_state_enum = auto_state_enum_next;
 //			}
 			break;
 		
 		case SR_FORWARD:
-			auto_reset_enum_next = SR_LIFT_ONCE;
+			auto_state_enum_next = SR_LIFT_ONCE;
 			if(g_Flag.forward_solenoid_flag != 0)
 			{
 				g_Flag.forward_solenoid_flag = 0;
@@ -938,7 +924,7 @@ void autoResetSoftware(void)
 			break;
 		
 		case SR_LIFT_ONCE:
-			auto_reset_enum_next = SR_MID;
+			auto_state_enum_next = SR_MID;
 			if(g_Flag.lift_once_flag != 0)
 			{
 				g_Flag.lift_once_flag = 0;
@@ -949,7 +935,7 @@ void autoResetSoftware(void)
 
 		
 		case SR_MID:
-			auto_reset_enum_next = SR_LIFT_TWICE;
+			auto_state_enum_next = SR_LIFT_TWICE;
 			if(g_Flag.midair_solenoid_flag != 0)
 			{
 				g_Flag.midair_solenoid_flag = 0;
@@ -959,7 +945,7 @@ void autoResetSoftware(void)
 			break;
 		
 		case SR_LIFT_TWICE:
-			auto_reset_enum_next = ATUOEXEC_END;
+			auto_state_enum_next = ATUOEXEC_END;
 			if(g_Flag.lift_twice_flag != 0)
 			{
 				g_Flag.lift_twice_flag = 0;
@@ -969,14 +955,14 @@ void autoResetSoftware(void)
 			break;
 		
 		case ATUOEXEC_END:
-			auto_reset_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
 			
 		default:
-			auto_reset_enum = AUTOEXEC_DEFAULT;
-			auto_reset_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			break;
 	}
 	
@@ -989,20 +975,20 @@ void autoResetSoftware(void)
 */
 void autoLaserMidPre(void)
 {
-		switch(auto_laser_enum)
+		switch(auto_state_enum)
 	{
 		case AUTOEXEC_DEFAULT:
-			auto_laser_enum_next = LP_LOOSE;
-			auto_laser_enum = auto_laser_enum_next;
+			auto_state_enum_next = LP_LOOSE;
+			auto_state_enum = auto_state_enum_next;
 //			//执行操作
 //			if()//根据条件判断本状态结束，并进入下一状态
 //			{
-//				auto_laser_enum = auto_laser_enum_next;
+//				auto_state_enum = auto_state_enum_next;
 //			}
 			break;
 		
 		case LP_LOOSE:
-			auto_laser_enum_next = LP_LIFT_ONCE;
+			auto_state_enum_next = LP_LIFT_ONCE;
 			if(g_Flag.clamp_solenoid_flag != 0)
 			{
 				g_Flag.clamp_solenoid_flag = 0;
@@ -1012,7 +998,7 @@ void autoLaserMidPre(void)
 			break;
 		
 		case LP_LIFT_ONCE:
-			auto_laser_enum_next = LP_FORWARD;
+			auto_state_enum_next = LP_FORWARD;
 			if(g_Flag.lift_once_flag != 2)
 			{
 				g_Flag.lift_once_flag = 2;
@@ -1023,7 +1009,7 @@ void autoLaserMidPre(void)
 
 		
 		case LP_FORWARD:
-			auto_laser_enum_next = LP_CLAMP;
+			auto_state_enum_next = LP_CLAMP;
 			if(g_Flag.forward_solenoid_flag != 1)
 			{
 				g_Flag.forward_solenoid_flag = 1;
@@ -1033,7 +1019,7 @@ void autoLaserMidPre(void)
 			break;
 		
 		case LP_CLAMP:
-			auto_laser_enum_next = ATUOEXEC_END;
+			auto_state_enum_next = ATUOEXEC_END;
 			if(g_Flag.clamp_solenoid_flag != 1)
 			{
 				g_Flag.clamp_solenoid_flag = 1;
@@ -1043,14 +1029,14 @@ void autoLaserMidPre(void)
 			break;
 		
 		case ATUOEXEC_END:
-			auto_laser_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			g_Flag.auto_end_flag = 1;
 			autoModeDelay_ms(100);
 			break;
 			
 		default:
-			auto_laser_enum = AUTOEXEC_DEFAULT;
-			auto_laser_enum_next = AUTOEXEC_DEFAULT;
+			auto_state_enum = AUTOEXEC_DEFAULT;
+			auto_state_enum_next = AUTOEXEC_DEFAULT;
 			break;
 	}
 }

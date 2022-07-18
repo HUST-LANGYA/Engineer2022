@@ -8,11 +8,10 @@ extern int volatile Pos_Rotate_Motor;
 int rotate_set;			//旋转电机位置设定
 
 uint32_t rotate_high_water;
-float test_12= 1000.0;
+
 void motorRotate(void)
 {
 	
-	Pid_Rotate_Motor_Speed.SetPoint = (g_Flag.rotate_s - g_Flag.rotate_w)  * test_12;
 	
 	
 	

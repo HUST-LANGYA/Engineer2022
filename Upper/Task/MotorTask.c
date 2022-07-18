@@ -108,6 +108,7 @@ void Pid_Motor_Init(void)
 
 //int test11 = 1;
 int test_current = 0;
+float test_12= 1000.0;
 void motor_cal_task(void)
 {
 	
@@ -148,8 +149,14 @@ void motor_cal_task(void)
 	
 	/*******爪子旋转电机********/
 	//位置环
-//	Pid_LiftTrack_Speed[1].SetPoint = PID_Calc(&Pid_LiftTrack_Positioin[1],Pos_LiftTrack[1]);
-//	Pid_Rotate_Motor_Speed.SetPoint = LIMIT_MAX_MIN(PID_Calc(&Pid_Rotate_Motor_Positioin,Pos_Rotate_Motor), 5000, -5000);
+	if(g_Flag.rotate_s - g_Flag.rotate_w == 0)
+	{
+		Pid_Rotate_Motor_Speed.SetPoint = LIMIT_MAX_MIN(PID_Calc(&Pid_Rotate_Motor_Positioin,Pos_Rotate_Motor), 5000, -5000);
+	}else
+	{
+		Pid_Rotate_Motor_Positioin.SetPoint = Pos_Rotate_Motor;
+		Pid_Rotate_Motor_Speed.SetPoint = (g_Flag.rotate_s - g_Flag.rotate_w)  * test_12;
+	}
 	//速度环
 	Rotate_Motor_Current = LIMIT_MAX_MIN(PID_Calc(&Pid_Rotate_Motor_Speed,(float)Rotate_Motor.speed),13000,-13000);
 	

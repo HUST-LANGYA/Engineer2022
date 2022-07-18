@@ -112,7 +112,7 @@ void autoSmallIslandMine(void);
 void autoMineMidair(void);
 void autoExchange(void);
 void autoExchangeTwice(void);
-void autoGetMineMidair(void);
+//void autoGetMineMidair(void);
 void autoResetSoftware(void);
 void autoLaserMidPre(void);
 
