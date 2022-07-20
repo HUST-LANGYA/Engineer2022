@@ -37,20 +37,6 @@ static TaskHandle_t LaserRangingTask_Handler; //任务句柄
 #define MOTOR_STK_SIZE 256 //任务堆栈
 static TaskHandle_t MOTOR_TASK_Handler; //任务句柄
 
-#define LIFT_TASK_PRIO 13  //任务优先级
-#define LIFT_STK_SIZE 256 //任务堆栈
-static TaskHandle_t LIFT_TASK_Handler; //任务句柄
-
-#define ROTATE_TASK_PRIO 12  //任务优先级
-#define ROTATE_STK_SIZE 128 //任务堆栈
-static TaskHandle_t ROTATE_TASK_Handler; //任务句柄
-
-
-//#define Forward_TASK_PRIO 4  //任务优先级
-//#define Forward_STK_SIZE 128 //任务堆栈
-//static TaskHandle_t ForwardTask_Handler; //任务句柄
-
-
 /**
   	*@brief 		任务配置
   	*@param		  void
@@ -95,29 +81,6 @@ void start_task(void *pvParameters)
                 (UBaseType_t)MOTOR_TASK_PRIO,        //任务优先级
                 (TaskHandle_t *)&MOTOR_TASK_Handler); //任务句柄			
 				
-	xTaskCreate((TaskFunction_t)Lift_task,          //任务函数
-                (const char *)"Lift_task",          //任务名称
-                (uint16_t)LIFT_STK_SIZE,            //任务堆栈大小
-                (void *)NULL,                        //传递给任务函数的参数
-                (UBaseType_t)LIFT_TASK_PRIO,        //任务优先级
-                (TaskHandle_t *)&LIFT_TASK_Handler); //任务句柄
-				
-	xTaskCreate((TaskFunction_t)rotate_Task,          //任务函数
-                (const char *)"rotate_Task",          //任务名称
-                (uint16_t)ROTATE_STK_SIZE,            //任务堆栈大小
-                (void *)NULL,                        //传递给任务函数的参数
-                (UBaseType_t)ROTATE_TASK_PRIO,        //任务优先级
-                (TaskHandle_t *)&ROTATE_TASK_Handler); //任务句柄			
-								
-								
-								
-//	xTaskCreate((TaskFunction_t)Forward_task,          //任务函数
-//                (const char *)"Forward_task",          //任务名称
-//                (uint16_t)Forward_STK_SIZE,            //任务堆栈大小
-//                (void *)NULL,                        //传递给任务函数的参数
-//                (UBaseType_t)Forward_TASK_PRIO,        //任务优先级
-//                (TaskHandle_t *)&ForwardTask_Handler); //任务句柄
-
 
 	vTaskDelete(StartTask_Handler); //删除开始任务
   taskEXIT_CRITICAL();            //退出临界区

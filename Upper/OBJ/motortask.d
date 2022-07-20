@@ -41,8 +41,6 @@
 ..\obj\motortask.o: ..\Task\AutoexecTask.h
 ..\obj\motortask.o: ..\Task\MotorTask.h
 ..\obj\motortask.o: ..\Task\LaserRangingTask.h
-..\obj\motortask.o: ..\Task\LiftTask.h
-..\obj\motortask.o: ..\Task\RotateTask.h
 ..\obj\motortask.o: ..\User\FreeRTOSConfig.h
 ..\obj\motortask.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\motortask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

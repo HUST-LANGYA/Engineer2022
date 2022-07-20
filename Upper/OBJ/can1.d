@@ -40,8 +40,6 @@
 ..\obj\can1.o: ..\Task\AutoexecTask.h
 ..\obj\can1.o: ..\Task\MotorTask.h
 ..\obj\can1.o: ..\Task\LaserRangingTask.h
-..\obj\can1.o: ..\Task\LiftTask.h
-..\obj\can1.o: ..\Task\RotateTask.h
 ..\obj\can1.o: ..\User\FreeRTOSConfig.h
 ..\obj\can1.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\can1.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

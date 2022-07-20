@@ -35,10 +35,6 @@ static TaskHandle_t Master2SlaveTask_Handler; //任务句柄
 #define MOTOR_CAL_STK_SIZE 256 //任务堆栈
 static TaskHandle_t MotorCalTask_Handler; //任务句柄
 
-#define MOTOR_FLAG_TASK_PRIO 17  //任务优先级
-#define MOTOR_FLAG_STK_SIZE 128 //任务堆栈
-static TaskHandle_t MotorFlagTask_Handler; //任务句柄
-
 
 #define LASER_RANGING_TASK_PRIO 10  //任务优先级
 #define LASER_RANGING_STK_SIZE 256 //任务堆栈
@@ -48,9 +44,6 @@ static TaskHandle_t LaserRangingTask_Handler; //任务句柄
 #define GRAPHIC_STK_SIZE 128 //任务堆栈
 static TaskHandle_t Graphic_Handler; //任务句柄
 
-//#define ReturnState_TASK_PRIO 17  //任务优先级
-//#define ReturnState_STK_SIZE 512 //任务堆栈
-//static TaskHandle_t ReturnStateTask_Handler; //任务句柄
 
 void start_task(void *pvParameters)
 {
@@ -91,14 +84,6 @@ xTaskCreate((TaskFunction_t)motorCalTask,          //任务函数
                 (void *)NULL,                        //传递给任务函数的参数
                 (UBaseType_t)MOTOR_CAL_TASK_PRIO,        //任务优先级
                 (TaskHandle_t *)&MotorCalTask_Handler); //任务句柄			
-												
-xTaskCreate((TaskFunction_t)motorFlagTask,          //任务函数
-                (const char *)"motorFlagTask",          //任务名称
-                (uint16_t)MOTOR_FLAG_STK_SIZE,            //任务堆栈大小
-                (void *)NULL,                        //传递给任务函数的参数
-                (UBaseType_t)MOTOR_FLAG_TASK_PRIO,        //任务优先级
-                (TaskHandle_t *)&MotorFlagTask_Handler); //任务句柄			
-				
 
 	xTaskCreate((TaskFunction_t)laserRangingSendTask,          //任务函数
                 (const char *)"laserRangingSendTask",          //任务名称
@@ -122,13 +107,6 @@ xTaskCreate((TaskFunction_t)motorFlagTask,          //任务函数
 //                (void *)NULL,                        //传递给任务函数的参数
 //                (UBaseType_t)OFFLINE_CHECK_TASK_PRIO,        //任务优先级
 //                (TaskHandle_t *)&OfflineCheckTask_Handler); //任务句柄								
-
-//xTaskCreate((TaskFunction_t) ReturnState,          //任务函数
-//                (const char *)"ReturnState",          //任务名称
-//                (uint16_t)ReturnState_STK_SIZE,            //任务堆栈大小
-//                (void *)NULL,                        //传递给任务函数的参数
-//                (UBaseType_t)ReturnState_TASK_PRIO,        //任务优先级
-//                (TaskHandle_t *)&ReturnStateTask_Handler); //任务句柄
 
 	vTaskDelete(StartTask_Handler); //删除开始任务
   taskEXIT_CRITICAL();            //退出临界区

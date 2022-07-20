@@ -46,7 +46,6 @@
 ..\obj\modbuscrc16.o: ..\Task\Master2SlaveTask.h
 ..\obj\modbuscrc16.o: ..\Task\OfflineCheckTask.h
 ..\obj\modbuscrc16.o: ..\Task\MotorCalTask.h
-..\obj\modbuscrc16.o: ..\Task\MotorFlagTask.h
 ..\obj\modbuscrc16.o: ..\Task\LaserRangingTask.h
 ..\obj\modbuscrc16.o: ..\Task\GraphicsSendTask.h
 ..\obj\modbuscrc16.o: ..\Task\CharSendTask.h

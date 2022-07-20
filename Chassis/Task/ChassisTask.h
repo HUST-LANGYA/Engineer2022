@@ -9,7 +9,6 @@ void chassisPowerOff(void);																			//底盘断电
 void chassisRcModeCal(void);																		//遥控器模式控制时底盘计算代码
 void chassisKeyModeCal(void);																		//键鼠模式控制时底盘计算代码
 void chassisModeNormal(void);																		//正常底盘模式下的速度设定计算
-int chassisModeNormalCalExec(int v, int v_set);									//正常底盘模式速度设定具体计算函数
 void chassisModeStatic(void);																		//底盘静步模式下的速度设定计算
 int  chassisModeStaticCalExec(int v, int v_set);								//底盘静步模式速度设定具体计算函数 (对vx,vy,vw的相同计算进行了封装，简化代码)
 void chassisCal(int vx, int vy, int vw);												//底盘速度分解及PID计算

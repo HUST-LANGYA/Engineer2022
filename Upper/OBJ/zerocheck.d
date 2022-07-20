@@ -41,8 +41,6 @@
 ..\obj\zerocheck.o: ..\Task\AutoexecTask.h
 ..\obj\zerocheck.o: ..\Task\MotorTask.h
 ..\obj\zerocheck.o: ..\Task\LaserRangingTask.h
-..\obj\zerocheck.o: ..\Task\LiftTask.h
-..\obj\zerocheck.o: ..\Task\RotateTask.h
 ..\obj\zerocheck.o: ..\User\FreeRTOSConfig.h
 ..\obj\zerocheck.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\zerocheck.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

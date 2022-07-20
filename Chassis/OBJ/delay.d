@@ -46,7 +46,6 @@
 ..\obj\delay.o: ..\Task\Master2SlaveTask.h
 ..\obj\delay.o: ..\Task\OfflineCheckTask.h
 ..\obj\delay.o: ..\Task\MotorCalTask.h
-..\obj\delay.o: ..\Task\MotorFlagTask.h
 ..\obj\delay.o: ..\Task\LaserRangingTask.h
 ..\obj\delay.o: ..\Task\GraphicsSendTask.h
 ..\obj\delay.o: ..\Task\CharSendTask.h

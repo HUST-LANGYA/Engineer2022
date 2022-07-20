@@ -40,8 +40,6 @@
 ..\obj\pid.o: ..\Task\AutoexecTask.h
 ..\obj\pid.o: ..\Task\MotorTask.h
 ..\obj\pid.o: ..\Task\LaserRangingTask.h
-..\obj\pid.o: ..\Task\LiftTask.h
-..\obj\pid.o: ..\Task\RotateTask.h
 ..\obj\pid.o: ..\User\FreeRTOSConfig.h
 ..\obj\pid.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\pid.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

@@ -46,7 +46,6 @@
 ..\obj\pid.o: ..\Task\Master2SlaveTask.h
 ..\obj\pid.o: ..\Task\OfflineCheckTask.h
 ..\obj\pid.o: ..\Task\MotorCalTask.h
-..\obj\pid.o: ..\Task\MotorFlagTask.h
 ..\obj\pid.o: ..\Task\LaserRangingTask.h
 ..\obj\pid.o: ..\Task\GraphicsSendTask.h
 ..\obj\pid.o: ..\Task\CharSendTask.h

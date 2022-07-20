@@ -46,7 +46,6 @@
 ..\obj\algorithmofcrc.o: ..\Task\Master2SlaveTask.h
 ..\obj\algorithmofcrc.o: ..\Task\OfflineCheckTask.h
 ..\obj\algorithmofcrc.o: ..\Task\MotorCalTask.h
-..\obj\algorithmofcrc.o: ..\Task\MotorFlagTask.h
 ..\obj\algorithmofcrc.o: ..\Task\LaserRangingTask.h
 ..\obj\algorithmofcrc.o: ..\Task\GraphicsSendTask.h
 ..\obj\algorithmofcrc.o: ..\Task\CharSendTask.h

@@ -6,7 +6,6 @@
 #include "main.h"
 
 Flag_t g_Flag;
-//ExecFlag_t g_ExecFlag;
 
 void BSP_init(void);
 void gpioConfig(void);

@@ -48,7 +48,6 @@
 "..\obj\chassistask.o"
 "..\obj\master2slavetask.o"
 "..\obj\motorcaltask.o"
-"..\obj\motorflagtask.o"
 "..\obj\offlinechecktask.o"
 "..\obj\starttask.o"
 "..\obj\statetask.o"

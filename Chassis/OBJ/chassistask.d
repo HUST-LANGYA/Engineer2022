@@ -46,7 +46,6 @@
 ..\obj\chassistask.o: ..\Task\Master2SlaveTask.h
 ..\obj\chassistask.o: ..\Task\OfflineCheckTask.h
 ..\obj\chassistask.o: ..\Task\MotorCalTask.h
-..\obj\chassistask.o: ..\Task\MotorFlagTask.h
 ..\obj\chassistask.o: ..\Task\LaserRangingTask.h
 ..\obj\chassistask.o: ..\Task\GraphicsSendTask.h
 ..\obj\chassistask.o: ..\Task\CharSendTask.h

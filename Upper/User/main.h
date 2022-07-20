@@ -37,9 +37,6 @@
 #include "AutoexecTask.h"
 #include "MotorTask.h"
 #include "LaserRangingTask.h"
-#include "LiftTask.h"
-#include "RotateTask.h"
-//#include "ForwardTask.h"
 
 /*FreeRTOS*/
 #include "FreeRTOSConfig.h"
@@ -247,17 +244,8 @@ typedef struct
 //	u8 gyro_initial_flag;
 }Flag_t;												//状态机模式标志
 
-//typedef struct
-//{
-
-////	u8 forward_motor_flag;			//前移标志
-//	
-//}ExecFlag_t;										//状态机执行动作标志
-
-
 /*******************全局引用数据*************************/
 extern Flag_t g_Flag;
-//extern ExecFlag_t g_ExecFlag;
 
 
 #endif

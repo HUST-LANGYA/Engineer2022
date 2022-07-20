@@ -46,7 +46,6 @@
 ..\obj\judgesend.o: ..\Task\Master2SlaveTask.h
 ..\obj\judgesend.o: ..\Task\OfflineCheckTask.h
 ..\obj\judgesend.o: ..\Task\MotorCalTask.h
-..\obj\judgesend.o: ..\Task\MotorFlagTask.h
 ..\obj\judgesend.o: ..\Task\LaserRangingTask.h
 ..\obj\judgesend.o: ..\Task\GraphicsSendTask.h
 ..\obj\judgesend.o: ..\Task\CharSendTask.h

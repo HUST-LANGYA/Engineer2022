@@ -46,7 +46,6 @@
 ..\obj\graphicssendtask.o: ..\Task\Master2SlaveTask.h
 ..\obj\graphicssendtask.o: ..\Task\OfflineCheckTask.h
 ..\obj\graphicssendtask.o: ..\Task\MotorCalTask.h
-..\obj\graphicssendtask.o: ..\Task\MotorFlagTask.h
 ..\obj\graphicssendtask.o: ..\Task\LaserRangingTask.h
 ..\obj\graphicssendtask.o: ..\Task\GraphicsSendTask.h
 ..\obj\graphicssendtask.o: ..\Task\CharSendTask.h

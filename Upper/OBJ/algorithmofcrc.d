@@ -41,8 +41,6 @@
 ..\obj\algorithmofcrc.o: ..\Task\AutoexecTask.h
 ..\obj\algorithmofcrc.o: ..\Task\MotorTask.h
 ..\obj\algorithmofcrc.o: ..\Task\LaserRangingTask.h
-..\obj\algorithmofcrc.o: ..\Task\LiftTask.h
-..\obj\algorithmofcrc.o: ..\Task\RotateTask.h
 ..\obj\algorithmofcrc.o: ..\User\FreeRTOSConfig.h
 ..\obj\algorithmofcrc.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\algorithmofcrc.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

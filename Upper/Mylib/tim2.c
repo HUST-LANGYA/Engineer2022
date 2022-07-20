@@ -58,7 +58,7 @@ void TIM3_PWM_Init(void)
 	
 void CameraSteeringEngine_Set(void)       
 {
-	if(g_Flag.control_target == CHECK_MODE)
+	if(g_Flag.control_mode == RC_MODE)
 		camera_pitch = 2200;
 	else
 	{
@@ -82,7 +82,7 @@ void CameraSteeringEngine_Set(void)
 		}
 	}
 	
-	if(g_Flag.control_target == CHECK_MODE)
+	if(g_Flag.control_mode == RC_MODE)
 		camera_yaw = 2000;
 	else
 		camera_yaw = 1250;

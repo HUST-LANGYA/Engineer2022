@@ -44,7 +44,6 @@
 #include "Master2SlaveTask.h"
 #include "OfflineCheckTask.h"
 #include "MotorCalTask.h"
-#include "MotorFlagTask.h"
 #include "LaserRangingTask.h"
 #include "GraphicsSendTask.h"
 #include "CharSendTask.h"
@@ -304,10 +303,6 @@ typedef struct
 	u8 initial_flag;
 	u8 offline_flag;
 	
-
-//	u8 lift_state;
-//	u8 lift_finish;
-//	u8 lift_flag;
 }Flag_t;
 
 

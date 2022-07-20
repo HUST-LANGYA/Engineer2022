@@ -46,7 +46,6 @@
 ..\obj\remote.o: ..\Task\Master2SlaveTask.h
 ..\obj\remote.o: ..\Task\OfflineCheckTask.h
 ..\obj\remote.o: ..\Task\MotorCalTask.h
-..\obj\remote.o: ..\Task\MotorFlagTask.h
 ..\obj\remote.o: ..\Task\LaserRangingTask.h
 ..\obj\remote.o: ..\Task\GraphicsSendTask.h
 ..\obj\remote.o: ..\Task\CharSendTask.h

@@ -648,11 +648,6 @@
               <FilePath>..\Task\MotorCalTask.c</FilePath>
             </File>
             <File>
-              <FileName>MotorFlagTask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Task\MotorFlagTask.c</FilePath>
-            </File>
-            <File>
               <FileName>OfflineCheckTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\OfflineCheckTask.c</FilePath>

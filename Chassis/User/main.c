@@ -14,7 +14,7 @@ void gpioConfig(void);
 int main(void)
 {
 		BSP_init();
-		delay_ms(1000);
+		delay_ms(100);
 		ZeroCheck_Init();																	//过零检测初始化
 		motorPidInit();																		//其他三个电机PID初始化
 		startTask();

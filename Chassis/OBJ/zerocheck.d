@@ -46,7 +46,6 @@
 ..\obj\zerocheck.o: ..\Task\Master2SlaveTask.h
 ..\obj\zerocheck.o: ..\Task\OfflineCheckTask.h
 ..\obj\zerocheck.o: ..\Task\MotorCalTask.h
-..\obj\zerocheck.o: ..\Task\MotorFlagTask.h
 ..\obj\zerocheck.o: ..\Task\LaserRangingTask.h
 ..\obj\zerocheck.o: ..\Task\GraphicsSendTask.h
 ..\obj\zerocheck.o: ..\Task\CharSendTask.h

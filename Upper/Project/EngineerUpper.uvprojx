@@ -603,24 +603,9 @@
               <FilePath>..\Task\AutoexecTask.c</FilePath>
             </File>
             <File>
-              <FileName>ForwardTask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Task\ForwardTask.c</FilePath>
-            </File>
-            <File>
-              <FileName>LiftTask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Task\LiftTask.c</FilePath>
-            </File>
-            <File>
               <FileName>MotorTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\MotorTask.c</FilePath>
-            </File>
-            <File>
-              <FileName>RotateTask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Task\RotateTask.c</FilePath>
             </File>
             <File>
               <FileName>StartTask.c</FileName>

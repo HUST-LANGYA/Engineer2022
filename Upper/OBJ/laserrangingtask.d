@@ -41,8 +41,6 @@
 ..\obj\laserrangingtask.o: ..\Task\AutoexecTask.h
 ..\obj\laserrangingtask.o: ..\Task\MotorTask.h
 ..\obj\laserrangingtask.o: ..\Task\LaserRangingTask.h
-..\obj\laserrangingtask.o: ..\Task\LiftTask.h
-..\obj\laserrangingtask.o: ..\Task\RotateTask.h
 ..\obj\laserrangingtask.o: ..\User\FreeRTOSConfig.h
 ..\obj\laserrangingtask.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\laserrangingtask.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

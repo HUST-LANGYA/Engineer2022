@@ -173,8 +173,6 @@ void CAN1_RX0_IRQHandler(void)
 
 		}
 		
-
-		
 		CAN_ClearITPendingBit(CAN1,CAN_IT_FMP0);
 	}
 }	

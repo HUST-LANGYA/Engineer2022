@@ -46,7 +46,6 @@
 ..\obj\laserrangingtask.o: ..\Task\Master2SlaveTask.h
 ..\obj\laserrangingtask.o: ..\Task\OfflineCheckTask.h
 ..\obj\laserrangingtask.o: ..\Task\MotorCalTask.h
-..\obj\laserrangingtask.o: ..\Task\MotorFlagTask.h
 ..\obj\laserrangingtask.o: ..\Task\LaserRangingTask.h
 ..\obj\laserrangingtask.o: ..\Task\GraphicsSendTask.h
 ..\obj\laserrangingtask.o: ..\Task\CharSendTask.h

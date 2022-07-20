@@ -81,8 +81,8 @@ void switchMode(void)
 			keyModeFlagChange();		//键鼠模式修改标志位 
 	else if(g_Flag.control_mode == RC_MODE)
 	{
-			motionTargetGet();			//获取运动模式
-			rcModeFlagChange();			//遥控器模式修改标志位 
+//			motionTargetGet();			//获取运动模式
+//			rcModeFlagChange();			//遥控器模式修改标志位 
 	}else
 			g_Flag.control_mode = KEY_MODE;		//默认键鼠模式
 
@@ -445,11 +445,9 @@ void rcModeFlagChange(void)
 				if(rc_ctrl.rc.ch1 > 1500) 							//右上移动拨杆
 				{
 					g_Flag.lift_once_flag 	= 1; 	//一级抬升
-		//					g_Flag.forward_flag			= 1;	//前移
 				}else if(rc_ctrl.rc.ch1 < 500) 					//右下移动拨杆
 				{
 					g_Flag.lift_once_flag = 0; 	//一级下降
-		//					g_Flag.forward_flag			= 0;	//前移收回
 				}
 
 
@@ -510,60 +508,79 @@ void rcModeFlagChange(void)
 */
 void controlStateGet(void)															//获取控制模式
 {
-	
-	if (rc_ctrl.rc.s2 == UP)															//获取控制模式
+	switch(rc_ctrl.rc.s2)
 	{
-		switch(rc_ctrl.rc.s1)
-		{
-			case UP:
-				g_Flag.control_mode = KEY_MODE;							//键鼠模式
-				g_Flag.control_target = NORMAL_MODE;			//正常模式
-				break;
-			case MIDDLE:
-				if(g_Flag.control_target == RC_MODE)
-						g_Flag.control_target = CHASSIS_MODE;		//遥控器底盘运动模式
-				else
-						g_Flag.control_mode = KEY_MODE;
-				break;
-			case DOWN:
-				g_Flag.control_mode = RC_MODE;					//遥控模式
-				break;
-			default:
-				g_Flag.control_mode = KEY_MODE;	
-				break;
-		}
+		case UP:
+			g_Flag.control_mode 	= KEY_MODE;							//键鼠模式
+			g_Flag.control_target = NORMAL_MODE;			//正常模式
+			break;
+		case MIDDLE:
+			g_Flag.control_mode 	= RC_MODE;					//遥控模式
+			g_Flag.control_target = CHASSIS_MODE;
+			break;
+		case DOWN:
+			g_Flag.control_target = POWER_OFF_MODE;
+			g_Flag.control_mode 	= KEY_MODE;	
+			break;
+		default:
+			g_Flag.control_target = POWER_OFF_MODE;
+			g_Flag.control_mode 	= KEY_MODE;	
+			break;
 	}
 	
-	if(rc_ctrl.rc.s2 == DOWN && rc_ctrl.rc.s1 == DOWN)
-	{
-		g_Flag.control_target = POWER_OFF_MODE;
-		g_Flag.control_mode = KEY_MODE;	
-	}
-	if(rc_ctrl.rc.s2 == MIDDLE && rc_ctrl.rc.s1 == MIDDLE)
-	{
-		g_Flag.control_target = CHECK_MODE;
-//		g_Flag.control_mode 	= KEY_MODE;	
-	}
-	
-	
-	
-//	if (rc_ctrl.rc.s2 == DOWN)															//获取控制模式
+//	if (rc_ctrl.rc.s2 == UP)															//获取控制模式
 //	{
 //		switch(rc_ctrl.rc.s1)
 //		{
 //			case UP:
-//				g_Flag.control_mode = RC_MODE;				//遥控模式
+//				g_Flag.control_mode = KEY_MODE;							//键鼠模式
+//				g_Flag.control_target = NORMAL_MODE;			//正常模式
 //				break;
 //			case MIDDLE:
-//				g_Flag.control_mode = KEY_MODE;				//键鼠模式
+//				if(g_Flag.control_target == RC_MODE)
+//						g_Flag.control_target = CHASSIS_MODE;		//遥控器底盘运动模式
+//				else
+//						g_Flag.control_mode = KEY_MODE;
 //				break;
 //			case DOWN:
-//				g_Flag.control_target = POWER_OFF_MODE;	//掉电模式
+//				g_Flag.control_mode = RC_MODE;					//遥控模式
 //				break;
 //			default:
+//				g_Flag.control_mode = KEY_MODE;	
 //				break;
 //		}
 //	}
+//	
+//	if(rc_ctrl.rc.s2 == DOWN && rc_ctrl.rc.s1 == DOWN)
+//	{
+//		g_Flag.control_target = POWER_OFF_MODE;
+//		g_Flag.control_mode = KEY_MODE;	
+//	}
+//	if(rc_ctrl.rc.s2 == MIDDLE && rc_ctrl.rc.s1 == MIDDLE)
+//	{
+//		g_Flag.control_mode 	= RC_MODE;					//遥控模式
+//		g_Flag.control_target = CHASSIS_MODE;
+//	}
+//	
+//	
+//	
+////	if (rc_ctrl.rc.s2 == DOWN)															//获取控制模式
+////	{
+////		switch(rc_ctrl.rc.s1)
+////		{
+////			case UP:
+////				g_Flag.control_mode = RC_MODE;				//遥控模式
+////				break;
+////			case MIDDLE:
+////				g_Flag.control_mode = KEY_MODE;				//键鼠模式
+////				break;
+////			case DOWN:
+////				g_Flag.control_target = POWER_OFF_MODE;	//掉电模式
+////				break;
+////			default:
+////				break;
+////		}
+////	}
 }
 
 
@@ -615,23 +632,3 @@ void motionTargetGet(void)															//获取运动模式
 	
 }
 
-
-//key_control  key;
-///**
-//  * @brief  键鼠模式标志位初始化
-//  * @param  None
-//  * @retval None
-//  */
-//void  key_control_Init(void)
-//{
-//	key.flag_save_mode = 0;
-//	key.flag_landing_mode = 0;
-//	key.flag_manual_landing_mode = 0;
-//	key.flag_get_buttel_mode = 0;
-//	key.flag_manual_get_buttel_mode = 0;
-//	key.flag_key_mode = 0;
-//	key.flag_lift_up_mode = 0;
-//  key.flag_initialize_mode = 0;
-//	key.flag_get_buttel_mode1 = 0;
-//	key.flag_choose_mode = 0;
-//}

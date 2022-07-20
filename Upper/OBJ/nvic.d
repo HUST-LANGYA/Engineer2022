@@ -40,8 +40,6 @@
 ..\obj\nvic.o: ..\Task\AutoexecTask.h
 ..\obj\nvic.o: ..\Task\MotorTask.h
 ..\obj\nvic.o: ..\Task\LaserRangingTask.h
-..\obj\nvic.o: ..\Task\LiftTask.h
-..\obj\nvic.o: ..\Task\RotateTask.h
 ..\obj\nvic.o: ..\User\FreeRTOSConfig.h
 ..\obj\nvic.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\nvic.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
